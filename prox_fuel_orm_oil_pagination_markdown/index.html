@@ -1,0 +1,367 @@
+<!doctype html>  
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>FuelPHP - Proximities Pierce - octa+</title>
+
+		<meta name="description" content="Discovering fuelPHP by proximity">
+		<meta name="author" content="online team">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="state-background"></div>
+			<div class="slides">
+				
+				<section>
+					<h1>FuelPHP</h1>
+					<h2>Proximities sting (octa+)</h2>
+					<h3>A brief intro of fuel php</h3>
+					<ol>
+						<li class="fragment">Introduction and structure</li>
+						<li class="fragment">Oil</li>
+						<li class="fragment">ORM</li>
+						<li class="fragment">Demos</li>
+						<li class="fragment">Extra</li>
+						<li class="fragment">QA</li>
+					</ol>
+				</section>
+				
+				<section>
+					<section>
+						<h1>Introduction</h1>
+						<p>
+							About folder structure, site development, deployment and COREextending.
+						</p>
+					</section>
+					
+					<section>
+						<h2>folder structure</h2>
+						<code>
+							<pre><code contenteditable>
+/projectname
+  /assets --> Your project's assets
+    /css
+    /img
+    /js
+  build.xml 
+  /fuel
+    /app --> Your project's code
+    /core --> Fuel's CORE
+    /packages --> extra packages
+  index.php
+  oil
+  README.md
+  web.config
+							</code></pre>
+						</code>
+					</section>
+					
+					<section>
+						<h2>Site development</h2>
+						<p>Your code sits in <strong>/projectname/fuel/app</strong></p>
+						<code>
+							<pre><code style="max-height: 540px;" contenteditable>
+/fuel
+  /app
+    /cache
+    /classes
+      /controller
+      /model
+      /view --> these are the viewmodels not the views!
+    /config
+      config.php --> general config
+      crypt.php 
+      db.php --> overal db config
+      routes.php --> specified routes
+    /lang
+    /logs
+    /migrations
+    /modules
+    /tasks
+    /tests
+    /tmp
+    /vendor
+    /views --> these are the html views
+							</code></pre>
+						</code>
+					</section>
+					<section>
+						<h2>Deployement</h2>
+						<br />
+						<ul>
+							<li>(WS03)just put your projects in the www folders geert will provide</li>
+							<li><a href="http://docs.fuelphp.com/general/environments.html#/setting_env" target="_blank">Set your enviroment</a> to PRODUCTION Inside app/bootstrap.php</li>
+							<li><a href="http://docs.fuelphp.com/general/environments.html#/env_config" target="_blank">Environments and Config</a></li>
+						</ul>
+					</section>
+					<section>
+						<h2>COREextending</h2>
+						<h3>Extending with classes</h3>
+						<ul>
+							<li>location => fuel/app/classes/</li>
+							<li><a href="http://docs.fuelphp.com/general/classes.html#/classes_namespaces" target="_blank">Naming your classes</a></li>
+							<li><a href="http://docs.fuelphp.com/general/extending_core.html#extend_dont_replace" target="_blank">Just extending</a> the core class</li>
+							<li><a href="http://docs.fuelphp.com/general/extending_core.html#/extend_and_replace" target="_blank">Extending &amp; replacing</a> core classes</li>
+						</ul>
+					</section>
+					<section>
+						<h2>COREextending</h2>
+						<h3>Extending with packages</h3>
+						<ul>
+							<li>Packages are for example a pdf-parsing package, or a captcha, etc </li>
+							<li><a href="http://docs.fuelphp.com/general/packages.html" target="_blank">Explenation</a></li>
+							<li><a href="https://github.com/fuel-packages" target="_blank">Existing packages</a></li>
+						</ul>
+					</section>
+					<section>
+						<h2>COREextending</h2>
+						<h3>Extending with modules</h3>
+						<ul>
+							<li>Modules can be considered as parts of your websites: blogs, admins, widgets, etc </li>
+							<li><a href="http://docs.fuelphp.com/general/modules.html" target="_blank">Explenation</a></li>
+						</ul>
+					</section>
+				</section>
+				<section data-state="blackout">
+					<!-- soothe -->
+					<section>
+						<h1>Oil</h1>
+						<br />
+						<p>
+							The Oil utility is a special package command can be used in several ways to facilitate quick development, help with testing your application and for running Tasks.
+						</p>
+					</section>
+					<section>
+						<h1>Oil</h1>
+						<br />
+						<ol>
+							<li><strong>Generate</strong> - Build MVC components, migrations and entire scaffolding.</li>
+							<li><strong>Refine</strong> - Run tasks such as migrate and your own custom ones.</li>
+							<li><strong>Package</strong> - Install, update and remove packages.</li>
+							<li><strong>Console</strong> - Test your code in real time using an interactive shell.</li>
+						</ol>
+					</section>
+					<section>
+						<h3>instalation</h3>
+						<code>
+							<pre><code style="max-height: 540px;" contenteditable>
+$ curl get.fuelphp.com/oil | sh
+							</code></pre>
+						</code>
+						<h3>help</h3>
+						<code>
+							<pre><code style="max-height: 540px;" contenteditable>
+$ php oil help
+
+Usage:
+  php oil [console|generate|package|refine|help|test]
+
+Runtime options:
+  -f, [--force]    # Overwrite files that already exist
+  -s, [--skip]     # Skip files that already exist
+  -q, [--quiet]    # Suppress status output
+  -t, [--speak]    # Speak errors in a robot voice
+
+Description:
+  The 'oil' command can be used in several ways to facilitate quick development, help with
+  testing your application and for running Tasks.
+						</code></pre>
+					</code>
+					</section>
+					<section>
+						<h2>Generating</h2>
+						<ul>
+							<li>Controllers</li>
+							<li>Models</li>
+							<li>Views</li>
+							<li>Migrations</li>
+							<li>Scaffolding</li>
+							<li>Configs</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Controllers & views</h3>
+						<code>
+							<pre><code style="max-height: 540px;" contenteditable>
+$ oil g controller posts action1 action2 action3
+							</code></pre>
+						</code>
+						<p>This wil generate your controller post and set its views action 1 to 3 callable trough the url /post/action1</p>
+						<p><a href="http://fueldoc/packages/oil/generate.html#/controllers" target="_blank">Controllers</a></p>
+					</section>
+					<section>
+						<h3>Models & migrations</h3>
+						<code>
+							<pre><code style="max-height: 540px;" contenteditable>
+$ oil g model post title:varchar:50 body:text user_id:int
+							</code></pre>
+						</code>
+						<p>This wil generate your model post and generate a migration for it in your migrations folder</p>
+						<br />
+						<blockquote>Types: string[n], varchar[n], int[n], enum[value1, value2], decimal[n n], <br />float[n n], text, blob, datetime, date, timestamp and time.</blockquote>
+						<p><a href="http://fueldoc/packages/oil/generate.html#/models" target="_blank">Models</a></p>
+					</section>
+					<section>
+						<h3>Run migrations</h3>
+						<blockquote>Migrate everything: why?<br /> no more silly .sql files</blockquote><br />
+						<code>
+							<pre><code style="max-height: 540px;" contenteditable>
+$ oil r(efine) migrate
+							</code></pre>
+						</code>
+						<p>This wil put your db up to date with the last migration</p>
+						<p>you can specify numbers or go up and down</p>
+						<p><a href="http://fueldoc/packages/oil/generate.html#/running_migrations" target="_blank">Migrations</a></p>
+					</section>
+					<section>
+						<h3>BANG Scaffold!</h3>
+						<code>
+							<pre><code style="max-height: 540px;" contenteditable>
+$ php oil g scaffold monkey name:string description:text
+    Created model: APPPATH/classes/model/monkey.php
+    Created migration: APPPATH/migrations/003_create_monkeys.php
+    Created controller: APPPATH/classes/controller/monkeys.php
+    Created view: APPPATH/views/monkeys/index.php
+    Created view: APPPATH/views/monkeys/view.php
+    Created view: APPPATH/views/monkeys/create.php
+    Created view: APPPATH/views/monkeys/edit.php
+    Created view: APPPATH/views/monkeys/_form.php
+							</code></pre>
+						</code>
+						<p></p>
+						<p>Generates all you need in one command :D <br />( usefull for admin panel)</p>
+						<p><a href="http://fueldoc/packages/oil/generate.html#/scaffolding" target="_blank">Scaffolding</a></p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>ORM</h1>
+						<p>Orm is short for <strong>Object Relational Mapper</strong> which does 2 things: it maps your database table rows to objects and it allows you to establish relations between those objects.</p>
+						<p><a href="http://fueldoc/packages/orm/intro.html" target="_blank">ORM</a></p>
+					</section>
+					
+					<section>
+						<h3>Relation types</h3>
+						<ul>
+							<li>Belongs To <small>Has the primary key of the relation kept in its table, belongs to 1 related object.</small></li>
+							<li>Has One <small>Has its primary key saved in one other row of another table (which belongs to this), has 1 related object.</small></li>
+							<li>Has Many <small>Has its primary key saved in many other rows of another table (which belong to this one), has many related objects.</small></li>
+							<li>Many to Many <small>Have their primary keys saved in a table in between which keeps pairs of primary keys from both tables. Have and belong to many objects.</small></li>
+						</ul>
+					</section>
+					
+					<section>
+						<h3>Defined in the models</h3>
+							<pre><code style="max-height: 540px;" contenteditable>
+protected static $_has_many = array('comments');
+protected static $_belongs_to = array('post');
+protected static $_has_one = array('user');
+protected static $_many_many = array('tours');
+							</code></pre>
+						</code>
+						<br />
+						<h3>Fully configurated</h3>
+							<pre><code style="max-height: 540px;" contenteditable>
+protected static $_has_many = array('comments' => array(
+  'model_to' => 'Model_Fancy_Comment',
+  'key_from' => 'article_id',
+  'key_to' => 'parent_article_id',
+  'cascade_save' => true,
+  'cascade_delete' => false,
+  // there are some more options for specific relation types
+));
+							</code></pre>
+						</code>
+					</section>
+					<section>
+						<h3>Eager and lazy loading</h3>
+						<p><a href="http://fueldoc/packages/orm/relations/intro.html" target="_blank">Usage</a></p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>DEMO</h1>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Extra</h1>
+						<ul>
+							<li>Pagination</li>
+							<li>Console</li>
+							<li>Tasks</li>
+							<li>inflector</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h1>Thanks!</h1>
+					<h3>Questions & answers</h3>
+					<p><a href="https://github.com/rob-bar/fuel_prox_presentation" target="_blank">https://github.com/rob-bar/fuel_prox_presentation</a></p>
+					<p><a href="https://github.com/proximitybbdo/engine/tree/orm_exploration" target="_blank">orm_exploration branch</a></p>
+				</section>
+			</div>
+
+			<!-- The navigational controls UI -->
+			<aside class="controls">
+				<a class="left" href="#">&#x25C4;</a>
+				<a class="right" href="#">&#x25BA;</a>
+				<a class="up" href="#">&#x25B2;</a>
+				<a class="down" href="#">&#x25BC;</a>
+			</aside>
+
+			<!-- Presentation progress bar -->
+			<div class="progress"><span></span></div>
+			
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				
+				theme: Reveal.getQueryHash().theme || 'default', // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/linear(2d)
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/highlight.js', async: true, callback: function() { window.hljs.initHighlightingOnLoad(); } },
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'lib/js/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/js/data-markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/socket.io/socket.io.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } },
+					{ src: 'plugin/speakernotes/client.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } },
+				]
+			});
+			
+		</script>
+
+	</body>
+</html>
