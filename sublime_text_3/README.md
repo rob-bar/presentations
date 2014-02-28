@@ -23,7 +23,7 @@
     * translate_tabs_to_spaces
     * trim_trailing_white_space_on_save
 
-##Basics
+##Basics:
 * `shift + cmd + P` =  Bring up the command palet
 * syntax setting and changing
 * `cmd + K, cmd + B` = toggle sidebar
@@ -33,7 +33,7 @@
 * subl .
 * great in combination with xiki
 
-##package manager basics
+##package manager basics:
 * install package
 * remove package
 * list packages‘
@@ -56,7 +56,7 @@
 * `cmd + alt + ↓` Goto Definition
 (search same function in other files)
 
-##Split windows, moving files and moving cursor
+##Split windows, moving files and moving cursor:
 * Demo
 
 ##Sidebar enhancements:
@@ -81,7 +81,7 @@ html
   * `cmd + alt + ↑` Increment by 10
   * `cmd + alt + ↓` Decrement by 10
 
-##Fetching files
+##Fetching files:
 * Instantly fetching packages and or scripts from github or from the web
 
 ##Advanced new file and file manipulations:
@@ -97,17 +97,17 @@ html
 * `cmd + K, cmd + I` Insert
 * `cmd + K, cmd + S` Save
 
-##BracketHighlighter
+##BracketHighlighter:
 * demo
 
 ##Http Requester:
 * Quick http requests from sublime TEXT `cmd + alt + R` on selected url text
 http://www.doctorswithoutborders.org/
 
-##Insert Nums
+##Insert Nums:
 * `cmd + alt + N` Sequence numbers or letters
 
-##Dash integration
+##Dash integration:
 * `ctrl + H` Quikly Look for and find in official offline documentation
 
 <br><br><br><br>
