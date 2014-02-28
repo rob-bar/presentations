@@ -1,0 +1,14 @@
+<aside>
+  <h3><%= h3 %></h3>
+  <p><em><%= quote %></em></p>
+</aside>
+<ul>
+  <% _.each(vids, function(vid) { %>
+    <li>
+      <a href="#" class="thumb open-overlay" data-key="<%= vid.key %>">
+        <img src="assets/img/thumbs/<%= vid.image %>" alt="<%= vid.alt %>">
+        <span class="play sprite"></span>
+      </a>
+    </li>
+  <% }); %>
+</ul>

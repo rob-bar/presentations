@@ -1,0 +1,11 @@
+<a href="#" class="close">close</a>
+<a href="#" class="prev"></a>
+<a href="#" class="next"></a>
+<ul>
+  <% var key = 0;%>
+  <% _.each(gal, function(img) { %>
+    <li style="background-image: url(<%= img %>);"
+      data-key="<%= key %>" class="current"></li>
+  <% ++key; %>
+  <% }); %>
+</ul>

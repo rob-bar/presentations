@@ -1,0 +1,11 @@
+<div class="cont">
+  <h2><%= h2 %></h2>
+
+  <% _.each(ps, function(p) { %>
+    <p><%= p %></p>
+  <% }); %>
+
+  <a href="#" class="pr down" data-to="<%= to %>">
+    <i class="up sprite to-down"></i><%= down %>
+  </a>
+</div>

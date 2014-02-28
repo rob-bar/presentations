@@ -1,0 +1,22 @@
+{
+  "author": "Proximity BBDO",
+  "name": "project-name",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-compass": "*",
+    "grunt-contrib-coffee": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-imagemin": "*",
+    "grunt-i18next-yaml": "*",
+    "grunt-contrib-jst": "*",
+    "matchdep": "*"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}

@@ -1,0 +1,300 @@
+{
+	"site": {
+		"main": {
+			"totop": "Back to Top",
+			"media": {
+				"vid_1": "//www.youtube.com/embed/68AqHwgk2s8",
+				"vid_2": "//www.youtube.com/embed/8pQYtmb-f0w",
+				"vid_3": "//www.youtube.com/embed/68AqHwgk2s8",
+				"vid_4": "//www.youtube.com/embed/8pQYtmb-f0w",
+				"gal": [
+					"http://placekitten.com/800/600",
+					"http://placekitten.com/800/600",
+					"http://placekitten.com/800/600",
+					"http://placekitten.com/800/600",
+					"http://placekitten.com/800/600"
+				]
+			}
+		},
+		"header": {
+			"h1": "Medicins sans frontieres / Doctors without borders",
+			"navs_1": [
+				{
+					"text": "home",
+					"link": "#"
+				},
+				{
+					"text": "about",
+					"link": "#"
+				},
+				{
+					"text": "contact",
+					"link": "#"
+				}
+			],
+			"p": "The Reach of War: A day i the life of the syrian conflict",
+			"language": {
+				"choose": "Choose language",
+				"langs": [
+					{
+						"text": "English",
+						"link": "en-UK"
+					},
+					{
+						"text": "French",
+						"link": "fr-FR"
+					},
+					{
+						"text": "Spanish",
+						"link": "es-ES"
+					},
+					{
+						"text": "Russian",
+						"link": "ru-RU"
+					}
+				]
+			},
+			"sharing": {
+				"choose": "Share",
+				"shares": [
+					{
+						"text": "Facebook",
+						"link": "#"
+					},
+					{
+						"text": "Twitter",
+						"link": "#"
+					},
+					{
+						"text": "Google",
+						"link": "#"
+					},
+					{
+						"text": "Reddit",
+						"link": "#"
+					},
+					{
+						"text": "LinkedIn",
+						"link": "#"
+					},
+					{
+						"text": "Tumblr",
+						"link": "#"
+					},
+					{
+						"text": "Mail",
+						"link": "#"
+					},
+					{
+						"text": "Link",
+						"link": "#"
+					}
+				]
+			},
+			"donate": {
+				"text": "Donate",
+				"link": "#"
+			}
+		},
+		"banner": {
+			"slides": [
+				"assets/img/slides/header-4.jpg",
+				"assets/img/slides/header-3.jpg",
+				"assets/img/slides/header-2.jpg",
+				"assets/img/slides/header-1.jpg"
+			],
+			"h2": "The Reach of War:<br>\na Day in the Life of the Syrian Conflict\n"
+		},
+		"map": {
+			"countries": [
+				{
+					"class": "turkey",
+					"h4": "Turkey",
+					"descrs": [
+						{
+							"span": "513,081",
+							"small": "refugees"
+						}
+					]
+				},
+				{
+					"class": "lebanon",
+					"h4": "Lebanon",
+					"descrs": [
+						{
+							"span": "4.5 mln",
+							"small": "people displaced"
+						},
+						{
+							"span": 6,
+							"small": "MSF hospitals, 450 workers"
+						}
+					]
+				},
+				{
+					"class": "jordan",
+					"h4": "Jordan",
+					"descrs": [
+						{
+							"span": "4.5 mln",
+							"small": "people displaced"
+						},
+						{
+							"span": 6,
+							"small": "MSF hospitals, 450 workers"
+						}
+					]
+				},
+				{
+					"class": "iraq",
+					"h4": "Iraq",
+					"descrs": [
+						{
+							"span": "208, 054",
+							"small": "people displaced"
+						},
+						{
+							"span": 3,
+							"small": "MSF health structures"
+						}
+					]
+				}
+			],
+			"locations": [
+				{
+					"class": "abu-1",
+					"arrow": "right",
+					"caption": "Abu Ismael Settlement"
+				},
+				{
+					"class": "abu-2",
+					"arrow": "right",
+					"caption": "Abu Ismael Settlement"
+				},
+				{
+					"class": "rathma",
+					"arrow": "right",
+					"caption": "Rathma"
+				},
+				{
+					"class": "amman",
+					"arrow": "left",
+					"caption": "Amman"
+				},
+				{
+					"class": "domiz",
+					"arrow": "top",
+					"caption": "Domiz Refugee Camp"
+				}
+			]
+		},
+		"intro": {
+			"h2": "Introduction",
+			"ps": [
+				"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, pariatur, hic asperiores id dolores sapiente ipsam eveniet minima sint non consequuntur fuga voluptatum voluptates porro ad aut odio veritatis. Eaque.",
+				"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, pariatur, hic asperiores id dolores sapiente ipsam eveniet minima sint non consequuntur fuga voluptatum voluptates porro ad aut odio veritatis. Eaque.",
+				"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, pariatur, hic asperiores id dolores sapiente ipsam eveniet minima sint non consequuntur fuga voluptatum voluptates porro ad aut odio veritatis. Eaque."
+			],
+			"down": "Syria",
+			"to": "general"
+		},
+		"general": {
+			"up": "Introduction",
+			"upto": "intro",
+			"img": "Syria.jpg",
+			"h2": {
+				"strong": "Syria",
+				"reg": "A Long Descriptive Subtitle goes here<br> and may be even breaks onto the next line"
+			},
+			"left": {
+				"h": "Syria",
+				"subh": "798,855 Syrian refugees",
+				"ps": [
+					"9 health structures with MSF\nteams providing care & 3 receiving\nregular support\n",
+					"85,511 consultations\nincluding mental health\nand antenatal consultations\n"
+				]
+			},
+			"mid": {
+				"ps": [
+					"Lorem ipsum dolor sit amet, consectetur adipisicing elit.\nVeritatis, ex voluptatem assumenda neque consequuntur sed\nnecessitatibus fugiat! Blanditiis deserunt recusandae magni\nin nisi quia sed alias molestiae dignissimos exercitationem.\nUllam?\n",
+					"Lorem ipsum dolor sit amet, consectetur adipisicing elit.\nVeritatis, ex voluptatem assumenda neque consequuntur sed\nnecessitatibus fugiat! Blanditiis deserunt recusandae magni\nin nisi quia sed alias molestiae dignissimos exercitationem.\nUllam?\n",
+					"Lorem ipsum dolor sit amet, consectetur adipisicing elit.\nVeritatis, ex voluptatem assumenda neque consequuntur sed\nnecessitatibus fugiat! Blanditiis deserunt recusandae magni\nin nisi quia sed alias molestiae dignissimos exercitationem.\nUllam?\n",
+					"Lorem ipsum dolor sit amet, consectetur adipisicing elit.\nVeritatis, ex voluptatem assumenda neque consequuntur sed\nnecessitatibus fugiat! Blanditiis deserunt recusandae magni\nin nisi quia sed alias molestiae dignissimos exercitationem.\nUllam?\n",
+					"Lorem ipsum dolor sit amet, consectetur adipisicing elit.\nVeritatis, ex voluptatem assumenda neque consequuntur sed\nnecessitatibus fugiat! Blanditiis deserunt recusandae magni\nin nisi quia sed alias molestiae dignissimos exercitationem.\nUllam?\n",
+					"Lorem ipsum dolor sit amet, consectetur adipisicing elit.\nVeritatis, ex voluptatem assumenda neque consequuntur sed\nnecessitatibus fugiat! Blanditiis deserunt recusandae magni\nin nisi quia sed alias molestiae dignissimos exercitationem.\nUllam?\n"
+				]
+			},
+			"right": {
+				"media": [
+					{
+						"kind": "vid",
+						"image": "syria-vid-1.jpg",
+						"key": "vid_1",
+						"icon": "play",
+						"caption": {
+							"strong": "video | :30",
+							"p": "Subject of the video<br> Videographer's Name."
+						}
+					},
+					{
+						"kind": "slideshow",
+						"image": "syria-slide-1.jpg",
+						"key": "gal",
+						"icon": "slide",
+						"caption": {
+							"strong": "Slideshow | 1:30",
+							"p": "Subject of the video<br> Videographer's Name."
+						}
+					}
+				]
+			}
+		},
+		"reporting": {
+			"h3": "Videos: behind the reporting &raquo;",
+			"quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, incidunt, voluptas aut totam optio maxime itaque eligendi debitis aspernatur vero earum ut asperiores atque.\n",
+			"vids": [
+				{
+					"image": "syria-rep-vid-1.jpg",
+					"alt": "vid",
+					"key": "vid_1"
+				},
+				{
+					"image": "syria-rep-vid-2.jpg",
+					"key": "vid_2"
+				}
+			]
+		},
+		"summary": {
+			"tocreds": "Credits",
+			"h2": "Summary",
+			"ps": [
+				"Lorem ipsum dolor sit amet, consectetur adipisicing elit.\nVeritatis, ex voluptatem assumenda neque consequuntur sed\nnecessitatibus fugiat! Blanditiis deserunt recusandae magni\nin nisi quia sed alias molestiae dignissimos exercitationem.\nUllam?\n",
+				"Lorem ipsum dolor sit amet, consectetur adipisicing elit.\nVeritatis, ex voluptatem assumenda neque consequuntur sed\nnecessitatibus fugiat! Blanditiis deserunt recusandae magni\nin nisi quia sed alias molestiae dignissimos exercitationem.\nUllam?\n",
+				"Lorem ipsum dolor sit amet, consectetur adipisicing elit.\nVeritatis, ex voluptatem assumenda neque consequuntur sed\nnecessitatibus fugiat! Blanditiis deserunt recusandae magni\nin nisi quia sed alias molestiae dignissimos exercitationem.\nUllam?\n"
+			]
+		},
+		"credits": {
+			"tosum": "To summary",
+			"h2": "Credits",
+			"ps": [
+				"By <strong>Andrea Elliott</strong>",
+				"Photographs by <strong>Ruth Fremson</strong>",
+				"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, ut magni adipisci iusto perferendis reiciendis <strong>quam</strong> minus eius earum mollitia fugiat dolor omnis magnam <strong>numquam aliquid</strong> vel a dolorem cupiditate.",
+				"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, ut magni adipisci iusto perferendis reiciendis <strong>quam</strong> minus eius earum mollitia fugiat dolor omnis magnam <strong>numquam aliquid</strong> vel a dolorem cupiditate."
+			],
+			"footer": {
+				"h1": "Medicins sans frontieres / Doctors without borders",
+				"links": [
+					{
+						"text": "Contact Us",
+						"url": "#"
+					},
+					{
+						"text": "Sign up for emails",
+						"url": "#"
+					}
+				]
+			}
+		}
+	}
+}

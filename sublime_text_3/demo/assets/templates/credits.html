@@ -1,0 +1,30 @@
+<div class="cont">
+  <h2><%= h2 %></h2>
+  <% _.each(ps, function(p) { %>
+    <p><%= p %></p>
+  <% }); %>
+  <footer>
+    <h1>
+      <span class="visuallyhidden">
+        <%= footer.h1 %>
+      </span>
+    </h1>
+    <ul>
+      <% _.each(footer.links, function(link) { %>
+        <li>
+          <a href="<%= link.url %>">
+            <%= link.text %>
+          </a>
+        </li>
+      <% }); %>
+    </ul>
+  </footer>
+</div>
+
+<a href="#" class="pr up" data-to="summary">
+  <i class="sprite to-up"></i><%= tosum %>
+</a>
+
+<a href="#" class="pr down" data-to="banner">
+  <i class="sprite to-up"></i><%= totop %>
+</a>

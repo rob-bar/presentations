@@ -1,0 +1,23 @@
+<% _.each(countries, function(country) { %>
+  <div class="country <%= country.class %>">
+    <h4><%= country.h4 %></h4>
+    <div>
+      <% _.each(country.descrs, function(descr) { %>
+        <small>
+          <span><%= descr.span %></span>
+          &nbsp;<%= descr.small %>
+        </small>
+      <% }); %>
+    </div>
+  </div>
+<% }); %>
+
+<% _.each(locations, function(loc) { %>
+  <a href="#" class="location <%= loc.class %>">
+    <i class="marker"></i>
+    <figure class="tt arrow-<%= loc.arrow %>" style="background-image:url('/assets/img/layout/map-thumbs/<%= loc.class %>.jpg');">
+      <i class="play sprite"></i>
+      <figcaption><%= loc.caption %></figcaption>
+    </figure>
+  </a>
+<% }); %>

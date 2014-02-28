@@ -1,0 +1,1064 @@
+/* ====================================================================================================== */
+/* IMPORTS
+/* ====================================================================================================== */
+@import "h5bp"
+@import "ceaser-easing"
+@import "compass/css3/"
+@import "compass/typography/"
+@import "compass/utilities/"
+@import "grid"
+@import "media-queries"
+
+/* ====================================================================================================== */
+/* COMPASS SUCKY SPRITES
+/* ====================================================================================================== */
+// $sprite-sprite-base-class: ".sprite"
+// @import "sprite/*.png"
+// @include all-sprite-sprites
+
+.sprite
+  background: url('../img/sprite-s8f52916879.png') no-repeat
+  background-repeat: no-repeat
+
+.play
+  background-image: image-url("sprite/play.png")
+  +background-size(cover)
+
+.facebook
+  background-position: 0 -232px
+
+.google
+  background-position: 0 -134px
+
+.link
+  background-position: 0 -114px
+
+.linkedin
+  background-position: 0 -154px
+
+.mail
+  background-position: 0 -94px
+
+.marker
+  +background(image-url("sprite/marker.png") center center no-repeat)
+
+.next
+  background-position: 0 -319px
+
+.prev
+  background-position: 0 -269px
+
+.reddit
+  background-position: 0 -74px
+
+.share
+  background-position: 0 -252px
+
+.to-down
+  background-position: 0 -12px
+
+.to-top
+  background-position: 0 -214px
+
+.to-up
+  background-position: 0 0
+
+.tumblr
+  background-position: 0 -194px
+
+.twitter
+  background-position: 0 -174px
+
+/* ====================================================================================================== */
+/* VARS
+/* ====================================================================================================== */
+$white: #fdfdfd
+$blue: #d0e1f5
+$dark_grey_blue: #363636
+$dark_grey: #393939
+$grey: #424242
+$red: #cc3133
+
+$container_margin: 0
+$total_width: 100%
+$gutter_width: 0
+
+/* ====================================================================================================== */
+/* INIT & FONTS
+/* ====================================================================================================== */
++h5bp-normalize
++h5bp-helpers
+
++font-face("ar-b", font-files("archivonarrow-bold-webfont.woff", "archivonarrow-bold-webfont.ttf", "archivonarrow-bold-webfont.otf", "archivonarrow-bold-webfont.svg"), "archivonarrow-bold-webfont.eot")
++font-face("ar", font-files("archivonarrow-regular-webfont.woff", "archivonarrow-regular-webfont.ttf", "archivonarrow-regular-webfont.otf", "archivonarrow-regular-webfont.svg"), "archivonarrow-regular-webfont.eot")
++font-face("s-i", font-files("sourcesanspro-italic-webfont.woff", "sourcesanspro-italic-webfont.ttf", "sourcesanspro-italic-webfont.otf", "sourcesanspro-italic-webfont.svg"), "sourcesanspro-italic-webfont.eot")
++font-face("s-l", font-files("sourcesanspro-light-webfont.woff", "sourcesanspro-light-webfont.ttf", "sourcesanspro-light-webfont.otf", "sourcesanspro-light-webfont.svg"), "sourcesanspro-light-webfont.eot")
++font-face("s", font-files("sourcesanspro-regular-webfont.woff", "sourcesanspro-regular-webfont.ttf", "sourcesanspro-regular-webfont.otf", "sourcesanspro-regular-webfont.svg"), "sourcesanspro-regular-webfont.eot")
++font-face("s-sb", font-files("sourcesanspro-semibold-webfont.woff", "sourcesanspro-semibold-webfont.ttf", "sourcesanspro-semibold-webfont.otf", "sourcesanspro-semibold-webfont.svg"), "sourcesanspro-semibold-webfont.eot")
+
+
+/* ====================================================================================================== */
+/* MIXINS
+/* ====================================================================================================== */
+@mixin rect($width, $height)
+  width: $width
+  height: $height
+
+@mixin customcheck($width, $height, $path, $hover_row, $hover_col)
+  position: relative
+  width: $width
+  height: $height
+
+  input
+    position: absolute
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    z-index: 100
+    cursor: pointer
+    opacity: 0
+
+  label
+    position: relative
+    display: block
+    background: image-url($path) top left no-repeat
+    width: 100%
+    height: 100%
+
+  input:checked ~ label
+    +sprite-position($hover_row, $hover_col, $width, $height)
+
+@mixin typo($font, $size, $color, $weight: normal)
+  font-weight: $weight
+  font-family: $font, Arial, Helvetica
+  font-size: $size
+  color: $color
+
+.unselectable
+  -moz-user-select: -moz-none
+  -khtml-user-select: none
+  -webkit-user-select: none
+  -o-user-select: none
+  user-select: none
+
+*:active, *:hover, *:focus
+  outline: 0 !important
+
+.no-flick
+  +translate3d(0, 0, 0)
+
+.fontsmoothing
+  -webkit-font-smoothing: antialiased
+  -moz-font-smoothing: antialiased
+  -ms-font-smoothing: antialiased
+  font-smoothing: antialiased
+
+.overlay
+  width: 100%
+  height: 100%
+  z-index: 1000
+  position: fixed
+  background-color: rgba(0, 0, 0, 0.8)
+  +ceaser-transition(all, 1s, $easeOutExpo)
+
+  &.out
+    background-color: rgba(0, 0, 0, 0)
+
+@mixin arrowright($color: #FFF, $size: 15px, $sharpness: 25px)
+  left: 100%
+  top: 50%
+  border: solid transparent
+  content: " "
+  height: 0
+  width: 0
+  position: absolute
+  pointer-events: none
+  border-left-color: $color
+  border-width: $size
+  border-left-width: $sharpness // calc: (width*2)*.866
+  margin-top: -$size
+
+@mixin arrowleft($color: #FFF, $size: 15px, $sharpness: 25px)
+  right: 100%
+  top: 50%
+  border: solid transparent
+  content: " "
+  height: 0
+  width: 0
+  position: absolute
+  pointer-events: none
+  border-right-color: $color
+  border-width: $size
+  border-right-width: $sharpness // calc: (width*2)*.866
+  margin-top: -$size
+
+@mixin arrowtop($color: #FFF, $size: 15px, $sharpness: 25px)
+  left: 58%
+  bottom: 100%
+  border: solid transparent
+  content: " "
+  height: 0
+  width: 0
+  position: absolute
+  pointer-events: none
+  border-bottom-color: $color
+  border-width: $size
+  border-bottom-width: $sharpness // calc: (width*2)*.866
+  margin-left: -$size
+
+/* ====================================================================================================== */
+/* BASE
+/* ====================================================================================================== */
+body
+  @extend .fontsmoothing
+
+p
+  +typo("s", 14px, $dark_grey)
+
+h1
+  margin: 0
+  +rect(186px, 59px)
+  +inline-block
+  +background(image-url("logo/doctors-without-borders.png") center center no-repeat)
+
+h2
+  +typo("s", 23px, $red)
+  margin: 0
+
+h3
+  +typo("s-sb", 16px, $dark_grey, bold)
+  text-transform: uppercase
+
+h4
+  +typo("s-sb", 32px, $dark_grey)
+  margin: 0
+  line-height: 32px
+  text-transform: uppercase
+
+menu, ul, li
+  margin: 0
+  padding: 0
+
+nav
+  +inline-block
+
+.pl
+  position: absolute
+  left: 0
+  top: 0
+
+.pr
+  position: absolute
+  right: 0
+  top: 0
+
+.dbtn
+  background-color: $red
+  padding: 9px 11px
+  color: #FFFFFF
+  +ceaser-transition(all, 400ms, $easeOutExpo)
+
+.play
+  position: absolute
+  left: 50%
+  top: 50%
+  margin: -16px 0 0 -16px
+  display: block
+  +rect(32px, 32px)
+
+.slide
+  &:before, &:after
+    content: " "
+    position: absolute
+    left: 50%
+    top: 50%
+    margin: -12px 0 0 -20px
+    display: block
+    background-image: url("../svg/slide-window.svg")
+    +rect(40px, 26px)
+
+  &:before
+    +translate(3px, -3px)
+  &:after
+    +translate(-3px, 3px)
+
+.no-svg
+  .slide
+    &:before, &:after
+      background-image: image-url("sprite/slide.png")
+
+.up
+  right: 16%
+  bottom: auto
+  top: 50px
+  margin: 25px 55px
+  +inline-block
+  +typo("ar", 16px, #7c7c7c)
+  text-decoration: none
+
+  i
+    margin: -4px 5px 0
+    +rect(12px, 12px)
+    +inline-block
+
+.down
+  top: auto
+  right: 16%
+  bottom: 50px
+  margin: 25px 55px
+  +inline-block
+  +typo("ar", 16px, #7c7c7c)
+  text-decoration: none
+
+  i
+    margin: -4px 5px 0
+    +rect(12px, 12px)
+    +inline-block
+
+/* ====================================================================================================== */
+/* LAYOUT
+/* ====================================================================================================== */
+.main > header
+  z-index: 10
+  text-align: left
+  display: block
+  position: fixed
+  +rect(100%, 60px)
+  +background(image-url("layout/alpha-white-90.png") center center repeat)
+
+  nav
+    height: 100%
+
+    > ul
+      height: 100%
+
+      > li
+        height: 100%
+        position: relative
+        float: left
+        padding: 20px 0 0 0
+        margin: 0 0 0 10px
+        +box-sizing(border-box)
+
+        > a
+          +ceaser-transition(all, 400ms, $easeOutExpo)
+
+  p, a
+    text-decoration: none
+    text-transform: uppercase
+    +typo("s", 15px, $dark_grey_blue)
+
+    strong
+      +typo("s-sb", 15px, $dark_grey_blue)
+
+  a.dbtn
+    color: #FFF
+  p
+    +inline-block
+
+  .pr
+    height: 100%
+    margin: 0 15px
+
+.banner
+  +background(#444 top center no-repeat)
+  position: relative
+  overflow: hidden
+
+  ul
+    li
+      +background(top center no-repeat)
+      +background-size(cover)
+      +opacity(0)
+      position: absolute
+      top: 0
+      left: 0
+
+      &.behind
+        +ceaser-transition(all, 800ms, $easeOutExpo)
+
+      &.animate
+        +ceaser-transition(all, 800ms, $easeOutExpo)
+
+      &.behindfrom
+        +scale(.9)
+        +opacity(0)
+
+      &.behindto
+        +scale(1)
+        +opacity(1)
+
+      &.animatefrom
+        +scale(1)
+        +opacity(1)
+
+      &.animateto
+        +scale(1.2)
+        +opacity(0)
+
+  h2
+    +inline-block
+    +typo("arial", 36px, #FFF)
+    position: relative
+    margin: 275px 20px 0
+    line-height: 40px
+
+.map
+  display: none
+  position: relative
+  +background(image-url("layout/map.png") center center no-repeat #f1f1f1)
+  +rect(100%, 770px)
+
+  h4
+    +inline-block
+
+.country
+  &.turkey
+    margin: 100px -500px
+
+  &.lebanon
+    margin: 305px -600px
+
+  &.jordan
+    margin: 695px -190px
+
+  &.iraq
+    margin: 280px 260px
+    width: 250px
+
+    h4
+      float: left
+
+    div
+      +inline-block
+      padding: 2px 6px
+
+.location
+  &.abu-1
+    margin: 126px -170px
+  &.abu-2
+    margin: 348px -214px
+  &.rathma
+    margin: 506px -191px
+  &.amman
+    margin: 575px -192px
+  &.domiz
+    margin: 82px 393px
+
+.intro
+  position: relative
+  +container
+  +clearfix
+
+  p
+    color: $grey
+    font-size: 17px
+    line-height: 26px
+
+  h2
+    color: #cc232a
+
+.general
+  position: relative
+  +container
+  +clearfix
+
+  .up
+    top: 768px
+
+  header
+    +clearfix
+    +rect(100%, 768px)
+    +background(center center no-repeat)
+    +background-size('cover')
+
+    h2
+      +typo("s-l", 42px, #FFF)
+      +inline-block
+      position: relative
+
+      strong
+        +typo("s-sb", 50px, #FFF)
+
+  p, h2
+    color: $grey
+
+  .left p
+    +typo("s-l", 16px, #464646)
+
+    strong
+      font-size: 16px
+      text-transform: uppercase
+
+  > div p
+    font-size: 17px
+    line-height: 26px
+
+  .right
+    padding: 40px 0
+    text-align: center
+
+    > figure
+      +inline-block
+
+      p
+        +typo("s-l", 16px, #464646)
+        line-height: 18px
+
+        strong
+          +typo("ar-b", 16px, #464646)
+          line-height: 25px
+
+.reporting
+  position: relative
+  +clearfix
+
+  h3
+    +typo("ar-b", 18px, $grey)
+    margin: 10px 0
+
+  p
+    margin: 0
+    line-height: 22px
+
+    em
+      font-style: normal
+      +typo("s-i", 18px, $grey)
+
+  aside
+    padding: 5px 0
+
+  ul li
+    list-style-type: none
+    float: left
+    margin: 20px 0 0 20px
+    position: relative
+    +rect(230px, 125px)
+
+    img
+      width: 100%
+
+.summary
+  position: relative
+  background-color: #f8f8f8
+  +container
+  +clearfix
+
+.credits
+  position: relative
+  background-color: $blue
+  +container
+  +clearfix
+
+  .down
+    bottom: 400px
+
+  h2
+    color: $dark_grey
+
+  footer
+    margin: 80px 0 0 0
+
+    h1
+      margin: 0
+      +inline-block
+
+    ul
+      +inline-block
+
+      li
+        float: left
+        list-style-type: none
+        margin: 0 0 0 30px
+
+        a
+          +typo("s", 13px , #272e36)
+
+.summary, .credits
+  +box-sizing(border-box)
+
+  .cont p
+    margin: 25px 0
+    font-size: 17px
+    line-height: 26px
+
+    strong
+      +typo("s-sb", 17px , $dark_grey)
+
+/* ====================================================================================================== */
+/* MODULE
+/* ====================================================================================================== */
+.sub
+  height: 100%
+
+  .share
+    +rect(17px, 17px)
+    +inline-block
+    margin: -2px 5px 0 0
+
+  .shares li a
+    +rect(20px, 20px)
+    +inline-block
+    margin: 5px 2px
+    padding: 0
+    +opacity(.8)
+
+  ul
+    height: 0
+    overflow: hidden
+    position: absolute
+    width: 100%
+    margin: 0
+    top: 50px
+    z-index: 20
+    +opacity(0)
+    +ceaser-transition(all, 400ms, $easeOutExpo)
+
+    li
+      border: 2px solid transparent
+      margin: 2px 0 0 0
+      padding: 5px 0
+      display: block
+      text-align: center
+      +background(image-url("layout/alpha-white-90.png") center center repeat)
+
+      a
+        text-transform: capitalize
+        +inline-block
+        +rect(100%, 100%)
+
+        span
+          +visually-hidden
+
+.country
+  position: absolute
+  left: 50%
+  top: 0
+
+  h4, div
+    margin: 0
+
+  small
+    +typo("s-sb", 12px, $dark_grey)
+    line-height: 12px
+    display: block
+
+    span
+      color: $red
+
+.location
+  +inline-block
+  position: absolute
+  left: 50%
+  top: 0
+
+  .marker
+    +inline-block
+    +rect(13px, 21px)
+    padding: 20px
+
+  .tt
+    border: 4px solid #FFF
+    position: relative
+    +rect(200px, 115px)
+    +background(left top no-repeat #FFF)
+    +ceaser-transition(all, 400ms, $easeOutExpo)
+    +scale(0)
+
+    .play
+      position: absolute
+      bottom: 28px
+      right: 0
+      margin: 5px
+      top: auto
+      left: auto
+      +inline-block
+      +rect(32px, 32px)
+
+    figcaption
+      position: absolute
+      bottom: 0
+      background-color: #FFF
+      text-decoration: none
+      padding: 8px 5px
+      +box-sizing(border-box)
+      +rect(100%, 28px)
+      +typo("s-sb", 12px, $dark_grey)
+
+    &.arrow-left
+      position: absolute
+      left: 50px
+      top: -32px
+      +apply-origin(-10% 50%, true)
+
+      &:after
+        +arrowleft
+
+    &.arrow-right
+      position: absolute
+      left: -205px
+      top: -32px
+      +apply-origin(110% 50%, true)
+
+      &:after
+        +arrowright
+
+    &.arrow-top
+      position: absolute
+      left: -93px
+      top: 60px
+      +apply-origin(60% -10%, true)
+
+      &:after
+        +arrowtop
+
+.vid, .slideshow
+  text-align: left
+  margin: 0 16px 20px 0
+
+  img
+    width: 100%
+
+  p
+    margin: 5px 0
+
+    strong
+      text-transform: uppercase
+      line-height: 20px
+
+  .thumb
+    display: block
+    width: 100%
+    height: 158px
+    position: relative
+
+.thumb
+  display: block
+  background-color: #DDD
+
+  .play
+    +ceaser-transition(all, 400ms, $easeOutExpo)
+
+  .slide
+    &:before, &:after
+      +ceaser-transition(all, 400ms, $easeOutExpo)
+
+  img
+    +ceaser-transition(all, 300ms, $easeOutExpo)
+    display: block
+    +box-sizing(border-box)
+
+.video
+  +rect(704px, 480px)
+  left: 50%
+  top: 50%
+  margin: -240px 0 0 -352px
+  position: absolute
+
+#gal
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 50
+  +rect(100%, 100%)
+
+  .close
+    +typo("arial", 12px, #FFF)
+    z-index: 20
+    border: 1px solid #FFF
+    position: absolute
+    top: 10px
+    right: 10px
+    padding: 5px
+    cursor: pointer
+
+  .next
+    +rect(30px, 50px)
+    +background(image-url("sprite/next.png") center center no-repeat)
+    z-index: 10
+    position: absolute
+    top: 50%
+    margin-top: -15px
+    right: 20px
+    display: block
+
+
+  .prev
+    +rect(30px, 50px)
+    +background(image-url("sprite/prev.png") center center no-repeat)
+    z-index: 10
+    position: absolute
+    display: block
+    top: 50%
+    margin-top: -15px
+    left: 20px
+
+
+  ul
+    +rect(100%, 100%)
+    position: absolute
+    left: 0
+    top: 0
+    max-width: 960px
+    overflow: visible
+
+    li
+      +rect(100%, 100%)
+      +background-size( 95% auto )
+      position: absolute
+      background: center center no-repeat
+      +box-sizing('border-box')
+      +ceaser-transition(all, 1s, $easeOutExpo)
+
+      &.current
+        +opacity(1)
+        left: 0
+
+      &.future
+        +opacity(0.2)
+        left: 300%
+
+      &.past
+        +opacity(0.2)
+        left: -300%
+
+/* ====================================================================================================== */
+/* STATE
+/* ====================================================================================================== */
++min-screen(1024px)
+  .main > header a:hover
+    padding: 0 4px
+
+  .main > header .dbtn:hover
+    padding: 9px 13px
+
+  .sub:hover a
+    padding: 0 4px
+
+.main > header a:hover
+  color: #000
+
+.main > header .sub a:hover
+  color: #000
+
+.main > header .dbtn:hover
+  background-color: #000
+  color: #FFF
+
+.sub:hover
+  ul
+    height: auto
+    top: 60px
+    +opacity(1)
+
+.sub .shares li a:hover
+  +opacity(1)
+
+.thumb:hover
+  .play
+    +scale(1.4)
+
+  img
+    +scale(0.94, 0.9)
+
+  .slide
+    &:before
+      +translate(4px, -4px)
+    &:after
+      +translate(-4px, 4px)
+
+.location:hover .tt
+  +scale(1)
+
+/* ====================================================================================================== */
+/* RESPONSIVENESS -> min 320
+/* ====================================================================================================== */
++min-screen(320px)
+  .main > header p
+    display: none
+
+  h1
+    display: none
+
+  .up, .down
+    display: none
+
+  .banner
+    +rect(100%, 400px)
+
+    ul li
+      background-attachment: scroll
+      +rect(100%, 400px)
+
+  .general
+    +box-sizing(border-box)
+    margin: 30px 0 10px
+    padding: 0 20px
+
+    .right
+      text-align: left
+      padding: 30px 0 0 20px
+
+      img
+        height: 100%
+
+    .left
+      p
+        margin: 0
+
+        &:first-child
+          margin: 30px 0 10px
+
+  .reporting
+    padding: 0 20px 70px
+
+    ul
+      +column(12)
+
+      li
+        width: auto
+
+  .summary
+    padding: 30px 20px 60px
+
+  .credits
+    padding: 30px 20px 60px
+
+/* ====================================================================================================== */
+/* -> min 481
+/* ====================================================================================================== */
++min-screen(481px)
+  .general .right
+    .vid, .slideshow
+      width: 200px
+
+      .thumb
+        height: 111px
+
+  .reporting ul li
+    width: 200px
+
+/* ====================================================================================================== */
+/* -> min 700
+/* ====================================================================================================== */
++min-screen(700px)
+  h1
+    +inline-block
+/* ====================================================================================================== */
+/* -> min 769
+/* ====================================================================================================== */
++min-screen(769px)
+  h1
+    margin: 0 0 0 50px
+
+  .main > header .pr
+    margin: 0 50px 0 0
+
+/* ====================================================================================================== */
+/* -> min 1024
+/* ====================================================================================================== */
++min-screen(1024px)
+  .up, .down
+    display: block
+
+  .banner
+    +rect(100%, 770px)
+
+    ul li
+      background-attachment: fixed
+      +rect(100%, 770px)
+
+    h2
+      +typo("s-sb", 46px, #FFF)
+      line-height: 52px
+      margin: 522px 58px 0
+
+  #gal ul
+    left: 50%
+    margin-left: -480px
+
+  .map
+    display: block
+
+  .intro
+    padding: 150px 0
+
+    > div
+      +box-sizing(border-box)
+      +column(5)
+      +push(3)
+
+  .general
+    padding: 0
+
+    header
+      margin: 0 0 125px 0
+
+      h2
+        margin: 522px 58px 0
+        line-height: 45px
+
+        strong
+          line-height: 60px
+
+    .left p
+      margin: 1em 0
+
+    .right
+      text-align: center
+
+      .vid, .slideshow
+        width: 283px
+
+        .thumb
+          height: auto
+
+    > div
+      +box-sizing(border-box)
+      +column(5)
+      +push(3)
+
+    > aside
+      +box-sizing(border-box)
+      +column(3)
+
+      &.left
+        padding: 55px 60px
+
+      &.right
+        +push(8)
+        +column(4)
+
+  .reporting
+    padding: 0 55px 80px
+
+    aside
+      +column(4)
+      +push(1)
+
+    ul
+      +push(5)
+      +column(8)
+
+      li
+        width: auto
+
+  .summary
+    padding: 115px 0 60px 0
+
+  .credits
+    padding: 55px 0 450px 0
+
+  .summary, .credits
+    .cont
+      +box-sizing(border-box)
+      +column(5)
+      +push(3)
+
+/* ====================================================================================================== */
+/* -> max 1300px
+/* ====================================================================================================== */
++min-screen(1300px)
+  .main > header p
+    +inline-block

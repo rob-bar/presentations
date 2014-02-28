@@ -1,0 +1,41 @@
+<a href="#" class="pr up" data-to="<%= upto %>">
+  <i class="sprite to-up"></i><%= up %>
+</a>
+
+<header style="background-image: url('assets/img/subjects/<%= img %>');">
+  <h2>
+    <strong><%= h2.strong %></strong><br>
+    <%= h2.reg %>
+  </h2>
+</header>
+
+<div>
+  <% _.each(mid.ps, function(p) { %>
+    <p><%= p %></p>
+  <% }); %>
+</div>
+
+<aside class="left">
+  <p><strong><%= left.h %></strong></p>
+  <p><%= left.subh %></p>
+  <% _.each(left.ps, function(p) { %>
+    <p><%= p %></p>
+  <% }); %>
+</aside>
+
+<aside class="right">
+  <% _.each(right.media, function(med) { %>
+    <figure class="<%= med.kind %>" >
+      <a href="#" class="thumb open-overlay" data-key="<%= med.key %>">
+        <img src="assets/img/thumbs/<%= med.image %>" alt="video">
+        <i class="<%= med.icon %>"></i>
+      </a>
+      <figcaption>
+        <p>
+          <strong><%= med.caption.strong %></strong><br>
+          <%= med.caption.p %>
+        </p>
+      </figcaption>
+    </figure>
+  <% }); %>
+</aside>

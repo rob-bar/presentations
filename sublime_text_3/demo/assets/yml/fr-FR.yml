@@ -1,0 +1,274 @@
+site:
+  fr_FR:
+    main:
+      totop: Back to Top
+      media:
+        vid_1: //www.youtube.com/embed/68AqHwgk2s8
+        vid_2: //www.youtube.com/embed/8pQYtmb-f0w
+        vid_3: //www.youtube.com/embed/68AqHwgk2s8
+        vid_4: //www.youtube.com/embed/8pQYtmb-f0w
+        gal:
+          - "http://placekitten.com/800/600"
+          - "http://placekitten.com/800/600"
+          - "http://placekitten.com/800/600"
+          - "http://placekitten.com/800/600"
+          - "http://placekitten.com/800/600"
+
+    header:
+      h1: Medicins sans frontieres / Doctors without borders
+      navs_1:
+        -
+          text: home FR
+          link: "#"
+        -
+          text: about FR
+          link: "#"
+        -
+          text: contact  FR
+          link: "#"
+
+      p: "FR FR FR FR FR FR FR, You get the point"
+
+      language:
+        choose: Choose language
+        langs:
+          -
+            text: English
+            link: "en-UK"
+          -
+            text: French
+            link: "fr-FR"
+          -
+            text: Spanish
+            link: "es-ES"
+          -
+            text: Russian
+            link: "ru-RU"
+
+      sharing:
+        choose: Share
+        shares:
+          -
+            text: Facebook
+            link: "#"
+          -
+            text: Twitter
+            link: "#"
+          -
+            text: Google
+            link: "#"
+          -
+            text: Reddit
+            link: "#"
+          -
+            text: LinkedIn
+            link: "#"
+          -
+            text: Tumblr
+            link: "#"
+          -
+            text: Mail
+            link: "#"
+          -
+            text: Link
+            link: "#"
+
+      donate:
+        text: Donate
+        link: "#"
+
+    banner:
+      slides:
+        - assets/img/slides/header-4.jpg
+        - assets/img/slides/header-3.jpg
+        - assets/img/slides/header-2.jpg
+        - assets/img/slides/header-1.jpg
+      h2: |
+        The reach of war:<br>
+        a Day in the Life of teh Syrian Conflict
+
+    map:
+      countries:
+        -
+          class: turkey
+          h4: Turkey
+          descrs:
+            -
+              span: 513,081
+              small: refugees
+        -
+          class: lebanon
+          h4: Lebanon
+          descrs:
+            -
+              span: 4.5 mln
+              small: people displaced
+            -
+              span: 6
+              small: MSF hospitals, 450 workers
+        -
+          class: jordan
+          h4: Jordan
+          descrs:
+            -
+              span: 4.5 mln
+              small: people displaced
+            -
+              span: 6
+              small: MSF hospitals, 450 workers
+        -
+          class: iraq
+          h4: Iraq
+          descrs:
+            -
+              span: 208, 054
+              small: people displaced
+            -
+              span: 3
+              small: MSF health structures
+
+      locations:
+        -
+          class: abu-1
+          arrow: right
+          caption: Abu Ismael Settlement
+        -
+          class: abu-2
+          arrow: right
+          caption: Abu Ismael Settlement
+        -
+          class: rathma
+          arrow: right
+          caption: Rathma
+        -
+          class: amman
+          arrow: left
+          caption: Amman
+        -
+          class: domiz
+          arrow: top
+          caption: Domiz Refugee Camp
+
+    general:
+      left:
+        h: Jordan
+        subh: 798,855 Syrian refugees
+        ps:
+          - |
+            9 health structures with MSF
+            teams providing care &amp; 3 recieving
+            regular support
+          - |
+            85,511 consultattions
+            including mental health
+            and antenatal cosultations
+      mid:
+        h2: Ramtha, jordan
+        ps:
+          - |
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Veritatis, ex voluptatem assumenda neque consequuntur sed
+            necessitatibus fugiat! Blanditiis deserunt recusandae magni
+            in nisi quia sed alias molestiae dignissimos exercitationem.
+            Ullam?
+          - |
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Veritatis, ex voluptatem assumenda neque consequuntur sed
+            necessitatibus fugiat! Blanditiis deserunt recusandae magni
+            in nisi quia sed alias molestiae dignissimos exercitationem.
+            Ullam?
+          - |
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Veritatis, ex voluptatem assumenda neque consequuntur sed
+            necessitatibus fugiat! Blanditiis deserunt recusandae magni
+            in nisi quia sed alias molestiae dignissimos exercitationem.
+            Ullam?
+          - |
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Veritatis, ex voluptatem assumenda neque consequuntur sed
+            necessitatibus fugiat! Blanditiis deserunt recusandae magni
+            in nisi quia sed alias molestiae dignissimos exercitationem.
+            Ullam?
+          - |
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Veritatis, ex voluptatem assumenda neque consequuntur sed
+            necessitatibus fugiat! Blanditiis deserunt recusandae magni
+            in nisi quia sed alias molestiae dignissimos exercitationem.
+            Ullam?
+          - |
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Veritatis, ex voluptatem assumenda neque consequuntur sed
+            necessitatibus fugiat! Blanditiis deserunt recusandae magni
+            in nisi quia sed alias molestiae dignissimos exercitationem.
+            Ullam?
+
+      right:
+        media:
+          -
+            kind: vid
+            image: http://placekitten.com/283/158
+            key: vid_1
+            caption:
+              strong: "video | :30"
+              p: "Subject of the video, Videographer's Name."
+          -
+            kind: slideshow
+            image: http://placekitten.com/283/158
+            key: gal
+            caption:
+              strong: "Slideshow | 1:30"
+              p: "Subject of the video, Videographer's Name."
+
+    reporting:
+      h3: "Videos: behind the reporting &raquo;"
+      quote: |
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, incidunt, voluptas aut totam optio maxime itaque eligendi debitis aspernatur vero earum ut asperiores atque. Fugit, tenetur necessitatibus delectus enim cum!
+      vids:
+        -
+          image: "http://placekitten.com/230/125"
+          alt: vid
+          key: vid_1
+        -
+          image: "http://placekitten.com/230/125"
+          key: vid_2
+        -
+          image: "http://placekitten.com/230/125"
+          key: vid_3
+    summary:
+      h2: Summary
+      ps:
+        - |
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Veritatis, ex voluptatem assumenda neque consequuntur sed
+            necessitatibus fugiat! Blanditiis deserunt recusandae magni
+            in nisi quia sed alias molestiae dignissimos exercitationem.
+            Ullam?
+        - |
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Veritatis, ex voluptatem assumenda neque consequuntur sed
+            necessitatibus fugiat! Blanditiis deserunt recusandae magni
+            in nisi quia sed alias molestiae dignissimos exercitationem.
+            Ullam?
+        - |
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Veritatis, ex voluptatem assumenda neque consequuntur sed
+            necessitatibus fugiat! Blanditiis deserunt recusandae magni
+            in nisi quia sed alias molestiae dignissimos exercitationem.
+            Ullam?
+
+    credits:
+      h2: Credits
+      ps:
+        - By <strong>Andrea Elliott</strong>
+        - Photographs by <strong>Ruth Fremson</strong>
+        - "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, ut magni adipisci iusto perferendis reiciendis <strong>quam</strong> minus eius earum mollitia fugiat dolor omnis magnam <strong>numquam aliquid</strong> vel a dolorem cupiditate."
+        - "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, ut magni adipisci iusto perferendis reiciendis <strong>quam</strong> minus eius earum mollitia fugiat dolor omnis magnam <strong>numquam aliquid</strong> vel a dolorem cupiditate."
+      footer:
+        h1: "Medicins sans frontieres / Doctors without borders"
+        links:
+          -
+            text: Contact Us
+            url: "#"
+          -
+            text: Sign up for emails
+            url: "#"

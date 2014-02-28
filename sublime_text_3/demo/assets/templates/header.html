@@ -1,0 +1,45 @@
+<h1><span class="visuallyhidden"><%= h1 %></span></h1>
+
+<nav>
+  <ul>
+    <% _.each(navs_1, function(nav) { %>
+      <li><a href="<%= nav.link %>"><%= nav.text %></a></li>
+    <% }); %>
+  </ul>
+</nav>
+
+<div class="pr">
+  <p><%= p %></p>
+
+  <nav>
+    <ul>
+      <li class="sub">
+        <a href="#"><strong><%= language.choose %></strong></a>
+        <ul class="lang">
+          <% _.each(language.langs, function(lang) { %>
+            <li><a href="<%= lang.link %>"><%= lang.text %></a></li>
+          <% }); %>
+        </ul>
+      </li>
+
+      <li class="sub">
+        <a href="#">
+          <i class="share sprite"></i><%= sharing.choose %>
+        </a>
+        <ul class="shares">
+          <li>
+            <% _.each(sharing.shares, function(share) { %>
+              <a href="<%= share.link %>" class="<% print(share.text.toLowerCase()) %> sprite">
+                <span class="visuallyhidden">
+                  <%= share.text %>
+                </span>
+              </a>
+            <% }); %>
+          </li>
+        </ul>
+      </li>
+
+      <li><a href="<%= donate.link %>" class="dbtn"><%= donate.text %></a></li>
+    </ul>
+  </nav>
+</div>
