@@ -32,7 +32,6 @@
 * More [smileys](http://hipchat-emoticons.nyh.name/)
 * Zeus the [Hubot](https://github.com/github/hubot)
 * command: **Zeus help**
-* ***DEMO***
 
 ## Rules:
 
@@ -45,6 +44,5 @@
 ## Clients & configuration:
 
 * CrossCheck [home](https://crosscheck.hipchat.com/home)
-* ***DEMO***
 * Mac, Web, Iphone, Android clients
 * Alfred integration [workflow](http://www.alfredforum.com/topic/3215-hipchat-status-workflow/)
