@@ -8,7 +8,7 @@ based on dark.css by Ivan Sagalaev
 pre code {
   display: block; padding: 0.5em;
   background: #3F3F3F;
-  color: #DCDCDC;
+  color: #FFF;
 }
 
 pre .keyword,
@@ -20,13 +20,13 @@ pre .nginx .title,
 pre .request,
 pre .status,
 pre .clojure .attribute {
-  color: #E3CEAB;
+  color: #f5ff4e;
 }
 
 pre .django .template_tag,
 pre .django .variable,
 pre .django .filter .argument {
-  color: #DCDCDC;
+  color: #FF0000;
 }
 
 pre .number,
@@ -38,7 +38,7 @@ pre .dos .envvar,
 pre .dos .stream,
 pre .variable,
 pre .apache .sqbracket {
-  color: #EFDCBC;
+  color: #FF0000;
 }
 
 pre .dos .flow,
@@ -47,12 +47,12 @@ pre .python .exception,
 pre .python .built_in,
 pre .literal,
 pre .tex .special {
-  color: #EFEFAF;
+  color: #afe7ef;
 }
 
 pre .diff .chunk,
 pre .subst {
-  color: #8F8F8F;
+  color: #FF0000;
 }
 
 pre .dos .keyword,
@@ -65,18 +65,18 @@ pre .apache .tag,
 pre .nginx .built_in,
 pre .tex .command,
 pre .prompt {
-    color: #efef8f;
+    color: #6ec679;
 }
 
 pre .dos .winutils,
 pre .ruby .symbol,
 pre .ruby .symbol .string,
 pre .ruby .string {
-  color: #DCA3A3;
+  color: #FF0000;
 }
 
 pre .diff .deletion,
-pre .string,
+
 pre .tag .value,
 pre .preprocessor,
 pre .built_in,
@@ -90,9 +90,12 @@ pre .attr_selector,
 pre .pseudo,
 pre .apache .cbracket,
 pre .tex .formula {
-  color: #CC9393;
+  color: #4ea9ff;
 }
 
+pre .string{
+  color: #FF0000;
+}
 pre .shebang,
 pre .diff .addition,
 pre .comment,
@@ -100,7 +103,7 @@ pre .java .annotation,
 pre .template_comment,
 pre .pi,
 pre .doctype {
-  color: #7F9F7F;
+  color: #CC9393;
 }
 
 pre .coffeescript .javascript,
