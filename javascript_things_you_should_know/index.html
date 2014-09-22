@@ -215,6 +215,8 @@
 
           <section>
             <h2>The answer</h2>
+            <h4>Helper libraries <br>(<a href="http://jquery.com/">jQuery</a>, <a href="http://underscorejs.org/">Underscorejs</a>, <a href="http://requirejs.org/">requireJS</a>)</h4>
+            <h4>Shims <br>(<a href="https://github.com/es-shims/es5-shim">Es5-shim</a>, <a href="https://github.com/paulmillr/es6-shim/">Es6-shim</a>)</h4>
             <h4>Polyfills</h4>
           </section>
 
@@ -240,20 +242,51 @@
         <section>
           <section>
             <h2>Good parts</h2>
-
             <ul>
-              <li style="padding: 2px 0;" class="fragment fade-in">Functions as first class objects</li>
               <li style="padding: 2px 0;" class="fragment fade-in">Loose typing</li>
+              <li style="padding: 2px 0;" class="fragment fade-in">Functions as first class objects</li>
               <li style="padding: 2px 0;" class="fragment fade-in">Dynamic objects</li>
               <li style="padding: 2px 0;" class="fragment fade-in">Expresive object literal</li>
-              <li style="padding: 2px 0;" class="fragment fade-in">Block scope / closure</li>
+              <li style="padding: 2px 0;" class="fragment fade-in">Function scope / closure</li>
             </ul>
+          </section>
 
+          <section>
+            <h2>Loose typing</h2>
+            <ul>
+              <li>Primitives: <a>Number</a>, <a>Boolean</a>, <a>String</a>.</li>
+              <li>Objects: <a>Object</a>, <a>Function</a>, <a>Array</a>, <a>Date</a>, <a>RegExp</a>, etc.</li>
+              <li>Special cases: <a>Null</a>, <a>Undefined</a>.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Loose typing</h2>
+            <br>
+            <pre><code data-trim contenteditable>
+var a = 13; // Number declaration
+var b = "thirteen"; // String declaration
+            </code></pre>
+            <br>
+            <ul>
+              <li>Loose typing means that variables are declared without a type.</li>
+              <li>Variables in JavaScript are typed, but that type is determined internally.</li>
+            </ul>
           </section>
 
           <section>
             <h2>Functions as first class objects</h2>
+            <ul>
+              <li>A function is an instance of the Object type</li>
+              <li>A function can have properties and has a link back to its constructor method</li>
+              <li>You can store the function in a variable</li>
+              <li>You can pass the function as a parameter to another function</li>
+              <li>You can return the function from a function</li>
+            </ul>
+          </section>
 
+          <section>
+            <h2>Functions as first class objects</h2>
 
             <pre><code data-trim contenteditable>
 var myBarFunc = function test(foo) {
@@ -280,30 +313,10 @@ getKeys(myBarFunc);
           </section>
 
           <section>
-            <h2>Functions as first class objects</h2>
-            <ul>
-              <li>A function is an instance of the Object type</li>
-              <li>A function can have properties and has a link back to its constructor method</li>
-              <li>You can store the function in a variable</li>
-              <li>You can pass the function as a parameter to another function</li>
-              <li>You can return the function from a function</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2>Loose typing</h2>
-            <ul>
-              <li>Everything is an object or extends form object</li>
-              TODO EXPLAIN MORE
-            </ul>
-          </section>
-
-          <section>
             <h2>Expresive object literal</h2>
             <ul>
               <li>JSON like object literal</li>
             </ul>
-
             <pre><code data-trim contenteditable>
 var person = {
   firstName: "John",
@@ -315,6 +328,7 @@ var person = {
 };
             </code></pre>
           </section>
+
           <section>
             <h2>Dynamic objects</h2>
             <ul>
@@ -341,11 +355,235 @@ person.fireGun = function() {
 person.fireGun(); //GET
 delete person.fireGun; //REMOVE
             </code></pre>
-
           </section>
+          <section>
+            <h2>Function scope</h2>
 
+            <ul>
+              <li style="padding: 2px 0;" class="fragment fade-in">Scope controls the visibility and lifetimes of variables and parameters.</li>
+              <li style="padding: 2px 0;" class="fragment fade-in">Reduces naming collisions and provides automatic memory management.</li>
+              <li style="padding: 2px 0;" class="fragment fade-in">Can someone see the error?</li>
+            </ul>
+
+            <pre class="fragment fade-in"><code data-trim contenteditable>
+var foo = function() {
+  var a = 3, b = 5;
+
+  var bar = function() {
+    var b = 7, c = 11;
+    // At this point, a is 3, b is 7 and c is 11
+
+    a += b + c;
+    // At this point, a is 21, b is 7 and c is 11
+  };
+  // At this point, a is 3, b is 7 and c is undefined
+
+  bar();
+  // At this point, a is 21, b is 5
+}
+            </code></pre>
+          </section>
+          <section>
+            <h2>Closure</h2>
+            <ul>
+              <li style="padding: 2px 0;" class="fragment fade-in">Whenever you see the function keyword within another function, the inner function has access to variables in the outer function context.</li>
+              <li style="padding: 2px 0;" class="fragment fade-in">You can understand this best by example.</li>
+            </ul>
+
+            <pre class="fragment fade-in"><code data-trim contenteditable>
+function foo(x) {
+  var tmp = 3;
+  return function (y) {
+    alert(x + y + (++tmp)); // will also alert 16
+  }
+}
+var bar = foo(2); // bar is now a closure.
+bar(10);
+
+/////////// another example ///////////
+
+var quo = function(status) {
+  return { // return an object
+    get_status: function() {
+      return status; // access status from outer function
+    }
+  }
+}
+var myQuo = quo("amazed");
+console.log(myQuo.get_status()); // outputs amazed
+            </code></pre>
+          </section>
         </section>
 
+        <section>
+          <section>
+            <h2>Bad parts</h2>
+            <ul>
+              <li style="padding: 2px 0;" class="fragment fade-in">== and !=</li>
+              <li style="padding: 2px 0;" class="fragment fade-in">typeof</li>
+              <li style="padding: 2px 0;" class="fragment fade-in">Global variables</li>
+              <li style="padding: 2px 0;" class="fragment fade-in">+ adds and concatenates (JAVA)</li>
+              <li style="padding: 2px 0;" class="fragment fade-in">Auto semicolon insertion</li>
+              <li style="padding: 2px 0;" class="fragment fade-in">parseInt</li>
+              <li style="padding: 2px 0;" class="fragment fade-in">phony arrays</li>
+              <li style="padding: 2px 0;" class="fragment fade-in">reserved words</li>
+              <li style="padding: 2px 0;" class="fragment fade-in">To many falsy values: false, null, undefined, NaN, 0, ""</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>type coercion == and !=</h2>
+            <pre><code data-trim contenteditable>
+"" == "0" // false
+0 == "" // true
+0 == "0" // true
+false == "false" // false
+false == "0" // true
+false == undefined // false
+false == null // false
+null == undefined // true
+" \t\r\n" == 0 // true
+"abc" == new String("abc") // true ANTIPATERN
+              </code>
+            </pre>
+            <pre>
+              <code data-trim contenteditable>
+// BAD
+var name = object[namekey];
+if (name == null) { // two errors that cancel each other out
+  console.log("Name not found.");
+}
+
+// GOOD
+var name = object[namekey];
+if (name === undefined) {
+  console.log("Name not found.");
+}
+
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h2>DON'T USE typeof</h2>
+            <pre>
+              <code data-trim contenteditable>
+// Numbers
+typeof 37 === 'number';
+typeof 3.14 === 'number';
+typeof Math.LN2 === 'number';
+typeof Infinity === 'number';
+typeof NaN === 'number'; // Despite being "Not-A-Number"
+typeof Number(1) === 'number'; // but never use this form!
+
+
+// Strings
+typeof "" === 'string';
+typeof "bla" === 'string';
+typeof (typeof 1) === 'string'; // typeof always return a string
+typeof String("abc") === 'string'; // but never use this form!
+
+
+// Booleans
+typeof true === 'boolean';
+typeof false === 'boolean';
+typeof Boolean(true) === 'boolean'; // but never use this form!
+
+
+// Undefined
+typeof undefined === 'undefined';
+typeof blabla === 'undefined'; // an undefined variable
+
+
+// Objects
+typeof {a:1} === 'object';
+
+// use Array.isArray or Object.prototype.toString.call
+// to differentiate regular objects from arrays
+typeof [1, 2, 4] === 'object';
+
+typeof new Date() === 'object';
+
+
+// The following is confusing. Don't use!
+typeof new Boolean(true) === 'object';
+typeof new Number(1) === 'object';
+typeof new String("abc") === 'object';
+
+
+// Functions
+typeof function(){} === 'function';
+typeof Math.sin === 'function';
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h2>Global variables</h2>
+            <ul>
+              <li>A global variable is a variable that is visible in every scope.</li>
+              <li>Use of global variables degrades the reliability of the programms that use them.</li>
+              <li>3 ways of defining globals</li>
+              <li>examples: Drupal, $, _, etc</li>
+            </ul>
+            <pre>
+              <code data-trim contenteditable>
+var foo = value; // outside of any scope
+window.foo = value; // anywhere in the code
+foo = value; // anywhere in the code IMPLIED GLOBAL
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h2>+ Adds and concatenates</h2>
+            <ul>
+              <li>In JAVA this isn't an issue, in javascript however the compiler doesn't throw type errors.</li>
+              <li>Example:</li>
+            </ul>
+            <pre>
+              <code data-trim contenteditable>
+var a = 10;
+var b = 20;
+console.log("result is " + a + b);
+// RESULT IS 1020
+
+// fast solution
+console.log("result is " + (a + b));
+// RESULT IS 30
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h2>Style isn't subjective in JS</h2>
+            <ul>
+              <li>The compiler injects semicolons where he thinks he should inject them.</li>
+              <li>ADVICE: No shorthand ifs, good indenting (2 spaces), good whitespacing</li>
+              <li>Example:</li>
+            </ul>
+            <pre>
+              <code data-trim contenteditable>
+// AT THE END OF A FUNCTION FOR EXAMPLE
+return
+{
+  status: true
+};
+
+// BECOMES
+return ; //SEMICOLON INSERTION
+{
+  status: true;
+}
+
+// SILENT ERROR!!!
+
+// good style example
+var myFunc = function foo() {
+  return "Bar";
+};
+
+              </code>
+            </pre>
+
+          </section>
+        </section>
         <!-- Example of nested vertical slides -->
         <!-- <section>
           <section>
