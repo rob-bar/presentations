@@ -1,80 +1,92 @@
 <section>
   <section>
-    <h2>29 years of History</h2>
+    <h2>19 years of History</h2>
     <h3>
       1995 <br>
-      <small> Invented by <a href="http://en.wikipedia.org/wiki/Brendan_Eich">Brendan Eich</a></small>
+      <small> Invented by <a href="http://en.wikipedia.org/wiki/Brendan_Eich">Brendan Eich</a>, <a href="https://www.youtube.com/watch?v=aZqhRICne_M">see</a> in action</small>
     </h3>
+
     <h3>
       1996 <br>
       <small> ECMA-262, standardisation began</small>
     </h3>
 
+    <h3>
+      1997 <br>
+      <small> Microsoft used JScript so <a>ECMA script 1</a> had to be made</small>
+    </h3>
 
+    <h3>
+      1998 <br>
+      <small> <a>ECMA script 2</a> followed with minor editorial changes</small>
+    </h3>
 
-    <aside class="notes">
-      Officially called LiveScript when it first shipped in beta releases of Netscape Navigator 2.0
+    <aside class="notes" style="width:100%">
+      <ul>
+        <li>Javascript is uitgevonden door Brendan Eich in 1995, implementeerde het in netscape, het kreeg een aantal namen , livescript, Mocha.</li>
+        <li>Standaarden volgde snel omdat andere browsers ook javascript begonnen te gebruiken</li>
+        <li>ES2 had een aantal kleine wijzigingen en toevoegingen.</li>
+      </ul>
     </aside>
+
   </section>
 
   <section>
-    <h2>Ecma script versions</h2>
-    <h4>
-      1997 <br>
-      <small> Microsoft delivered JScript aka <a>ECMA script 1</a></small>
-    </h4>
-    <h4>
-      1998 <br>
-      <small> <a>ECMA script 2</a> with minor editorial changes</small>
-    </h4>
-    <h4>
+    <h2>19 years of History</h2>
+    <h3>
       1999 <br>
       <small> <a>ECMA script 3</a></small><br>
-      <small>added regular expressions, better sting handling, control statements, try catch</small>
-    </h4>
-    <h4>
-      ? <br>
-      <small> <a>ECMA script 4</a> abandoned</small>
-    </h4>
-    <h4>
+      <small>Legacy browsers like ie8 use this</small>
+    </h3>
+    <h3>
+      Unknown <br>
+      <small> <a>ECMA script 4</a> abandoned due to political differences</small>
+    </h3>
+    <h3>
       2009 <br>
       <small> <a>ECMA script 5</a></small><br>
-      <small>adds strict mode and adds some new features, such as getters and setters, library support for JSON, and more complete reflection on object properties</small>
-    </h4>
+      <small>adds strict mode and adds some new features</small>
+    </h3>
+
     <aside class="notes">
       <ul>
-        <li>ES3 is used by all the legacy browsers See chart later on</li>
-        <li>ES3 Added regular expressions, better string handling, new control statements, try/catch exception handling, tighter definition of errors, formatting for numeric output and other enhancements</li>
-        <li>ES4 Fourth Edition was abandoned, due to political differences concerning language complexity.
-        Many features proposed for the Fourth Edition have been completely dropped; some are proposed for ECMAScript Harmony ES6.</li>
-        <li>strict mode = a subset intended to provide more thorough error checking and avoid error-prone constructs</li>
+        <li>ES3 zit nu vooral nog in de legacy browsers. ik denk aan ie8 etc.</li>
+        <li>ES3 voegde reguliere expresies, bettere string afhandeling, nieuwe control statements, try/catch error handling toe.</li>
+        <li>ES4 werd verlaten omdat er teveel politieke meningen mee gemoeid waren.
+        Veel van de features zijn gedroped en veel features zijn nu doorgevoerd in es6 harmony, zoals modules..</li>
+        <li>ES5 is nu in alle moderne browsers geimplementeerd: Dingen zoals JSON, strict mode, Array.prototype.forEach etc </li>
+        <li>strict mode = Strict Mode is a new feature in ECMAScript 5 that allows you to place a program, or a function, in a "strict" operating context. This strict context prevents certain actions from being taken and throws more exceptions.</li>
       </ul>
     </aside>
   </section>
 
   <section>
-    <h2>Ecma script latest and future versions</h2>
-    <h4>
-      2011 <br>
-      <small> <a>ECMA script 5.1</a></small><br>
-      <small>This edition 5.1 of the ECMAScript Standard is fully aligned with third edition</small>
-    </h4>
-    <h4>
+    <h2>19 years of History</h2>
+    <h3>
       18 juli, 2014 <a href="http://people.mozilla.org/~jorendorff/es6-draft.html">draft</a> <br>
       <small> <a>ECMA script 6</a></small><br>
-      <small>The Sixth Edition adds significant new syntax for writing complex applications.</small>
-    </h4>
-    <h4>
-      wip <br>
+      <small>Adds better code support for writing front-end apps.</small>
+    </h3>
+
+    <h3>
+      Unknown <br>
       <small> <a>ECMA script 7</a></small><br>
-      <small>The Seventh Edition is in a very early stage of development, but is intended to continue the themes of language reform, code isolation, control of effects and library/tool enabling from ES6.</small>
-    </h4>
+      <small>Early stage of development</small>
+    </h3>
+
+    <aside class="notes">
+      <ul>
+        <li>Browsers zijn vollop bezig met features uit ES6 te implementeren, de spec is er nu moeten de browsers nog volgen.</li>
+        <li>Hot topics zijn: const, modules, for of vs for in, arrow function.</li>
+        <li>ES7 zal verder bouwen op es6: topics zullen taalhervorming, code isolatie en verbetring zijn.</li>
+      </ul>
+    </aside>
   </section>
 
   <section>
     <h2>Browser Rendering engines</h2><br>
     <h4>Chrome 28+ and Opera 15+</h4>
-    <p>uses <a href="http://en.wikipedia.org/wiki/Blink_%28layout_engine%29">Blink</a> a fork of <a href="http://nl.wikipedia.org/wiki/WebKit">webkit</a> uses the <a href="http://en.wikipedia.org/wiki/V8_%28JavaScript_engine%29">V8</a> Javascript engine</p>
+    <p>uses <a href="http://en.wikipedia.org/wiki/Blink_%28layout_engine%29">Blink</a>, a fork of <a href="http://nl.wikipedia.org/wiki/WebKit">webkit</a> uses the <a href="http://en.wikipedia.org/wiki/V8_%28JavaScript_engine%29">V8</a> Javascript engine</p>
 
     <h4>Internet explorer</h4>
     <p>uses <a href="http://en.wikipedia.org/wiki/Trident_%28layout_engine%29">Trident</a> that uses <a href="http://en.wikipedia.org/wiki/Chakra_%28JScript_engine%29">Chakra</a> Jscript engine</p>
@@ -84,6 +96,15 @@
 
     <h4>Safari</h4>
     <p>uses <a href="http://en.wikipedia.org/wiki/Gecko_%28layout_engine%29">Webkit2</a> build on top of webkit that uses <a href="http://en.wikipedia.org/wiki/WebKit#JavaScriptCore">JavascriptCore</a> Javascript engine</p>
+
+    <h4><a href="http://en.wikipedia.org/wiki/List_of_ECMAScript_engines">full list</a></h4>
+
+    <aside class="notes">
+      <ul>
+        <li>Dus wij moeten ervoor zorgen dat onze websites werken in 4 verschillende layout engines, die dan ook hun eigen js engine hebben.</li>
+        <li>Diegene die zegt dat chrome en safari dezelfde engine(WEBKIT) hebben is fout.</li>
+      </ul>
+    </aside>
   </section>
 
   <section>
@@ -110,9 +131,13 @@
 
   <section>
     <h2>The reference</h2>
-    <p>
-      <a href="http://kangax.github.io/compat-table/es5/#">Ecmascript table</a><br>
-      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">js reference</a> same as doc in dash</p>
+    <h4>ECMASCRIPT tables <br>(<a href="http://kangax.github.io/compat-table/es5/#">ES5</a>, <a href="http://kangax.github.io/compat-table/es6/#">ES6</a>)</h4>
+    <h4>Mozilla documentation <br>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">js reference</a>)</h4>
+    <aside class="notes">
+      <ul>
+        <li>De javascript documetatie van mozila is dezelfde als die uit dash.(TONEN)</li>
+      </ul>
+    </aside>
   </section>
 </section>
 
@@ -124,6 +149,18 @@
 <section>
   <h2>So Javascript</h2>
   <h3>Should you know everything? </h3>
-  <p><a>Advice</a>: only use and learn the <strong>good parts</strong><br>
-  and be aware of the <strong>bad parts</strong>, see them and avoid them</p>
+
+  <br><br>
+
+  <h1 class="fragment fadein">No</h1>
+  <h2 class="fragment fadein">not everything</h2>
+  <aside class="notes">
+    <ul>
+      <li>Er is immens veel te leren als het over javascript gaat, om dan nog niet te beginnen over alles wat bovenop javascript is gebouwd.</li>
+      <li>Meestal zul je een soort mix van vanila javascript en een library of framework gaan gebruiken, de bedoeling is dan dat je je plan kunt trekken, je weet hoe het framework werkt, maar je zal ook moeten weten hoe je je code goed moet opbouwen.</li>
+      <li>In ieder geval vanila javascript kennen en beheersen zorgt ervoor dat je geen beginnersfouten maakt en het geeft je een beter beeld hoe zo een framework als jquery of nodejs is opgebouwd.</li>
+      <li>Zo kun je sneller errors spotten en betere apps maken</li>
+      <li>In het volgende stuk gaan we iets dieper gaan kijken naar de goede en slechte delen in de spec / syntax</li>
+    </ul>
+  </aside>
 </section>

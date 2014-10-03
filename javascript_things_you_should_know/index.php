@@ -77,7 +77,7 @@
         var src = script.attr('src');
         var div = script.parent();
 
-        var dest = $('<pre class="language-javascript" style="font-size: 0.60em;">');
+        var dest = $('<pre class="language-javascript">');
         var code = $('<code contenteditable="true">').appendTo(dest);
 
         $.ajax(src, { dataType : 'text'}).done(function(content) {

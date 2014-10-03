@@ -1,22 +1,34 @@
 <section>
   <section>
-    <h2>JSHint</h2>
+    <h2>JSHint <small>NOT jslint</small></h2>
     <ul>
-      <li style="padding: 2px 0;" class="fragment fade-in"><a href="http://www.jshint.com/">JSHint</a> is a program that flags suspicious usage in programs written in JavaScript.</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">It is a community driven <a href="https://www.npmjs.org/package/jshint">npm module</a>, unlike JSLint by Douglas Crockford</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">It detects the bad parts.</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">Grunt integration.</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">configuration levels and code editor support</li>
+      <li style="padding: 2px 0;" class="fragment fade-in"><a href="http://www.jshint.com/">JSHint</a> flags suspicious usage.</li>
+      <li style="padding: 2px 0;" class="fragment fade-in">community driven <a href="https://www.npmjs.org/package/jshint">npm module</a></li>
+      <li style="padding: 2px 0;" class="fragment fade-in">It detects those bad parts.</li>
+      <li style="padding: 2px 0;" class="fragment fade-in">Configuration levels</li>
+      <li style="padding: 2px 0;" class="fragment fade-in">Build tool integration.</li>
+      <li style="padding: 2px 0;" class="fragment fade-in">Immediate indication in editor</li>
+
+      <aside class="notes">
+        <ul>
+          <li>JSHint is niet gelijk aan JSLint, JSHint is door de community gemaakt maar is wel gebaseerd op douglas Crockford.</li>
+          <li>JSHint is een code quality checker die aan de hand van bepaalde flags verdachte of slechte code gaat aanduiden.</li>
+          <li>Configuratie kan op 3 niveau's</li>
+          <li>Kan geintegreerd worden in build tools en zelfs in je code editor</li>
+        <ul>
+    </aside>
     </ul>
   </section>
 
   <section>
-    <h2>Instalation</h2>
+    <h2>Installation</h2>
+
     <blockquote>
       npm install jshint -g
     </blockquote>
-    <br><br><br>
+  </section>
 
+  <section>
     <h2>Configuration</h2>
     <ul>
       <li style="padding: 2px 0;">via the <i>--config</i> flag from the command line</li>
@@ -26,7 +38,7 @@
   </section>
 
   <section>
-    <h2>Immediate error indication</h2>
+    <h2>Indication</h2>
     <h3>Sublime Text 3</h3>
     <ul>
       <li style="padding: 2px 0;">Install <a href="http://www.jshint.com/">JSHint</a></li>
