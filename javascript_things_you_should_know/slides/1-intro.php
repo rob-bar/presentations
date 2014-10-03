@@ -4,6 +4,16 @@
   <p>
     <small>Created by <a href="https://github.com/rob-bar/">Robbie Bardijn</a></small>
   </p>
+
+  <aside class="notes">
+    <ul>
+      <li>Wie vind javascript een coole en goede taal?</li>
+      <li>Wie weet wat ecmascript is?</li>
+      <li>Zijn er mensen die al met node hebben gewerkt?</li>
+      <li>Zijn er mensen die al javascript gebruikt hebben om met een db te communiceren?</li>
+      <li>Zijn er mensen die al met html5 canvas element iets gedaan hebben?</li>
+    </ul>
+  </aside>
 </section>
 
 <section>
@@ -15,6 +25,9 @@
     <li style="padding: 22px 0 2px;" class="fragment fade-in">Good parts <small>(The power of JS)</small></li>
     <li style="padding: 2px 0;" class="fragment fade-in">Bad parts <small>(Things you should NOT use)</small></li>
     <li style="padding: 2px 0;" class="fragment fade-in">JSHint <small>(How to identfy those bad parts)</small></li>
+
+    <li style="padding: 22px 0;" class="fragment fade-in"><strong>(BREAK)</strong></li>
+
     <li style="padding: 22px 0;" class="fragment fade-in">Minty code <small>(Repetition elimination, complex ifelse logic, deferreds, tenplating)</small></li>
   </ul>
 </section>

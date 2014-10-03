@@ -165,10 +165,11 @@ console.log("result is " + (a + b));
 
   </section>
   <section>
-    <h2>Style isn't subjective in JS</h2>
+    <h2>Auto semicolon insertion</h2>
     <pre>
       <code data-trim contenteditable>
 // AT THE END OF A FUNCTION FOR EXAMPLE
+// Style isn't subjective in JS
 return
 {
   status: true
@@ -282,7 +283,7 @@ if(Object.prototype.toString.apply(myArray) === "[object Array]") {
     <blockquote>
       <small>
         break, case, class, catch, const, continue, debugger, default, delete, do, else, export, extends, finally, for, function, if, import, in, instanceof, let, new, return, super, switch, this, throw, try, typeof, var, void, while, with, yield
-        enum, await, implements, package, protected, static, interface, private, public, abstract, boolean, byte, char, double, final, float, goto, int, long, native, short, synchronized, transient, volatile,
+        enum, await, implements, package, protected, static, interface, private, public, abstract, boolean, byte, char, double, final, float, goto, int, long, native, short, synchronized, transient, volatile
       </small>
     </blockquote>
 
@@ -343,16 +344,23 @@ undefined == "" // false
   <section>
     <h2>OMG! More bad parts!</h2>
 
-    <ul>
-      <li style="padding: 2px 0;" class="fragment fade-in">NaN</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">Floating point</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">hasOwnProperty</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">With Statement</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">Eval <small>is as evil as in php</small></li>
-      <li style="padding: 2px 0;" class="fragment fade-in">Bitwise operators</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">Typed wrappers</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">new</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">void</li>
+    <ul class="fragment fade-in">
+      <li style="padding: 2px 0;">NaN</li>
+      <li style="padding: 2px 0;">Floating point</li>
+      <li style="padding: 2px 0;">hasOwnProperty</li>
+      <li style="padding: 2px 0;">With Statement</li>
+      <li style="padding: 2px 0;">Eval <small>is as evil as in php</small></li>
+      <li style="padding: 2px 0;">Bitwise operators</li>
+      <li style="padding: 2px 0;">Typed wrappers</li>
+      <li style="padding: 2px 0;">new</li>
+      <li style="padding: 2px 0;">void</li>
     </ul>
+
+    <aside class="notes">
+      <ul>
+        <li>The void operator evaluates the given expression and then returns undefined.</li>
+      <ul>
+    </aside>
+
   </section>
 </section>

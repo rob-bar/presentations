@@ -21,7 +21,7 @@
   </section>
 
   <section>
-    <h2>Instalation</h2>
+    <h2>Installation</h2>
 
     <blockquote>
       npm install jshint -g

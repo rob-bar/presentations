@@ -1,6 +1,6 @@
 <section>
   <section>
-    <h2>29 years of History</h2>
+    <h2>19 years of History</h2>
     <h3>
       1995 <br>
       <small> Invented by <a href="http://en.wikipedia.org/wiki/Brendan_Eich">Brendan Eich</a>, <a href="https://www.youtube.com/watch?v=aZqhRICne_M">see</a> in action</small>
@@ -32,7 +32,7 @@
   </section>
 
   <section>
-    <h2>29 years of History</h2>
+    <h2>19 years of History</h2>
     <h3>
       1999 <br>
       <small> <a>ECMA script 3</a></small><br>
@@ -61,7 +61,7 @@
   </section>
 
   <section>
-    <h2>29 years of History</h2>
+    <h2>19 years of History</h2>
     <h3>
       18 juli, 2014 <a href="http://people.mozilla.org/~jorendorff/es6-draft.html">draft</a> <br>
       <small> <a>ECMA script 6</a></small><br>

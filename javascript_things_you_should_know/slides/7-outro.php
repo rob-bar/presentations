@@ -1,5 +1,5 @@
 <section>
-  <img src="http://kaleeraisor.com/wp-content/uploads/2013/11/bad-code-joke.jpg" alt="Kitten">
+  <img src="http://kaleeraisor.com/wp-content/uploads/2013/11/bad-code-joke.jpg" alt="Kitten" style="height: 600px">
 </section>
 
 <section>
