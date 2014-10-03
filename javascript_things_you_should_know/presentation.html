@@ -35,36 +35,62 @@
   <body>
     <div class="reveal">
       <div class="slides">
-<section>
+                  <section>
   <h1>JavaScript</h1>
   <h3>Things you should know</h3>
   <p>
     <small>Created by <a href="https://github.com/rob-bar/">Robbie Bardijn</a></small>
   </p>
+
+  <aside class="notes">
+    <ul>
+      <li>Wie vind javascript een coole en goede taal?</li>
+      <li>Wie weet wat ecmascript is?</li>
+      <li>Zijn er mensen die al met node hebben gewerkt?</li>
+      <li>Zijn er mensen die al javascript gebruikt hebben om met een db te communiceren?</li>
+      <li>Zijn er mensen die al met html5 canvas element iets gedaan hebben?</li>
+    </ul>
+  </aside>
 </section>
 
 <section>
   <h2>Topics:</h2>
   <ul>
-    <li style="padding: 2px 0;" class="fragment fade-in">Intro</li>
-    <li style="padding: 2px 0;" class="fragment fade-in">History and browser engine recap  <small>(ECMA Script, Standardisations, a glance at the future)</small></li>
-    <li style="padding: 2px 0;" class="fragment fade-in">Good parts <small>(The power of JS)</small></li>
+    <li style="padding: 2px 0;" class="fragment fade-in">History <small>(ECMA Script, Standardisations, a glance at the future)</small></li>
+    <li style="padding: 2px 0;" class="fragment fade-in">Browser engines <small>(Comparison & recap, documentation & reference)</small></li>
+
+    <li style="padding: 22px 0 2px;" class="fragment fade-in">Good parts <small>(The power of JS)</small></li>
     <li style="padding: 2px 0;" class="fragment fade-in">Bad parts <small>(Things you should NOT use)</small></li>
     <li style="padding: 2px 0;" class="fragment fade-in">JSHint <small>(How to identfy those bad parts)</small></li>
-    <li style="padding: 2px 0;" class="fragment fade-in">Minty code <small>(repetition elimination, short and simple functions, avoid complex if / else logic, etc)</small></li>
+
+    <li style="padding: 22px 0;" class="fragment fade-in"><strong>(BREAK)</strong></li>
+
+    <li style="padding: 22px 0;" class="fragment fade-in">Minty code <small>(Repetition elimination, complex ifelse logic, deferreds, tenplating)</small></li>
   </ul>
 </section>
 
 <section>
-  <h2 style="line-height: 1.2em">Javascript is still the world's most misunderstood <br> programming language</h2>
+  <h2 style="line-height: 1.2em">Javascript is one of the world's <a>most popular</a> and <a>most hated</a> <br> programming language at the same time.</h2>
+  <aside class="notes">
+    <ul>
+      <li>Desondanks het feit dat javascript populairder is geworden de laatste jaren is het wel nog steeds de meest misbegrepen taal die er bestaat.</li>
+      <li>Veel developers die volwaardige talen beheersen zoals php, ruby of java worden opgelegd door de browser om de taal op te nemen en te beheersen.</li>
+      <li>Het feit dat Javascript in verschillende omgevingen draait en dus sommige features wel of niet heeft of soms anders reageerd dan verwacht, zorgt voor zeer veel frustratie bij veel developers.</li>
+      <li>Het feit dat javascript op twee weken gemaakt is zal er ook geen goed aan gedaan hebben.</li>
+      <li>
+        Javascript heeft wel een zeer grote populariteitsboost gekregen bij de komst van nodejs.
+        als js met 1 taal heel je development stack kan coderen is dat wel een zeer krachtig iets.
+      </li>
+    </ul>
+  </aside>
 </section>
 
 <section>
-  <h2>The language its influences</h2>
+  <h2>Influences</h2>
 
   <br><br>
   <ul>
-    <li><strong>self</strong></li>
+    <li><strong>Self</strong></li>
     <ul style="padding: 10px 0 0 0;">
       <li>prototypal inheritance</li>
       <li>dynamic objects</li>
@@ -75,7 +101,7 @@
   <ul>
     <li><strong>Java</strong></li>
     <ul style="padding: 10px 0 0 0;">
-      <li>Syntax</li>
+      <li>syntax</li>
       <li>conventions</li>
     </ul>
   </ul>
@@ -86,8 +112,8 @@
   <ul style="width: 350px;">
     <li><strong>Scheme</strong></li>
     <ul style="padding: 10px 0 0 0;">
-      <li>Lambda</li>
-      <li>Loose typing </li>
+      <li>lambda</li>
+      <li>loose typing </li>
     </ul>
   </ul>
 
@@ -95,87 +121,99 @@
   <ul style="width: 200px;position: relative; top: -40px">
     <li><strong>Perl</strong></li>
     <ul style="padding: 10px 0 0 0;">
-      <li>Regex</li>
+      <li>regexp</li>
     </ul>
   </ul>
 </section>
                   <section>
   <section>
-    <h2>29 years of History</h2>
+    <h2>19 years of History</h2>
     <h3>
       1995 <br>
-      <small> Invented by <a href="http://en.wikipedia.org/wiki/Brendan_Eich">Brendan Eich</a></small>
+      <small> Invented by <a href="http://en.wikipedia.org/wiki/Brendan_Eich">Brendan Eich</a>, <a href="https://www.youtube.com/watch?v=aZqhRICne_M">see</a> in action</small>
     </h3>
+
     <h3>
       1996 <br>
       <small> ECMA-262, standardisation began</small>
     </h3>
 
+    <h3>
+      1997 <br>
+      <small> Microsoft used JScript so <a>ECMA script 1</a> had to be made</small>
+    </h3>
 
+    <h3>
+      1998 <br>
+      <small> <a>ECMA script 2</a> followed with minor editorial changes</small>
+    </h3>
 
-    <aside class="notes">
-      Officially called LiveScript when it first shipped in beta releases of Netscape Navigator 2.0
+    <aside class="notes" style="width:100%">
+      <ul>
+        <li>Javascript is uitgevonden door Brendan Eich in 1995, implementeerde het in netscape, het kreeg een aantal namen , livescript, Mocha.</li>
+        <li>Standaarden volgde snel omdat andere browsers ook javascript begonnen te gebruiken</li>
+        <li>ES2 had een aantal kleine wijzigingen en toevoegingen.</li>
+      </ul>
     </aside>
+
   </section>
 
   <section>
-    <h2>Ecma script versions</h2>
-    <h4>
-      1997 <br>
-      <small> Microsoft delivered JScript aka <a>ECMA script 1</a></small>
-    </h4>
-    <h4>
-      1998 <br>
-      <small> <a>ECMA script 2</a> with minor editorial changes</small>
-    </h4>
-    <h4>
+    <h2>19 years of History</h2>
+    <h3>
       1999 <br>
       <small> <a>ECMA script 3</a></small><br>
-      <small>added regular expressions, better sting handling, control statements, try catch</small>
-    </h4>
-    <h4>
-      ? <br>
-      <small> <a>ECMA script 4</a> abandoned</small>
-    </h4>
-    <h4>
+      <small>Legacy browsers like ie8 use this</small>
+    </h3>
+    <h3>
+      Unknown <br>
+      <small> <a>ECMA script 4</a> abandoned due to political differences</small>
+    </h3>
+    <h3>
       2009 <br>
       <small> <a>ECMA script 5</a></small><br>
-      <small>adds strict mode and adds some new features, such as getters and setters, library support for JSON, and more complete reflection on object properties</small>
-    </h4>
+      <small>adds strict mode and adds some new features</small>
+    </h3>
+
     <aside class="notes">
       <ul>
-        <li>ES3 is used by all the legacy browsers See chart later on</li>
-        <li>ES3 Added regular expressions, better string handling, new control statements, try/catch exception handling, tighter definition of errors, formatting for numeric output and other enhancements</li>
-        <li>ES4 Fourth Edition was abandoned, due to political differences concerning language complexity.
-        Many features proposed for the Fourth Edition have been completely dropped; some are proposed for ECMAScript Harmony ES6.</li>
-        <li>strict mode = a subset intended to provide more thorough error checking and avoid error-prone constructs</li>
+        <li>ES3 zit nu vooral nog in de legacy browsers. ik denk aan ie8 etc.</li>
+        <li>ES3 voegde reguliere expresies, bettere string afhandeling, nieuwe control statements, try/catch error handling toe.</li>
+        <li>ES4 werd verlaten omdat er teveel politieke meningen mee gemoeid waren.
+        Veel van de features zijn gedroped en veel features zijn nu doorgevoerd in es6 harmony, zoals modules..</li>
+        <li>ES5 is nu in alle moderne browsers geimplementeerd: Dingen zoals JSON, strict mode, Array.prototype.forEach etc </li>
+        <li>strict mode = Strict Mode is a new feature in ECMAScript 5 that allows you to place a program, or a function, in a "strict" operating context. This strict context prevents certain actions from being taken and throws more exceptions.</li>
       </ul>
     </aside>
   </section>
 
   <section>
-    <h2>Ecma script latest and future versions</h2>
-    <h4>
-      2011 <br>
-      <small> <a>ECMA script 5.1</a></small><br>
-      <small>This edition 5.1 of the ECMAScript Standard is fully aligned with third edition</small>
-    </h4>
-    <h4>
+    <h2>19 years of History</h2>
+    <h3>
       18 juli, 2014 <a href="http://people.mozilla.org/~jorendorff/es6-draft.html">draft</a> <br>
       <small> <a>ECMA script 6</a></small><br>
-      <small>The Sixth Edition adds significant new syntax for writing complex applications.</small>
-    </h4>
-    <h4>
-      wip <br>
+      <small>Adds better code support for writing front-end apps.</small>
+    </h3>
+
+    <h3>
+      Unknown <br>
       <small> <a>ECMA script 7</a></small><br>
-      <small>The Seventh Edition is in a very early stage of development, but is intended to continue the themes of language reform, code isolation, control of effects and library/tool enabling from ES6.</small>
-    </h4>
+      <small>Early stage of development</small>
+    </h3>
+
+    <aside class="notes">
+      <ul>
+        <li>Browsers zijn vollop bezig met features uit ES6 te implementeren, de spec is er nu moeten de browsers nog volgen.</li>
+        <li>Hot topics zijn: const, modules, for of vs for in, arrow function.</li>
+        <li>ES7 zal verder bouwen op es6: topics zullen taalhervorming, code isolatie en verbetring zijn.</li>
+      </ul>
+    </aside>
   </section>
 
   <section>
     <h2>Browser Rendering engines</h2><br>
     <h4>Chrome 28+ and Opera 15+</h4>
-    <p>uses <a href="http://en.wikipedia.org/wiki/Blink_%28layout_engine%29">Blink</a> a fork of <a href="http://nl.wikipedia.org/wiki/WebKit">webkit</a> uses the <a href="http://en.wikipedia.org/wiki/V8_%28JavaScript_engine%29">V8</a> Javascript engine</p>
+    <p>uses <a href="http://en.wikipedia.org/wiki/Blink_%28layout_engine%29">Blink</a>, a fork of <a href="http://nl.wikipedia.org/wiki/WebKit">webkit</a> uses the <a href="http://en.wikipedia.org/wiki/V8_%28JavaScript_engine%29">V8</a> Javascript engine</p>
 
     <h4>Internet explorer</h4>
     <p>uses <a href="http://en.wikipedia.org/wiki/Trident_%28layout_engine%29">Trident</a> that uses <a href="http://en.wikipedia.org/wiki/Chakra_%28JScript_engine%29">Chakra</a> Jscript engine</p>
@@ -185,6 +223,15 @@
 
     <h4>Safari</h4>
     <p>uses <a href="http://en.wikipedia.org/wiki/Gecko_%28layout_engine%29">Webkit2</a> build on top of webkit that uses <a href="http://en.wikipedia.org/wiki/WebKit#JavaScriptCore">JavascriptCore</a> Javascript engine</p>
+
+    <h4><a href="http://en.wikipedia.org/wiki/List_of_ECMAScript_engines">full list</a></h4>
+
+    <aside class="notes">
+      <ul>
+        <li>Dus wij moeten ervoor zorgen dat onze websites werken in 4 verschillende layout engines, die dan ook hun eigen js engine hebben.</li>
+        <li>Diegene die zegt dat chrome en safari dezelfde engine(WEBKIT) hebben is fout.</li>
+      </ul>
+    </aside>
   </section>
 
   <section>
@@ -211,9 +258,13 @@
 
   <section>
     <h2>The reference</h2>
-    <p>
-      <a href="http://kangax.github.io/compat-table/es5/#">Ecmascript table</a><br>
-      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">js reference</a> same as doc in dash</p>
+    <h4>ECMASCRIPT tables <br>(<a href="http://kangax.github.io/compat-table/es5/#">ES5</a>, <a href="http://kangax.github.io/compat-table/es6/#">ES6</a>)</h4>
+    <h4>Mozilla documentation <br>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">js reference</a>)</h4>
+    <aside class="notes">
+      <ul>
+        <li>De javascript documetatie van mozila is dezelfde als die uit dash.(TONEN)</li>
+      </ul>
+    </aside>
   </section>
 </section>
 
@@ -225,19 +276,41 @@
 <section>
   <h2>So Javascript</h2>
   <h3>Should you know everything? </h3>
-  <p><a>Advice</a>: only use and learn the <strong>good parts</strong><br>
-  and be aware of the <strong>bad parts</strong>, see them and avoid them</p>
+
+  <br><br>
+
+  <h1 class="fragment fadein">No</h1>
+  <h2 class="fragment fadein">not everything</h2>
+  <aside class="notes">
+    <ul>
+      <li>Er is immens veel te leren als het over javascript gaat, om dan nog niet te beginnen over alles wat bovenop javascript is gebouwd.</li>
+      <li>Meestal zul je een soort mix van vanila javascript en een library of framework gaan gebruiken, de bedoeling is dan dat je je plan kunt trekken, je weet hoe het framework werkt, maar je zal ook moeten weten hoe je je code goed moet opbouwen.</li>
+      <li>In ieder geval vanila javascript kennen en beheersen zorgt ervoor dat je geen beginnersfouten maakt en het geeft je een beter beeld hoe zo een framework als jquery of nodejs is opgebouwd.</li>
+      <li>Zo kun je sneller errors spotten en betere apps maken</li>
+      <li>In het volgende stuk gaan we iets dieper gaan kijken naar de goede en slechte delen in de spec / syntax</li>
+    </ul>
+  </aside>
 </section>
                   <section>
   <section>
     <h2>Good parts</h2>
     <ul>
       <li style="padding: 2px 0;" class="fragment fade-in">Loose typing</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">Functions as first class objects</li>
+      <li style="padding: 2px 0;" class="fragment fade-in">Functions</li>
+      <li style="padding: 2px 0;" class="fragment fade-in">Expressive object literal</li>
       <li style="padding: 2px 0;" class="fragment fade-in">Dynamic objects</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">Expresive object literal</li>
       <li style="padding: 2px 0;" class="fragment fade-in">Function scope / closure</li>
     </ul>
+
+    <aside class="notes">
+      <ul>
+        <li>Loose typing in de browser is een goed ding, vergelijkbaar dus met php.</li>
+        <li>Functies als eerste klas objecten.</li>
+        <li>De mannier waarop javascript objecten worden gevormd, vergelijkbaar en deels overgenomen uit JSON.</li>
+        <li>Dynamische objecten, aanpassen van objecten is een makkie.</li>
+        <li>In Javascript hebben we functio scope en closures.</li>
+      </ul>
+    </aside>
   </section>
 
   <section>
@@ -245,33 +318,45 @@
     <ul>
       <li>Primitives: <a>Number</a>, <a>Boolean</a>, <a>String</a>.</li>
       <li>Objects: <a>Object</a>, <a>Function</a>, <a>Array</a>, <a>Date</a>, <a>RegExp</a>, etc.</li>
-      <li>Special cases: <a>Null</a>, <a>Undefined</a>.</li>
+      <li>Special cases: <a>Null</a>, <a>Undefined</a>, <a>NaN</a>.</li>
     </ul>
-  </section>
-
-  <section>
-    <h2>Loose typing</h2>
-    <br>
+    <br><br>
     <pre><code data-trim contenteditable>
 var a = 13; // Number declaration
-var b = "thirteen"; // String declaration
+var b = "beee"; // String declaration
+var c = true; // Boolean declaration
+var d = []; // Array declaration
+var e = {}; // Object declaration
+var f = function(){}; // Function declaration
     </code></pre>
     <br>
-    <ul>
-      <li>Loose typing means that variables are declared without a type.</li>
-      <li>Variables in JavaScript are typed, but that type is determined internally.</li>
-    </ul>
+
+    <aside class="notes">
+      <ul>
+        <li>Onder te verdelen in 3 grote groepen</li>
+        <li>Loosely typed wil gewoon zeggen dat elke variabele in javascript automatisch een type krijgt, je hoeft niet te zeggen wat je variabele zal zijn.</li>
+        <li>De compiler detecteerd welk type je declareerd.</li>
+      <ul>
+    </aside>
   </section>
 
   <section>
     <h2>Functions as first class objects</h2>
     <ul>
-      <li>A function is an instance of the Object type</li>
-      <li>A function can have properties and has a link back to its constructor method</li>
-      <li>You can store the function in a variable</li>
-      <li>You can pass the function as a parameter to another function</li>
-      <li>You can return the function from a function</li>
+      <li>Instance of the Object type</li>
+      <li>Store in a variable</li>
+      <li>As a parameter to another function</li>
+      <li>Return a function from another function</li>
     </ul>
+
+    <aside class="notes">
+      <ul>
+        <li>Een functie in javascript is een instantie van een object.</li>
+        <li>Je kan functies opslaan in variabelen</li>
+        <li>Je kan functies doorgeven aan functies</li>
+        <li>Je kan functies terug geven vanuit functies</li>
+      </ul>
+    </aside>
   </section>
 
   <section>
@@ -288,24 +373,18 @@ Object.getOwnPropertyNames(obj).forEach(function(val, idx, array) {
   console.log(val + " -> " + obj[val]);
 });
 };
+// consoles
+// "prototype -> [object Object]"
+// "length -> 1"
+// "name -> test"
 
 getKeys(myBarFunc);
+
     </code></pre>
-
-    <p>consoles:</p>
-
-    <blockquote style="text-align: left;">
-      "prototype -> [object Object]"<br>
-      "length -> 1"<br>
-      "name -> test"<br>
-    </blockquote>
   </section>
 
   <section>
-    <h2>Expresive object literal</h2>
-    <ul>
-      <li>JSON like object literal</li>
-    </ul>
+    <h2>Expressive object literal</h2>
     <pre><code data-trim contenteditable>
 var person = {
   firstName: "John",
@@ -320,10 +399,6 @@ var person = {
 
   <section>
     <h2>Dynamic objects</h2>
-    <ul>
-      <li>You can fully modify objects at runtime</li>
-    </ul>
-
     <pre><code data-trim contenteditable>
 var person = {
   firstName: "John",
@@ -348,20 +423,13 @@ delete person.fireGun; //REMOVE
   </section>
   <section>
     <h2>Function scope</h2>
-
-    <ul>
-      <li style="padding: 2px 0;" class="fragment fade-in">Scope controls the visibility and lifetimes of variables and parameters.</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">Reduces naming collisions and provides automatic memory management.</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">Can someone see the error?</li>
-    </ul>
-
-    <pre class="fragment fade-in"><code data-trim contenteditable>
+    <pre><code data-trim contenteditable>
 var foo = function() {
   var a = 3, b = 5;
 
   var bar = function() {
     var b = 7, c = 11;
-    // At this point, a is 3, b is 7 and c is 11
+    /// At this point, a is 3, b is 7 and c is 11
 
     a += b + c;
     // At this point, a is 21, b is 7 and c is 11
@@ -370,17 +438,22 @@ var foo = function() {
 
   bar();
   // At this point, a is 21, b is 5
+
 }
     </code></pre>
+
+    <aside class="notes">
+      <ul>
+        <li>Scope zorgt voor de zichtbaarheid en duurbaarheid van variabelen en parameters</li>
+        <li>Scope reduceerd ook naam overlapping en scope zorgt ook voor memory management</li>
+        <li>Ziet iemand hier een error</li>
+      </ul>
+    </aside>
   </section>
   <section>
     <h2>Closure</h2>
-    <ul>
-      <li style="padding: 2px 0;" class="fragment fade-in">Whenever you see the function keyword within another function, the inner function has access to variables in the outer function context.</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">You can understand this best by example.</li>
-    </ul>
 
-    <pre class="fragment fade-in"><code data-trim contenteditable>
+    <pre><code data-trim contenteditable>
 function foo(x) {
   var tmp = 3;
   return function (y) {
@@ -403,6 +476,13 @@ var quo = function(status) {
 var myQuo = quo("amazed");
 console.log(myQuo.get_status()); // outputs amazed
     </code></pre>
+
+    <aside class="notes">
+      <ul>
+        <li>Van zodra je het function keyword in een anderer function ziet, dan heeft de binnenste functie toegang tot de buitenste functie zijn context</li>
+        <li>closure werkt ook goed samen met this</li>
+      </ul>
+    </aside>
   </section>
 </section>
 
@@ -410,16 +490,29 @@ console.log(myQuo.get_status()); // outputs amazed
   <section>
     <h2>Bad parts</h2>
     <ul>
-      <li style="padding: 2px 0;" class="fragment fade-in">Type coercion equality operators</li>
+      <li style="padding: 2px 0;" class="fragment fade-in">Type coercion equality operators <small>(FROM JAVA)</small></li>
       <li style="padding: 2px 0;" class="fragment fade-in">typeof</li>
       <li style="padding: 2px 0;" class="fragment fade-in">Global variables</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">Adding vs concatenating (JAVA)</li>
+      <li style="padding: 2px 0;" class="fragment fade-in">Adding vs concatenating <small>(FROM JAVA)</small></li>
       <li style="padding: 2px 0;" class="fragment fade-in">Auto semicolon insertion</li>
       <li style="padding: 2px 0;" class="fragment fade-in">parseInt</li>
       <li style="padding: 2px 0;" class="fragment fade-in">Phony arrays</li>
       <li style="padding: 2px 0;" class="fragment fade-in">Reserved words</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">To many falsy values</li>
+      <li style="padding: 2px 0;" class="fragment fade-in">Too many falsy values</li>
     </ul>
+
+    <aside class="notes">
+      <ul>
+        <li>Ok, over naar de slechte delen van javascript, hou u vast want het zijn er veel.</li>
+        <li>De type coecion equality operators zijnde dus de dubbel is gelijk aan en het uitroeptkene is gelijkaan</li>
+        <li>typeof is een operator die het type van iets teruggeeft vrij straightforward maar deze geeft soms rare zaken terug</li>
+        <li>dan toevoegen en concateneren is hetzelfde teken in tegensteling met php</li>
+        <li>parseint is een functie die een string kan omzetten naar een integer</li>
+        <li>Arrays in javascript zijn eigenlijk hashtables, maw objecten</li>
+        <li>In Javascript heb je een lange lijst met reserved words die je niet mag gebruiken als naam, vrij moeilijk te spotten errors</li>
+        <li>In js kun je op teveel manieren false omschrijven false, null, undefined, NaN, 0, ""</li>
+      <ul>
+    </aside>
   </section>
 
   <section>
@@ -435,24 +528,20 @@ false == null // false
 null == undefined // true
 " \t\r\n" == 0 // true
 "abc" == new String("abc") // true ANTIPATERN
-    </code>
-  </pre>
-  <pre>
-    <code data-trim contenteditable>
+
 // BAD
 var name = object[namekey];
 if (name == null) { // two errors that cancel each other out
   console.log("Name not found.");
 }
-
 // GOOD
 var name = object[namekey];
 if (name === undefined) {
   console.log("Name not found.");
 }
 
-      </code>
-    </pre>
+    </code>
+  </pre>
   </section>
   <section>
     <h2>typeof</h2>
@@ -479,56 +568,69 @@ typeof true === 'boolean';
 typeof false === 'boolean';
 typeof Boolean(true) === 'boolean'; // but never use this form!
 
-
 // Undefined
 typeof undefined === 'undefined';
-typeof blabla === 'undefined'; // an undefined variable
-
-
-// Objects
-typeof {a:1} === 'object';
-
-// use Array.isArray or Object.prototype.toString.call
-// to differentiate regular objects from arrays
-typeof [1, 2, 4] === 'object';
-
-typeof new Date() === 'object';
-
-
-// The following is confusing. Don't use!
-typeof new Boolean(true) === 'object';
-typeof new Number(1) === 'object';
-typeof new String("abc") === 'object';
-
+typeof blabla === 'undefined';
 
 // Functions
 typeof function(){} === 'function';
 typeof Math.sin === 'function';
+
+// Objects
+typeof {a:1} === 'object';
+typeof new Date() === 'object';
+
+
+// The weirdness begins
+// DO NOT USE
+typeof new Boolean(true) === 'object';
+typeof new Number(1) === 'object';
+typeof new String("abc") === 'object';
+
+typeof [1, 2, 4] === 'object'; // HOW DO WE TEST FOR ARRAYNESS
+typeof NaN === "number" // SAY WHUT?
+typeof null === "object";
+
       </code>
     </pre>
+
+    <aside class="notes">
+      <ul>
+        <li>typeof doet het wel vrij goed over het algemeen, toch zeker voor de eerste groep primitieven.</li>
+        <li>Maar als we naar objecten en speciale gevallen gaan kijken valt typeof wel door de mand.</li>
+      <ul>
+    </aside>
   </section>
+
   <section>
     <h2>Global variables</h2>
-    <ul>
-      <li>A global variable is a variable that is visible in every scope.</li>
-      <li>Use of global variables degrades the reliability of the programms that use them.</li>
-      <li>3 ways of defining globals</li>
-      <li>examples: Drupal, $, _, etc</li>
-    </ul>
+
     <pre>
       <code data-trim contenteditable>
 var foo = value; // outside of any scope
 window.foo = value; // anywhere in the code
 foo = value; // anywhere in the code IMPLIED GLOBAL
+
+(function () {
+    var not_a_global = 1;
+    alert(not_a_global);
+})();
       </code>
     </pre>
+
+    <aside class="notes">
+      <ul>
+        <li>Misschien zijn globale variabelen wel de slechtste feature van javascript.</li>
+        <li>Het gebruik maken van teveel globale variabelen maakt je programma of u website onbetrouwbaar.</li>
+        <li>Er zijn drie manniere om globale variabelen te maken, 1 die zeer lastig is om te onderscheppen.</li>
+        <li>Voorbeelden van globale variabelen zijn: het dolar teken van jquery en jquery zelf, underscore, het drupal object, etc.</li>
+        <li>Om globale variabelen te reduceren kun je gebruik maken van lamda funcitons.</li>
+      <ul>
+    </aside>
   </section>
+
   <section>
     <h2>+ Adds and concatenates</h2>
-    <ul>
-      <li>In JAVA this isn't an issue, in javascript however the compiler doesn't throw type errors.</li>
-      <li>Example:</li>
-    </ul>
     <pre>
       <code data-trim contenteditable>
 var a = 10;
@@ -541,17 +643,21 @@ console.log("result is " + (a + b));
 // RESULT IS 30
       </code>
     </pre>
+    <aside class="notes">
+      <ul>
+        <li>In JAVA is dat geen probleem omdat dat een typeerror throwed.</li>
+        <li>IN Javascript is het geen error, de compiler zorgt voor de meest logishe oplossing.</li>
+        <li>Maar in sommige gevallen is de meest logische oplossing niet de gewenste of verwachte oplossing.</li>
+      <ul>
+    </aside>
+
   </section>
   <section>
-    <h2>Style isn't subjective in JS</h2>
-    <ul>
-      <li>The compiler injects semicolons where he thinks he should inject them.</li>
-      <li>ADVICE: No shorthand ifs, good indenting (2 spaces), good whitespacing</li>
-      <li>Example:</li>
-    </ul>
+    <h2>Auto semicolon insertion</h2>
     <pre>
       <code data-trim contenteditable>
 // AT THE END OF A FUNCTION FOR EXAMPLE
+// Style isn't subjective in JS
 return
 {
   status: true
@@ -566,32 +672,77 @@ return ; //SEMICOLON INSERTION
 // SILENT ERROR!!!
 
 // good style example
-var myFunc = function foo() {
+var myFunc = function foo(par1, par2) {
+  if(par2 === undefined) {
+
+    return "par2 is undefined";
+    par2 = "Ok";
+  } else {
+
+    return "par2 is defined";
+  }
+
   return "Bar";
 };
 
       </code>
     </pre>
 
+    <aside class="notes">
+      <ul>
+        <li>De javascript compilers hebben een feature ingebouwd die ervoor zorgt dat er automatish semicolons worden toegevoegd wanneer de compiler denkt dat er 1 hoeft te staan.</li>
+        <li>In dit voorbeeld is dit zeker niet gewenst.</li>
+        <li>Er wordt een stuk code gewoon genegeerd door die semicolon insertion.</li>
+        <li>Onderaan vind je een voorbeeld.</li>
+        <li>Een goede raad die ik kan meegeven is: goeie indentering en witruimte op de juiste plaatsen en eventueel linebreaks.</li>
+        <li>Shorthands zoals ifs enzo vermijden</li>
+      <ul>
+    </aside>
   </section>
 
   <section>
     <h2>parseInt</h2>
-    <ul>
-      <li style="padding: 2px 0;" class="fragment fade-in">String function thst converts a String into Integer</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">Stops when it sees a non digit, <a>"16"</a> and <a>"16 tons"</a> would produce same result</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">If the input string begins with <a>"0"</a>, radix is eight (octal) or 10 (decimal).  Exactly which radix is chosen is <a>implementation-dependent</a>.  <a>ECMAScript 5 specifies that 10 (decimal) is used</a>, but not all browsers support this yet.  For this reason always specify a radix when using parseInt.</li>
-    </ul>
+    <pre>
+      <code data-trim contenteditable>
+/// ALL RETURN 15
+parseInt(" 0xF", 16);
+parseInt(" F", 16);
+parseInt("17", 8);
+parseInt(021, 8);
+parseInt("015", 10);
+parseInt(15.99, 10);
+parseInt("FXX123", 16);
+parseInt("1111", 2);
+parseInt("15*3", 10);
+parseInt("15e2", 10);
+parseInt("15px", 10);
+parseInt("12", 13);
+
+parseInt("16"); // 16
+parseInt("16 ton"); // 16
+
+parseInt("0e0"); // 0
+parseInt("08"); // 0, '8' is not an octal digit.
+parseInt("09"); // 0, '8' is not an octal digit.
+parseInt("027"); // 23
+parseInt("011"); // ?
+parseInt("0111"); // ? :D
+      </code>
+    </pre>
+
+    <aside class="notes">
+      <ul>
+        <li>parseInt is een functie in javascript die een string kan omvormen in een nummer</li>
+        <li>De eerste parameter van die functie is een string en de tweede is een radix. vb 10, 8, 16</li>
+        <li>De functie stopt wanneer het een letter ziet</li>
+        <li>in ecma script 3 is deze functie zijn 2de parameter default 10, maar wanneer de string begint met 0 wordt dat omgezet naar 8, wat dus rare resultaten kan geven, zeker als je met datums werkt bijvoorbeeld.</li>
+      <ul>
+    </aside>
   </section>
 
   <section>
     <h2>Phony arrays</h2>
-    <ul>
-      <li style="padding: 2px 0;" class="fragment fade-in">Javascript doesn't have arrays, it has hashtables</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">slower, but no index out of bounds errors.</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">Harder to check for array existence.</li>
-    </ul>
-    <pre class="fragment fade-in">
+    <pre>
       <code data-trim contenteditable>
 var myArray = [1, 2, 3];
 
@@ -606,17 +757,21 @@ if(Object.prototype.toString.apply(myArray) === "[object Array]") {
 }
       </code>
     </pre>
+
+    <aside class="notes">
+      <ul>
+        <li>Javascript heeft geen arrays, het heeft hashtables.</li>
+        <li>Het is iets trager maar je krijgt geen index out of bouns errors bijvoorvbeeld</li>
+        <li>Het is iets moeilijker om te gaan checken of je array wel effectief een array voorsteld.</li>
+      <ul>
+    </aside>
   </section>
   <section>
     <h2>Reserved Words</h2>
-    <ul>
-      <li style="padding: 2px 0;">Javascript has a large list of reserved words.</li>
-    </ul>
-
     <blockquote>
       <small>
         break, case, class, catch, const, continue, debugger, default, delete, do, else, export, extends, finally, for, function, if, import, in, instanceof, let, new, return, super, switch, this, throw, try, typeof, var, void, while, with, yield
-        enum, await, implements, package, protected, static, interface, private, public, abstract, boolean, byte, char, double, final, float, goto, int, long, native, short, synchronized, transient, volatile,
+        enum, await, implements, package, protected, static, interface, private, public, abstract, boolean, byte, char, double, final, float, goto, int, long, native, short, synchronized, transient, volatile
       </small>
     </blockquote>
 
@@ -634,61 +789,100 @@ object.case = "another value"; // Illegal
 object["case"] = "another value"; // Ok
       </code>
     </pre>
+
+    <aside class="notes">
+      <ul>
+        <li>Javascript heeft een gigantische lijst met gereserveerde woorden.</li>
+        <li>als je die woorden gebruikt als naam van een variabele of als naam van een key op een object, crahed u app</li>
+      <ul>
+    </aside>
   </section>
 
   <section>
     <h2>false, null, undefined, NaN, 0, ""</h2>
-    <ul>
-      <li style="padding: 2px 0;" class="fragment fade-in">placed in if statements, all return false</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">combined with == or !=  === "BAD IDEA"</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">undefined and NaN are not constants, they are globals.<small>(means they can be changed)</small></li>
-    </ul>
-
-    <pre class="fragment fade-in">
+    <pre>
       <code data-trim contenteditable>
-NaN !== NaN // true Surprisingly
-typeof NaN === "number" // true SAY WHUT?
+false == null; // false
+false == undefined; // false
+false == NaN; // false
+false == 0; // true
+false == ""; // true
+
+null == NaN // false
+null == 0 // false
+null == "" // false
+null == undefined // true
+
+undefined == NaN // false
+undefined == 0 // false
+undefined == "" // false
+
+0 == "" //true
       </code>
     </pre>
+
+    <aside class="notes">
+      <ul>
+        <li>Als je deze waarden in if statements zou zetten, zouden ze false weergeven.</li>
+        <li>Gecombineerd met de type coertion opperators is dit een slecht idee</li>
+      <ul>
+    </aside>
   </section>
-
-
 
   <section>
     <h2>OMG! More bad parts!</h2>
 
-    <ul>
-      <li style="padding: 2px 0;" class="fragment fade-in">NaN</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">Floating point</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">hasOwnProperty</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">With Statement</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">Eval <small>is as evil as in php</small></li>
-      <li style="padding: 2px 0;" class="fragment fade-in">Bitwise operators</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">Typed wrappers</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">new</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">void</li>
+    <ul class="fragment fade-in">
+      <li style="padding: 2px 0;">NaN</li>
+      <li style="padding: 2px 0;">Floating point</li>
+      <li style="padding: 2px 0;">hasOwnProperty</li>
+      <li style="padding: 2px 0;">With Statement</li>
+      <li style="padding: 2px 0;">Eval <small>is as evil as in php</small></li>
+      <li style="padding: 2px 0;">Bitwise operators</li>
+      <li style="padding: 2px 0;">Typed wrappers</li>
+      <li style="padding: 2px 0;">new</li>
+      <li style="padding: 2px 0;">void</li>
     </ul>
+
+    <aside class="notes">
+      <ul>
+        <li>The void operator evaluates the given expression and then returns undefined.</li>
+      <ul>
+    </aside>
+
   </section>
 </section>
                   <section>
   <section>
-    <h2>JSHint</h2>
+    <h2>JSHint <small>NOT jslint</small></h2>
     <ul>
-      <li style="padding: 2px 0;" class="fragment fade-in"><a href="http://www.jshint.com/">JSHint</a> is a program that flags suspicious usage in programs written in JavaScript.</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">It is a community driven <a href="https://www.npmjs.org/package/jshint">npm module</a>, unlike JSLint by Douglas Crockford</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">It detects the bad parts.</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">Grunt integration.</li>
-      <li style="padding: 2px 0;" class="fragment fade-in">configuration levels and code editor support</li>
+      <li style="padding: 2px 0;" class="fragment fade-in"><a href="http://www.jshint.com/">JSHint</a> flags suspicious usage.</li>
+      <li style="padding: 2px 0;" class="fragment fade-in">community driven <a href="https://www.npmjs.org/package/jshint">npm module</a></li>
+      <li style="padding: 2px 0;" class="fragment fade-in">It detects those bad parts.</li>
+      <li style="padding: 2px 0;" class="fragment fade-in">Configuration levels</li>
+      <li style="padding: 2px 0;" class="fragment fade-in">Build tool integration.</li>
+      <li style="padding: 2px 0;" class="fragment fade-in">Immediate indication in editor</li>
+
+      <aside class="notes">
+        <ul>
+          <li>JSHint is niet gelijk aan JSLint, JSHint is door de community gemaakt maar is wel gebaseerd op douglas Crockford.</li>
+          <li>JSHint is een code quality checker die aan de hand van bepaalde flags verdachte of slechte code gaat aanduiden.</li>
+          <li>Configuratie kan op 3 niveau's</li>
+          <li>Kan geintegreerd worden in build tools en zelfs in je code editor</li>
+        <ul>
+    </aside>
     </ul>
   </section>
 
   <section>
-    <h2>Instalation</h2>
+    <h2>Installation</h2>
+
     <blockquote>
       npm install jshint -g
     </blockquote>
-    <br><br><br>
+  </section>
 
+  <section>
     <h2>Configuration</h2>
     <ul>
       <li style="padding: 2px 0;">via the <i>--config</i> flag from the command line</li>
@@ -698,7 +892,7 @@ typeof NaN === "number" // true SAY WHUT?
   </section>
 
   <section>
-    <h2>Immediate error indication</h2>
+    <h2>Indication</h2>
     <h3>Sublime Text 3</h3>
     <ul>
       <li style="padding: 2px 0;">Install <a href="http://www.jshint.com/">JSHint</a></li>
@@ -757,72 +951,72 @@ typeof NaN === "number" // true SAY WHUT?
   </section>
 
   <section>
-    <h2>what's the harm?</h2>
+    <h2>What's the harm?</h2>
     <ul>
-      <li>debugging is harder</li>
-      <li>maintainability suffers</li>
-      <li>features are harder to add</li>
+      <li><a>debugging</a> is harder</li>
+      <li><a>maintainability</a> suffers</li>
+      <li><a>features</a> are harder to add</li>
     </ul>
   </section>
 
   <section class="oneliner">
     <br><br><br>
     <h2>The Smell: Repetitive&nbsp;Code</h2>
-    <p>The Fix: Functions</p>
+    <p>The Fix: <a>Functions</a></p>
   </section>
 
   <section>
-    <h4>smelly</h4>
+    <h3>Smelly</h3>
     <script type="data/example" src="examples/dry-functions/smelly.js"></script>
   </section>
 
   <section>
-    <h4>minty</h4>
+    <h3>Minty</h3>
     <script type="data/example" src="examples/dry-functions/minty.js"></script>
   </section>
 
   <section>
-    <h4>opportunity</h4>
+    <h3>Opportunity</h3>
     <script type="data/example" src="examples/dry-functions/opportunity.js"></script>
   </section>
 
   <section class="oneliner">
     <h2>The Smell: Repetitive&nbsp;Code</h2>
-    <p>The Fix: Objects</p>
+    <p>The Fix: <a>Objects</a></p>
   </section>
 
   <section>
-    <h4>smelly</h4>
+    <h3>Smelly</h3>
     <script type="data/example" src="examples/dry-objects/smelly.js"></script>
   </section>
 
   <section>
-    <h4>minty</h4>
+    <h3>Minty</h3>
     <script type="data/example" src="examples/dry-objects/minty.js"></script>
   </section>
 
   <section>
-    <h4>opportunity</h4>
+    <h3>Opportunity</h3>
     <script type="data/example" src="examples/dry-objects/opportunity.js"></script>
   </section>
 
   <section class="oneliner">
     <h2>The Smell: Generated&nbsp;IDs</h2>
-    <p>The Fix: Closures</p>
+    <p>The Fix: <a>Closures</a></p>
   </section>
 
   <section>
-    <h4>smelly</h4>
+    <h3>Smelly</h3>
     <script type="data/example" src="examples/numbered-things/smelly.js"></script>
   </section>
 
   <section>
-    <h4>minty</h4>
+    <h3>Minty</h3>
     <script type="data/example" src="examples/numbered-things/minty.js"></script>
   </section>
 
   <section>
-    <h4>opportunity</h4>
+    <h3>Opportunity</h3>
     <script type="data/example" src="examples/numbered-things/opportunity.js"></script>
   </section>
 
@@ -832,12 +1026,12 @@ typeof NaN === "number" // true SAY WHUT?
   </section>
 
   <section>
-    <h4>smelly</h4>
+    <h3>Smelly</h3>
     <script type="data/example" src="examples/excessive-ifs/smelly.js"></script>
   </section>
 
   <section>
-    <h4>minty</h4>
+    <h3>Minty</h3>
     <script type="data/example" src="examples/excessive-ifs/minty.js"></script>
   </section>
 
@@ -848,17 +1042,17 @@ typeof NaN === "number" // true SAY WHUT?
   </section>
 
   <section>
-    <h4>smelly</h4>
+    <h3>Smelly</h3>
     <script type="data/example" src="examples/deferreds/smelly.js"></script>
   </section>
 
   <section>
-    <h4>minty</h4>
+    <h3>Minty</h3>
     <script type="data/example" src="examples/deferreds/minty.js"></script>
   </section>
 
   <section>
-    <h4>opportunity</h4>
+    <h3>Opportunity</h3>
     <script type="data/example" src="examples/deferreds/opportunity.js"></script>
   </section>
 
@@ -868,18 +1062,18 @@ typeof NaN === "number" // true SAY WHUT?
   </section>
 
   <section>
-    <h4>smelly</h4>
+    <h3>Smelly</h3>
     <script type="data/example" src="examples/templates/smelly.js"></script>
   </section>
 
   <section>
-    <h4>minty</h4>
+    <h3>Minty</h3>
     <script type="data/example" src="examples/templates/minty.js"></script>
   </section>
 </section>
 
                   <section>
-  <img src="http://kaleeraisor.com/wp-content/uploads/2013/11/bad-code-joke.jpg" alt="Kitten">
+  <img src="http://kaleeraisor.com/wp-content/uploads/2013/11/bad-code-joke.jpg" alt="Kitten" style="height: 600px">
 </section>
 
 <section>
@@ -894,8 +1088,7 @@ typeof NaN === "number" // true SAY WHUT?
     <a href="http://shop.oreilly.com/product/0636920024699.do">Testable JavaScript</a> by Mark Ethan Trostler
   </blockquote>
 </section>
-
-      </div>
+              </div>
     </div>
 
     <script src="lib/js/head.min.js"></script>
@@ -934,7 +1127,7 @@ typeof NaN === "number" // true SAY WHUT?
         var src = script.attr('src');
         var div = script.parent();
 
-        var dest = $('<pre class="language-javascript" style="font-size: 0.60em;">');
+        var dest = $('<pre class="language-javascript">');
         var code = $('<code contenteditable="true">').appendTo(dest);
 
         $.ajax(src, { dataType : 'text'}).done(function(content) {
