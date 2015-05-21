@@ -8,8 +8,8 @@
     <ul>
       <li class="fragment">2h event <a>every 3 weeks</a> on Friday</li>
       <li class="fragment">Mainly Front-end related</li>
-      <li class="fragment">Milestones and future plans on Ocelot, Panda & projects</li>
-      <li class="fragment">Project remarks & pains</li>
+      <li class="fragment">Milestones and future plans of <a>Ocelot</a>, <a>Panda</a> & <a>projects</a></li>
+      <li class="fragment"><a>Running project</a> remarks & pains</li>
       <li class="fragment">Topics, talks & workshops</li>
       <li class="fragment">Assignments</li>
     </ul>

@@ -32,7 +32,7 @@
 
 		// Configuration defaults, can be overridden at initialization time
 		config = {
-			dries: [5, 8, 10, 11, 15, 18, 19],
+			dries: [6, 7, 8, 9, 10, 11, 20],
 			// The "normal" size of the presentation, aspect ratio will be preserved
 			// when the presentation is scaled to fit different resolutions
 			width: 960,
