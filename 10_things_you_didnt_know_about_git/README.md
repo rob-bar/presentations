@@ -1,12 +1,3 @@
-# 10 things you didn't know about git
+### Git: 10 things you didn't know about git
 
-* Resolve merging conflicts faster
-* Altering commits
-* Altering the latest <span>commit</span>
-* non-fast forward pushes
-* including untracked files in the stash
-* Showing a history of own movements
-* Showing who committed what on a file
-* Better logging and showing things
-* Deploying changes from specific commit
-* git pull is NOT the opposite of git push
+You can watch the presentation [here](http://rob-bar.github.io/presentations/10_things_you_didnt_know_about_git)
