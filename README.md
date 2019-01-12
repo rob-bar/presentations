@@ -11,4 +11,4 @@ Presentations
 
   * Xcheck
     * Sublime text 3
-    * Javascript, things you should know
+    * [Javascript, things you should know](http://rob-bar.github.io/presentations/javascript_things_you_should_know/presentation.html#/)
