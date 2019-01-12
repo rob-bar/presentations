@@ -14,3 +14,7 @@ Presentations
 
   * One Agency
     * [Ocelot](http://rob-bar.github.io/presentations/one_agency_fei_ocelot)
+
+  * Focus
+    * [Styleguide Separation](http://rob-bar.github.io/presentations/focus_styleguide_separation)
+    * [What about the css](http://rob-bar.github.io/presentations/what_about_the_css)
