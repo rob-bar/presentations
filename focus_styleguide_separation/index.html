@@ -12,6 +12,7 @@
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -24,8 +25,213 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h2>Styleguide Roadmap</h2>
+					<i class="fas fa-map-marked-alt fa-3x"></i>
+				</section>
+				<section>
+					<ul style="font-size: 4rem">
+						<li>Installation</li>
+						<li class="fragment">Build tools</li>
+						<li class="fragment">V1 optimisation</li>
+						<li class="fragment">V2 migration</li>
+					</ul>
+				</section>
+				<section>
+					<section>
+						<h2>Installation</h2>
+						<ul>
+							<li class="fragment">Easy <i>(one command)</i> </li>
+							<li class="fragment">Flexible <i>(pick what you need)</i> </li>
+							<li class="fragment">Versioned <i>(SEMVER)</i></li>
+							<li class="fragment" style="margin-top: 15px;">
+								<pre style="margin: 0;position: relative; top: -5px; width: 500px;"><code class="hljs" data-trim contenteditable>
+ npm install @focus/fc-styleguide; </code></pre></li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Javascript</h4>
+						<pre><code class="hljs" data-trim contenteditable>
+import Styleguide from 'fc-styleguide';
+
+// OR
+
+import { FcButton, FcButtonGroup} from 'fc-styleguide'</code></pre>
+					</section>
+					<section>
+						<h4>Scss</h4>
+						<pre><code class="hljs" data-trim contenteditable>
+@include "fc-styleguide";
+
+// OR
+
+@include "fc-button";
+@include "fc-button-group";</code></pre>
+					</section>
+					<section>
+						<h4>css</h4>
+						<pre><code class="hljs" data-trim contenteditable>
+<link href="node_modules/@focus/fc-styleguide/styleguide.css" rel="stylesheet">
+
+// OR
+
+<link href="node_modules/@focus/fc-button/button.css" rel="stylesheet">
+<link href="node_modules/@focus/fc-button-group/button-group.css" rel="stylesheet"></code></pre>
+					</section>
+				</section>
+
+				<section>
+					<h2>Build Tools</h2>
+					<ul>
+						<li>Fast!</li>
+						<li class="fragment">SSOT ( One truth )</li>
+						<li class="fragment">Clear separation of envs</li>
+						<li class="fragment"><span style="text-decoration: line-through;">Gulp</span>&nbsp;<i class="fas fa-angle-double-right"></i>&nbsp;npm</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h2>v1 optimisation</h2>
+						<ul style="list-style-type: none;">
+							<li>
+								<i class="far fa-check-square"></i>&nbsp;&nbsp;
+							No more Ruby</li>
+							<li class="fragment">
+								<i class="far fa-check-square"></i>&nbsp;&nbsp;
+							RubySass&nbsp;<i class="fas fa-angle-double-right"></i>&nbsp;LibSass</li>
+							<li class="fragment">
+								<i class="far fa-check-square"></i>&nbsp;&nbsp;
+							Css minification!</li>
+							<li class="fragment">
+								<i class="far fa-check-square"></i>&nbsp;&nbsp;
+							Autoprefixing</li>
+							<li class="fragment">
+								<i class="far fa-check-square"></i>&nbsp;&nbsp;
+							Sourcemapping</li>
+							<li class="fragment">
+								<i class="far fa-check-square"></i>&nbsp;&nbsp;
+							Livereloading scss</li>
+						</ul>
+					</section>
+					<section>
+						<p><i class="fas fa-code"></i>&nbsp;&nbsp;DEMO</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>V2 migration</h2>
+						<ul>
+							<li>Go For Low Impact</li>
+							<li class="fragment">Refactor & Cleanup</li>
+							<li class="fragment">Atomic</li>
+							<li class="fragment">Upgrade & Speedup</li>
+						</ul>
+					</section>
+					<section>
+						<ul style="list-style-type: none;">
+							<li>
+								<i class="far fa-check-square"></i>&nbsp;&nbsp;
+								Monorepo
+							</li>
+							<li class="fragment">
+								<i class="far fa-check-square"></i>&nbsp;&nbsp;
+								Introduce webpack / npm scripts
+							</li>
+							<li class="fragment">
+								<i class="far fa-check-square"></i>&nbsp;&nbsp;
+								Basic Build & Small Atoms
+							</li>
+							<li class="fragment">
+								<i class="far fa-check-square"></i>&nbsp;&nbsp;
+								Test Drive
+							</li>
+						</ul>
+					</section>
+					<section>
+						<p><i class="fas fa-code"></i>&nbsp;&nbsp;DEMO</p>
+					</section>
+					<section>
+						<ul style="list-style-type: none;">
+							<li>
+								<i class="far fa-square"></i>&nbsp;&nbsp;
+								Implement component list ( See spreadsheet )
+							</li>
+							<li class="fragment">
+								<i class="far fa-square"></i>&nbsp;&nbsp;
+								Remove Layout components Like: Row, Section
+							</li>
+							<li class="fragment">
+								<i class="far fa-square"></i>&nbsp;&nbsp;
+								Clean Ruby legacy css from core
+							</li>
+							<li class="fragment">
+								<i class="far fa-square"></i>&nbsp;&nbsp;
+								Implement ITCSS / BEM / Trumps
+							</li>
+							<li class="fragment">
+								<i class="far fa-square"></i>&nbsp;&nbsp;
+								Move away from gulp
+							</li>
+							<li class="fragment">
+								<i class="far fa-square"></i>&nbsp;&nbsp;
+								Introduce more webpack / npm scripts
+							</li>
+							<li class="fragment">
+								<i class="far fa-square"></i>&nbsp;&nbsp;
+								Rethink the Css Core and Utils
+							</li>
+							<li class="fragment">
+								<i class="far fa-square"></i>&nbsp;&nbsp;
+								Introduce Css modules
+							</li>
+							<li class="fragment">
+								<i class="far fa-square"></i>&nbsp;&nbsp;
+								Rethink Css vars & Overriding System
+							</li>
+							<li class="fragment">
+								<i class="far fa-square"></i>&nbsp;&nbsp;
+								Replace the legacy grid
+							</li>
+							<li class="fragment">
+								<i class="far fa-square"></i>&nbsp;&nbsp;
+								Documentation ( Docz, Docusaurus )
+							</li>
+							<li class="fragment">
+								<i class="far fa-square"></i>&nbsp;&nbsp;
+								Guide
+							</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Resources</h2>
+						<ul>
+							<li>
+								<a href="https://medium.freecodecamp.org/why-i-left-gulp-and-grunt-for-npm-scripts-3d6853dd22b8">Why I left gulp</a>
+							</li>
+							<li>
+								<a href="https://github.com/lerna/lerna">Lerna</a>
+								, <a href="https://medium.com/@maoberlehner/monorepos-in-the-wild-33c6eb246cb9">Monorepo's in the wild</a>
+							</li>
+							<li>
+								<a href="https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/">ITCSS</a>
+								, <a href="https://css-tricks.com/bem-101/">BEM</a>
+								, <a href="https://css-tricks.com/css-modules-part-1-need/">CSSmodules</a>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<p><i class="far fa-smile-wink"></i>&nbsp;&nbsp;Thanks!</p>
+						<p><img src="./high-five-thanks.jpg" alt="High Five"></p>
+					</section>
+					<section>
+						<p>Questions?</p>
+						<p><img src="./red-dot.png" alt="Questions"></p>
+					</section>
+				</section>
 			</div>
 		</div>
 
