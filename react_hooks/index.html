@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css" />
+		<link rel="stylesheet" href="css/theme/black.css" />
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css" />
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match(/print-pdf/gi)
+				? 'css/print/pdf.css'
+				: 'css/print/paper.css';
+			document.getElementsByTagName('head')[0].appendChild(link);
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section>
+						<h1 style="text-transform: none;">React hooks</h1>
+						<p>
+							State, Lifecycle & Custom functionality <br />
+							inside function based components
+						</p>
+						<p>
+							<small><a href="https://github.com/facebook/react/blob/master/CHANGELOG.md#1680-february-6-2019">From React v16.8</a></small>
+						</p>
+					</section>
+					<section>
+						<h2 style="text-transform: none;">Topics</h2>
+						<ul>
+							<li>useState</li>
+							<li>useEffect</li>
+							<li>useRef</li>
+							<li>useReducer</li>
+							<li>extra's</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2 style="text-transform: none;">useState</h2>
+						<ul>
+							<li class="fragment" style="margin-top: 15px;">
+									<pre style="margin: 0;position: relative; top: -5px; width: 800px;"><code class="hljs" data-trim contenteditable>// const [value, setValue] = useState(initialState);</code></pre></li>
+							<li class="fragment" >Function that has access to the state</li>
+							<li class="fragment" >returns Array to destructure</li>
+							<li class="fragment" >needs Initial state</li>
+							<li class="fragment" >value & setValue()</li>
+							<li class="fragment" >setValue(newState)</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2 style="text-transform: none;">useState</h2>
+						<p>Basic example <br><small><a href="">demo</a></small></p>
+						<p>Basic refactor class example <br><small><a href="">demo</a></small></p>
+					</section>
+				</section>
+
+
+				<section>
+					<section>
+						<h2 style="text-transform: none;">useEffect</h2>
+						<ul>
+							<li class="fragment" >Functions like lifecycle methods</li>
+							<li class="fragment" >Runs after react has updated the DOM</li>
+							<li class="fragment" >componentDidMount, componentDidUpdate, and componentWillUnmount combined</li>
+							<li class="fragment" >Does not effect the render cycle</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2 style="text-transform: none;">useEffect</h2>
+						<p>Window example <br><small><a href="">demo</a></small></p>
+						<p>Custom hook example <br><small><a href="">demo</a></small></p>
+						<p>Fetch example <br><small><a href="">demo</a></small></p>
+					</section>
+				</section>
+
+
+
+				<section>
+					<section>
+						<h2 style="text-transform: none;">useRef</h2>
+						<ul>
+							<li class="fragment" >ref is a way to reference a DOM node</li>
+							<li class="fragment" >examples: <a href="https://usehooks.com/useOnClickOutside/">useOnClickOutside</a>, <a href="https://usehooks.com/useOnScreen/">useOnScreen</a></li>
+						</ul>
+					</section>
+
+					<section>
+						<h2 style="text-transform: none;">useRef</h2>
+						<p>Focus example <br><small><a href="">demo</a></small></p>
+					</section>
+				</section>
+
+
+
+				<section>
+					<section>
+						<h2 style="text-transform: none;">useReducer</h2>
+						<ul>
+							<li class="fragment" >When the state is a little bit more complex.</li>
+							<li class="fragment" >To be compared with redux, but on a local state</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2 style="text-transform: none;">useReducer</h2>
+						<p>Counter example <br><small><a href="">demo</a></small></p>
+					</section>
+				</section>
+
+				<section>
+					<h2 style="text-transform: none;">Extra's</h2>
+					<ul>
+						<li class="fragment" ><a href="https://reactjs.org/docs/hooks-rules.html">Rules</a> on hooks. </li>
+						<li class="fragment"><a href="https://www.npmjs.com/package/eslint-plugin-react-hooks">es-lint pugin</a></li>
+						<li class="fragment">
+							<a href="https://usehooks.com/">https://usehooks.com/</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2 style="text-transform: none;">Thanks! Questions?</h2><br>
+					<p><a href="">Next gilde: react hooks pt2.</a></p>
+					<p class="fragment">
+						<small> More in depth examples + other hooks: <br><br>
+							useContext, useCallback, useMemo, useImperativeHandle,<br> useLayoutEffect, useDebugValue
+						</small>
+					</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{
+						src: 'node_modules/prism/prism.js',
+						async: true
+					}
+				]
+			});
+		</script>
+	</body>
+</html>
