@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+
+		<title>React Hooks pt.1</title>
+
+		<link rel="stylesheet" href="css/reveal.css" />
+		<link rel="stylesheet" href="css/theme/black.css" />
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css" />
+		<style>
+			.reveal .pills {
+				display: inline-block;
+				font-weight: bold;
+				background-color: #FFF;
+				color: #222222;
+				border-radius: 3rem;
+				padding: 0 1rem;
+				font-size: 1.5rem;
+				line-height: 1.325;
+				top: -5px;
+				position: relative;
+			}
+		</style>
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match(/print-pdf/gi)
+				? 'css/print/pdf.css'
+				: 'css/print/paper.css';
+			document.getElementsByTagName('head')[0].appendChild(link);
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section>
+						<h1 style="text-transform: none;">Front-end rewrite </h1>
+						<p>
+							<small><a href="">Colaborator service</a></small><br>
+						</p>
+					</section>
+					<section>
+						<p>“This isn’t how I would have written the code” <br>
+						doesn’t qualify as a good reason to rewrite a software project. Not even close.</p>
+					</section>
+				</section>
+				<section>
+					<section><h2 style="text-transform: none;">Good things we didn't have</h2></section>
+					<section>
+						<ul>
+							<li>Dependency injection <span class="pills">npm</span></li>
+							<li class="fragment" >The New Layout framework <span class="pills">bootstrap</span></li>
+							<li class="fragment" >Build tools <span class="pills">scripts</span></li>
+							<li class="fragment" >ES6 <span class="pills">modern js</span></li>
+							<li class="fragment" >Good Code Structure <span class="pills">composition</span></li>
+							<li class="fragment" >JS Module bundling <span class="pills">webpack</span></li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li >Css preprocessors <span class="pills">sass</span></li>
+							<li class="fragment" >Silent Renew <span class="pills">oidc</span></li>
+							<li class="fragment" >shadowDOM <span class="pills">react</span></li>
+							<li class="fragment" >Linting tools <span class="pills">prettier</span></li>
+							<li class="fragment" >A Single page <span class="pills">react</span></li>
+							<li class="fragment" >Re-usable components <span class="pills">react</span></li>
+							<li class="fragment" >A clean implementation of oidc <span class="pills">redux</span></li>
+							<li class="fragment" >i18n <span class="pills">language files</span></li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section><h2 style="text-transform: none;">Bad things we did have (rant <i class="fas fa-laugh-beam"></i>) </h2></section>
+					<section>
+						<ul>
+							<li>jQuery<br><small><a href="">demo</a></small></li>
+							<li class="fragment" ><i class="fas fa-surprise"></i> jquery-ui for 1 component<br><small><a href="">demo</a></small></li>
+							<li class="fragment" >Obscure autocomplete code <br><small><a href="">demo</a></small></li>
+							<li class="fragment" >Spaghetti code <br><small><a href="">demo</a></small></li>
+							<li class="fragment" ><i class="fas fa-surprise"></i> global scoping of window.user<br><small><a href="">demo</a></small></li>
+							<li class="fragment" >unclear oidc login code<br><small><a href="">demo</a></small></li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>Demo 1: show frontend/js/new-user.js line 4</li>
+								<li>Demo 2: show tree of css/vendor/</li>
+								<li>Demo 3: show autocomplete.js</li>
+								<li>Demo 4: show login.js line 34 //removeHashFromURL and line 22 //userFunction</li>
+								<li>Demo 5: stay in login.js and show line 27 and 33 </li>
+								<li>Demo 6: stay in login.js</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<ul>
+							<li>Hard dependency links<br><small><a href="">demo</a></small></li>
+							<li class="fragment" >Inline styling<br><small><a href="">demo</a></small></li>
+							<li class="fragment" >Incorrect use of history<br><small><a href="">demo</a></small></li>
+							<li class="fragment" >Render blocking request<br><small><a href="">demo</a></small></li>
+							<li class="fragment" >Too much requests<br><small><a href="">demo</a></small></li>
+							<li class="fragment" >Extreme div wrapping<br><small><a href="">demo</a></small></li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>Demo 1: show index.html line 82 and 83</li>
+								<li>Demo 2: show profile.html line 78</li>
+								<li>Demo 3: show profile.html line 69</li>
+								<li>Demo 4: show profile.html line 15, 16 and 17</li>
+								<li>Demo 5: show profile.html line 270</li>
+								<li>Demo 6: show profile.html line 262</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<ul>
+							<li>Mindblowing jQuery code <i class="fas fa-laugh-beam"></i><br><small><a href="">demo</a></small></li>
+							<li class="fragment" >Bad html template creation<br><small><a href="">demo</a></small></li>
+							<li class="fragment" >html dependent js code<br><small><a href="">demo</a></small></li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>Demo 1: profile.js line 175</li>
+								<li>Demo 2: show profile.js line 195</li>
+								<li>Demo 3: show profile.js lines 214</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+
+
+				<section>
+					<section><h2 style="text-transform: none;">Created along the way <i class="fas fa-thumbs-up"></i> </h2></section>
+					<section>
+						<ul>
+							<li>Spinner</li>
+							<li>Notification</li>
+							<li>Input & button modifications</li>
+							<li><a href="">demo</a></li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>show components on http://ea-component-lib.uno.persgroep.cloud</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<h3>Thank you!</h3>
+				</section>
+			</div>
+		</div>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{
+						src: 'node_modules/prism/prism.js',
+						async: true
+					}
+				]
+			});
+		</script>
+	</body>
+</html>
