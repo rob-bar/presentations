@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>React & COLSER rewrite</title>
+
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/black.css" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css" />
+    <style>
+      .reveal .pills {
+        display: inline-block;
+        font-weight: bold;
+        background-color: #fff;
+        color: #222222;
+        border-radius: 3rem;
+        padding: 0 1rem;
+        font-size: 1.5rem;
+        line-height: 1.325;
+        top: -5px;
+        position: relative;
+      }
+      .reveal .react-logo-top {
+        border: none;
+        background: none;
+        width: 5rem;
+        position: fixed;
+        top: 0.3125rem;
+        right: 0.3125rem;
+      }
+      .reveal .fragment-list {
+        text-align: center;
+        list-style-type: none;
+      }
+      .reveal .fragment-list li {
+        padding: 0.5rem 0;
+      }
+
+      .reveal .highlight {
+        background-color: #61dafb;
+        padding: 0 0.5rem;
+      }
+    </style>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? "css/print/pdf.css"
+        : "css/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <section>
+            <h1 style="text-transform: none;">Introduction to</h1>
+            <img
+              data-src="./assets/react-logo.png"
+              style="border: none; background:none; width: 20rem"
+              alt="react-logo"
+            />
+            <h1 style="text-transform: none;">React</h1>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1 style="text-transform: none;">What is React?</h1>
+          </section>
+          <section>
+            <div>
+              <img
+                data-src="./assets/react-logo.png"
+                style="width: 5rem; border: none; background:none;"
+                alt="react-logo"
+              />
+            </div>
+
+            <h3 style="font-size: 3rem;">
+              What is React?
+            </h3>
+            <ul class="fragment-list">
+              <li>
+                A JS <span class="highlight">library</span> for building
+                <span class="highlight">interactive</span> UI's
+              </li>
+              <li class="fragment">
+                <span class="highlight">Component</span> based
+              </li>
+              <li class="fragment">
+                Application <span class="highlight">state</span> management
+              </li>
+              <li class="fragment">
+                <span class="highlight">Modern JS</span> (ES6+) transpiled with
+                babel
+              </li>
+              <li class="fragment">
+                Manipulates <span class="highlight">virtual DOM</span> instead
+                of browser's DOM
+              </li>
+              <li class="fragment">
+                Built by <span class="highlight">Facebook</span>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3 style="text-transform: none; font-size: 3rem;">
+              A JS library for building interactive UI's
+            </h3>
+            <div
+              style="display: flex; width: 100%; justify-content: space-around;"
+            >
+              <div class="lib-container">
+                <span>
+                  <img
+                    data-src="./assets/react-logo.png"
+                    alt="react-logo"
+                    style="border: none; background:none; width: 10rem"
+                  />
+                </span>
+                <div
+                  class="fragment"
+                  style="font-size: 1rem;"
+                  data-fragment-index="1"
+                >
+                  Library
+                </div>
+                <div
+                  class="fragment"
+                  style="font-size: 1rem;"
+                  data-fragment-index="2"
+                >
+                  Small, fast bundles
+                </div>
+                <div
+                  class="fragment"
+                  style="font-size: 1rem;"
+                  data-fragment-index="3"
+                >
+                  Core features
+                </div>
+              </div>
+              <div class="lib-container">
+                <span>
+                  <img
+                    data-src="./assets/angular-logo.svg"
+                    alt="angular-logo"
+                    style="border: none; background:none; width: 9.5rem"
+                  />
+                </span>
+                <div
+                  class="fragment"
+                  style="font-size: 1rem;"
+                  data-fragment-index="1"
+                >
+                  Framework
+                </div>
+                <div
+                  class="fragment"
+                  style="font-size: 1rem;"
+                  data-fragment-index="2"
+                >
+                  Medium-sized, fast bundles
+                </div>
+                <div
+                  class="fragment"
+                  style="font-size: 1rem;"
+                  data-fragment-index="3"
+                >
+                  Huge set of features
+                </div>
+              </div>
+              <div class="lib-container">
+                <span>
+                  <img
+                    data-src="./assets/vue-logo.png"
+                    alt="vue-logo"
+                    style="border: none; background:none; width: 10rem"
+                  />
+                </span>
+                <div
+                  class="fragment"
+                  style="font-size: 1rem;"
+                  data-fragment-index="1"
+                >
+                  Library
+                </div>
+                <div
+                  class="fragment"
+                  style="font-size: 1rem;"
+                  data-fragment-index="2"
+                >
+                  Small, fast bundles
+                </div>
+                <div
+                  class="fragment"
+                  style="font-size: 1rem;"
+                  data-fragment-index="3"
+                >
+                  Core features
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3 style="text-transform: none; font-size: 3rem;">
+              Component based
+            </h3>
+            <div>
+              <span>
+                <img
+                  data-src="./assets/code.png"
+                  style="border: none; background:none; width: 40rem"
+                />
+              </span>
+              <span>
+                <img
+                  data-src="./assets/lego.png"
+                  style="border: none; background:none; width: 20rem; margin: 0 5rem 5rem 5rem;"
+                />
+              </span>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3 style="font-size: 3rem; ">
+              Application state management
+            </h3>
+            <img
+              data-src="./assets/code2.png"
+              style="border: none; background:none; width: 35rem;"
+            />
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3 style="text-transform: none; font-size: 3rem;">
+              Modern JS - JSX
+            </h3>
+            <div
+              style="display: flex; justify-content: center; align-items: center"
+            >
+              <img
+                data-src="./assets/code3.png"
+                style="border: none; background:none; width: 35rem;"
+              />
+              <img
+                data-src="./assets/code4.png"
+                style="border: none; background:none; width: 35rem; margin-left: 5rem;"
+              />
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3 style="text-transform: none; font-size: 3rem;">
+              Manipulates virtual DOM instead of browser's DOM
+            </h3>
+            <img
+              src="./assets/vdom.png"
+              alt="virtual DOM"
+              style="width: 40rem;"
+            />
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3 style="text-transform: none; font-size: 3rem;">
+              Data driven with props
+            </h3>
+            <div
+              style="display: flex; justify-content: center; align-items: center"
+            >
+              <img
+                data-src="./assets/code5.png"
+                style="border: none; background:none; width: 35rem;"
+              />
+              <img
+                data-src="./assets/code6.png"
+                style="border: none; background:none; width: 35rem; margin-left: 5rem;"
+              />
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3 style="text-transform: none; font-size: 3rem;">Community</h3>
+            <ul class="fragment-list">
+              <li>
+                Built by Facebook
+              </li>
+              <li class="fragment">
+                Maintained by the Open Source Community
+              </li>
+              <li class="fragment">
+                A lot of big websites and webapps running React:
+              </li>
+              <li class="fragment">
+                Netflix - Facebook - Airbnb - Uber - ...
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section></section>
+        <section>
+          <section>
+            <h1 style="text-transform: none;">Front-end rewrite</h1>
+            <p>
+              <small><a href="">Colaborator service</a></small
+              ><br />
+            </p>
+          </section>
+          <section>
+            <p>
+              “This isn’t how I would have written the code” <br />
+              doesn’t qualify as a good reason to rewrite a software project.
+              Not even close.
+            </p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2 style="text-transform: none;">Good things we didn't have</h2>
+          </section>
+          <section>
+            <ul>
+              <li>Dependency injection <span class="pills">npm</span></li>
+              <li class="fragment">
+                The New Layout framework <span class="pills">bootstrap</span>
+              </li>
+              <li class="fragment">
+                Build tools <span class="pills">scripts</span>
+              </li>
+              <li class="fragment">ES6 <span class="pills">modern js</span></li>
+              <li class="fragment">
+                Good Code Structure <span class="pills">composition</span>
+              </li>
+              <li class="fragment">
+                JS Module bundling <span class="pills">webpack</span>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <ul>
+              <li>Css preprocessors <span class="pills">sass</span></li>
+              <li class="fragment">
+                Silent Renew <span class="pills">oidc</span>
+              </li>
+              <li class="fragment">
+                shadowDOM <span class="pills">react</span>
+              </li>
+              <li class="fragment">
+                Linting tools <span class="pills">prettier</span>
+              </li>
+              <li class="fragment">
+                A Single page <span class="pills">react</span>
+              </li>
+              <li class="fragment">
+                Re-usable components <span class="pills">react</span>
+              </li>
+              <li class="fragment">
+                A clean implementation of oidc <span class="pills">redux</span>
+              </li>
+              <li class="fragment">
+                i18n <span class="pills">language files</span>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2 style="text-transform: none;">
+              Bad things we did have (rant <i class="fas fa-laugh-beam"></i>)
+            </h2>
+          </section>
+          <section>
+            <ul>
+              <li>
+                jQuery<br /><small><a href="">demo</a></small>
+              </li>
+              <li class="fragment">
+                <i class="fas fa-surprise"></i> jquery-ui for 1 component<br /><small
+                  ><a href="">demo</a></small
+                >
+              </li>
+              <li class="fragment">
+                Obscure autocomplete code <br /><small
+                  ><a href="">demo</a></small
+                >
+              </li>
+              <li class="fragment">
+                Spaghetti code <br /><small><a href="">demo</a></small>
+              </li>
+              <li class="fragment">
+                <i class="fas fa-surprise"></i> global scoping of window.user<br /><small
+                  ><a href="">demo</a></small
+                >
+              </li>
+              <li class="fragment">
+                unclear oidc login code<br /><small><a href="">demo</a></small>
+              </li>
+            </ul>
+            <aside class="notes">
+              <ul>
+                <li>Demo 1: show frontend/js/new-user.js line 4</li>
+                <li>Demo 2: show tree of css/vendor/</li>
+                <li>Demo 3: show autocomplete.js</li>
+                <li>
+                  Demo 4: show login.js line 34 //removeHashFromURL and line 22
+                  //userFunction
+                </li>
+                <li>Demo 5: stay in login.js and show line 27 and 33</li>
+                <li>Demo 6: stay in login.js</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <ul>
+              <li>
+                Hard dependency links<br /><small><a href="">demo</a></small>
+              </li>
+              <li class="fragment">
+                Inline styling<br /><small><a href="">demo</a></small>
+              </li>
+              <li class="fragment">
+                Incorrect use of history<br /><small><a href="">demo</a></small>
+              </li>
+              <li class="fragment">
+                Render blocking request<br /><small><a href="">demo</a></small>
+              </li>
+              <li class="fragment">
+                Too much requests<br /><small><a href="">demo</a></small>
+              </li>
+              <li class="fragment">
+                Extreme div wrapping<br /><small><a href="">demo</a></small>
+              </li>
+            </ul>
+            <aside class="notes">
+              <ul>
+                <li>Demo 1: show index.html line 82 and 83</li>
+                <li>Demo 2: show profile.html line 78</li>
+                <li>Demo 3: show profile.html line 69</li>
+                <li>Demo 4: show profile.html line 15, 16 and 17</li>
+                <li>Demo 5: show profile.html line 270</li>
+                <li>Demo 6: show profile.html line 262</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <ul>
+              <li>
+                Mindblowing jQuery code <i class="fas fa-laugh-beam"></i
+                ><br /><small><a href="">demo</a></small>
+              </li>
+              <li class="fragment">
+                Bad html template creation<br /><small
+                  ><a href="">demo</a></small
+                >
+              </li>
+              <li class="fragment">
+                html dependent js code<br /><small><a href="">demo</a></small>
+              </li>
+            </ul>
+            <aside class="notes">
+              <ul>
+                <li>Demo 1: profile.js line 175</li>
+                <li>Demo 2: show profile.js line 195</li>
+                <li>Demo 3: show profile.js lines 214</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2 style="text-transform: none;">
+              Created along the way <i class="fas fa-thumbs-up"></i>
+            </h2>
+          </section>
+          <section>
+            <ul>
+              <li>Spinner</li>
+              <li>Notification</li>
+              <li>Input & button modifications</li>
+              <li><a href="">demo</a></li>
+            </ul>
+            <aside class="notes">
+              <ul>
+                <li>
+                  show components on http://ea-component-lib.uno.persgroep.cloud
+                </li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <h3>Thank you!</h3>
+        </section>
+      </div>
+    </div>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: "plugin/markdown/marked.js" },
+          { src: "plugin/markdown/markdown.js" },
+          { src: "plugin/notes/notes.js", async: true },
+          {
+            src: "node_modules/prism/prism.js",
+            async: true
+          }
+        ]
+      });
+    </script>
+  </body>
+</html>

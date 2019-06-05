@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>React & COLSER rewrite</title>
+
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/black.css" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css" />
+    <style>
+      .reveal .pills {
+        display: inline-block;
+        font-weight: bold;
+        background-color: #fff;
+        color: #222222;
+        border-radius: 3rem;
+        padding: 0 1rem;
+        font-size: 1.5rem;
+        line-height: 1.325;
+        top: -5px;
+        position: relative;
+      }
+      .reveal .react-logo-top {
+        border: none;
+        background: none;
+        width: 5rem;
+        position: fixed;
+        top: 0.3125rem;
+        right: 0.3125rem;
+      }
+      .reveal .fragment-list {
+        text-align: center;
+        list-style-type: none;
+      }
+      .reveal .fragment-list li {
+        padding: 0.5rem 0;
+      }
+
+      .reveal .highlight {
+        background-color: #61dafb;
+        padding: 0 0.5rem;
+      }
+    </style>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? "css/print/pdf.css"
+        : "css/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2 style="text-transform: none">React or VanillaJs?</h2>
+        </section>
+
+        <section>
+          <ul>
+            <li>Context</li>
+            <li class="fragment">User Experience</li>
+            <li class="fragment">Development</li>
+            <li class="fragment">Reliability</li>
+            <li class="fragment">Maintainability</li>
+            <li class="fragment">Testability</li>
+            <li class="fragment">Performance</li>
+            <li class="fragment">What about the backend?</li>
+            <li class="fragment">Conclusion</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 style="text-transform: none">Context</h2>
+          <aside class="notes">
+            A lot of the complexity of the UI is determined by the way the new <b>Print Planner is designed</b>. <br>
+            We want our internal applications to have the same look & feel and want to add more of the functionality the modern web offers us. <br>
+            The current application is written in <b>flex</b>. This is a <b>single page app</b> which has the endpoints designed in AMF.<br>
+
+            <ul>
+              <li>Conditional rendering</li>
+              <li>Multi select</li>
+              <li>Collapsing</li>
+              <li>Ctrl/command click</li>
+              <li>Drag and drop</li>
+              <li>Filtering</li>
+              <li>Zooming</li>
+              <li>Detail views + modals</li>
+              <li>Keyboard accessibility and shortcuts</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h2 style="text-transform: none">User Experience</h2>
+          <aside class="notes">
+            <h3>React</h3>
+            <p>Print planning is a <b>crucial job</b> in our organization.
+            A fast application, with no extra page loads or re-renders.</p>
+
+            <p>When it comes to user experience, we can <b>relate it to Performance</b>.
+            But this is much more, things like placement of buttons.
+            Zooming controls, collapsing content. Giving the user feedback. User experience <b>stands for the qualifier that makes the application easy and pleasant to use for the user</b>. React can surely help with this, there are tons of libraries that can handle things like dragging, zooming, collapsing, handling browser api's.</p>
+
+            <p>When it comes to browser rendering, React will load all the html inside the application out of the box with the power of JS and Virtual DOM. This is where classic html can be faster. But when we look at server side rendering, this won't be the case anymore. Server side rendering, renders the html as if it would be written in the html file with Vanilla JS. So the power of both worlds.</p>
+
+            <h3>Vanilla</h3>
+            <p>We can load more html as plain html in the browser if we go for a vanilla approach. The initial load of the page will be a bit faster but this at the cost of loading in other parts of the JS.</p>
+
+            <p>As for user interactions like dragging, zooming, collapsing, handling browser api's. There are also lots of Vanilla JS libraries available that will deliver these functionalities. The only difference is, is that they are scattered over the community. </p>
+          </aside>
+        </section>
+        <section>
+          <h2 style="text-transform: none">Development</h2>
+          <aside class="notes">
+            <h3>React</h3>
+            <p>As the designs show, there are <b>a lot of components which can be re-used on different 'pages'</b> in the application.
+            Also, there is a lot of user interaction and DOM manipulation designed which can be handled by the library.</p>
+
+            <p>Create-react-app offers:</p>
+            <ul>
+              <li>Code splitting with dynamic imports</li>
+              <li>Proper Babel and Webpack config</li>
+              <li>Built-in Eslint configuration</li>
+              <li>CSS post-processing (autoprefixing and minification)</li>
+              <li>Service workers (offline/cache - first)</li>
+              <li>Testing integration (Jest)</li>
+              <li>Hot-reloading for dev and several other available scripts (start-test-build-eject)</li>
+              <li>Browserslist included</li>
+              <li>Possibility to eject the application and make custom configurations</li>
+            </ul>
+
+            <h3>Vanilla</h3>
+            <p>If we look at building the app with Vanilla JS, we must know that the things that are already in a create-react-app for example, are not within the custom setup for Vanilla JS. Things like module loading, es6+, build tools, linting tools.
+            All those good things that you can find there will be <b>done manually</b> in a Vanilla JS project. Not too hard to do. But, some extra steps for development.
+            The proper setup of all of the things create-react-app offers us out of the box, will result in an initial raise of the development. </p>
+
+            <p>Our viewpoint is that <b>we will still need a template engine</b>, be that on the back-end or front-end. When using a template engine we'll <b>create another dependency</b>, this is built into react itself. So no points on this side.</p>
+
+            <p>Maybe one thing in the advantage of Vanilla js is that <b>there is no library like React to be learned</b>. Then again, if we want a modern js app. There is ES6, 7 and 8 to be learned as well. Same goes for HTML and CSS. What about new browser implementation like the <modal> tag or like css grid. If a back ender wants to change front-end code, there is no working around the fact that you have to know the ins and outs</p>
+
+            <p>Knowledge sharing is of great importance if we'll build an application like the planner.</p>
+          </aside>
+        </section>
+        <section>
+          <h2 style="text-transform: none">Reliability</h2>
+          <aside class="notes">
+            <h3>React</h3>
+            <p>Built by Facebook and maintained by the Open Source Community. Facebook has a dedicated React team which tests new functionality in their own organization before shipping it. This results in very stable releases which are already battle tested before the official release to the open source.</p>
+            <p>Designing the print planner as a Progressive Web App with service workers result in a offline/cache-first application. The availability of this application is crucial, even offline availability. In 'create-react-app', service workers are available but they are opt-in.</p>
+
+            <h3>Vanilla</h3>
+
+            <p>In both cases we need the end user to have JS enabled.
+            To solve this, we can advice/force our end users to use modern browsers since this is an internal application.</p>
+            <p>PWA approach also possible but with a lot more configuration.</p>
+          </aside>
+        </section>
+        <section>
+          <h2 style="text-transform: none">Maintainability</h2>
+          <aside class="notes">
+            <h3>React</h3>
+            <p>Component based model where new functionality should be easily implemented. 
+            If React gets old and obsolete by the community there are some ways to exit away from the framework. </p>
+            <p>By using the browser's shadow DOM and web components in combination with a refactoring technique: https://gitlab.com/mishunov/frankenstein-demo/tree/migration/jquery-to-react
+            Above example describes a migration from jQuery to React.</p>
+            <p>This is a huge advantage against Vanilla JS, because we are already working in components. Web components are a huge thing in the browser world. </p>
+            <p>The gap to move to another framework is a lot smaller when going for React instead of Vanilla JS. </p>
+            <h3>Vanilla</h3>
+            <p>With a proper configuration (Babel/Webpack/...) the latest functionality in JS can be used for development and get transpiled to code the browser can handle. </p>
+            <p>To maintain vanilla Js project we'll have to update our configuration setup constantly and consistently to use the latest Babel/Webpack plugins. In react there is a lot thats been done under the hood. Because React abstracts this away.</p>
+            <p>React wins the whole idea of the template engine because it's baked into the language (JSX).
+            <p>Plus, you have all the js functionalities baked into the language. There is a big advantage.
+            You can't go wrong with a template engine that is custom made for the corresponding framework / library.</p>
+            <p>React's JSX strategy surpasses all template engines.
+            These template engines all have contracts, vocabularies as you will.
+            for example: {#if} or something else, this is an extra learning curve, plus a step away from the html standards.</p>
+            <p>JSX is vanilla js inside html</p>
+          </aside>
+        </section>
+        <section>
+          <h2 style="text-transform: none">Testability</h2>
+          <aside class="notes">
+            <p>In terms of testability there are a lot of options out there. There is only one requirement for writing tests, your code must be module based in js.</p>
+            <p>Some testing frameworks integrate better with React than others.</p>
+            <h3>React</h3>
+            <ul>
+              <li>Jest  → for unit tests</li>
+              <li>Cypress → for end-to-end</li>
+              <li>Enzyme → component testing</li>
+            </ul>
+            <h3>Vanilla</h3>
+            <p>For testabillity, if the code is not well organized or if the code has no clear structure.
+            You can not test parts of js file. You can only test a file in total. Or a component in total. </p>
+          </aside>
+        </section>
+        <section>
+          <h2 style="text-transform: none">Performance</h2>
+          <aside class="notes">
+            <h3>React</h3>
+            <p>A lot of these so called performance issues exist due to bad implementations and usages of React. The biggest issue is shipping too much Javascript which results in slower TTI (Time-to-Interactive). We have to investigate every single ‘page’ in the new Print Planner to see if we need JS on this page, and if so, we should look into the necessity of using React there. This, combined with optimizations such as (XHR) prefetching, code splitting,... should result in a good performance. Even with ideas like React suspense we can load in JS files on the fly.</p>
+            <p>Also, the usage of state improves the performance of apps.
+We don't have to crawl in the DOM to get specific values, state is an object that lives outside of the dom. This object can live on any component of the project. 
+When we change a state value react will pick it up and render the proper component.</p>
+            <h3>Vanilla</h3>
+            <p>When we look at Vanilla JS, aka. no framework. There is a lot more work to be done when it comes to UI components and an optimized rendering algorithm. 
+When using Vanilla JS we will also be more responsible for the structure of the components and the JS. That is where React pushes the developer in the right direction.</p>
+<p>When we look at the planner, structure will be of massive importance due to the size of the application. Of course, performance of good structured Vanilla JS will be less in file size, but slower at runtime. So both win in this case.</p>
+          </aside>
+        </section>
+        <section>
+          <h2 style="text-transform: none">What about the backend?</h2>
+          <aside class="notes">
+            <p>How will we assure a good communication between the backend and the frontend?</p>
+            <p>Are we going REST api or OPENGRAPH?</p>
+            <p>We should take with us what we learned on collab service. Can we rely on things like swagger?</p>
+            <p>Should we provide every Jira ticket with the api information.</p>
+            <p>The frontenders should be able to changes keys and values inside the api and it's doc.</p>
+          </aside>
+        </section>
+        <section>
+          <h2 style="text-transform: none">Conclusion</h2>
+          <aside class="notes">
+            <p>In general, we think we would benefit a lot from a UI library to accomplish the proposed UI.</p>
+            <p>React of itself <b>stands closest to vanilla js</b> compared to other frameworks, see jsx and hooks for example.</p>
+
+            <p>Building a modern web app using the create-react-app toolset would offer us a set of features (Babel, Webpack, Service workers, ...) to ensure a performant and available application, which is crucial for the Print Planner application. </p>
+            <p>This, combined with the power of React as a UI library would enhance the User Experience and reduce the code that needs to be written to achieve the proposed UI. React's DOM manipulations (with the virtual DOM) would offer us snappy, performant UI changes and updates, also resulting in a better user experience. </p>
+            <p>The development cycle will be less complex and more focused on components, different parts of functionality that all fit together in one big puzzle. If we look at stories from Jira for example, react offers us to safely construct those stories using the javascript composition strategy. In advance, we researched frontend testability on the React library and we are going to implement this in the new planner as well, this is mandatory for big applications.</p>
+            <p>The separation of concerns / SRP patern is being challenged by react. We wont' create a legacy project where all is structured according to this patern.</p>
+            <p>We also looked into tools like https://sentry.io/welcome/ these tools will report us errors before the user will do. So we will get a clean grasp on what's to be fixed asap.</p>
+          </aside>
+        </section>
+
+        <section>
+          <h3>Thanks!</h3>
+        </section>
+      </div>
+    </div>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: "plugin/markdown/marked.js" },
+          { src: "plugin/markdown/markdown.js" },
+          { src: "plugin/notes/notes.js", async: true },
+          {
+            src: "node_modules/prism/prism.js",
+            async: true
+          }
+        ]
+      });
+    </script>
+  </body>
+</html>
