@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+		<link rel="stylesheet" href="font.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-color="#000" >
+				</section>
+
+				<section data-background-image="img/campfire.jpg">
+					<h1>Light the fire</h1>
+					<aside class="notes">
+						...
+					</aside>
+				</section>
+
+				<section data-background-image="img/campfire.jpg">
+					<h2>Who am I?</h2>
+					<aside class="notes">
+						...
+					</aside>
+				</section>
+
+				<section data-background-image="img/frontend.jpg">
+					<h2>Independent Fe-dev</h2>
+					<p>@ DPG Media</p>
+					<aside class="notes">
+						...
+					</aside>
+				</section>
+
+				<section data-background-image="img/frontend.jpg">
+					<h2>Also into</h2>
+				</section>
+
+				<section data-background-image="img/me-guitar.jpg" data-background-size="contain">
+					<h2>Heavy music, guitar</h2>
+					<aside class="notes">
+						...
+					</aside>
+				</section>
+
+				<section data-background-image="img/me-cat.jpg" data-background-size="contain">
+					<h2>...and cats</h2>
+					<aside class="notes">
+						...
+					</aside>
+				</section>
+
+				<section data-background-image="img/long-road.jpg" >
+					<h2 class="lightshade">My road...</h2>
+					<aside class="notes">
+						...
+					</aside>
+				</section>
+
+				<section data-background-image="img/consultancy.jpg" >
+					<br><br><br><br><br><br><br>
+					<h4 class="year ">2016 - 2019</h4>
+					<h2> Payroll consultant</h2>
+					<aside class="notes">
+						...
+					</aside>
+				</section>
+
+				<section data-background-image="img/independent.jpg" >
+					<br><br><br><br><br><br><br>
+					<h4 class="year blue lightshade">2019</h4>
+					<h2 class="lightshade">independent</h2>
+					<aside class="notes">
+						...
+					</aside>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				controls: false,
+				progress: false,
+				center: true,
+				hash: true,
+
+				transition: 'fade', // none/fade/slide/convex/concave/zoom
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
