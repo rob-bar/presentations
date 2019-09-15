@@ -20,7 +20,7 @@ Ondertussen ook onbezonnen getrouwd. En dus bij gevolg ook gescheiden na een jaa
 Ik herriner het mij alsof het gisteren was.
 Kris is als eerste tegen mij begonnen op een koude winteravond in een algemene meetingroom waar we toevallig de kamer deelden.
 
-Ik was eerst een klein beetje sceptisch. Zeker toen ik de code van hun website zag. HAHAHA. Maar na ongeveer een kleine 3maand met Vincent in contact te zijn, zijn we toch samen in zee gegaan. [SLIDESWITCH]
+Ik was eerst een klein beetje sceptisch. Zeker toen ik de code van hun website zag. HAHAHA. Maar na ongeveer een kleine 3maand stalking zijn, zijn we toch samen in zee gegaan. [SLIDESWITCH]
 
 Ik herriner mij de eerste sollicitaties met Vincent ook nog heel goed.
 En dat is waar ik hem echt ben beginnen vertrouwen. Omdat ik mijn eigen fighting spirit in hem zag. We gingen eerst bij Mediahuis en dan bij De persgroep. Daar was het raak.
@@ -44,6 +44,15 @@ Dus sprint en haal de modern train.
 [Modern Train]
 Want dit is een moderne tijd, IT...is eindeloos.
 Ook in de frontend wereld komen er razendsnel nieuwe dingen uit. Ik was nog maar React aan het leren en daar waren Next en Gatsby al. Ineens is er Prettier, css-grid, houdini, Parcel, Svelte. Hoe kun je al deze dingen bijhouden?
+
+
+=================
+ADR referentie! (DUURBAAR)
+You are the the conductor. (mogelijke slide)
+
+Taste the different flavours.
+=================
+
 Wel! Dat gaat niet! Je kan onmogelijk alles meteen weten.
 
 [Dead-end]
