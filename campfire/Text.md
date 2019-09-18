@@ -6,19 +6,22 @@ Toen Vincent mij vroeg om dit te doen, zag ik het meteen zitten.
 
 Mijn naam is Robbie Bardijn, ik ben freelance Frontend-end developer bij DPG Media. Mensen die mij wat beter kennen weten dat ik meestal introvert ben, maar soms flap ik er is een sarcastisch of heel slecht mopje uit.
 
+introvert en uit de comfort zone
+
 Ik hou van logica en technologie in het algemeen. Zeker als die dingen te maken hebben met schaken, rubiks cubes of muziek.
 Ik ben ook into heavy muziek, speel gitaar en hou van katten.
 
 Een van mijn zwaktes in het leven is koffie. Haha.
 Ik zou niet zonder kunnen.
 Dit is ongeveer de hoveelheid koffie die ik in mijn cariere zal gedronken hebben.
+Als werknemer heel veel geld v erdioent voor werkgever
 
 Anyhow! De weg die ik heb afgelegd voor ik zelfstandige werd is toch wel vrij lang geweest, in 2009 afgestudeerd aan PIH in kortrijk, een 7 tal jaar in dienst geweet als frontender bij 2 reclamebureaus en een webagency, daar is er uiteraard geprofiteerd geweest van mij. HAHA! Grapje.
 
 Ondertussen ook onbezonnen getrouwd. En dus bij gevolg ook gescheiden na een jaar. Ondertussen was ik aan de slag als Payroll consultant en dat ben ik even gebleven. Veel positieve ervaringen opgedaan, maar ook negatieve. Daar kom ik straks efkes op terug. Dit alles tot ik begin verlede jaar in het meet district van Gent twee scherpe, mysterieuze kerels tegen het lijf loopte.
 
 Ik herriner het mij alsof het gisteren was.
-Kris is als eerste tegen mij begonnen op een koude winteravond in een algemene meetingroom waar we toevallig de kamer deelden.
+Kris is als eerste tegen mij begonnen op een koude winteravond in een algemene meetingroom waar we toevallig de kamer deelden. Hij dacht dat ik een surfer was en vroeg zich af of ik zelfstandige developer was.
 
 Ik was eerst een klein beetje sceptisch. Zeker toen ik de code van hun website zag. HAHAHA. Maar na ongeveer een kleine 3maand stalking zijn, zijn we toch samen in zee gegaan. [SLIDESWITCH]
 
@@ -98,3 +101,12 @@ De eerste stap is een visioen maken. En eraan vasthouden, het zou demax zijn dat
 
 [The edge]
 
+
+[soft skills]
+Solicitatie, met Vincent bij mediahuis en de persgroep
+
+[Don't take anything (too) personal]
+Ego, humor. Wie is hier den besten developer.
+
+
+[Empathising teamplayer x-function teamwork]
