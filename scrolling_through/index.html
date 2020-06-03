@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <!-- <link rel="stylesheet" href="dist/theme/black.css" id="theme" /> -->
+    <link rel="stylesheet" href="dist/theme/night.css" id="theme" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section
+          data-background="https://media.giphy.com/media/xT5LMMjQXvcTi1xh0Q/giphy.gif"
+          data-background-size="contain"
+        >
+          <aside class="notes">
+            <ul>
+              <li>
+                Voorstelling(Hallo, ik ben Robbie Bardijn en ik zou het even
+                over scrolling willen hebben met jullie)
+              </li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h3>View content below the fold.</h3>
+          <aside class="notes">
+            <ul>
+              <li>
+                Als we naar de kern kijken van wat scrollen eigenlijk is, is het
+                simpelweg een mechanisme om content onder de fold te bekijken.
+              </li>
+              <li>
+                Hoe kleiner het scherm hoe minder we zien boven de fold, en dus
+                als gevolg hoe interessanter het scrollmechanisme wordt.
+              </li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h3>How much do we scroll?</h3>
+          <p>Let's do the math.</p>
+        </section>
+
+        <section>
+          <h4>
+            <span class="fragment">90 minutes/day</span
+            ><span class="fragment"> * 30cm/5sec</span
+            ><span class="fragment"> = 324 m/day</span>
+          </h4>
+          <h4>
+            <span class="fragment">324 m/day</span
+            ><span class="fragment"> * 365d</span
+            ><span class="fragment"> = 118km</span>
+          </h4>
+          <aside class="notes">
+            <ul>
+              <li>
+                Als we gemiddeld 90 min/dag op onze smartphone of laptop
+                spenderen.
+              </li>
+              <li>
+                En op dat toestel 30cm per 5sec scrollen.
+              </li>
+              <li>
+                Dan scrollen we ongeveer 324 meter per dag.
+              </li>
+              <li>
+                Als we 324 meter per dag scrollen dan scrollen we ongeveer 118km
+                per jaar.
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section
+          data-background="/dist/img/robert.jpg"
+          data-background-size="contain"
+        ></section>
+        <section>
+          <h3>Common tools for scrolling</h3>
+        </section>
+        <section>
+          <h3>Box Overflow Control</h3>
+          <pre><code class="language-css">.selector {
+  overflow: auto | visible | hidden | scroll;
+  overflow-x: auto | visible | hidden | scroll;
+  overflow-y: auto | visible | hidden | scroll;
+}</code></pre>
+          <aside class="notes">
+            <ul>
+              <li>
+                Ik denk 1 van de meest bekende css properties als het gaat over
+                scrolling is de <b>overflow</b> property uit de css level 2
+                spec. We gebruiken deze wanneer de content te groot is voor de
+                bestemming. Overflow x en y kwamen later in de overflow module 3
+                spec.
+              </li>
+              <li>
+                Default op auto, wil zeggen als de content te groot wordt dan
+                verschijnt de scrollbar.
+              </li>
+              <li>
+                Er zijn 2 types overflow: <b>ink overlow</b> en
+                <b>scrollable overflow</b>. Ink overlow zijn elementen zoals box
+                shadow, border-images, text-decoration, etc <br />
+                Scrollable overflow is de content dat uit de de content box
+                valt.
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>Text Overflow Control</h3>
+          <pre><code class="language-css">.selector {
+  text-overflow: clip | ellipsis;
+  white-space: normal | nowrap | pre | pre-wrap | pre-line | break-spaces;
+}</code></pre>
+          <aside class="notes">
+            <ul>
+              <li>
+                Met text-overflow kunnen we drie puntjes acter en text zetten
+                wanneer die te lang wordt. Een voorwaarde hierbij is wel dat de
+                container de css => overflow: hidden; en white-space: nowrap;
+                heeft.
+              </li>
+              <li>
+                Er is nog een probleem met text overflow, de text overflow
+                property heeft enkel invloed op de inline progressie richting.
+                dus deze property kan niet werken over verschillende lijnen.
+              </li>
+              <li>
+                <b>normal</b>: lijnen worden onderbroken wanneer nodig om de
+                lineboxes te vullen. <br />
+                <b>nowrap</b>: lijnen worden niet onderbroken. Dus geen
+                linebreaks.<br />
+                <b>pre</b>: sequenties van whitespaces wordt behouden. Lijnen
+                worden enkel onderbroken op brs en op newline karakters.<br />
+                <b>pre-wrap</b>: sequenties van whitespaces wordt behouden.
+                Lijnen worden onderbroken op brs en op newline karakters maar
+                ook om de line box te vullen.<br />
+                pre-line: sequenties van whitespaces wordt toegeklapt. Lijnen
+                worden onderbroken op brs en op newline karakters en ook op
+                lijnen om de line box te vullen.<br />
+                <b>break-spaces</b>: is zoals pre wrap maar dan met uitzodering
+                van sequenties van whitespaces en tabs wordt behouden ook op het
+                einde van de lijn.<br />
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>Scroll Control</h3>
+          <ul>
+            <li>2 specs released: scroll snap points and the current one.</li>
+            <li></li>
+          </ul>
+          <aside class="notes">
+            <ul>
+              <li>
+                Initieel was er een andere spec release, scrol snap points.
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h2>urls</h2>
+          <ul>
+            <li>
+              https://developer.mozilla.org/en-US/docs/Web/CSS/white-space
+            </li>
+            <li>
+              https://drafts.csswg.org/css-overflow-3/#propdef-overflow
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        controls: false,
+        progress: false,
+        transition: "slide", // none/fade/slide/convex/concave/zoom
+        transitionSpeed: "slow", // default/fast/slow
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
