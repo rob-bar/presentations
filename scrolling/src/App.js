@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ScrollDistance from "./components/ScrollDistance";
 import SlideColor from "./components/SlideColor";
+import Prism from "prismjs";
 function App() {
   return (
     <div className="App reveal">
@@ -33,7 +34,27 @@ function App() {
         <h3>Common tools for scrolling</h3>
       </SlideColor>
       <SlideColor>
-        <h3>Common tools for scrolling</h3>
+        <h3>Box Overflow Control</h3>
+        <pre>
+          <code className="language-css">
+            {`.selector {
+  overflow: auto | visible | hidden | scroll;
+  overflow-x: auto | visible | hidden | scroll;
+  overflow-y: auto | visible | hidden | scroll;
+}`}
+          </code>
+        </pre>
+      </SlideColor>
+      <SlideColor>
+        <h3>Text Overflow Control</h3>
+        <pre>
+          <code className="language-css">
+            {`.selector {
+  text-overflow: clip | ellipsis;
+  white-space: normal | nowrap | pre | pre-wrap | pre-line | break-spaces;
+}`}
+          </code>
+        </pre>
       </SlideColor>
       <ScrollDistance />
     </div>
