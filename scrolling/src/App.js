@@ -90,10 +90,10 @@ function App() {
           <code className="language-css">
             {`.parent {
   scroll-snap-type: none | x | y | both | block | inline | y mandatory | x proximity | both proximity;
-  scroll-snap-stop: normal | always;
-  scroll-padding: auto | 0 | 20px | 2em;
-  scroll-padding-inline: auto | 0 | 20px | 2em;
-  scroll-padding-block: auto | 0 | 20px | 2em;
+  scroll-padding: auto | 0 | 20px | 1em 2em 3em 4em;
+  scroll-padding-inline: auto | 0 | 20px | 2em 1em;
+  scroll-padding-block: auto | 0 | 20px | 2em 1em;
+  scroll-snap-stop: normal | always; // (at risk | experimental)
 }`}
           </code>
         </pre>
@@ -118,28 +118,28 @@ function App() {
           <code className="language-css">
             {`html {
   scroll-behavior: auto | smooth; //(no ie, no safari)  
-  overscroll-behavior: auto | contain | none | auto contain;
+  overscroll-behavior: auto | contain | none | auto contain; //(no safari)
   scrollbar-color: red blue | red | blue; //(only ff)
   scrollbar-width: auto | thin | none; //(only ff)
 }`}
           </code>
         </pre>
       </SlideColor>
-      <SlideGif src="/img/scrolls.jpg" alt="Duck" />
       <SlideColor>
         <h3>Alter scrollbar on MacOS</h3>
         <p>System preferences > general > show scrollbars</p>
       </SlideColor>
+      <SlideGif src="/img/scrolls.jpg" alt="Duck" />
       <SlideColor>
         <h3>Scroll snap support</h3>
         <p>
           <a href="https://caniuse.com/#feat=css-snappoints">Can I Use</a>
         </p>
       </SlideColor>
-      <SlideGif src="/img/dawson.jpg" alt="Dawson" />
       <SlideColor>
         <h3>Thank you ;)</h3>
       </SlideColor>
+      <SlideGif src="/img/dawson.jpg" alt="Dawson" />
       <ScrollDistance />
     </div>
   );

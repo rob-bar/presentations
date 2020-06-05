@@ -11,6 +11,8 @@ body,
 }
 
 .App {
-  overflow: scroll;
+  overflow-y: scroll;
+  scrollbar-color: #171a1f white;
+  scrollbar-width: thin;
   scroll-snap-type: y proximity;
 }
