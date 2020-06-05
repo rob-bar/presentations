@@ -7,4 +7,10 @@ body,
 #root,
 .App {
   height: 100%;
+  overflow: hidden;
+}
+
+.App {
+  overflow: scroll;
+  scroll-snap-type: y proximity;
 }

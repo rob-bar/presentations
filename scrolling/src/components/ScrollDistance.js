@@ -4,15 +4,19 @@ import styled from "styled-components";
 const ScrollDistance = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
-    const position = window.pageYOffset;
+    const position = document.querySelector(".App").scrollTop;
     setScrollPosition(((position / 89) * 2).toFixed(2));
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    document
+      .querySelector(".App")
+      .addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      document
+        .querySelector(".App")
+        .removeEventListener("scroll", handleScroll);
     };
   }, []);
 

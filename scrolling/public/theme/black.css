@@ -253,10 +253,7 @@ section.has-light-background h6 {
 }
 
 .reveal small {
-  display: inline-block;
-  font-size: 0.6em;
-  line-height: 1.2em;
-  vertical-align: top;
+  font-size: 0.5em;
 }
 
 .reveal small * {
@@ -267,14 +264,14 @@ section.has-light-background h6 {
  * LINKS
  *********************************************/
 .reveal a {
-  color: #42affa;
+  color: #fff;
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
 .reveal a:hover {
-  color: #8dcffc;
-  text-shadow: none;
+  color: #fff;
+  text-decoration: underline;
   border: none;
 }
 

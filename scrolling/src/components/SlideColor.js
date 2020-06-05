@@ -14,6 +14,7 @@ const SlideColor = ({ children }) => {
 
 const MySlide = styled.section`
   background-color: ${(props) => props.color.color};
+  scroll-snap-align: start;
   height: 100%;
   display: flex;
   justify-content: center;
