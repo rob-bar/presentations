@@ -104,9 +104,9 @@ function App() {
           <code className="language-css">
             {`.child {
   scroll-snap-align: none | start | center | end | start end;
-  scroll-margin: auto | 0 | 20px | 2em;
-  scroll-margin-inline: auto | 0 | 20px | 2em;
-  scroll-margin-block: auto | 0 | 20px | 2em;
+  scroll-margin: auto | 0 | 20px | 1em 2em 3em 4em;
+  scroll-margin-inline: auto | 0 | 20px | 2em 1em;
+  scroll-margin-block: auto | 0 | 20px | 2em 1em;
 }`}
           </code>
         </pre>
