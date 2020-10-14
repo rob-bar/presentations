@@ -3,6 +3,7 @@ import React from "react";
 import ScrollDistance from "./components/ScrollDistance";
 import SlideColor from "./components/SlideColor";
 import SlideGif from "./components/SlideGif";
+// eslint-disable-next-line no-unused-vars
 import Prism from "prismjs";
 
 function App() {
@@ -20,16 +21,8 @@ function App() {
         <h5>Let's do the math</h5>
       </SlideColor>
       <SlideColor>
-        <h4>
-          <span class="fragment">90 minutes/day</span>
-          <span class="fragment"> * 30cm/5sec</span>
-          <span class="fragment"> = 324 m/day</span>
-        </h4>
-        <h4>
-          <span class="fragment">324 m/day</span>
-          <span class="fragment"> * 365d</span>
-          <span class="fragment"> = 118km</span>
-        </h4>
+        <h4>90 minutes/day * 30cm/5sec = 324 m/day</h4>
+        <h4>324 m/day * 365d = 118km</h4>
       </SlideColor>
       <SlideGif src="/img/robert.jpg" alt="Cat" />
       <SlideColor>
