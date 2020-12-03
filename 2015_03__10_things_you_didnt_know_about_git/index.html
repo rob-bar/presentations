@@ -1,145 +1,224 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
 
-	<head>
-		<meta charset="utf-8">
+    <title>10 things you didn't know about git</title>
 
-		<title>10 things you didn't know about git</title>
+    <meta
+      name="description"
+      content="A framework for easily creating beautiful presentations using HTML"
+    />
+    <meta name="author" content="Hakim El Hattab" />
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/serif.css" id="theme" />
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/serif.css" id="theme">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css" />
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write(
+        '<link rel="stylesheet" href="css/print/' +
+          (window.location.search.match(/print-pdf/gi) ? "pdf" : "paper") +
+          '.css" type="text/css" media="print">'
+      );
+    </script>
 
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-		<script>
-			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-		</script>
+    <!--[if lt IE 9]>
+      <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>10 things you didn't know about git</h2>
+        </section>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
+        <section>
+          <h2>Conventions</h2>
+          <small><span>commit</span> = a commit SHA1 hash</small><br />
+          <small
+            ><span>ref</span> = a relative pointer HEAD^, HEAD~5, HEAD@{5},
+            branch~3</small
+          ><br />
+          <small
+            ><span>file</span>, <span>conflictedfile</span> = filenames
+            (style.css)</small
+          ><br />
+          <small><span>remoteref</span> = remote refs (origin)</small><br />
+          <small
+            ><span>branchname</span>, <span>currentbranch</span>,
+            <span>targetbranch</span> = a branchname (master)</small
+          ><br />
+        </section>
 
-				<section>
-					<h2>10 things you didn't know about git</h2>
-				</section>
+        <section>
+          <h2>Resolve merging conflicts faster</h2>
+          <small>git diff HEAD</small><br />
+          <small>git diff MERGE_HEAD</small><br />
+          <small
+            >git checkout --ours or --theirs <span>conflictedfile</span></small
+          ><br />
+        </section>
 
-				<section>
-					<h2>Conventions</h2>
-					<small><span>commit</span> = a commit SHA1 hash</small><br/>
-					<small><span>ref</span> = a relative pointer HEAD^, HEAD~5, HEAD@{5}, branch~3</small><br/>
-					<small><span>file</span>, <span>conflictedfile</span> = filenames (style.css)</small><br/>
-					<small><span>remoteref</span> = remote refs (origin)</small><br/>
-					<small><span>branchname</span>, <span>currentbranch</span>, <span>targetbranch</span> = a branchname (master)</small><br/>
-				</section>
+        <section>
+          <h2>Altering commits</h2>
+          <small
+            >git reset --soft --mixed --hard <span>commit</span>/<span
+              >ref</span
+            >
+            (-- <span>file</span>)</small
+          ><br />
+          <small>git cherry-pick <span>commit</span>/<span>ref</span></small
+          ><br />
+          <small>git revert <span>commit</span>/<span>ref</span></small
+          ><br />
+          <small
+            >git rebase <span>currentbranch</span>
+            <span>targetbranch</span></small
+          ><br />
+        </section>
 
-				<section>
-					<h2>Resolve merging conflicts faster</h2>
-					<small>git diff HEAD</small><br/>
-					<small>git diff MERGE_HEAD</small><br/>
-					<small>git checkout --ours or --theirs <span>conflictedfile</span></small><br/>
-				</section>
+        <section>
+          <h2>Altering the latest <span>commit</span></h2>
+          <small
+            >git commit --amend -m "this will override the last commit"</small
+          ><br />
+        </section>
 
-				<section>
-					<h2>Altering commits</h2>
-					<small>git reset --soft --mixed --hard <span>commit</span>/<span>ref</span> (-- <span>file</span>)</small><br/>
-					<small>git cherry-pick <span>commit</span>/<span>ref</span></small><br/>
-					<small>git revert <span>commit</span>/<span>ref</span></small><br/>
-					<small>git rebase <span>currentbranch</span> <span>targetbranch</span></small><br/>
-				</section>
+        <section>
+          <h2>non-fast forward pushes</h2>
+          <small>git push -f</small><br />
+        </section>
 
-				<section>
-					<h2>Altering the latest <span>commit</span></h2>
-					<small>git commit --amend -m "this will override the last commit"</small><br/>
-				</section>
+        <section>
+          <h2>including untracked files in the stash</h2>
+          <small>git stash --include-untracked</small><br />
+        </section>
 
-				<section>
-					<h2>non-fast forward pushes</h2>
-					<small>git push -f</small><br/>
-				</section>
+        <section>
+          <h2>Showing a history of own movements</h2>
+          <small>git reflog <span>branchname</span></small
+          ><br />
+        </section>
 
-				<section>
-					<h2>including untracked files in the stash</h2>
-					<small>git stash --include-untracked</small><br/>
-				</section>
+        <section>
+          <h2>Showing who committed what on a file</h2>
+          <small>git blame <span>file</span></small
+          ><br />
+          <small>git blame -L 40,60 <span>file</span></small
+          ><br />
+        </section>
 
-				<section>
-					<h2>Showing a history of own movements</h2>
-					<small>git reflog <span>branchname</span></small><br/>
-				</section>
+        <section>
+          <h2>Better logging and showing things</h2>
+          <small
+            >git log
+            <span>branchname</span
+            >/<span>commit</span>/<span>ref</span>..<span>branchname</span>/<span>commit</span>/<span
+              >ref</span
+            ></small
+          ><br />
+          <small
+            >git show
+            <span>blobs</span>/<span>trees</span>/<span>tags</span>/<span
+              >commits</span
+            ></small
+          ><br />
+          <small>git remote show <span>remoteref</span></small
+          ><br />
+          <small>git show-ref <span>branchname</span> --abbrev</small><br />
+          <small>git show-branch <span>branchname</span></small
+          ><br />
+          <small>cat .git/config</small><br />
+        </section>
 
-				<section>
-					<h2>Showing who committed what on a file</h2>
-					<small>git blame <span>file</span></small><br/>
-					<small>git blame -L 40,60 <span>file</span></small><br/>
-				</section>
+        <section>
+          <h2>Deploying changes from specific commit</h2>
+          <small>git diff --name-only HEAD <span>commit</span></small>
+        </section>
 
-				<section>
-					<h2>Better logging and showing things</h2>
-					<small>git log <span>branchname</span>/<span>commit</span>/<span>ref</span>..<span>branchname</span>/<span>commit</span>/<span>ref</span></small><br/>
-					<small>git show <span>blobs</span>/<span>trees</span>/<span>tags</span>/<span>commits</span></small><br/>
-					<small>git remote show <span>remoteref</span></small><br/>
-					<small>git show-ref <span>branchname</span> --abbrev</small><br/>
-					<small>git show-branch <span>branchname</span></small><br/>
-					<small>cat .git/config</small><br/>
-				</section>
+        <section>
+          <h2>git pull is NOT the opposite of git push</h2>
+          <small>git push <> git fetch</small><br />
+          <small>git pull = git fetch && git merge || git rebase</small><br />
+        </section>
 
-				<section>
-					<h2>Deploying changes from specific commit</h2>
-					<small>git diff --name-only HEAD <span>commit</span></small>
-				</section>
+        <section>
+          <h2>THE END</h2>
+          <h3>thanks!</h3>
+          <a href="http://rob-bar.github.io/presentations"
+            >git@github.com:rob-bar/presentations.git</a
+          >
+        </section>
+      </div>
+    </div>
 
-				<section>
-					<h2>git pull is NOT the opposite of git push</h2>
-					<small>git push <> git fetch</small><br/>
-					<small>git pull = git fetch && git merge || git rebase</small><br/>
-				</section>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: true,
 
-				<section>
-					<h2>THE END</h2>
-					<h3>thanks!</h3>
-					<a href="https://github.com/rob-bar/presentations/tree/master/10_things_you_didnt_know_about_git">git@github.com:rob-bar/presentations.git</a>
-				</section>
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || "concave", // default/cube/page/concave/zoom/linear/none
 
-			</div>
-		</div>
-
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
-		<script>
-
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: false,
-				progress: true,
-				history: true,
-
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/none
-
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
-
-		</script>
-	</body>
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          {
+            src: "lib/js/classList.js",
+            condition: function () {
+              return !document.body.classList;
+            },
+          },
+          {
+            src: "plugin/markdown/showdown.js",
+            condition: function () {
+              return !!document.querySelector("[data-markdown]");
+            },
+          },
+          {
+            src: "plugin/markdown/markdown.js",
+            condition: function () {
+              return !!document.querySelector("[data-markdown]");
+            },
+          },
+          {
+            src: "plugin/highlight/highlight.js",
+            async: true,
+            callback: function () {
+              hljs.initHighlightingOnLoad();
+            },
+          },
+          {
+            src: "plugin/zoom-js/zoom.js",
+            async: true,
+            condition: function () {
+              return !!document.body.classList;
+            },
+          },
+          {
+            src: "plugin/notes/notes.js",
+            async: true,
+            condition: function () {
+              return !!document.body.classList;
+            },
+          },
+        ],
+      });
+    </script>
+  </body>
 </html>
