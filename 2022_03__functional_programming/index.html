@@ -163,7 +163,6 @@
                 En dan gaan we kijken wat de volgende stappen kunnen zijn. Welk
                 libraries bestaan er voor ons? Wat met Typescript, etc, etc?
               </li>
-              <li></li>
             </ol>
           </aside>
         </section>
@@ -187,7 +186,6 @@
                 Ik heb mensen horen zeggen ik kan functioneel programeren: "ik
                 gebruik: Map, filter & reduce". Dat is maar een fractie van FP.
               </li>
-              <li>Is het gerelateed aan wiskundige functies?</li>
             </ul>
           </aside>
         </section>
@@ -367,15 +365,18 @@
           <h2>Functions</h2>
           <aside class="notes">
             <p>
-              Dus functions, wat is een function? Is het enkel het function
-              keyword?
+              Dus functions, spreken we enkel over het function keyword? Of
+              spreken we over een dieper concept? Wat is de definitie van een
+              functie? Vandaag gaan we de definitie van een functie telkens
+              verfijnen.
             </p>
+            <p>Laat ons even een voorbeeld nemen</p>
           </aside>
         </section>
         <section>
-          <h3>Functions vs Procedures</h3>
+          <h3>What is a function?</h3>
           <pre data-id="code-animation">
-            <code class="hljs" data-trim data-line-numbers="|1">
+            <code class="language-js" data-trim data-line-numbers="|1-4|5-8|">
                 function addNumbers (x = 0, y = 0, z = 0, w = 0) {
                   var total = x + y + z + w;
                   console.log(total);
@@ -389,11 +390,63 @@
                 extraNumbers(3, 8, 11);   // 62
             </code>
           </pre>
+          <aside class="notes">
+            <p>
+              <strong>[SPACE]</strong> Hier zien we een functie addNumbers, we
+              krijgen xyz en w binnen in de functie we gaan deze optellen en dan
+              gaan we het totaal naar de console printen.
+            </p>
+            <p>
+              <strong>[SPACE]</strong> Daarnaast hebben we extraNumbers die
+              addNumbers blijkbaar aanroept en die voegt dan wat extra waarden
+              toe.
+            </p>
+            <p>De meest krieteke vraag hier is, zijn dit een functies?</p>
+            <p>
+              Laat ons even kijken naar addNumbers: we krijgen wel input values
+              binnen. en we doen er wel degelijk iets mee, we maken een totaal
+              en we printen alles uit. Deze functie doet wel degelijk iets. Maar
+              is dat genoeg? Niet echt. De lat ligt horen om een functie te
+              zijn.
+            </p>
+            <p>
+              Maar wat zijn deze functies dan? De beste term dat je kan
+              gebruiken om deze twee functies te beschrijven is procedure.
+            </p>
+            <p>
+              Een procedure is een collectie van opperaties. We gebruiken
+              allemaal procedures want we moeten allemaal dingen doen in onze
+              programmas. Dus het functie keyword gebruiken is niet genoeg om
+              een functie te maken wel genoeg om een procedure te maken.
+            </p>
+            <p>
+              Procedures kunnen perfect dingen doen en dingen terugkeren en er
+              zijn veel voordelen aan procedures. Maar wat is nu het verschil
+              tussen een procedure en een function.
+            </p>
+            <p>
+              <strong>We zullen onze definitie beginnen</strong> bij het feit
+              dat een functie niet enkel een input moet hebben maar ook een
+              output. Niet enkel printen naar de console, een echte return
+              value. Dat is het eerste deel van de puzzel.
+            </p>
+            <p>
+              is extraNumbers een pure functie? Het neemt inputs en returnt een
+              output. De meesten hier weten dat een functie automatisch in js
+              undefined weergeeft. Dus uiteindelijk geeft addNumbers wel
+              undefined terug.
+            </p>
+            <p>
+              Wel, de definitie breid zich uit naar het feit dat functies enkel
+              andere functies kunnen aanroepen. Dus omdat addNumbers een
+              procedure is is extraNumbers dat automatisch ook.
+            </p>
+          </aside>
         </section>
         <section>
           <h3>Functions vs Procedures</h3>
           <pre data-id="code-animation">
-            <code class="hljs" data-trim data-line-numbers="|1">
+            <code class="language-js" data-trim data-line-numbers="|5|2">
                 function tuple (x, y) {
                   return [x + 1, y + 1];
                 }
@@ -404,8 +457,676 @@
                 console.log(b);   // 9
             </code>
           </pre>
+          <aside class="notes">
+            <p>
+              Wat kunnen we hier zeggen? Tupple is een eigenlijk gewoon een
+              array van elementen die aan elkaar gelinkt zijn, vooral gebruikt
+              in datastructuren en talen zoals python, elm en erlang. Js heeft
+              geen syntactic sugar voor tupples.
+            </p>
+            <p>
+              <strong>[SPACE]</strong> Hier op lijn 5 maken we de lezer van de
+              code wel duidelijk dat hetgeen wat uit de array komt belangrijker
+              is dan de array zelf. De array op zich is onbelangrijk. Merk hier
+              ook vooral op dat we uiteindelijk achterblijven met 2 outputs ipv
+              1.
+            </p>
+            <p>
+              Dus de definitie breid uit en zegt: een funcie kan meerder inputs
+              hebben maar eigenlijk ook meerder outputs.
+            </p>
+            <p>
+              <strong>[SPACE]</strong> Maar er is nog meer, wat als we op lijn 2
+              gewoon return 40 zouden zetten. We geven inputs en we krijgen een
+              output. Wel dat is op zich dan ook weer geen "echte" functie meer.
+              En om de echte geest van een functie te begrijpen moeten we toch
+              terugkeren naar de pure wiskunde
+            </p>
+          </aside>
+        </section>
+        <section>
+          <p>
+            <strong>f(x) = 2x<sup>3</sup> + 3</strong>
+          </p>
+          <aside class="notes">
+            <p>
+              En als we terugkeren naar pure wiskunde dan keren we terug naar
+              wat wij kende in het middelbaar als formules. Een formule of een
+              vergelijking. En ik weet nog goed bij mij betekende dat niet veel
+              tot als we die grafische rekenmachines erbij pakte. Want
+              uiteindelijk waren het allemaal random nummers die we terugkregen
+              in het begin. 1 gaf een 5 en 2 gaf 11. En uiteindelijk als we al
+              die waarden gingen verbinden met elkaar dan kregen we onze
+              tekening.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <img src="img/para.png" alt="parabool" width="300px" />
+          <pre class="fragment" data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers>
+                function f(x) {
+                  return 2 * Math.pow(x, 2) + 3;
+                }
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Anders gezegd, dus als we een x coordinaat ingeven krijgen we een
+              output y coordinaat. En wanneer we de input en de output samen
+              voegen, dan kunnen we hun betekenis interpreteren als een
+              parabool.
+            </p>
+            <p>Dus! Wat is een functie?</p>
+          </aside>
+        </section>
+        <section>
+          <h3>
+            A function is the semantic <a href="">relationship</a> between the
+            <a href="">input</a>
+            and the computed <a href="">output</a>
+          </h3>
+          <aside class="notes">
+            <p>
+              Het doel hier is om relaties te creeren die vanzelfsprekend zijn
+              voor de lezer van onze code
+            </p>
+          </aside>
         </section>
 
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers>
+                function shippingRate (size, weight, speed) {
+                  return ((size + 1) * weight) + speed;
+                }
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Hier als we een functie maken shippingRate, dan verteld de naam
+              van de functie mij iets over de relatie tussen de input waarden en
+              de output. Als ik size, weight en speed ingeef krijg ik een
+              shippingRate terug. Daarvoor dient het.
+            </p>
+            <p>
+              We hebben veel "functies" in onze apps, aka procedures.Sommige
+              duizenden.
+            </p>
+            <p>
+              Bij hoeveel functies in onze apps kunnen we zien wat de relatie is
+              tussen input en output?
+            </p>
+            <p>
+              Hoeveel functies hebben uberhaupt outputs? Waarschijnlijk niet
+              veel.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>😎</h3>
+          <aside class="notes">
+            <p>
+              Dus aan ons om een soort bril op te zetten en te zien in onze apps
+              waar de "echte" functies zitten en hoe we ze kunnen isoleren.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>Side effects</h2>
+          <aside class="notes">
+            <p>
+              Ben zeker dat velen de term...side effects al gehoord hebben of
+              kennen.
+            </p>
+            <p>
+              Dus in functioneel programeren willen we functies zonder side
+              effects. Maar wat betekend dat?
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="|5-8">
+                function shippingRate () {
+                  rate = ((size + 1) * weight) + speed;
+                }
+                
+                var rate;
+                var size = 12; var weight = 4; var speed = 5;
+                shippingRate();
+                rate;   // 57
+
+                size = 8; speed = 6;
+                shippingRate();
+                rate;   // 42
+
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Als we naar dit programma kijken dan zijn er een aantal dingen die
+              je kan opmerken. 1. shippingRate heeft geen parrameters 2.
+              shippingRate heeft geen return keyword
+            </p>
+            <p>
+              Maar we zien wel dat de functie iets doet met wat waarden. en
+              effectief een berekening maakt die een rate berekend.
+            </p>
+            <p>
+              <strong>[SPACE]</strong> Op lijn 5 en 6 zetten we de inputs wel
+              op, we roepen shippingRate aan op lijn 7 en op lijn 8 hebben we
+              een legitte shippingRate. Deze code werkt perfect.
+            </p>
+            <p>
+              Deze code is eigenlijk zoals veel van onze code in onze apps. We
+              gebruiken stuff buiten de functie en we beinvloeden andere dingen
+              ergens anders en uitendelijk vervolledigen we ons einddoel om een
+              shippingRate te berekenen. Wat perfect ok is, het is alleen niet
+              functioneel.
+            </p>
+            <p>
+              <strong>De definitie breid nogmaals uit.</strong> In theorie
+              hebben we hier inputs en outputs en is er een relatie die
+              beschreven wordt als een functie. Maar de outputs en inputs zijn
+              indirect.
+            </p>
+            <p>
+              ALS de inputs of de outputs indirect zijn, spreken we niet over
+              een echte functie.
+            </p>
+            <p>
+              Dus uitendelijk als we side effects bedoelen, bedoelen we
+              indirecte input of indirecte outputs of beiden.
+            </p>
+            <p>
+              Dit zijn side effect, en we willen ze zo veel mogelijk vermeiden.
+              We krijgen de voordelen niet van pure functies als we side effects
+              hebben. We krijgen niet de provability & de security waarbij we
+              weten dat dit ding 100% werkt.
+            </p>
+            <p>Niet alleen jij maar ook de lezer krijgt de voordelen niet.</p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers>
+                function shippingRate (size, weight, speed) {
+                  return ((size + 1) * weight) + speed;
+                }
+                
+                var rate;
+                rate = shippingRate(12, 4, 5)  // 57
+                rate = shippingRate(8, 4, 6)   // 42
+
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Dit is een voorbeeld van directe input en die sematisch gerelateed
+              is aan directe output
+            </p>
+            <p>
+              Hier is wel iets zeer interessant op te merken hier: Om de
+              definitie van een functie te hebben. Heb je een function invocatie
+              nodig. De definitie van de functie is op zich minder belanrijk dan
+              de functie invocatie. Het belangrijke deel hier is de functie
+              invocatie.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Side effects</h3>
+          <ul>
+            <li>Variables outside of the function</li>
+            <li class="fragment">I / 0 (console, files, etc.)</li>
+            <li class="fragment">db storage</li>
+            <li class="fragment">Network Calls</li>
+            <li class="fragment">DOM</li>
+            <li class="fragment">Timestamps, Random Numbers</li>
+            <li class="fragment">...</li>
+          </ul>
+          <aside class="notes">
+            <p>
+              Wat zijn nu side effects? En hoe kunnen we ze identificeren? We
+              zagen er 1 maar er zijn er zeker meer.
+            </p>
+            <p>ALLES OVERLOPEN</p>
+            <p>
+              Op zich zeggen we in functioneel programmeren avoid side effects.
+              Maar wat daar eigenlijk gezegd wordt is minimize side effects.
+            </p>
+            <p>
+              Elk programma heeft side effects. Dus side effects zijn niet
+              noodzakelijk slecht. Wat ze wel doen zijn de voordelen van
+              functioneel programeren wegnemen.
+            </p>
+            <p>
+              Wat willen we doen met side effects. We willen ze heel
+              intentioneel vermeiden of uitvergroten in onze applicaties want
+              daar zitten de bugs. Daar zitten de meeste problemen.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Pure Functions</h3>
+          <aside class="notes">
+            <p>
+              Dus wat is een pure functie? Een pure functie is een functie die
+              al zijn inputs direct ontvangt en al zijn outputs direct doorgeeft
+              en de functie heeft geen side effect. Maar onthoud hier dat het
+              meer over de call gaat dan over de definitie. Dus we willen gaan
+              voor pure function calls.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers>
+                // pure
+                function addTwo (x, y) {
+                  return x + y;
+                }
+
+                // impure 
+                function addAnother (x, y) {
+                  return addTwo(x, y) + z;
+                }
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Dus addTwo is pure, maar addAnother hier gebruikt z als een
+              indirecte input, dus theoretisch gezien is deze functie impure.
+            </p>
+            <p>
+              Daar willen we in onze programmas naar kijken, waar zitten de
+              indirecte inputs in onze functies en invalideren ze of de functie
+              zich puur zal gedragen of niet. Op zich is het in praktijk
+              ingewikkelder. De code kan er als volgt uitzien
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="|8|11|1">
+                const z = 1
+
+                function addTwo (x, y) {
+                  return x + y;
+                }
+
+                function addAnother (x, y) {
+                  return addTwo(x, y) + z;
+                }
+
+                addAnother(20, 21);   // 42
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              De code kan een variable hebben in de outer scope of vanuit een
+              import statement. In dit geval is het de z variable.
+            </p>
+            <p>
+              <strong>[SPACE]</strong> Wat als er nu stond ipv + z, + 1 op lijn
+              8
+            </p>
+            <p>Iedereen zou zeggen, geen probleem. Dat is een pure functie</p>
+            <p>
+              Is de variabele z hier echt een invalidatie van de pure functie of
+              is z gewoon een semantische placeholder die 1 bevat?
+            </p>
+            <p>
+              <strong>[SPACE]</strong> addAnother veroorzaakt geen side effects,
+              en gebruikt geen side effects buiten die z constante. En dat is
+              uiteindelijk ook beschouwd als pure. Lijn 11 is nog steeds een
+              pure function call.
+            </p>
+            <p>
+              <strong>[SPACE]</strong> En misschien denken we hier van ok dat
+              klopt omdat we op lijn 1 const gebruiken
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="1||8|1-10|11,7-9">
+                var z = 1
+
+                function addTwo (x, y) {
+                  return x + y;
+                }
+
+                function addAnother (x, y) {
+                  return addTwo(x, y) + z;
+                }
+
+                addAnother(20, 21);   // 42
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>Wat als we het var keyword gevruiken? Is het nu nog pure?</p>
+            <p>
+              Is de keuze tussen var en const hier wat de leesbaarhed bepaald
+              van het programma? Ik zou zeggen nee. En ik ga ook de reden zegen
+              waarom niet en dit is belangrijk voor de rest van onze talk hier.
+            </p>
+            <p>
+              Wat als ik u een vraag stel over een programma? Maar ik liet u
+              maar een deel zien van het programma? Wat kun je dan antwoorden?
+              Je zou eender wat kunnen zeggen. Dus het is niet echt nuttig om
+              een programma te bespreken tenzij we het in zijn geheel kunnen
+              zien en bespreken.
+            </p>
+            <p>
+              Dus vanaf nu assumeren we dat we heel het programma telkens zien.
+              En daaruit volgt dan de vraag: wordt in dit programma z opnieuw
+              toegekend aan een andere waarde? Nee. Dus deze var gedraagt zich
+              in dit programma eigenlijk als een const.
+            </p>
+            <p>
+              De belangrijkste vraag is dus: wordt de variabele gereassigned? en
+              niet: kan de variabele gereassigned worden. EN! Nog belangrijker,
+              is het vanzelfsprekend voor de lezer of deze varabele gereassigned
+              wordt ja of neen?
+            </p>
+            <p>
+              addAnother gedraagt zich pure omdat z niet gereassigned wordt.
+            </p>
+            <p>
+              Maar wacht: op lijn 8 hebben we NOG! een variabele die reassigned
+              kan worden. addTwo is een functie die op lijn 3 gemaakt wordt maar
+              deze kan makkelijk op lijn 6 gereassigned worden. Maar in dit
+              programma kunnen we zien dat addTwo niet wordt gereassigned, dus
+              het gedrach is nog steeds pure.
+            </p>
+            <p>
+              Wat dus belangrijk is voor de auteur van de code. Is om duidelijk
+              te maken dat de gebruikte functie addTwo (in dit geval) gebruikt
+              zal worden als een const en dat deze niet kan gereassigned worden.
+              Dat is het doel.
+            </p>
+            <p>
+              <strong>[SPACE]</strong> MAAR WAAROM? We willen de lezer van de
+              code minder zorgen geven. In dit programma moet de lezer effectief
+              gaan kijken op lijn 3, 4 en 5 wat addTwo doet en moet die gaan
+              kijen eigenlijk over heel het programma of er geen reassignment
+              gebeurd van varable z. Ze moeten het hele programma mentaal
+              uitvoeren. Van lijn 1 tot lijn 11 om het te begrijpen.
+            </p>
+            <p>
+              Als ik zie als lezer in de code dat addAnother volledig pure is en
+              ik moet nergens anders gaan kijken. Dan kan ik lijn 11 veilig in
+              <strong>[SPACE]</strong> isolatie uitvoeren mentaal om het
+              programma te begrijpen.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Reducing surface area</h3>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="|1|2|3|7|">
+                function addAnother (z) {
+                  return function addTwo(x, y) {
+                    return x + y + z;
+                  }
+                }
+
+                addAnother(1)(20, 21);  // 42
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Dit is een heel ander voorbeeld als daarnet. Sommigen herkenen
+              meteen het patroon. Je hebt waarschijnlijk al gezien dat functies
+              als waardes kunnen worden terug gegeven.
+            </p>
+            <p>
+              <strong>[SPACE]</strong> Dus we hebben een functie addAnother die
+              en z parameter aanvaard. Het is geen const in de global scope, het
+              is een parameter die in gegeven wordt als eerste.
+            </p>
+            <p>
+              <strong>[SPACE]</strong> Op lijn 2 returnen we dan een functie die
+              uiteindelijk op lijn <strong>[SPACE]</strong> 3 ook z gebruikt.
+            </p>
+            <p>
+              <strong>[SPACE]</strong> Dus op lijn 7 krijgen we een dubbele
+              function invocatie.
+            </p>
+            <p>
+              Wat interessant is in deze code is dat deze code tegenover het
+              vorige voorbeeld. Een kleiner oppervlak heeft waar wij ons zorgen
+              hoeven te maken dat z opnieuw kan gereassigned worden. Als wij
+              willen controleren is z effectief een const. dan zijn er maar 2
+              lijnen waar we rekening moeten mee houden. lijn 1,5 en lijn 2,5
+            </p>
+            <p>
+              Het zijn de enige 2 lijnen in het hele programma dat z opnieuw
+              kunnen reassignen
+            </p>
+            <p>
+              Als een gevolg van dat kleiner oppervlak kunnen we zeggen dat we
+              de leesbaarheid verhogen. We verhogen de zelfzekerheid voor de
+              lezer van onze code, wanneer hij z als 1 ingeeft dan is hij
+              zekerder dat dat 1 blijft
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Same input, same output</h3>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers>
+                function getId(obj) {
+                  return obj.id;
+                }
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>Wat kunnen we zeggen over deze functie?</p>
+            <p>Eerst even laten inzinken</p>
+            <p>
+              Wat Als ik getId telkens opnieuw zou aanroepen met hetzelfde
+              object. Zal ik dan dezelfde waarde krijgen? Hoe zeker kan je deze
+              functie voorspellen?
+            </p>
+            <p>
+              De belangrijke vraag om hier te stellen is: Wordt dit object
+              ergens op een bepaald punt gemuteerd? Stel dat het antwoord nee
+              is. Dat je alle plaatsen kan zien waar getId wordt aangeroepen.
+              Zou je dan zeker zijn dat deze functie pure is?
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Same input, same output</h3>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers>
+                function getId(obj) {
+                  return obj.id;
+                }
+
+                getId({
+                  get id() {
+                    return Math.random();
+                  }
+                })
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Wat als ik meer van het programma toon, wat als dat object een
+              getter heeft ipv een property en wat als die getter random nummers
+              genereert?
+            </p>
+            <p>Ineens is ons level of confidence wel helemaal weg nu.</p>
+            <p>
+              Het is belangrijk om het hele programma te zien of beter! Alle
+              relevante delen van het programma.
+            </p>
+            <p>
+              Pure functie invocaties werken in isolatie. Anders gezegd: wanneer
+              we telkens dezelfde input geven, gaan we dezelfde output krijgen.
+            </p>
+            <p>
+              Nog een kleine component van onze definitie van een pure functie.
+              Elke keer we een pure functie aanroepen met dezelfde input, dan
+              krijgen we telkens dezelfde output.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>How to make it pure?</h3>
+          <aside class="notes">
+            <p>
+              Wat zijn de opties als we een inpure functie hebben? Wat kunnen we
+              doen? 1 optie is om het inpure te laten, we hebben nu eenmaal side
+              effects. Ze moeten gebeuren en zo is dat.
+            </p>
+            <p>
+              We kunnen er zeker expliciet over zijn. We kunnen het procedure
+              zodanig noemen zodat het duidelijk is dat het naar de database
+              gaan schrijven of een api call gaan uitvoeren.
+            </p>
+            <p>
+              Een commentje? Thar be dragons...side effects beware, of een
+              sideEffects.js file?
+            </p>
+            <p>
+              De reden waarom we expliciet willen zijn is omdat we het zo
+              makkeiljker maken om de code te onderhouden.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Extracting impurity</h3>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers>
+                function newComment(userId, comment) {
+                  var record = {
+                    id: generateUID(),
+                    user: userId,
+                    text: comment
+                  };
+                  
+                  var elem = commentElement(record);
+                  commentsList.appendChild(elem);
+                }
+
+                newComment(42, "This is my comment!");
+            </code>
+          </pre>
+
+          <aside class="notes">
+            <p>
+              Kunnen we een stuk herschikken zodanig dat een deel van de functie
+              pure wordt en een ander deel de side effects heeft?
+            </p>
+            <p>
+              We brengen het side effect naar de buitenlaag en we houden de pure
+              functionaliteit in de core van de app
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Extracting impurity</h3>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers>
+                function newComment(userId, commentId, comment) {
+                  var record = {
+                    id: commentId,
+                    userId,
+                    text: comment
+                  };
+                  return buildCommentElement(record);
+                }
+
+                var commentId = generateUID();
+                var elem = newComment(
+                  42,
+                  commentId,
+                  "This is my comment!"
+                );
+                commentsList.appendChild(elem);
+            </code>
+          </pre>
+
+          <aside class="notes"></aside>
+        </section>
+        <section>
+          <h3>Containing impurity</h3>
+          <pre data-id="code-animation" style="font-size: 0.7rem">
+            <code class="language-js" data-trim data-line-numbers>
+                var someAPI = {
+                  threshold: 13,
+                  isBelowThreshold: function(x) {
+                    return x <= SomeAPI.threshold;
+                  }
+                }
+                var numbers  = [];
+                
+                function insertSortedDesc(v) {
+                  SomeAPI.threshold = v;
+                  var idx = numbers.findIndex(SomeAPI.isBelowThreshold);
+                  
+                  if (idx == -1) {
+                    idx = numbers.length;
+                  }
+                  numbers.splice(idx, 0, v);
+                }
+
+                insertSortedDesc(3);
+                insertSortedDesc(5);
+                insertSortedDesc(1);
+                insertSortedDesc(4);
+                insertSortedDesc(2);
+                numbers;    // [5, 4, 3, 2, 1]
+            </code>
+          </pre>
+
+          <aside class="notes"></aside>
+        </section>
+        <section>
+          <h3>Containing impurity</h3>
+          <pre data-id="code-animation" style="font-size: 0.7rem">
+            <code class="language-js" data-trim data-line-numbers>
+                var someAPI = {
+                  threshold: 13,
+                  isBelowThreshold: function(x) {
+                    return x <= SomeAPI.threshold;
+                  }
+                }
+                var numbers  = [];
+
+                function getSortedNums(nums, v) {
+                  var numbers = num.slice();
+                  insertSortedDesc(v);
+                  return numbers;
+
+                  function insertSortedDesc(v) {
+                    SomeAPI.threshold = v;
+                    var idx = numbers.findIndex(SomeAPI.isBelowThreshold);
+
+                    if (idx == -1) {
+                      idx = numbers.length;
+                    }
+                    numbers.splice(idx, 0, v);
+                  }
+                }
+
+                numbers = insertSortedDesc(numbers, 3);
+                numbers = insertSortedDesc(numbers, 5);
+                numbers = insertSortedDesc(numbers, 1);
+                numbers = insertSortedDesc(numbers, 4);
+                numbers = insertSortedDesc(numbers, 2);
+                numbers;    // [5, 4, 3, 2, 1]
+            </code>
+          </pre>
+
+          <aside class="notes"></aside>
+        </section>
         <section>
           <h2>Thank you 🙏</h2>
         </section>
