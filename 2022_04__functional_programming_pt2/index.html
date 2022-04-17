@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Welcome to functional programming pt.2</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/atom-one-dark-reasonable.css"
+    />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>Functional Programming pt.2</h2>
+          <aside class="notes">
+            <ul>
+              <li>
+                Steven bedanken, Vragen of er nog vragen zijn bij de oefening en
+                of we ze moeten herbekijken ja of neen.
+              </li>
+              <li>
+                Korte recap van vorige sessie:
+                <strong>Definitie & Waarom</strong>,
+                <strong>Declaratie vs imperatief</strong>,
+                <strong>Proceduraal & functioneel</strong>. Wat zijn de
+                eigenschappen van een <strong>pure functie</strong>.
+                <ul>
+                  <li>directe inputs</li>
+                  <li>directe outputs</li>
+                  <li>zelfde input geeft altijd zelfde output</li>
+                  <li>geen side effects</li>
+                </ul>
+                Gekeken naar hoe we van een inpure functie een pure functie
+                maken met:
+                <ul>
+                  <li>Extraction impurity</li>
+                  <li>Containing impurity</li>
+                  <li>Adapter function</li>
+                </ul>
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h2>Agenda</h2>
+          <ul>
+            <li class="fragment">Argument adapters</li>
+            <li class="fragment">Point Free</li>
+            <li class="fragment">Closure</li>
+          </ul>
+          <aside class="notes">
+            <p></p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Thank you 🙏</h2>
+          <aside class="notes">
+            <p>
+              Volgende keer gaan we verder met adapters en gaan we dieper graven
+              in het functioneel landschap. Vandaag hebben we enkel het puntje
+              van de ijsberg gezien.
+            </p>
+            <p>Tot dan! Zal de agenda op tijd aanvullen.</p>
+          </aside>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+
+      Reveal.initialize({
+        hash: true,
+        controls: false,
+        progress: false,
+        slideNumber: false,
+        transition: "fade",
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
