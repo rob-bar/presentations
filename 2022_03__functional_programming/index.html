@@ -33,6 +33,7 @@
               <li>Huge topic</li>
               <li>Maak u klaar om een berg te beklimmen</li>
               <li>Vragen in pm of in de slack community</li>
+              <li>Zelf ook nog aan het groeien & bijleren.</li>
             </ul>
           </aside>
         </section>
@@ -448,7 +449,7 @@
           <pre data-id="code-animation">
             <code class="language-js" data-trim data-line-numbers="|5|2">
                 function tuple (x, y) {
-                  return [x + 1, y + 1];
+                  return [x + 1, y - 1];
                 }
 
                 var [a, b] = tuple(...[5, 10]);
@@ -476,11 +477,11 @@
               hebben maar eigenlijk ook meerder outputs.
             </p>
             <p>
-              <strong>[SPACE]</strong> Maar er is nog meer, wat als we op lijn 2
-              gewoon return 40 zouden zetten. We geven inputs en we krijgen een
-              output. Wel dat is op zich dan ook weer geen "echte" functie meer.
-              En om de echte geest van een functie te begrijpen moeten we toch
-              terugkeren naar de pure wiskunde
+              <strong>[SPACE]</strong> <strong>Maar er is nog meer</strong>, wat
+              als we op lijn 2 gewoon return 40 zouden zetten. We geven inputs
+              en we krijgen een output. Wel dat is op zich dan ook weer geen
+              "echte" functie meer. En om de echte geest van een functie te
+              begrijpen moeten we toch terugkeren naar de pure wiskunde
             </p>
           </aside>
         </section>
@@ -632,8 +633,10 @@
               indirect.
             </p>
             <p>
-              ALS de inputs of de outputs indirect zijn, spreken we niet over
-              een echte functie.
+              <strong
+                >ALS de inputs of de outputs indirect zijn, spreken we niet over
+                een echte functie.</strong
+              >
             </p>
             <p>
               Dus uitendelijk als we side effects bedoelen, bedoelen we
@@ -669,7 +672,8 @@
             </p>
             <p>
               Hier is wel iets zeer interessant op te merken hier: Om de
-              definitie van een functie te hebben. Heb je een function invocatie
+              definitie van een functie te hebben. Heb je een
+              <strong>function invocatie</strong>
               nodig. De definitie van de functie is op zich minder belanrijk dan
               de functie invocatie. Het belangrijke deel hier is de functie
               invocatie.
@@ -1003,7 +1007,7 @@
         <section>
           <h3>Extracting impurity</h3>
           <pre data-id="code-animation">
-            <code class="language-js" data-trim data-line-numbers>
+            <code class="language-js" data-trim data-line-numbers="|12|8-9|3|">
                 function newComment(userId, comment) {
                   var record = {
                     id: generateUID(),
@@ -1028,12 +1032,24 @@
               We brengen het side effect naar de buitenlaag en we houden de pure
               functionaliteit in de core van de app
             </p>
+            <p>
+              <strong>[SPACE]</strong> Lijn 12 is een inpure function call omdat
+              we op <strong>[SPACE]</strong> lijn 8 en 9 een side effect hebben.
+            </p>
+            <p>
+              <strong>[SPACE]</strong> Misschien heb je ook op lijn 3 een anders
+              side effect gezien?
+            </p>
+            <p>
+              <strong>[SPACE]</strong> Wat als we van deze code zoiets kunnen
+              maken?
+            </p>
           </aside>
         </section>
         <section>
           <h3>Extracting impurity</h3>
-          <pre data-id="code-animation">
-            <code class="language-js" data-trim data-line-numbers>
+          <pre data-id="code-animation" style="font-size: 0.9rem">
+            <code class="language-js" data-trim data-line-numbers="|1-8|10,16|">
                 function newComment(userId, commentId, comment) {
                   var record = {
                     id: commentId,
@@ -1053,12 +1069,26 @@
             </code>
           </pre>
 
-          <aside class="notes"></aside>
+          <aside class="notes">
+            <p>
+              <strong>[SPACE]</strong> We hebben hier geen procedure newComment
+              maar een functie newComment. De enige job van die functie is om
+              een nieuwe comment te maken.
+            </p>
+            <p>
+              <strong>[SPACE]</strong> De side effects in dit programma zitten
+              op lijn 10 en lijn 16
+            </p>
+            <p>
+              De side effets bestaan nog, maar zitten in de buitenschil van het
+              programma.
+            </p>
+          </aside>
         </section>
         <section>
           <h3>Containing impurity</h3>
-          <pre data-id="code-animation" style="font-size: 0.7rem">
-            <code class="language-js" data-trim data-line-numbers>
+          <pre data-id="code-animation" style="font-size: 0.8rem">
+            <code class="language-js" data-trim data-line-numbers="|11|7,11">
                 var someAPI = {
                   threshold: 13,
                   isBelowThreshold: function(x) {
@@ -1086,12 +1116,38 @@
             </code>
           </pre>
 
-          <aside class="notes"></aside>
+          <aside class="notes">
+            <p>
+              Als we de impurity niet kunnen extracten, dan hebben we nog een
+              manier om een functie pure te maken. Dat is door ze te containen
+              met een andere functie.
+            </p>
+            <p>
+              Wat bedoelen we hier exact mee? Containen. En wat zijn de
+              voordelen. Wat als we een side effect kunnen isoleren in een
+              functie die maar 5 lijnen groot code is ipv dat we een side effect
+              hebben in de hele global scope. Dat is wat we bedoelen met
+              containing the impurity
+            </p>
+            <p>
+              Als we naar deze code kijken dan zien we een someAPI object met
+              wat properties en een methode isBelowThreshold. Wat belangrijk is
+              daar op lijn 11 is dat we die methode gebruiken daar op lijn 11.
+              <strong>[SPACE]</strong> SOme api kan een framework of een node
+              module zijn in dit voorbeeld.
+            </p>
+            <p>
+              <strong>[SPACE]</strong> Wat doe ik als ik de numbers array niet
+              will vervuilen in de global scopen en ik wil die SomeAPI niet
+              gebruiken? Laten we de functie insertSortedDesc wrappen met een
+              andere functie.
+            </p>
+          </aside>
         </section>
         <section>
           <h3>Containing impurity</h3>
-          <pre data-id="code-animation" style="font-size: 0.7rem">
-            <code class="language-js" data-trim data-line-numbers>
+          <pre data-id="code-animation" style="font-size: 0.8rem">
+            <code class="language-js" data-trim data-line-numbers="|7,10,21|25-29|9-23|15,16">
                 var someAPI = {
                   threshold: 13,
                   isBelowThreshold: function(x) {
@@ -1125,10 +1181,161 @@
             </code>
           </pre>
 
-          <aside class="notes"></aside>
+          <aside class="notes">
+            <p>
+              Hier hebben we een functie getSortedNums rond de functie
+              insertSortedDesc gezet. Merk op hier dat we nog steeds de globale
+              var numbers hebben op lijn 7.<strong>[SPACE]</strong> Maar merk
+              ook op dat er nieuwe array is op lijn 10. Wanneer lijn 21 nu de
+              array aanpast gaat die de array op lijn 10 aanpassen en niet die
+              op lijn 7.
+            </p>
+            <p>
+              <strong>[SPACE]</strong>Op lijnen 25 tot 29 geven we de global
+              scope numbers array door aan de functie getSortedNums en daar
+              maken we een copy op lijn 10 waar we de bewerking op doen.
+            </p>
+            <p>
+              Wat hebben we hier nu exact gedaan. We hebben hier het side effect
+              van de array aan te passen gereduceerd tot de lijnen
+              <strong>[SPACE]</strong> ipv de globale scope van heel het
+              programma
+            </p>
+            <p>
+              We zitten wel nog steeds met impurity hier op
+              <strong>[SPACE]</strong> lijn 15 en dan op lijn 16. Op zich kunnen
+              we hier niet gaan wrappen want het komt uit een framework. Is er
+              een andere manier dat we deze impure lijn eruit kriigen? Er is nog
+              een techniek maar het is wel lelijker dan dit. Maar het is beter
+              dan niets. Ipv de functie te wrappen kunnen we kijken naar een
+              volgende techniek en dat is een adapter functie naast onze functie
+              zetten.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Adaptor function</h3>
+          <pre data-id="code-animation" style="font-size: 0.8rem">
+            <code class="language-js" data-trim data-line-numbers="|19-26|20|21|22|23|24|">
+                var someAPI = {
+                  threshold: 13,
+                  isBelowThreshold: function(x) {
+                    return x <= SomeAPI.threshold;
+                  }
+                }
+                var numbers  = [];
+
+                function insertSortedDesc(v) {
+                  SomeAPI.threshold = v;
+                  var idx = numbers.findIndex(SomeAPI.isBelowThreshold);
+
+                  if (idx == -1) {
+                    idx = numbers.length;
+                  }
+                  numbers.splice(idx, 0, v);
+                }
+
+                function getSortedNums(nums, v) {
+                  var [origNumbers, origThreshold] = [numbers, SomeAPI.threshold]
+                  numbers = nums.slice();
+                  insertSortedDesc(v);
+                  nums = numbers;
+                  [numbers, SomeAPI.threshold] = [origNumbers, origThreshold];
+                  return nums;
+                }
+
+                numbers = insertSortedDesc(numbers, 3);
+                numbers = insertSortedDesc(numbers, 5);
+                numbers = insertSortedDesc(numbers, 1);
+                numbers = insertSortedDesc(numbers, 4);
+                numbers = insertSortedDesc(numbers, 2);
+                numbers;    // [5, 4, 3, 2, 1]
+            </code>
+          </pre>
+
+          <aside class="notes">
+            <p>
+              Merk op dat we nu terug dichter staan tegen het eerste voorbeeld,
+              we hebben een insertSortedDescription en ipv een functie errond
+              hebben we nu een adapter functie die naast defunctie staat.
+              <strong>[SPACE]</strong>
+            </p>
+            <p>
+              <strong>[SPACE]</strong>Wat het belangrijkste is hier is dat we op
+              lijn 20 eerst een copy maken van de huidige state die gaat worden
+              aangepast.
+            </p>
+            <p>
+              <strong>[SPACE]</strong>Daarna op lijn 21 gaan we de omgeving
+              opzetten door de aangegeven array te copieren.
+            </p>
+            <p>
+              <strong>[SPACE]</strong>Daarna op lijn 22 roepen we ons side
+              effects aan insertSortedDesc.
+            </p>
+            <p>
+              <strong>[SPACE]</strong>Op lijn 23 vangen we de verandering op in
+              de aangegeven nums parameter.
+            </p>
+            <p>
+              <strong>[SPACE]</strong>En dan het belangrijkste stuk van de code
+              op lijn 24 zetten we de state terug naar wat die initiel was. en
+              op lijn 25 geven we nums terug
+            </p>
+            <p>
+              <strong>[SPACE]</strong> Dit is heel bruut, het is op zich geen
+              prachtige code en het zal snel complexer worden als we bv dingen
+              in de dom gaan beginnen bijcoderen.
+            </p>
+            <p>
+              Het belangrijkste wat we hier uiteindelijk gedaan hebben is dat nu
+              lijn 28 nu wel uitgevoerd wordt kan worden als een pure function.
+              Alle condities kunnen wordden afgevinkt. Het neemt directe inputs
+              en geeft directe outputs, er zijn geen state changes achteraf
+              gezien. En we hebben niet gerust op de state voor de functie
+              invokatie
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <h3><a href="">Last resort</a>: at least make it obvious</h3>
+          <aside class="notes">
+            <p>
+              Als we niet kunnen extracten, als we niet kunnen containen en als
+              we geen adapter functie kunnen schrijven. Dan blijven we zitten
+              met ons side effect. Maar maak het op dat moment dat op zijn minst
+              extreem duidelijk dat daar problemen zitten.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>
+            <a
+              href="https://gitlab.mediahuisgroup.com/robbie.bardijn/functional-programming"
+              target="_blank"
+              >Exercises</a
+            >
+          </h3>
+          <aside class="notes">
+            <p>
+              Voor mensen die hunzelf is willen testen. Heb ik 2 oefeningskes op
+              deze repo gezet.
+            </p>
+            <p>Oefeningen kort uitleggen</p>
+            <p>We zullen deze oefening kort efkes herevalueren volgende keer</p>
+          </aside>
         </section>
         <section>
           <h2>Thank you 🙏</h2>
+          <aside class="notes">
+            <p>
+              Volgende keer gaan we verder met adapters en gaan we dieper graven
+              in het functioneel landschap. Vandaag hebben we enkel het puntje
+              van de ijsberg gezien.
+            </p>
+            <p>Tot dan! Zal de agenda op tijd aanvullen.</p>
+          </aside>
         </section>
       </div>
     </div>
