@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Welcome to functional programming pt.3</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/atom-one-dark-reasonable.css"
+    />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h3>Functional Programming pt.3</h3>
+          <p>
+            <em><small>"Another piece of the puzzle"</small></em>
+          </p>
+          <aside class="notes">
+            <ul>
+              <li>
+                Ok, welkom by Functioneel Programmeren deel 3, vorige talk was
+                iets kleiner nu gaan we terug iets meer hooi op onze vork nemen.
+                Hopelijk kan ik deel 4 iets vlugger geven dan deel 3. Deel 4 zal
+                dan waarschijnlijk de laatste of de voorlaatste zijn.
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>Small recap</h3>
+          <ul>
+            <li class="fragment">Argument adapters</li>
+            <li class="fragment">Point Free</li>
+          </ul>
+          <aside class="notes">
+            <ul>
+              <li>
+                Het is even geleden dus een Korte recap van vorige sessie is
+                zeker niet misplaatst:
+                <ul>
+                  <li>
+                    ARGUMENT ADAPTERS: hoe gaan we functies bouwen die de vorm
+                    van een functie aanpassen. We hebben geleerd wat variotic
+                    wil zeggen.
+                  </li>
+                  <li>
+                    We hebben gesproken over unary en binary functions, we
+                    hebben gesproken over Higher order functions.
+                  </li>
+                  <li>
+                    Voorbeelden van higher order functions waren bijvoorbeeld
+                    Flip en Reverse
+                  </li>
+                  <li>
+                    Bij POINT FREE hebben we gezien wat equasional reasoning is.
+                    Point free is meer een stijl van functions definieren. Waar
+                    kunnen we functies definieren die dezelfde vorm hebben en
+                    hoe zorgen we ervoor dat we deze functies aanropen zonder de
+                    argumenten expliciet mee te geven
+                  </li>
+                  <li>
+                    De key takeaway was dat wanneer we point free gebruiken we
+                    onze code declaratiever maken, wat onze leesbaarheid
+                    verhoogt.
+                  </li>
+                  <li>
+                    Daarna hebben we de oefeningen samen opgelost in een
+                    daaropvolgende Frontend sync. Voor diegene die daar niet
+                    bijwaren zal ik de oefening op het einde van de talk nog
+                    eens delen.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Agenda</h2>
+          <ul>
+            <li>Closure</li>
+            <small
+              ><ul>
+                <li class="fragment">Lazy vs. Eager</li>
+                <li class="fragment">Memoization</li>
+                <li class="fragment">Referential Transparency</li>
+                <li class="fragment">Generalized vs Specialized</li>
+                <li class="fragment">Partial Application</li>
+                <li class="fragment">Currying</li>
+              </ul>
+            </small>
+            <li class="fragment">Composition</li>
+            <small
+              ><ul>
+                <li class="fragment">Declarative Data Flow</li>
+                <li class="fragment">Piping vs. Composition</li>
+                <li class="fragment">Associativity</li>
+              </ul>
+            </small>
+          </ul>
+          <aside class="notes">
+            <ul>
+              <li>
+                Alright! Vandaag staan er weer 2 grote topics op de agenda
+                namelijk Closure en Composition.
+              </li>
+              <li>
+                Closure hebben we al zeker aangeraakt en de mensen die weten wat
+                closure is zullen het zeker al gespot hebben in de voorbije
+                talks. Closure is een belangrijk deel van functioneel
+                programmeren.
+              </li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Closure</h2>
+          <aside class="notes">
+            <p>
+              Zonder een goed begrip van closure kun je bijna niet aan
+              functioneel programmeren gaan doen. Het is een belangrijk
+              ingredient. Ik wil jullie een specifieke definitie meegeven die
+              wat afgestemt is met het functionele aspect.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <blockquote>
+            Closure is when a function "remembers" the variables around it even
+            when that same function is executed elsewhere.
+          </blockquote>
+          <aside class="notes">
+            <p>
+              Closure is het onthouden van variabelen rond de functie ook al
+              wordt de functie ergens anders aangeroepen. En met rond de rond de
+              function bedoelen we elke variabele in een scope buiten de huidige
+              function scope. De variablen worden niet rechtstreeks in de
+              functie als argumenten meegegeven. Een voorbeeld kan zijn globale
+              variablen of variablen in een scope buiten de functie.
+            </p>
+            <p>
+              Dat principe van toegang heet closure, het is de manier waarop
+              javascript aan garbage collection gaat doen. Maar meer hierover
+              later. Het topic kan misschien best begrepen worden met een
+              voorbeeld als hulpmiddel. Laat ons even kijken.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="1,9|2-6|11-13|*">
+              function makeCounter() {
+                var counter = 0;
+
+                return function increment() {
+                  return ++counter;
+                }
+              }
+
+              var c = makeCounter();
+
+              c();  // 1
+              c();  // 2
+              c();  // 3
+            </code>
+          </pre>
+          <p class="fragment">❌ not pure</p>
+          <aside class="notes">
+            <p>
+              Hier is een simpel voorbeeld van closure. [SPACE] We hebben een
+              makeCounter function die op lijn 9 wordt geïnvokeerd. [SPACE] Deze
+              functie maakt een teller en geeft een increment functie terug die
+              die teller verhoogt met 1. [SPACE] Op lijn 11, 12 en 13 invokeren
+              we c die we op lijn 9 maken en de counter wordt verhoogt met 1.
+            </p>
+            <p>
+              De functie c wat eigenlijk gelijk is aan de functie increment
+              onthoud de counter variable vanwege het principe Closure. Je zou
+              denken dat die wordt gegarbage collect maar dat is niet zo. Omdat
+              daar nog een referentie naar ligt op lijn 5 weet javascript dat
+              deze variable niet mag opgekuisd worden.
+            </p>
+            <p>
+              Ik wil hierbij een vraag stellen:
+              <strong>Is de c functie een pure function call?</strong>
+            </p>
+            <p>
+              [WACHTEN OP ANTWOORD] nee, we geven c wel telkens dezelfde input
+              (geen input) maar de output is telkens anders. Dit is absoluut
+              geen pure function call, maar we gebruiken wel closure.
+            </p>
+            <p>
+              Dus de key takeaway hier is: Closure is niet noodzakelijk direct
+              verbonden met pure functies of fp. Maar closure kan absoluut
+              worden gebruikt als hulpmiddel. Laat ons kijken naar een voorbeeld
+              van closure dat samenhoort met de term pure functie.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="1|2-4">
+              function unary(fn) {
+                return function one(arg) {
+                  return fn(arg);
+                }
+              }
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Ken je Unary nog? Dat was 1 van de eerste util functions die we
+              bekeken wanneer we naar argument adapters keken. Onze eerste
+              Higher Order Function.
+            </p>
+            <p>
+              [SPACE] Unary neemt een functie fn hier op lijn 1 en het onthoud
+              die fn functie voor later op lijn 3. Hoe werkt dit? Waarom wordt
+              fn op lijn 1 niet opgekuisd wanneer unary gedaan heeft met
+              uitvoeren?
+            </p>
+            <p>
+              [SPACE] Het antwoord is: omdat de inner function met de naam one
+              die teruggegeven wordt aan die parrameter fn vasthoud, via wat we
+              noemen Closure. Het heeft nog toegang, dus later wanneer we one
+              uitvoeren ergens in onze code, dan heeft one nog steeds toegang
+              tot fn.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="1,3">
+              function addAnother(z) {
+                return function addTwo(x, y) {
+                  return x + y + z;
+                }
+              }
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Herriner je u nog addAnother? Hier spraken we over in de tweede
+              talk, herriner je u nog hoe die z variable op lijn 3 en referentie
+              heeft naar lijn 1, ook al is die z variabele in aan outer scope
+              gedeclareerd.
+            </p>
+            <p>
+              De addTwo functie is "closed over" de variabele z, waardoor die
+              variabele later kan gebruikt worden.
+            </p>
+            <p>
+              De key hier is dat in beide slides de fn op de vorige en z op
+              deze. In beide gevallen leggen we een referentie buiten de huidige
+              functie wat op zich lijkt op een no/no in fp maar het is veilig
+              functioneel omdat deze niet veranderd. Het is als het ware een
+              mini geheugen voor iets dat niet veranderd. Dus dit blijft
+              function pure.
+            </p>
+            <p>
+              Op het einde van de talk geef ik jullie een oefening mee ivm
+              closure. Laten we tempo houden en verder gaan met Lazy vs. Eager.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Lazy vs. Eager</h2>
+          <aside class="notes">
+            <p>
+              Als we spreken over Closure, moeten we begrijpen wanneer dingen
+              exact gebeuren. Wat is het verschil tussen lazy en eager? Op zich
+              niet meteen vanzelfsprekend maar het is wel een belangrijk gegeven
+              wanneer we van closure gebruik maken.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*|7|2-4|1,3|7|2-4,9|*">
+              function repeater(count) {
+                return function allTheAs() {
+                  return "".padStart(count, "A");
+                }
+              }
+
+              var ATenTimes = repeater(10);
+
+              ATenTimes(); // "AAAAAAAAAA"
+              ATenTimes(); // "AAAAAAAAAA"
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Laten we kijken naar deze functie repeater het neemt een input
+              genaamd count, dus als ik repeater aanroep met 10 [SPACE] dan is
+              count 10. [SPACE] Repeater geeft mij een functie terug die
+              gesloten is of (die "closed is over") de variable count. [SPACE]
+              Op lijn 3 is count closed over lijn 1.
+            </p>
+            <p>
+              [SPACE] Dus bij het aanroepen op lijn 7, wordt count opgeslagen in
+              de stack. En op lijn 9 [SPACE] als ik ATenTimes aanroep wordt
+              alltheAs aangeroepen met de count van de stack.
+            </p>
+            <p>
+              Maar nu heb ik voor jullie een vraag om lazy vs eager aan te
+              kaarten. Op welke lijn van dit programma wordt het echte werk
+              uitgevoerd? Is het lijn 7 of is het lijn 9? Waar wordt de string
+              "AAAAAAAAAA" gemaakt? is dat lijn 7 of lijn 9? En wat met lijn 10?
+              Doen we het werk opnieuw? ( :) ja)
+            </p>
+            <p>
+              Wat hier interessant is dat het werk op lijn 3 telkens gebeurd bij
+              het aanroepen van ATenTimes, dat is wat we Lazy noemen of
+              deffered.
+            </p>
+            <p>
+              Waarom zouden we het werk willen uitstellen? Een reden zou kunnen
+              zijn, als we niet zeker zouden zijn dat de functie ooit zou
+              aangeroepen worden. Wat als de ATenTimes maar op 10% van de
+              gevallen zou worden aangeroepen? Als we het werk eerder deden zou
+              90% van ons werk verloren zijn, niet?
+            </p>
+            <p>
+              Wat is het nadeel van het werk uit te stellen?
+              <strong>(Nu doen we het elke keer?)</strong>
+            </p>
+            <p>
+              Wat als we het werk eerder willen doen? Wat als we het werk
+              verschuiven naar lijn 1,5. Dan zou de code er zo uit zien.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*">
+              function repeater(count) {
+                var str = "".padStart(count, "A");
+                return function allTheAs() {
+                  return str;
+                }
+              }
+
+              var ATenTimes = repeater(10);
+
+              ATenTimes(); // "AAAAAAAAAA"
+              ATenTimes(); // "AAAAAAAAAA"
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              We hebben hier nog steeds exact dezelfde uitkomst. Lijn 10 en 11
+              printen nog steeds 10 As. Maar laat mij u nu nog is de vraag
+              stellen waar gebeurd het werk is dat op lijn 8 of op lijn 10?
+            </p>
+            <p>
+              Nu gebeurt het werk op lijn 8, dit is wat men noemt EAGER. Wat is
+              het voordeel van eager? (het werk doen we maar 1 keer)
+            </p>
+            <p>Basicly "Cachen" we het resultaat.</p>
+            <p>
+              Wat is het nadeel van eager execution? [ZELF ANTWOORDEN] Wat als A
+              nooit aangeroepen wordt?
+            </p>
+            <p>
+              Dus hier zien we duidelijk het verschil tussen de twee technieken.
+              Soms is "eager" een betere fit voor het probleem, soms is "lazy"
+              een beter idee. Beiden zijn BTW doenbaar omdat we closure hebben.
+              In beide gevallen sluiten we over een variable, in vorige was dat
+              count. Over welke variabele "closen" we in dit voorbeeld? <br />
+              [ZELF ANTWOORDEN] "str"
+            </p>
+            <p>
+              Dus het is aan ons om te beslissen wanneer of we het "eagerly" nu
+              willen doen, of "lazilly" later.
+            </p>
+            <p>
+              Het zou cool zijn moesten we beide kunnen combineren. Laten we
+              zeggen, the best of both worlds.
+            </p>
+            <p>
+              Ok, efkes nadenken. We willen het werk maar 1 keer doen. Maar we
+              willen het werk niet doen tenzij het gevraagd wordt. Dus wat als
+              we het werk terug in de allTheAs zetten en dan op 1 of andere
+              manier zouden kunnen detecteren of het werk nog niet gedaan is en
+              het dan 1 keer doen om daarna nooit meer te doen.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*|2|3-8|*">
+              function repeater(count) {
+                var str;
+                return function allTheAs() {
+                  if (str == undefined) {
+                    str = "".padStart(count, "A");
+                  }
+                  return str;
+                }
+              }
+
+              var ATenTimes = repeater(10);
+
+              ATenTimes(); // "AAAAAAAAAA"
+              ATenTimes(); // "AAAAAAAAAA"
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Dus wat als we dit deden. [SPACE] Wat als we een string variable
+              op lijn 2 zetten, en dan de functie die we teruggeven [SPACE]
+              controleert of string undefined is wat enkel waar zal zijn de
+              eerste keer. En als het undefined is doen we het werk, maar
+              wanneer we het al weten dan geven we gewoon str terug op lijn 7.
+            </p>
+            <p>Op welke lijn wordt het werk nu gedaan?[SPACE]</p>
+            <p>Is het lijn 11 of lijn 13?</p>
+            <p>En wat met 14? Op lijn 14 is het werk al gedaan.</p>
+            <p>
+              Dus we hebben het werk uitgesteld, maar dan toch deden we het maar
+              1 keer.
+            </p>
+            <p>
+              Nu in de vorige voorbeelde sloten we over 1 variable die niet
+              veranderde dus de functie was nog steeds puur. Wat kunnen we hier
+              zeggen? Is deze code functioneel puur?
+            </p>
+            <p>
+              We zeiden daarstaks in het begin, close niet over iets dat
+              veranderd. Dat is inpuur. Veranderd de string variabele over tijd?
+              Het veranderd van undefined naar een gedefinieerde string. Uh oh,
+              is dit functioneel puur? Ik zou zeggen ja.
+            </p>
+            <p>
+              Als we ATenTimes uitvoeren op lijn 13 is geeft zij ons dezelfde
+              output dan op lijn 14 en zo verder. Dezelfde input produceert
+              telkens dezelfde output. Maar, de code is niet vanzelfsprekend
+              puur. We moeten onszelf overtuigen dat het puur is, door ze te
+              gaan lezen en begrijpen.
+            </p>
+            <p>
+              Als deze code zou gelezen worden door een functionele programmeur,
+              dan zou die zeggen dat de code waarschijnlijk impure is ipv pure.
+              Dus deze code"stijl" leid tot een lage zelfzekerheid of dat deze
+              code pure is of niet.
+            </p>
+            <p>
+              Zou je dit moeten doen dan? Dit is zeker beter voor de
+              performantie! Maar voor in termen van stijl, zijn we niet
+              overtuigd. Wat als er een weg was om deze performantie toch te
+              hebben? Maar dan in een declaratieve stijl Er bestaat een utility
+              voor dit exacte doeleind.
+            </p>
+            <p>
+              Wat als we een utility hadden voor onze pure functies, die telkens
+              wanneer we dezelfde inputs geven, we een gecachte output
+              terugkrijgen. Da zou cool zijn! Ze bestaat!
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*|2|3-8|*">
+              function repeater(count) {
+                return memoize(function allTheAs() {
+                  return "".padStart(count, "A");
+                })
+              }
+
+              var ATenTimes = repeater(10);
+
+              ATenTimes(); // "AAAAAAAAAA"
+              ATenTimes(); // "AAAAAAAAAA"
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              En ze noemt memoize. Kijk wat memoize doet, het neemt een functie
+              die niet geoptimaliseerd is. Want lijn 2 tot 4 toont ons Een lazy
+              function.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Thank you 🙏</h2>
+          <aside class="notes">
+            <p>Volgende sessie:</p>
+            <p>Bedankt voor jullie aandacht.</p>
+          </aside>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+
+      Reveal.initialize({
+        hash: true,
+        controls: false,
+        progress: false,
+        slideNumber: false,
+        transition: "fade",
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
