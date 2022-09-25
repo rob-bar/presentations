@@ -23,57 +23,607 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <h2>Functional Programming pt.2</h2>
+          <h3>Functional Programming pt.2</h3>
+          <p>
+            <em><small>"Step by step"</small></em>
+          </p>
           <aside class="notes">
             <ul>
               <li>
-                Steven bedanken, Vragen of er nog vragen zijn bij de oefening en
-                of we ze moeten herbekijken ja of neen.
+                Ok, welkom by Functioneel Programmeren deel 2. Vandaag is de
+                talk iets kleiner omdat we niet te snel willen gaan in onze
+                opvatting.Volgend talk gaat terug ongeveer even groot zijn als
+                deel 1. Belangrijk is dat we stap voor stap groeien in het
+                process.
               </li>
               <li>
-                Korte recap van vorige sessie:
-                <strong>Definitie & Waarom</strong>,
-                <strong>Declaratie vs imperatief</strong>,
-                <strong>Proceduraal & functioneel</strong>. Wat zijn de
-                eigenschappen van een <strong>pure functie</strong>.
-                <ul>
-                  <li>directe inputs</li>
-                  <li>directe outputs</li>
-                  <li>zelfde input geeft altijd zelfde output</li>
-                  <li>geen side effects</li>
-                </ul>
-                Gekeken naar hoe we van een inpure functie een pure functie
-                maken met:
-                <ul>
-                  <li>Extraction impurity</li>
-                  <li>Containing impurity</li>
-                  <li>Adapter function</li>
-                </ul>
+                Misschien iedereen die de oefeningen gemaakt heeft, als die even
+                +1 willen typen. Vandaag zijn er ook terug 3 kleine oefeningskes
+                aanwezig op het einde maar laat ons eerst even snel recappen wat
+                we vorige keer hebben gedaan.
               </li>
             </ul>
           </aside>
         </section>
         <section>
-          <h2>Agenda</h2>
+          <h3>Small recap</h3>
           <ul>
-            <li class="fragment">Argument adapters</li>
-            <li class="fragment">Point Free</li>
-            <li class="fragment">Closure</li>
+            <li class="fragment">Definition & Why FP.</li>
+            <li class="fragment">Declarative vs Imperative</li>
+            <li class="fragment">Procedural & Functional</li>
+            <li class="fragment">Pure function</li>
+            <li class="fragment">Dealing with impurity</li>
           </ul>
           <aside class="notes">
-            <p></p>
+            <ul>
+              <li>
+                Korte recap van vorige sessie:
+                <ul>
+                  <li>Definitie & Waarom</li>
+                  <li>Declaratie vs imperatief</li>
+                  <li>Proceduraal & functioneel.</li>
+                  <li>Wat zijn de eigenschappen van een pure functie</li>
+                  <ul>
+                    <li>directe inputs</li>
+                    <li>directe outputs</li>
+                    <li>zelfde input geeft altijd zelfde output</li>
+                    <li>geen side effects</li>
+                  </ul>
+                  <li>
+                    Gekeken naar hoe we van een inpure functie een pure functie
+                    maken met:
+                  </li>
+                  <ul>
+                    <li>Extraction impurity</li>
+                    <li>Containing impurity</li>
+                    <li>Adapter function</li>
+                  </ul>
+                </ul>
+              </li>
+            </ul>
           </aside>
         </section>
 
         <section>
+          <h2>Agenda</h2>
+          <ul>
+            <li class="fragment">Argument adapters</li>
+            <li class="fragment">Point Free</li>
+          </ul>
+          <aside class="notes">
+            <ul>
+              <li>We gaan vandaag verder met Argument adapters</li>
+              <li>Daarna gaa we kijken naar Point Free</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Arguments</h2>
+          <aside class="notes">
+            <p>
+              Vorige talk hebben we het hele functie concept diep uitgedoktert,
+              Laten we nu onze aandacht even focussen naar de
+              <strong>argumenten</strong> en de <strong>parameters</strong> van
+              functies ipv naar de functies in hun geheel.
+            </p>
+            <p>
+              De termen Parameters en argumenten worden vaak door elkaar
+              gebruikt maar eigenijk zijn ze niet exact hetzelfde.
+              <strong>Een Parameter</strong> is beschreven in de functie
+              definitie en een <strong>Argument</strong> is de waarde die wordt
+              gekozen om de parameter in te vullen. Argumenten worden toegewezen
+              aan parameters. We spreken over de <strong>inputs</strong> van de
+              functies.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="|2-4|7-9|">
+                // unary
+                function increment(x) {
+                  return sum(x, 1);
+                }
+
+                // binary
+                function sum(x, y) {
+                  return x + y;
+                }
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              <strong>[SPACE]</strong>Als ik een functie heb die
+              <strong>increment</strong> heet die 1 enkele input value aanneemt
+              in dit geval x en deze geeft ons een waarde terug in dit geval de
+              som van x en y dan is er een speciale term om dit soort functie te
+              beschrijven. Wel eigenlijk beschiijft de term eerder de
+              <strong>vorm</strong> van de functie. We noemen dit soort functie
+              in functioneel programmeren een <strong>unary function</strong>.
+            </p>
+            <p>
+              <strong>[SPACE]</strong>En als we kijken op lijn 7 naar de functie
+              sum die een x en een y parameter krijgt. Dit zijn dus 2 inputs,
+              dan noemen we deze functie een <strong>binary functie</strong>.
+            </p>
+            <p>
+              Een formelere naam voor de "vorm" van een functie is een type
+              definition. Maar we gaan informele taal blijven gebruiken. Unary
+              en Binary zijn op zich vrij eenvoudige namen.
+            </p>
+            <p>
+              <strong>[SPACE]</strong>
+              <strong
+                >De Vorm van een functie in functioneel programmeren is een zeer
+                belangrijke gegeven. En zelf de volgorde van de argumenten zijn
+                van belang, wat we later gaan zien in currying.
+              </strong>
+              De favoriet is hier de unary, single input singel output. en de
+              tweede favoriet is een binary function. 2 inputs, single output.
+            </p>
+            <p>
+              In een goed functioneel programma ga je 95% unary en binary shapes
+              vinden. Er is nog een derde term om alle ander functies te
+              beschrijven: miscelanious, 3 4 5 parameters. we noemen deze
+              <strong>N-ary</strong> functions.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre data-id="code-animation" style="font-size: 0.9rem">
+            <code class="language-js" data-trim data-line-numbers="|1-5|13-15|17">
+              function unary(fn) {
+                return function one(arg) {
+                  return fn(arg);
+                }
+              }
+
+              function binary(fn) {
+                return function two(arg1, arg2) {
+                  return fn(arg1, arg2);
+                }
+              }
+
+              function f(...args) {
+                return args;
+              }
+
+              var g = unary(f);
+              var h = binary(f);
+
+              g(1, 2, 3, 4)     // [1]
+              f(1, 2, 3, 4)     // [1, 2]
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Die vorm van de functie is de kern van functioneel programmeren.
+              We kunnen ook de vorm van een functie aanpassen, en hier gaan we
+              onszelf iets meer pushen naar het denken als een functioneel
+              programmeur.
+            </p>
+            <p>
+              We gaan een concept introduceren en ik ben zeker dat er mensen
+              zijn die de term kennen. Higher order Function, soms afgekort als
+              HOF.
+            </p>
+            <p>
+              <strong>Een higher order function</strong> is een functie die
+              <strong>1 of meerder functies krijgt als inputs</strong> en/of die
+              <strong>1 of meerder functies teruggeeft als outputs</strong>.
+            </p>
+            <p>
+              Een functie die geen functies krijgt maar basic data types zoals
+              string of boolean noemen we een
+              <strong>single order function</strong>.
+            </p>
+            <p>
+              <strong>[SPACE]</strong>Dus op lijn 1 zien we een utility function
+              die we nu unary hebben genoemd, we zien dat unary een functie
+              aanvaart die genoteerd is als de parameter "fn" en het geeft ons
+              een andere functie terug met de naam one in dit geval. De unary
+              utility is een Higher order Function.
+            </p>
+            <p>
+              Maar wat doet deze functie, op zich iets interesant want de
+              functie die we daar terugkrijgen die de naam one heeft, heeft maar
+              1 parameter arg genoemt
+            </p>
+            <p>
+              Misschien weten jullie dat in Javascript alle functies
+              <strong>"variotic"</strong> zijn. Wat wil zeggen dat javascript
+              niet geeft om hoeveel parameters er staan in de functie, je kan
+              zoveel argumenten doorgeven als je wil.
+            </p>
+            <p>
+              Je kan een functie maken die er 3 verwacht en er 4 aan geven. Je
+              kan een functie maken die er 3 verwacht en er maar 1 aan geven.
+            </p>
+            <p>
+              Dus als ik een functie zou nemen die meerdere accepteerd zoals die
+              op lijn 13, een n-ary functie<strong>[SPACE]</strong>
+            </p>
+            <p>
+              Wat als ik deze aan unary geef? Wat krijg ik dan terug op lijn 17?
+              Daar maken we de functie g met achterliggend de naam one. Wat
+              gebeurd er als ik deze dan 4 arguments? Hoeveel argumenten halen
+              het tot in de onderliggende functie?<strong>!PAUZE</strong>
+            </p>
+            <p>Enkel 1</p>
+            <p>
+              Dat is wat unary doet, het vervomt de functie zodanig dat het maar
+              1 parameter aanvaard. Binary doet exact hetzelfde maar dan alleen
+              met 2 argumenten.
+            </p>
+            <p>
+              In <strong>Fp utility libraries</strong> ga je extreem veel HOFs
+              tegenkomen. Het concept van een functie te geven die dan een
+              nieuwe functie terug geeft die iets anders doet is een kritiek
+              stuk in functioneel programmeren.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers>
+              function flip(fn) {
+                return function flipped(arg1, arg2, ...args) {
+                  return fn(arg2, arg1, ...args);
+                }
+              }
+
+              function f(...args) {
+                return args;
+              }
+
+              var g = flip(f);
+              g(1, 2, 3, 4)     // [2, 1, 3, 4]
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Ok laat ons nog een ander voorbeeld nemen van een adapter
+              function. Hier is er een die <strong>flip</strong> noemt.
+            </p>
+            <p>
+              Soms zal er een voorval zijn waar je de twee eerste argumenten zal
+              willen omkeren van volgorde. Stel je hebt een functie die x en y
+              aanvaard, maar jij wil dat die y en x aanvaard. Dat is een
+              function <strong>shape adaptation</strong>. Dus we schrijven de
+              flip adapter.
+            </p>
+            <p>
+              Flip neemt een functie en geeft de functie flipped terug die arg1
+              en arg2 omdraait of transponeert. al de rest als er iets wordt
+              meegegeven blijft untoutched.
+            </p>
+            <p>
+              <strong
+                >Btw flip is de algemeen gebruikte voor exact deze functie in
+                veel libraries. Zelfde zoals unary en binary.</strong
+              >
+            </p>
+            <p>
+              <strong
+                >En dat is zoals leren wat de plus operator doet in de
+                wiskunde.</strong
+              >
+              Elke keer als wij nu flip zien staan, dan weten we dat er in de
+              onderliggende functie een positie shift gebeurd tussen argument 1
+              en argument 2.
+            </p>
+            <p>
+              Op lange termijn is de kunst van de functioneel programeur om al
+              deze terugkerende operators te zien en ze te gebruiken zoals 1 + 1
+              = 2.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers>
+              function reverseArgs(fn) {
+                return function reversed(...args) {
+                  return fn(...args.reverse());
+                }
+              }
+
+              function f(...args) {
+                return args;
+              }
+
+              var g = reverseArgs(f);
+              g(1, 2, 3, 4)     // [4, 3, 2, 1]
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Hier is nog een voorbeeld van een adapter functie. Eentje die
+              ikzelf heb verzonnen verderbouwend op flip.
+            </p>
+            <p>
+              Reversed krijgt args en die variable wordt op lijn 3 met de
+              reverse array method omgedraaid.
+            </p>
+            <p>
+              Maar op dit moment willen we even stilstaan en onzelf afvragen,
+              kunnen we in ons programma zoveel adapters toevoegen als we
+              willen. Kunnen we creatief zijn en gewoon ons ding doen?
+              <strong>PAUZE</strong> Wel niet bepaald. Want we willen de
+              familiariteit hoog houden natuurlijk. De bedoeling is dat wanneer
+              iemand naar onze codebase komt, hij niet moet uitzoeken wat de
+              adapter functie doet. Bedoeling is dus dat we zoveel mogelijk de
+              common functies gebruiken die iederen kent.
+            </p>
+            <p>
+              Als je er toch 1 moet maken, documenteer ze goed, zet ze in een
+              std lib en gebruik ze zoveel mogelijk zodat iedereen ze leert
+              kennen in u team.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Point-Free</h3>
+          <aside class="notes">
+            <p>
+              Ok laat ons naar een ander concept kijken dat veel gebruikt wordt
+              in functioneel programmeren en dat is POINT FREE. Point Free zal
+              een beetje vreemd lijken op het eerste zicht maar op het einde van
+              de talke of misschien nog later in deel 3 zal het duidelijker
+              worden wat de voordelen zijn.
+            </p>
+            <p>
+              Het is eerder een soort stijl in hoe we onze functies definiëren.
+              Een functie definiëren, zonder eigenlijk iets in de functie te
+              definieren. Het is een functie maken door ze samen te stellen met
+              behulp van andere functies.
+            </p>
+            <p>
+              De definitie van Point free style zegt: Het is de functie
+              definiëren zonder de punten te hoeven te definieren a.k.a. de
+              inputs van de functie. En dat zal waarschijnlijk duidelijker
+              worden aan de hand van een voorbeeld. Laat ons even kijken.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers>
+              getPerson(function onPerson(person) {
+                return renderPerson(person);
+              })
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Denk dat iedereen in deze call al dingen zal gedaan hebben als in
+              dit voorbeeld. We geven hier een Callback aan de getPerson utility
+              en deze krijgt een person input en deze geeft dat door naar een
+              ander functie zoals in dit geval de renderPerson op lijn 2.
+            </p>
+            <p>
+              De person parameter die je op lijn 1 ziet dat is het punt voor de
+              onPerson functie. En je ziet hier dat we de onPerson functie
+              hebben gedefinierd door expliciet dat punt op te lijsten. Wat als
+              we deze code kunnen maken zodanig dat we niet eens het punt moeten
+              doorgeven?
+            </p>
+            <p>
+              Misschien kunnen jullie zien dat de onPerson functie en de
+              renderPerson functie in dit geval exact dezelfde function shape
+              hebben. Wat wil zeggen als ze dezelfde vorm hebben kunnen we ze
+              uitwisselen met elkaar. Wat eigenlijk wil zeggen dat ik
+              renderPerson kan geven als de callback.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers>
+              getPerson(function onPerson(person) {
+                return renderPerson(person);
+              })
+              
+              getPerson(renderPerson);
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Dat is wat we denkik dagelijks doen met dingen zoals onclick
+              events in react bijvoorbeeld. Wel! dat wil zeggen dat je eigenlijk
+              al heel die tijd een deel van point free hebt zitten toepassen.
+              Dit deel noemen ze in Functional Programming,
+              <strong>equasional reasoning</strong>
+            </p>
+            <p>
+              Als we een functie hebben met dezelfde vorm en we hebben nog een
+              functie met dezelfde vorm, ook al doen ze andere dingen intern.
+              Dan kunnen we ze uitwisselen onder elkaar omdat ze dezelfde vorm
+              hebben. In het geval van het voorbeeld heeft de onPerson functie
+              dezelfde vorm als de renderPerson dus we kunnen ze uitwisselen met
+              elkaar.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="|6">
+              function isOdd(v) {
+                return v % 2 == 1;
+              }
+
+              function isEven(v) {
+                return !isOdd(v);
+              }
+
+              isEven(4) // true
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Hier hebben we een isOdd functie die straight forward is. We
+              gebruikt de modulo operator. Dus elke value modulo 2 als die
+              gelijk is aan 1, dan wil dat zeggen dat het een oneven nummer is.
+              Gelijk aan 0 wil zeggen even nummer.
+            </p>
+            <p>
+              Wanneer ik de isEven functie heb gedeclareerd er vlak onder, dan
+              waren er een aantal manieren om dit te doen.
+              <strong>[SPACE]</strong>Op lijn 6 had ik kunnen zeggen: v mod 2
+              equal equal 0 en dat zou prima werken. Het is wiskundig correct.
+              Maar hier deed ik het iets anders. Ik definieerde hier isEven op
+              basis van de isOdd functie, om tegelijk de negatie te doen met de
+              bang operator. Iets is ofwel even of oneven, het kan geen ander
+              resultaat zijn.
+            </p>
+            <p>
+              Welk voordeel krijgen we hier als we dit op deze manier
+              definieren?
+              <strong>PAUZE</strong>
+              Het antwoord hier zou zijn: ik heb een duidelijkere relatie gelegd
+              tussen de twee functies. Ik heb gezegd isEven is de negatie van
+              isOdd. Als ik v mod 2 equals nul had gedaan had die relatie ook
+              bestaan, maar was deze veel minder duidelijk geweest in het
+              programma.
+            </p>
+            <p>
+              Soms hoor ik mensen zeggen, een programma moet het
+              <strong>DRY</strong> principe overal toepassen. Op zich niet 100%
+              verkeerd, soms kan onnodig repetitief zijn de leesbaarheid van een
+              programma verlagen. Maar eigeniljk in veel gevallen in functioneel
+              programmeren is het meestal beter om repetitief te zijn in de
+              code.
+            </p>
+            <p>
+              Hier maken we duidelijk wat de relatie is tussen de 2 functies dus
+              we hebben ongeveer 90 percent van het werk al gedaan. Maar de
+              grotere vraag die voorhanden ligt is:
+              <strong
+                >Kan ik isEven definieren op een point free manier?</strong
+              >
+              Kan ik isEven definieren op basis van isOdd zonder die v parameter
+              door te geven? Want dat is het punt.
+            </p>
+            <p>
+              Voor we de oplossing bekijken, moeten we ons eerst de vraag
+              stellen. Wat is eigenlijk de win van point free. Waarom zouden we
+              dit doen? Wel het punt is dat we naar die declaratieve stijl
+              shiften. Als we punten hebben dan hebben we in theorie een
+              imperatieve stijl die data van input naar input routen. "Procedure
+              like".
+            </p>
+            <p>
+              Er is een vreemd fenomeen waarbij we denken dat imperatief
+              gelijkgestemd is met impliciet en declaratief gelijkgestemd met
+              expliciet. Maar dat klopt eigenlijk niet, het is het omgekeerde.
+              Declaratief is eigenlijk over het algemeen meer impliciet dan
+              expliciet en imperatief is over het algemeen meer expliciet.
+            </p>
+            <p>
+              Als we de vraag stellen aan 100 devs wat is het beste impliciet of
+              expliciet, 99 van de honderd gaan zeggen. Het is beter om
+              expliciet te zijn. Hier suggeren we met functioneel programmeren
+              dat het beter is om impliciet te zijn. Zeker op een lager nivieau
+              in de applicatie.
+            </p>
+            <p>
+              De lezer van de code heeft geen baat bij het feit dat v daar wordt
+              doorgegeven van lijn 5 naar lijn 6, dat is een onnodig detail.
+            </p>
+            <p>
+              Hoe gaan we dit nu doen. Wel we gaan een utility maken die de vorm
+              van een functie aanpast. Zoals we eerder al deden met de HOFs. We
+              gaan er geen uitvinden we gaan er gewoon 1 gebruiken die al
+              bestaat.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="|1-5|11">
+              function not(fn) {
+                return function negated(...args) {
+                  return !fn(...args);
+                }
+              }
+              
+              function isOdd(v) {
+                return v % 2 == 1;
+              }
+
+              const isEven = not(isOdd);
+
+              isEven(4) // true
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>Hier hebben we een higher order function met de naam not.</p>
+            <p>
+              <strong>[SPACE]</strong>Not neemt een functie op lijn 1 en geeft
+              een nieuwe functie op lijn 2 terug met de naam negated. Het neemt
+              alle inputs en voert hiermee op lijn 3 de negated functie uit die
+              we op lijn 1 kregen.
+            </p>
+            <p>
+              Dus nu wanneer we isEven declareren
+              <strong>[SPACE]</strong> roepen we de not functie aan met isOdd
+              als parameter en zijn we klaar.
+            </p>
+            <p>
+              Lijn 11 is niet alleen minder te lezen en makkelijker te berekenen
+              in het hoofd. Maar lijn 11 heeft een veel sterkere uitdrukking van
+              de relatie tussen de twee functies. Je kunt klaar en duidelijk
+              zien hier dat isEven de negatie is van isOdd op 1 lijn.
+            </p>
+            <p>Daar zitten de readability gains in functioneel programmeren.</p>
+            <p>De hoe zit verstopt onder een declaratieve stijl van coderen.</p>
+          </aside>
+        </section>
+        <section>
+          <h2>
+            <a
+              href="https://gitlab.mediahuisgroup.com/robbie.bardijn/functional-programming/-/tree/master/point-free"
+              target="_blank"
+              >Exercise</a
+            >
+          </h2>
+          <aside class="notes">
+            <p>
+              We zullen kort even over de oefening gaan en dan kunnen we
+              overgaan naar Q&A. Zoals de eerste oefeninging lees goed de readme
+              vooraleer je begint. We gaan de point free refactoring technieke
+              oefenen in deze oefening.
+            </p>
+            <p>
+              In de readme staat dat je 3 functies moet refactoren naar point
+              free style. Output, printIf en isLongEnough.
+            </p>
+            <p>
+              Kijk zeker naar de hints want deze helpen u met het refactoring
+            </p>
+            <p>
+              De 4 testcases onderaan controleren de code en op de eerste moet
+              er Hello geprint worden. Op de 2de en de 3d niets en dan op de
+              laatste testcase Hello world. Veel plezier.
+            </p>
+            <p>
+              Ik zal de oplossing volgende week terug online zetten op de
+              solution branch.
+            </p>
+          </aside>
+        </section>
+        <section>
           <h2>Thank you 🙏</h2>
           <aside class="notes">
             <p>
-              Volgende keer gaan we verder met adapters en gaan we dieper graven
-              in het functioneel landschap. Vandaag hebben we enkel het puntje
-              van de ijsberg gezien.
+              In de volgende part 3 gaan we kijken naar closure en composition.
+              We hebben zeker closure al aangeraakt hier, maar daar gaan we
+              kijken naar <strong>Lazy en Eager execution</strong>,
+              <strong>Generalized to specialized</strong>, partial application
+              en curry. All that good stuff.
             </p>
-            <p>Tot dan! Zal de agenda op tijd aanvullen.</p>
+            <p>Bedankt voor jullie aandacht.</p>
           </aside>
         </section>
       </div>
