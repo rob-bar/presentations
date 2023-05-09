@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Welcome to functional programming pt.4</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/atom-one-dark-reasonable.css"
+    />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h3>Functional Programming pt.4</h3>
+          <p>
+            <em><small>"The journey continues"</small></em>
+          </p>
+          <aside class="notes">
+            <ul>
+              <li>
+                Alright, vandaag gaan we verder met
+                <strong>Functioneel Programmeren deel 4</strong>
+                Voor de mensen die er vorige keren niet bijwaren of een keer
+                niet bij waren, geen <probleem class=""></probleem>
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <!-- <section>
+          <h3>Small recap</h3>
+          <ul>
+            <li class="fragment">Argument adapters</li>
+            <li class="fragment">Point Free</li>
+          </ul>
+          <aside class="notes">
+            <ul>
+              <li>
+                Het is even geleden dus een Korte recap van vorige sessie is
+                zeker niet misplaatst:
+                <ul>
+                  <li>
+                    <strong>ARGUMENT ADAPTERS</strong>: hoe gaan we functies
+                    bouwen die de vorm van een functie aanpassen. We hebben bv
+                    geleerd wat <strong>variotic</strong> wil zeggen.
+                  </li>
+                  <li>
+                    We hebben gesproken over <strong>unary</strong> en
+                    <strong>binary</strong> functions, we hebben gesproken over
+                    <strong>Higher order functions</strong>.
+                  </li>
+                  <li>
+                    Voorbeelden van higher order functions waren bijvoorbeeld
+                    Flip en Reverse
+                  </li>
+                  <li>
+                    Bij <strong>Point Free</strong> hebben we gezien wat
+                    <strong>equasional reasoning</strong> is. Point free is meer
+                    een stijl van functions definieren. Waar kunnen we functies
+                    definieren die <strong>dezelfde vorm</strong> hebben en hoe
+                    zorgen we ervoor dat we deze functies aanropen zonder de
+                    argumenten expliciet mee te geven
+                  </li>
+                  <li></li>
+                  <li>
+                    De key takeaway was dat wanneer we point free gebruiken we
+                    onze <strong>code declaratiever</strong> maken, wat onze
+                    leesbaarheid verhoogt.
+                  </li>
+                  <li>
+                    Daarna hebben we de <strong>oefeningen</strong> samen
+                    opgelost in een daaropvolgende Frontend sync. Voor diegene
+                    die daar niet bijwaren zal ik de oefening op het einde van
+                    de talk nog eens delen.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Agenda</h2>
+          <ul>
+            <li>Closure</li>
+          </ul>
+          <aside class="notes">
+            <ul>
+              <li>
+                Alright! Vandaag staat er ons een groot topic te wachten op de
+                agenda namelijk <strong>Closure</strong>.
+              </li>
+              <li>
+                Closure hebben we al zeker aangeraakt en de mensen die weten wat
+                closure is zullen het zeker al gespot hebben in de voorbije
+                talks. Closure is een belangrijk deel van functioneel
+                programmeren.
+              </li>
+              <li>
+                <ul>
+                  <li>Lazy vs. Eager</li>
+                  <li>Memoization</li>
+                  <li>Referential Transparency</li>
+                  <li>Generalized vs Specialized</li>
+                  <li>Partial Application</li>
+                  <li>Currying</li>
+                </ul>
+              </li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Closure</h2>
+          <aside class="notes">
+            <p>
+              Zonder een goed begrip van closure kun je bijna niet aan
+              functioneel programmeren gaan doen. Het is een belangrijk
+              ingredient. Ik wil jullie een
+              <strong>specifieke definitie meegeven</strong> die wat afgestemt
+              is met het functionele aspect.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <blockquote>
+            Closure is when a function "remembers" the variables around it even
+            when that same function is executed elsewhere.
+          </blockquote>
+          <aside class="notes">
+            <p>
+              <strong
+                >Closure is het onthouden van variabelen rond de functie ook al
+                wordt de functie ergens anders aangeroepen.</strong
+              >
+            </p>
+            <p>
+              En met rond de function bedoelen we elke variabele in een scope
+              buiten de huidige function scope van de functie. De variablen
+              worden niet rechtstreeks in de functie als argumenten meegegeven.
+              Een voorbeeld kan zijn globale variablen of variablen in een scope
+              buiten de functie.
+            </p>
+            <p>
+              Dat principe van toegang heet closure, het is een
+              <strong
+                >manier waarop javascript aan garbage collection gaat
+                doen</strong
+              >. Het topic kan misschien best begrepen worden met een voorbeeld
+              als hulpmiddel. Laat ons even kijken.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*|1,9|2-6|11-13|*">
+              function makeCounter() {
+                var counter = 0;
+
+                return function increment() {
+                  return ++counter;
+                }
+              }
+
+              var c = makeCounter();
+
+              c();  // 1
+              c();  // 2
+              c();  // 3
+            </code>
+          </pre>
+          <p class="fragment">❌ not pure</p>
+          <aside class="notes">
+            <p>Hier zie je een simpel voorbeeld van closure. [SPACE]</p>
+            <p>
+              We hebben een makeCounter functi die op lijn 9 wordt geïnvokeerd.
+              [SPACE]
+            </p>
+            <p>
+              Deze functie maakt een teller en geeft een increment functie terug
+              die die teller verhoogt met 1. [SPACE]
+            </p>
+            <p>
+              Op lijn 11, 12 en 13 invokeren we c die we op lijn 9 gemaakt
+              hadden en de counter wordt verhoogt met 1. [SPACE]
+            </p>
+            <p>
+              De functie c wat eigenlijk gelijk is aan de functie increment
+              onthoud de counter variable vanwege het principe Closure. Je zou
+              denken dat die wordt gegarbage collect maar dat is niet zo. Omdat
+              daar nog een referentie naar ligt op lijn 5 weet javascript dat
+              deze variable niet mag opgekuisd worden.
+            </p>
+            <p>
+              Ik wil hierbij een vraag stellen:
+              <strong>Is de c functie een pure function call?</strong>
+            </p>
+            <p>
+              [WACHTEN OP ANTWOORD] nee, we geven c wel telkens dezelfde input
+              (geen input) maar de output is telkens anders. Dit is absoluut
+              geen pure function call, maar we gebruiken wel closure.
+            </p>
+            <p>
+              Dus de key takeaway hier is: Closure is niet noodzakelijk direct
+              verbonden met pure functies of met functioneel programeren.
+              <strong
+                >Maar closure kan absoluut worden gebruikt als
+                hulpmiddel.</strong
+              >
+            </p>
+            <p>
+              Laat ons kijken naar een voorbeeld van closure dat samenhoort met
+              de term pure functie.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*|1|2-4">
+              function unary(fn) {
+                return function one(arg) {
+                  return fn(arg);
+                }
+              }
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Ken je Unary nog? Dat was 1 van de eerste util functions die we
+              bekeken wanneer we naar <strong>argument adapters</strong> keken.
+              Onze eerste Higher Order Function.
+            </p>
+            <p>
+              [SPACE] Unary neemt een functie fn hier
+              <strong
+                >op lijn 1 en het onthoud die fn functie voor later op lijn
+                3</strong
+              >. Hoe werkt dit? Waarom wordt fn op lijn 1 niet opgekuisd wanneer
+              unary gedaan heeft met uitvoeren?
+            </p>
+            <p>
+              [SPACE] Het antwoord is:
+              <strong
+                >omdat de inner function met de naam one die teruggegeven wordt
+                aan die parrameter fn vasthoud, via wat we Closure noemen
+                .</strong
+              >
+              Het heeft nog toegang, dus later wanneer we one uitvoeren ergens
+              in onze code, dan heeft one nog steeds toegang tot fn.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*|1,3">
+              function addAnother(z) {
+                return function addTwo(x, y) {
+                  return x + y + z;
+                }
+              }
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Herriner je u nog addAnother? Hier spraken we ook al eerder over.
+            </p>
+            <p>
+              Zie je hoe die z variable op lijn 3 en referentie heeft naar lijn
+              1, ook al is die z variabele in een outer scope gedeclareerd.
+            </p>
+            <p>
+              De addTwo functie is "closed over" de variabele z, waardoor die
+              variabele later kan gebruikt worden.
+            </p>
+            <p>
+              De key hier is dat in beide slides de fn op de vorige en z op
+              deze.
+            </p>
+            <p>
+              <strong
+                >In beide gevallen leggen we een referentie buiten de huidige
+                functie wat op zich lijkt op een no/no in fp maar het is veilig
+                functioneel omdat deze niet veranderd.</strong
+              >
+            </p>
+            <p>
+              Het is als het ware een mini geheugen voor iets dat niet
+              veranderd. Dus dit blijft function pure.
+            </p>
+            <p>
+              Op het einde van de talk geef ik jullie een oefening mee ivm
+              closure. Laten we tempo houden en verder gaan met Lazy vs. Eager.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Lazy vs. Eager</h2>
+          <aside class="notes">
+            <p>
+              Als we spreken over Closure, moeten we begrijpen wanneer dingen
+              exact gebeuren.
+            </p>
+            <p>Wat is het verschil tussen lazy en eager?</p>
+            <p>
+              Op zich niet meteen vanzelfsprekend maar het is wel een belangrijk
+              gegeven wanneer we van closure gebruik maken.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*|7|2-4|1,3|7|2-4,9|*">
+              function repeater(count) {
+                return function allTheAs() {
+                  return "".padStart(count, "A");
+                }
+              }
+
+              var ATenTimes = repeater(10);
+
+              ATenTimes(); // "AAAAAAAAAA"
+              ATenTimes(); // "AAAAAAAAAA"
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Laten we kijken naar deze functie repeater het neemt een input
+              genaamd count, dus als ik repeater aanroep met het argument 10
+              [SPACE]
+            </p>
+            <p>
+              dan is count 10. [SPACE] Repeater geeft mij een functie terug die
+              gesloten is of (die "closed is over") de variable count. [SPACE]
+            </p>
+            <p>
+              Dus bij het aanroepen op lijn 7, wordt count opgeslagen in de
+              stack. En op lijn 9 [SPACE] als ik ATenTimes aanroep wordt
+              alltheAs aangeroepen met de count van de memory stack.
+            </p>
+            <p>
+              Maar nu heb ik voor jullie een vraag om lazy vs eager aan te
+              kaarten.
+            </p>
+            <p>
+              <strong
+                >Op welke lijn van dit programma wordt het echte werk
+                uitgevoerd?</strong
+              >
+              Is het lijn 7 of is het lijn 9? Waar wordt de string "AAAAAAAAAA"
+              gemaakt? is dat lijn 7 of lijn 9? En wat met lijn 10? Doen we het
+              werk opnieuw? ( :) ja)
+            </p>
+            <p>
+              Wat hier interessant is dat het werk op lijn 3 telkens gebeurd bij
+              het aanroepen van ATenTimes, dat is wat we
+              <strong>Lazy of deffered noemen</strong>.
+            </p>
+            <p>Waarom zouden we het werk willen uitstellen?</p>
+            <p>
+              Een reden zou kunnen zijn, als we niet zeker zouden zijn dat de
+              functie ooit zou aangeroepen worden. Wat als de ATenTimes maar op
+              10% van de gevallen zou worden aangeroepen? Als we het werk eerder
+              deden zou 90% van ons werk verloren zijn, niet?
+            </p>
+            <p>
+              Wat is het nadeel van het werk uit te stellen?
+              <strong>Nu doen we het elke keer.</strong>
+            </p>
+            <p>Wat als we het werk eerder willen doen?</p>
+            <p>
+              Wat als we het werk verschuiven naar lijn 1,5. Dan zou de code er
+              zo uit zien.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*">
+              function repeater(count) {
+                var str = "".padStart(count, "A");
+                return function allTheAs() {
+                  return str;
+                }
+              }
+
+              var ATenTimes = repeater(10);
+
+              ATenTimes(); // "AAAAAAAAAA"
+              ATenTimes(); // "AAAAAAAAAA"
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              We hebben hier nog steeds exact dezelfde uitkomst. Lijn 10 en 11
+              printen nog steeds 10 As. Maar laat mij u nu nog is de vraag
+              stellen:
+              <strong
+                >Waar gebeurd het werk is dat op lijn 8 of op lijn 10?</strong
+              >
+            </p>
+            <p>
+              Nu gebeurt het werk op lijn 8, dit is
+              <strong>wat men noemt EAGER</strong>. Wat is het voordeel van
+              eager? (het werk doen we maar 1 keer)
+            </p>
+            <p>Basicly "Cachen" we het resultaat.</p>
+            <p>
+              Wat is het nadeel van eager execution? <br />[ZELF ANTWOORDEN] Wat
+              als ATenTimes nooit wordt aangeroepen?
+            </p>
+            <p>
+              Dus hier zien we duidelijk het verschil tussen de twee technieken.
+              Soms is "eager" een betere fit voor het probleem, soms is "lazy"
+              een beter idee.
+            </p>
+            <p>
+              Beiden zijn BTW doenbaar omdat we closure hebben. In beide
+              gevallen sluiten we over een variable, in vorige was dat count.
+              Over welke variabele "closen" we in dit voorbeeld? <br />
+              [ZELF ANTWOORDEN] "str"
+            </p>
+            <p>
+              Dus het is aan ons om te beslissen wanneer of we het "eagerly" nu
+              willen doen, of "lazilly" later.
+            </p>
+            <p>
+              Het zou cool zijn moesten we beide kunnen combineren. Laten we
+              zeggen, the best of both worlds.
+            </p>
+            <p>Ok, efkes nadenken.</p>
+            <p>
+              We willen het werk maar 1 keer doen. Maar we willen het werk niet
+              doen tenzij het gevraagd wordt.
+            </p>
+            <p>
+              Dus wat als we het werk terug in de allTheAs zetten en dan op 1 of
+              andere manier zouden kunnen detecteren of het werk nog niet gedaan
+              is en het dan 1 keer doen om daarna nooit meer te doen.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*|2|3-8|*">
+              function repeater(count) {
+                var str;
+                return function allTheAs() {
+                  if (str == undefined) {
+                    str = "".padStart(count, "A");
+                  }
+                  return str;
+                }
+              }
+
+              var ATenTimes = repeater(10);
+
+              ATenTimes(); // "AAAAAAAAAA"
+              ATenTimes(); // "AAAAAAAAAA"
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Dus wat als we dit deden. [SPACE] Wat als we een string variable
+              op lijn 2 zetten, en dan de functie die we teruggeven [SPACE]
+              controleert of string undefined is wat enkel waar zal zijn de
+              eerste keer. En als het undefined is doen we het werk, maar
+              wanneer we het al weten dan geven we gewoon str terug op lijn 7.
+            </p>
+            <p>Op welke lijn wordt het werk nu gedaan? [SPACE]</p>
+            <p>Is het lijn 11 of lijn 13?</p>
+            <p>En wat met 14? Op lijn 14 is het werk al gedaan.</p>
+            <p>
+              Dus we hebben het werk uitgesteld, maar dan toch deden we het maar
+              1 keer.
+            </p>
+            <p>
+              Nu in de vorige voorbeelde sloten we over 1 variable die niet
+              veranderde dus de functie was nog steeds puur. Wat kunnen we hier
+              zeggen?
+            </p>
+            <p>Is deze code functioneel puur?</p>
+            <p>
+              We zeiden daarstaks in het begin, close niet over iets dat
+              veranderd. Dat is inpuur. Veranderd de string variabele over tijd?
+              Ja, het veranderd van undefined naar een gedefinieerde string.
+            </p>
+            <p>Uh oh, is dit functioneel puur? Ik zou zeggen ja.</p>
+            <p>
+              Als we ATenTimes uitvoeren op lijn 13 is geeft zij ons dezelfde
+              output dan op lijn 14 en zo verder. Dezelfde input produceert
+              telkens dezelfde output. Maar,
+              <strong>de code is niet vanzelfsprekend puur</strong>. We moeten
+              onszelf overtuigen dat het puur is, door ze te gaan lezen en
+              begrijpen.
+            </p>
+            <p>
+              Als deze code zou gelezen worden door een functionele programmeur,
+              dan zou die zeggen dat de code waarschijnlijk impure is. Dus deze
+              code"stijl" leid tot een <strong>lage zelfzekerheid</strong> of
+              dat deze code pure is of niet.
+            </p>
+            <p>
+              Zou je dit moeten doen dan? Dit is zeker beter voor de
+              performantie! Maar voor in termen van stijl, zijn we niet
+              overtuigd.
+            </p>
+            <p>
+              Wat als er een weg was om deze performantie toch te hebben? Maar
+              dan in een declaratieve stijl Er bestaat een utility voor dit
+              exacte doeleind.
+            </p>
+            <p>
+              Wat als we een utility hadden voor onze pure functies, die telkens
+              wanneer we dezelfde inputs geven, we een gecachte output
+              terugkrijgen. Da zou cool zijn! Ze bestaat!
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*">
+              function repeater(count) {
+                return memoize(function allTheAs() {
+                  return "".padStart(count, "A");
+                })
+              }
+
+              var ATenTimes = repeater(10);
+
+              ATenTimes(); // "AAAAAAAAAA"
+              ATenTimes(); // "AAAAAAAAAA"
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              En ze noemt memoize. Deze zit in al u favoriete fp libraries,
+              zelfs in react. Kijk wat memoize doet, het neemt een functie die
+              niet geoptimaliseerd is. Want lijn 2 tot 4 toont ons Een lazy
+              function. Memoize past deze functie aan. Het maakt voor ons een
+              nieuwe aangepaste functie.
+            </p>
+            <p>
+              Dit is een functie waar de vorm niet aangepast is maar eerder het
+              gedrag.
+            </p>
+            <p>
+              De functie wordt gewrapped met code die alle inputs controleert,
+              en als die inputs ooit al zijn ingegeven, dan geeft deze simpel
+              weg een cached result terug. Dus het onderhoud een interne
+              geheugen.
+            </p>
+            <p>
+              De take away hier is:
+              <strong
+                >Deze stijl code is functioneler dan de vorige slide.</strong
+              >
+              Want we closen niet over een variable die een re-assignment
+              krijgt. Alle variablen die we gebruiken worden maar 1 keer
+              toegekend. In dit geval Count.
+            </p>
+            <p>
+              Nog een takeaway hier is: Je zou kunnen denken, hey dit is
+              eigenlijk wel zalig voor performantie, dus Waarom zetten we
+              memoize niet rond elke functie? Overweeg de cost van Memoization?
+              Memoization onderhoud een interne cash dus deze gaat geheugen
+              gebruiken.
+            </p>
+            <p>
+              Dus de vraag die moet gesteld worden is:
+              <strong>Gaat deze functie voordeel halen uit memoization?</strong>
+              Wat zijn de cases waar memoization nuttig is? [ANTWOORD] Wanneer
+              we denken dat een functie meerdere keren gaat aangeroepen worden
+              met dezelfde input.
+            </p>
+            <p>
+              Nog een laatste takeaway hier is, op zich is de memoize functie
+              geschreven zoals onze vorige slide, maar omdat ze
+              weg-geabstraheerd is maakt dat voor ons niet uit. We weten dat we
+              memoize kunnen vertrouwen, de lezer moet niet opnieuw de
+              calculatie doen.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>🧩</h2>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*">
+              function repeater(count) {
+                return memoize(function allTheAs() {
+                  return "".padStart(count, "A");
+                })
+              }
+
+              var ATenTimes = repeater(10);
+
+              ATenTimes(); // "AAAAAAAAAA"
+              
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              We zijn eindelijk klaar om het laatste deel van de puzzel op te
+              lossen. Wat is een pure funcie?
+            </p>
+            <p>Laat ons snel nog eens een recap doen:</p>
+            <ul>
+              <li>
+                We begonnen met: een pure functie moet inputs hebben en moet
+                outputs hebben. Dat was het prille begin. Dat was goed maar niet
+                goed genoeg.
+              </li>
+              <li>
+                Daarna zeiden we: eigenlijk moet er een relatie bestaan tussen
+                de inputs en de outputs. Wat beter was maar nog steeds niet goed
+                genoeg.
+              </li>
+              <li>
+                Eigenlijk moeten het directe inputs zijn en directe outputs. Wel
+                eigenlijk kunnen ze indirect zijn zolang ze niet veranderen.
+                Herriner we kunnen over dingen closen zolang ze niet veranderen.
+              </li>
+              <li>
+                Onze laatse definitie was wanneer we steeds dezelfde inputs
+                geven zouden we dezelfde outputs moeten krijgen. Als dat waar is
+                hebben we een pure function call. Right! Beter en bijna
+                compleet!
+              </li>
+              <li>
+                Hier is de volledig canonieke definitie van een pure function
+                call: Lijn 9 is een pure function call omdat ik de return value
+                kan nemen van die function call en die kan vervangen met de
+                function call zelf.
+              </li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Referential Transparency</h2>
+          <aside class="notes">
+            <p>Deze eigenschap noemt men referential transparency.</p>
+            <p>
+              Een function call is puur als het referential transparency bezit.
+            </p>
+            <p>
+              Referential transparency betekent een function call kan vervangen
+              worden door zijn return value zonder invloed te hebben op de rest
+              van het programma.
+            </p>
+            <p>
+              In functionele talen zoals haskel of elm referential transparency
+              is een key karakteristiek. Het is daar niet mogelijk om functies
+              te shrijven die niet pure zijn. De compilers maken daar op zich
+              dan gebruik van en replacen of memoizen alles in het programma. De
+              compiler kan dit gratis doen zonder problemen.
+            </p>
+            <p>In javasctipt hebben we dat jammergenoeg niet.</p>
+            <p>
+              Dus, maakt referential transparency enkel uit als de compiler het
+              kan doen? Ik zou zeggen nee, het grotere voordeel zit bij de lezer
+              van de code. Beschouw elke function call in een programma als een
+              pure function call.
+            </p>
+            <p>
+              De lezer van de code ziet op een gegeven moment in het programma
+              een functie, hij weet wat die teruggeeft de waarde 42 als
+              voorbeeld hier. Als hij daarna de exact zelfde functie leest op
+              een later moment. Moet die dan opnieuw gaan kijken naar de
+              functie? Nee want hij is zeker dat deze functie 42 teruggeeft. In
+              de practijk is er dan meer geheugen vrij voor te focussen op
+              andere zaken van de app.
+            </p>
+            <p>
+              Ik heb het in deel 1 denkik al is gezegd, de beste code is de code
+              dat niet gelezen moet worden. Want ik heb die al bekeken en ik
+              weet wat die functie doet.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Generalized to Specialized</h2>
+          <aside class="notes">
+            <p>
+              We hebben het een klein beetje gehad al over function
+              specialization. We gaan daar nu iets dieper op in, het idee
+              waarbij we gaan van meer generieke functies naar meer specifieke
+              functies. Ook een key concept in Functional Programming.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*">
+              function ajax(url, data, cb) { /* .. */ }
+
+              ajax(CUSTOMER_API, {id: 42}, renderCustomer);
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Ok, laten we ons even inbeelden dat we een functie ajax hebben.
+              Het neemt 3 inputs: een url, een dataparameter en dan een
+              callback. En ik kan die aanroepen zoals je ziet op lijn 3 wil
+              zeggen met een CUSTOMER_API we geven het een data met een ide 42
+              en een render customer functie als callback.
+            </p>
+            <p>
+              Hier is op zich niks mis mee, it gets the job done en we hebben
+              allemaal wel al is code geschreven die er zo uit ziet. Maar wat we
+              hier willen benadrukken is dat die lijn veel detail in zich heeft
+              dat de lezer niet perse op dat moment wil lezen.
+            </p>
+            <p>
+              Elke lijn code zou exact genoeg informatie moeten bevatten, niet
+              meer of niet minder op het juiste moment. Dus laat ons wat
+              tussenstappen maken zodat de lezer het misschien duidelijker kan
+              begrijpen en lezen.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*">
+              function ajax(url, data, cb) { /* .. */ }
+
+              ajax(CUSTOMER_API, {id: 42}, renderCustomer);
+
+              function getCustomer(data, cb) {
+                return ajax(CUSTOMER_API, data, cb);
+              }
+              
+              getCustomer({id: 42}, renderCustomer);
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Wat we zouden kunnen doen is een
+              <strong>functie tussenin maken</strong> met de naam getCustomer.
+            </p>
+            <p>
+              GetCustomer weet al dat alle ajax calls gebeuren tegen de
+              CUSTOMER_API en het heeft enkel een datastructuur nodig en een
+              callback, maar het heeft geen url nodig want het is
+              <strong>zogezegd hardcoded</strong>.
+            </p>
+            <p>
+              Dus vergelijk lijn 3 en lijn 9 even in u hoofd en vraag uzelf af
+              welke van deze 2 lijnen beschijft aan de lezer het duidelijkst wat
+              het doel en de intentie is van de code. En de meeste zouden zeggen
+              lijn 9.
+            </p>
+            <p>
+              Het heeft een <strong>semantische functienaam</strong> wat beter
+              is dan deze generieke functie ajax met de customer api. Het
+              beschrijft iets duidelijker.
+            </p>
+            <p>
+              De functie getCustomer kan op zich maar
+              <strong>1 keer aangeroepen worden, maar dat is niet erg</strong>.
+              1 van de redenen om een functie te maken is om de code
+              semantischer te maken in het geheel.
+            </p>
+            <p>
+              De naam van een functie beschrijft zijn doel. En het doel is het
+              belangrijkst voor ons, en als dat waar is dan kunnen we dat verder
+              uitbreiden.
+            </p>
+            <p>
+              Er zijn misschien plaatsen in onze applicatie waar we een
+              specifieke customer nodig hebben, zoals bijvoorbeeld de huidige
+              ingelogde customer.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation" style="font-size: 0.95rem">
+            <code class="language-js" data-trim data-line-numbers="*|3,9,16|*">
+              function ajax(url, data, cb) { /* .. */ }
+
+              ajax(CUSTOMER_API, {id: 42}, renderCustomer);
+
+              function getCustomer(data, cb) {
+                return ajax(CUSTOMER_API, data, cb);
+              }
+              
+              getCustomer({id: 42}, renderCustomer);
+
+              function getCurrentCustomer(cb) {
+                // renturn ajax(CUSTOMER_API, {id: 42}, renderCustomer);
+                return getCustomer({id: 42}, renderCustomer);
+              }  
+
+              getCurrentCustomer(renderCurrentCustomer)
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Dus we kunnen nog een specifiekere functie declareren genaamd
+              getCurrentCustomer die de id vanuit een cookie ofzo gaat halen of
+              in dit geval hard coded. Het enige wat deze functie nodig heeft is
+              een callback.
+            </p>
+            <p>
+              [SPACE] Dus als we lijn 16 vergelijken met lijn 9 en op zich nog
+              is vergelijken met lijn 3, kunnen we dan zien dat lijn 16 het
+              meest beschrijvende is van de 3. En lijn 3 het minst?
+            </p>
+            <p>
+              We hebben hier geen functionaliteit bijgevoegd btw, dit is puur de
+              stijl van onze code. Deze code is meer semantisch.
+            </p>
+            <p>
+              [SPACE] Als we kijken BTW naar lijn 12 die uitgecomment is hier,
+              dan zien we dat lijn 13 getCurrentCustomer gedefinieerd is in
+              relatie met getCustomer, we konden dat doen in relatie met de ajax
+              functie maar dat zou een zwakker statement zijn. De relatie is
+              duidelijker op lijn 13 dan op lijn 12.
+              <strong
+                >getCurrentCustomer is de specialiasatie van
+                getCustomer.</strong
+              >
+            </p>
+            <p>
+              Op dit moment hebben we getCustomer en getCurrentCustomer manueel
+              gedeclareerd, dat is iets wat manueel werk.
+            </p>
+            <p>
+              Is er een manier waarbij we dezelfde functies kunnen declareren
+              zonder manueel pointed functies te declareren zoals in dit
+              voorbeeld? Dit zijn pointed defenitions ipv. point free.
+              <strong>Hoe kunnen we ze point free definieren?</strong>
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Function parameter order:</h2>
+          <h3>General -> Specific</h3>
+          <aside class="notes">
+            <p>
+              Voor we dat doen, moeten we eerst benadrukken dat de
+              <strong>parameter volgorde van groot belang is.</strong>
+            </p>
+            <p>
+              We hebben dat in talk 2 gezien dat de volgorde van belang is ook
+              bij point free.
+            </p>
+            <p>
+              De volgorder is: generiek links, specifiek rechts. Want we gaan de
+              inputs 1 voor 1 doorgeven zoals we daarnet deden manueel. En we
+              willen ze in die volgorde <strong>openvouwen</strong> als het
+              ware.
+            </p>
+            <p>
+              Een voorbeeldje en een hint ook naar de volgende talk is
+              bijvoorbeeld de map functie. Je zou denken dat wanneer we map
+              gebruiken dat we eerst de array binnengeven als eerste input en
+              dan de itterator functie als 2de.
+            </p>
+            <p>
+              Maar elke fp lib en zelf de js spec geeft eerst de functie en dan
+              de array. De data array is de meest specifieke van parameters dus
+              die komt als 2de en dan de Callback is meer generiek, dus die komt
+              eerst.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Partial application</h2>
+          <aside class="notes">
+            <p>
+              Er zijn 2 manieren hoe we kunnen specializeren. 1 daarvan is
+              Partial application. Laat ons terug onze ajax functie nemen en
+              partial application erop toepassen.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="1|3,4,5|*">
+              function ajax(url, data, cb) { /* .. */ }
+
+              var getCustomer = partial(ajax, CUSTOMER_API);
+              // var getCurrentCustomer = partial(ajax, CUSTOMER_API, {id: 42})
+              var getCurrentCustomer = partial(getCustomer, {id: 42})
+
+              getCustomer({id: 42}, rendercustomer);
+
+              getCurrentCustomer(rendercustomer);
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>Hier is mijn ajax functie op lijn 1.</p>
+            <p>
+              [SPACE] Op lijn 3 maak ik een partial application van de ajax
+              function en dat resultaat is getCustomer.
+            </p>
+            <p>
+              De mannier hoe ik getCustomer gemaakt heb uit de ajax functie is
+              door het voordefinieren van de CUSTOMER_API url als de eerste
+              input.
+            </p>
+            <p>
+              Dus stel u een partial utility functie voor ( we gaan deze niet in
+              detail bekijken btw want deze zit in al u favoriete fb libs en het
+              is minder relevant voor dit voorbeeld)
+            </p>
+            <p>
+              Deze partial functie neemt een
+              <strong
+                >functie als de eerste input en dan als volgende inputs neemt
+                het de argumenten van de functie die moeten doorgegeven worden
+                aan die functie op een gegeven moment</strong
+              >. Dus deze zorgt eigenlijk voor het presetten van die argumenten.
+            </p>
+            <p>
+              Op lijn 4 doen we hetzelfde dan op lijn 5 maar dit is op zich
+              hetzelfde voorbeeld als in de vorige slides. Lijn 4 is minder
+              krachtig relationeel dan lijn 5.
+              <strong
+                >getCurrentCustomer is een partial application van
+                getCustomer.</strong
+              >
+            </p>
+            <p>
+              Dus die partial functie laat mij toe om een functie te preseten
+              met een aantal inputs en later de rest van de inputs te geven
+              zoals op lijn 7 en 9
+            </p>
+            <p>
+              Je merkt wsl op dat voor zo een
+              <strong>two stage specialiasatie</strong>
+              te doen heb ik 2 maal de partial functie moeten oproepen, een
+              beetje vergelijkbaar met ons vorige voorbeeld waar we 2 manuele
+              functies moesten maken.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Currying</h2>
+          <aside class="notes">
+            <p>
+              Nog een mannier om aan specialiasatie te gaan doen is currying.
+              Deze wordt
+              <strong>veel meer gebruikt in functioneel programmeren</strong>
+              dan partial application.
+            </p>
+            <p>
+              Beiden technieken hebben hetzelfde einddoel maar ze zijn iets
+              anders in de aanpak ervan.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation" style="font-size: 0.95rem">
+            <code class="language-js" data-trim data-line-numbers="*|1-5|7|*">
+              function ajax(url) {
+                return function getData(data) {
+                  return function getCB(cb) { /*..*/ }
+                }
+              }
+
+              ajax(CUSTOMER_API)({id: 42})(renderCustomer);
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Terug naar onze ajax fucntie. Wat als we de ajax functie zoals
+              hier schreven. Het ziet er een beetje verschillend uit dan vorige
+              voorbeelden.
+            </p>
+            <p>
+              [SPACE] We hebben een ajax niveau een getData niveau en een getCB
+              niveau.
+            </p>
+            <p>
+              [SPACE] Let goed op op lijn 7 daar roepen we de ajax functie aan
+              met 1 argument de customer api, dan krijgen we een functie die
+              opzich weer wordt aangeroepen met id 42 en deze geeft ons weer en
+              3de functie terug en die wordt aangeroepen met de getCUstomer
+              callback.
+            </p>
+            <p>
+              Dus we hebben 3 geneste functies en dan hebben we 3 function
+              calls.
+            </p>
+            <p>Op zich kunnen we hiernaar refereren als manuele currying.</p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*">
+              function ajax(url) {
+                return function getData(data) {
+                  return function getCB(cb) { /*..*/ }
+                }
+              }
+
+              ajax(CUSTOMER_API)({id: 42})(renderCustomer);
+
+              var getCustomer = ajax(CUSTOMER_API);
+              var getCurrentCustomer = getCustomer({id: 42});
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Die 3 functies zo declareren staat ons toe om ook de intermediate
+              functies te schrijven zoals op lijn 9 en 10.
+            </p>
+            <p>
+              Merk op dat we bij dit voorbeeld
+              <strong>geen utility</strong> hebben moeten gebruiken, het enige
+              wat we hebben moeten doen om de volgende functie te krijgen is de
+              volgende input ingeven.
+            </p>
+            <p>
+              Een input doorgeven en dan een meer specifieke functie
+              terugkrijgen, nog een input doorgeven nog een specifiekere functie
+              terugkrijgen. Deze techniek is genaamd currying.
+            </p>
+            <p>Klein weetje: Waar komt die naam vandaan btw?</p>
+            <p>
+              Puur vanuit de haskel programmeer taal. Sommigen zullen al wel
+              gehoord hebben van de taal. 1 van de co-uitvinders van Haskel,
+              zijn naam was Haskel Curry. Hij was het brein achter deze
+              techniek. In haskel zijn alle functies unary. Dus Currying is een
+              techniek die daar extreem veel wordt gebruikt.
+            </p>
+            <p>
+              Dus currying komt puur van het gevolg van maar 1 argument te
+              kunnen doorgeven aan een functie.
+            </p>
+            <p>
+              Nu, dit voorbeeld is zeer manueel weer, het zou nice zijn moesten
+              we een curry utility hebben.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*">
+              // var ajax = url => data => cb => {...}
+              // var ajax = url => (data => (cb => {...}));
+              var ajax = curry(
+                3,
+                function ajax(url, data, cb) {/*...*/ }
+              );
+              var getCustomer = ajax(CUSTOMER_API);
+              var getCurrentCustomer = getCustomer({id: 42});
+
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              We hebben inderdaad zo een utility function genaamd curry die dat
+              voor ons doet.
+            </p>
+            <p>
+              BTW in de commented lijnen zie je dat we de array syntax
+              gebruiken. Dit is exact hetzelfde als vorige slide gewoon op 1
+              lijn geschreven. Veel functionele programeurs houden van de arrow
+              syntax omdat die bijna exact hetzelfde is als de wiskundige
+              notatie en de haskel notatie.
+            </p>
+            <p>
+              Als je arrow functions wil gebruiken, probeer dan zo duidelijk
+              mogelijk te zijn naar de lezer toe en doe het dan best zoals op
+              lijn 2.
+            </p>
+            <p>
+              Maar belangrijker is hier de curry functie: je roept deze aan door
+              als eerste argument te zeggen hoeveel inputs je gaat ontvangen (in
+              dit geval 3). En dan geef je het de functie die je wil gebruiken.
+              Dat mag een gewone n-ary functie zijn met eender hoeveel
+              parameters.
+            </p>
+            <p>
+              Deze curry utility vouwt de functie als het ware op in hetzelfde
+              dan wat je ziet op lijn 1 en 2, in een geneste functie die telkens
+              1 input per keer aanvaard.
+            </p>
+            <p>
+              <strong
+                >Anders gezegd, het maakt ons een adapter functie wiens taak het
+                is om telkens een andere functie terug te geven totdat het
+                gewenste aantal inputs gegeven is en dan roept het de
+                onderliggende functie aan als eindresultaat.</strong
+              >
+            </p>
+            <p>
+              Dat geeft ons de mogelijkheid op lijn 7 om ajax aan te roepen met
+              het CUSTOMER_API argument, en op lijn 8 de getCustomer met de data
+              id 42 als argument.
+            </p>
+            <p>
+              Dus merk op dat we dezelfde outcome hebben zowel bij curry als bij
+              partial application. Maar de twee zijn wel degelijk verschillend
+              in hun implementatie.
+            </p>
+            <p>
+              Bij partial appllication moest ik de utility 2 maal aanroepen. Bij
+              curyying roep ik de util functie 1 maarl aan om ze klaar te zetten
+              en dan specializeert die zichzelf wanneer ik er inputs aan geef.
+            </p>
+            <p>
+              Dat is denkik een reden waarom curry aantrekkelijker is omdat het
+              minder calls zijn naar die util functies.
+            </p>
+            <p>
+              Bij elke fp library die je zal tegenkomen zijn
+              <strong
+                >alle methodes van de library onderliggend all curried</strong
+              >. Want het blijkt dat functional programmers alle functies
+              curried willen. :D Dezelfde reden waarom ze unary functions
+              verkiezen. single input single output.
+            </p>
+            <p>
+              De curry functie is exact dat, single input single output en zo
+              verder.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Partial Application vs. Currying</h2>
+          <ol>
+            <li>Both are <a href="#">specialization techniques</a></li>
+            <li>
+              Partial applicaion
+              <a href="#"
+                >presets some arguments now, recieves the rest on the next
+                call</a
+              >.
+            </li>
+            <li>
+              Currying
+              <a href="#"
+                >doesn't preset any arguments, recieves each argument one at a
+                time</a
+              >
+            </li>
+          </ol>
+          <aside class="notes">
+            <p>
+              Dus als we kijken naar het fundamenteel verschil tussen de twee.
+              Dan zeggen we dat ze beiden specializatie technieken zijn.
+            </p>
+            <p>
+              Maar dat partial application meteen presets verwacht en dan later
+              pas de rest tijdens de volgende functie invokaties.
+            </p>
+            <p>
+              Terwijl currying geen presets verwacht initieël. <br />Maar dan
+              bij elke invokatie telkens 1 argument als preset.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*">
+              var ajax = curry(
+                3,
+                function ajax(url, data, cb) {/*...*/ }
+              );
+              
+              // strict currying
+              ajax( CUSTOMER_API )( {id: 42} )( renderCustomer );
+              
+              // loose currying
+              ajax( CUSTOMER_API, {id: 42} )( renderCustomer );
+
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Er is nog 1 ding wat we niet weten over curry en dat is het
+              verschil tussen <strong>loose currying</strong> en
+              <strong>strict currying</strong>.
+            </p>
+            <p>
+              Tot nu toe hebben we het enkel gezien zoals op lijn 7, elke call
+              verwacht 1 input. Maar stel dat je een functie hebt met 5
+              argumenten waarvan je er al 3 weet en dan later 2. Je kan zien dat
+              dat wat lastig wordt om die dan eerst 3 keer aan te roepen en dan
+              2 keer.
+            </p>
+            <p>
+              Het zou beter zijn dat we maar 2 invocaties hebben, de eerste met
+              3 argumenten en de tweede met 2 argumenten.
+            </p>
+            <p>
+              Dat is wat loose currying ons geeft. En btw alle js fp libs zijn
+              loose currying. En dat is waarschijnlijk door de aard van
+              javascript en voor ons gemak.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*">
+              function add(x, y) { return x + y; }
+
+              [0, 2, 4, 6, 8].map(function addOne(v) {
+                return add(1, v);
+              });
+
+              // [1, 3, 5, 7, 9]
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              Laat ons als laatste een praktischer voorbeeld bekijken met een
+              map functie.
+            </p>
+            <p>
+              Dus hier geven we de addOne functie aan als mapper functie en gaan
+              we voor elk item in de array 1tje optellen. Op lijn 4
+              prespecifieren we add met het nummer 1 zodat we telkens 1tje
+              optellen.
+            </p>
+            <p>
+              Waarom kon ik add niet gewoon als mapper functie geven? [PAUZE]
+            </p>
+            <p>
+              Waarom zou het ongepast zijn als ik add op lijn 3 doorgeef als
+              mapper functie in de plaats van addOne dat we hier gemaakt hebben?
+              [PAUZE]
+            </p>
+            <p>
+              Ze hebben idd een andere vorm, add is een binary functie en addOne
+              is een unary function.
+            </p>
+            <p>
+              Mapper functies worden verwacht van unary functions te zijn. Dus
+              wat doen we hier fundamenteel met addOne, we veranderen de shape.
+              En hoe veranderen we nu weer de vorm van een functie?
+              <strong>Door ze te specializeren.</strong>
+            </p>
+            <p>Je kan wsl al raden waar ik hiermee naartoe ga.</p>
+          </aside>
+        </section>
+
+        <section>
+          <pre data-id="code-animation">
+            <code class="language-js" data-trim data-line-numbers="*">
+              function add(x, y) { return x + y; }
+
+              [0, 2, 4, 6, 8].map(function addOne(v) {
+                return add(1, v);
+              });
+              // [1, 3, 5, 7, 9]
+
+              add = curry(add);
+
+              [0, 2, 4, 6, 8].map(add(1));
+              // [1, 3, 5, 7, 9]
+            </code>
+          </pre>
+          <aside class="notes">
+            <p>
+              We veranderen de add functie van shape door er een curried versie
+              van te maken, zodat we op lijn 10. add of one kunnen doen als
+              mapper functie. Deze functie heeft de correcte vorm.
+            </p>
+            <p>
+              Deze techniek is extreem gebruikelijk in functioneel programmeren,
+              dit zien we practisch over terugkeren. Dus currying heeft in
+              theorie 2 voordelen: <br />1 we veranderen de vorm en 2 we
+              specifieren een functie die specifieker is.
+            </p>
+            <p>
+              Met deze slide wil ik eindigen en spoor ik jullie allemaal aan om
+              al eens te proberen werken met een fp library in een side project
+              ofzo.
+            </p>
+            <p>
+              Vergeet ook de oefening niet ivm. closure voor volgende keer. Deze
+              staat hier en ik zal ze nog is delen in de guild channel.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <h3>
+            <a
+              href="https://gitlab.mediahuisgroup.com/robbie.bardijn/functional-programming/-/tree/master/closure/closure"
+              target="_blank"
+              >Closure Exercise</a
+            >
+          </h3>
+          <aside class="notes">
+            <p>
+              De oefening is vrij uitdagend, dus spreek mij gerust aan als er
+              vragen zijn. Ze werkt weer op dezelfde mannier als voorgaande
+              oefeningen, je moet de tests stap voor stap doen slagen die
+              onderaan staan.
+            </p>
+            <p>We zullen deze oefening kort efkes herevalueren volgende keer</p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Thank you 🙏</h2>
+          <aside class="notes">
+            <p>
+              Volgende talk gaan we kijken naar composition en misschien als er
+              tijd genoeg is ook naar immutabiliy.
+            </p>
+            <p>Bedankt voor jullie aandacht.</p>
+          </aside>
+        </section> -->
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+
+      Reveal.initialize({
+        hash: true,
+        controls: false,
+        progress: false,
+        slideNumber: false,
+        transition: "fade",
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
