@@ -145,8 +145,8 @@
                   <li>
                     En dan als laatste van het derde deel hebben we gekeken naar
                     <strong>partial application</strong> en
-                    <strong>curry</strong>. 2 technieken om functies te
-                    specializeren.
+                    <strong>curry</strong>. 2 technieken om functies van
+                    generiek naar specifiek open te vouwen als het ware.
                   </li>
                   <li>
                     Mensen die 1 van de talks zouden gemist hebben, als jullie
@@ -167,7 +167,7 @@
             <li class="fragment">Piping vs. composition</li>
             <li class="fragment">Associativity</li>
             <li class="fragment">Composition & Curry combined</li>
-            <li class="fragment">Exercises</li>
+            <li class="fragment">Exercise</li>
           </ul>
           <aside class="notes">
             <ul>
@@ -837,14 +837,35 @@
           </pre>
 
           <aside class="notes">
-            <p>notes</p>
+            <p>
+              Associativiteit, we kennen het misschien nog van in de les
+              wiskunde. Of vanop de hoge school. Als ik zeg 1 plus 2 plus 3. Dan
+              kan ik zeggen dat de plus operator associatief omdat ik de
+              getallen van plaats kan veranderen of ik kan 2+3 eerst doen en
+              daarna +1 of ik kan 1+2 optellen en daarna +3 en het resultaat
+              blijft hetzelfde.
+            </p>
+            <p>Dat is een karakteristiek van bepaalde wiskundige opperaties.</p>
+            <p>
+              De reden waarom we het hier bespreken is omdat composition ook
+              associatief is.
+            </p>
+            <p>
+              Wat wil zeggen als ik een lijst van functies heb die ik wil
+              composen dan kan ik de volgorde van de functies veranderen of
+              eender welke groepering kiezen en het resultaat blijft hetzelfde.
+            </p>
+            <p>
+              Dus hier hebben we een composeTwo functie die enkel 2 functies
+              behandeld, het behandeld er geen 3 of geen 20. Simpelweg 2.
+            </p>
           </aside>
         </section>
 
         <section>
           <h4>Associativity</h4>
-          <pre data-id="code-animation">
-            <code class="language-js" data-trim data-line-numbers="*">
+          <pre data-id="code-animation" style="font-size: 0.9rem">
+            <code class="language-js" data-trim data-line-numbers="*|12|11-14|16-19">
               function minus2(x) { return x - 2; }
               function triple(x) { return x * 3; }
               function increment(x) { return x + 1; }
@@ -871,27 +892,59 @@
           </pre>
 
           <aside class="notes">
-            <p>notes</p>
+            <p>
+              Als we kijken naar dit voorbeeld dan kunnen we zeggen op lijn 12
+              composeTwo van minus2 en triple. Die composition is samengesteld
+              met increment, van lijn 1 tot 14.
+            </p>
+            <p>
+              We hebben nog steeds dezelfde right-to-left volgorde: increment
+              dan triple dan minus2.
+            </p>
+            <p>
+              Dan hebben we de p functie: welkde op zich erst composeTwo doet
+              van triple en increment op lijn 18 en daarna minus2 samensteld via
+              compose op lijn 17. Nog streeds dezelfde volgorde: increment,
+              triple, minus2.
+            </p>
+            <p>
+              De f en p functies zien er verschillend uit maar ze hebben
+              hetzelfde resultaat omdat composition associatief is.
+            </p>
+            <p>
+              Dat is eigenlijk supernuttig voor ons als functioneel
+              programmeurs. Dit wil zeggen dat we curry en partial applications
+              kunnen uitvoeren op onze compositions.
+            </p>
+            <p>
+              We moet niet weten welke functies gaan deelnemen aan een
+              compositie op voorhand. We zouden de compose utility kunnen
+              currien waarbij we 2 functies nu doorgeven en dan erna kunnen we
+              het nog met iets anders composen. En zo kunnen we doorgaan, en wat
+              doen we wanneer we dat telkens doen?
+            </p>
+            <p>We creeren een specifiekere functie elke keer.</p>
+            <p>
+              Dus de associatieve eigenschap van composition klinkt een beetje
+              genuanceerd hier maar is extreem critiek om het zo nuttig te
+              maken.
+            </p>
           </aside>
         </section>
 
         <section>
           <h2>Currying revisited</h2>
           <aside class="notes">
-            <p>notes</p>
-          </aside>
-        </section>
-
-        <section>
-          <h2>Currying revisited</h2>
-          <aside class="notes">
-            <p>notes</p>
+            <p>
+              Laat ons is kijken hoe currying zo nuttig kan zijn gecombineerd
+              met composition.
+            </p>
           </aside>
         </section>
 
         <section>
           <pre data-id="code-animation">
-            <code class="language-js" data-trim data-line-numbers="*">
+            <code class="language-js" data-trim data-line-numbers="*|5">
               function sum(x, y) { return x + y; }
               function triple(x) { return x * 3; }
               function divBy(y, x) { return x / y; }
@@ -901,13 +954,51 @@
           </pre>
 
           <aside class="notes">
-            <p>notes</p>
+            <p>
+              We hebben hier een sum functie, een triple functie en een divBy
+              functie.
+            </p>
+            <p>2 van deze functies zijn binary en 1tje is unary.</p>
+            <p>De sum en de divBy zijn binary en de triple is unary.</p>
+            <p>
+              Ik zou graag een composition van deze maken. Maar we zagen in de
+              vorige voorbeelden dat alle functies in compositions unary
+              functions waren.
+            </p>
+            <p>
+              Waarom zouden we enkel unary functions coposen? Kan iemand even
+              raden? Kan iemand mij dat zeggen? [WACHT OP ANTWWORD]
+            </p>
+            <p>
+              Bekijk het even zo, wat zou er nodig zijn om de output van triple
+              de input van de sum function te laten zijn? [WACHT]
+            </p>
+            <p>
+              Je zou dan twee outputs nodig hebben inderdaad. Want sum verwacht
+              2 inputs. Omdat functies maar enkel 1 output kunnen reproduceren
+              is er maar 1 natuurlijke manier om ze te composen. Ze moeten
+              allemaal unary zijn. Single input, Single output, single input,
+              single output, etc.
+            </p>
+            <p>
+              Dus er is een reden type signature wise, waarom het handiger is om
+              unary functions te gaan samenstellen.
+            </p>
+            <p>
+              Hier op lijn 5 [SPACE] hebben we een composition, maar wel een
+              manuele. Hoe zouden we die kunnen uitdrukken met een call naar de
+              compose utility function?
+            </p>
+            <p>
+              Ik heb een sum die 2 waarden aanvaard wat niet werkt en ik heb een
+              divBy die 2 waardes aanneemt wat ook niet werkt.
+            </p>
           </aside>
         </section>
 
         <section>
           <pre data-id="code-animation">
-            <code class="language-js" data-trim data-line-numbers="*">
+            <code class="language-js" data-trim data-line-numbers="*|11-13">
               function sum(x, y) { return x + y; }
               function triple(x) { return x * 3; }
               function divBy(y, x) { return x / y; }
@@ -920,20 +1011,29 @@
               composeThree(
                 divBy(2),
                 triple,
-                sum(3, 5)
+                sum(3)
               )(5); // 12
             </code>
           </pre>
 
           <aside class="notes">
-            <p>notes</p>
+            <p>
+              Wat als we de sum en divBy functions currien? En dan die functies
+              doorgeven op lijn 11 en 13? [SPACE].
+            </p>
+            <p>DivBy en sum op lijn 11 en 13 zijn nu unary functions.</p>
+            <p>
+              Dus herriner u de vorige talk, met currying konden we functies
+              gaan hervormen van binary naar unary functions en hier kunnen we
+              die functies gaan samen composen.
+            </p>
           </aside>
         </section>
 
         <section>
           <h2>Point-free revisited</h2>
           <pre data-id="code-animation">
-            <code class="language-js" data-trim data-line-numbers="*">
+            <code class="language-js" data-trim data-line-numbers="*|1,2">
               var mod2 = mod(2); // curried mod function
               var eq1 = eq(1); // curried eq function
 
@@ -948,13 +1048,26 @@
           </pre>
 
           <aside class="notes">
-            <p>notes</p>
+            <p>
+              Laten we nog even praten over point-free programmeer stijl. Nu dat
+              we composition en curry samen hebben gezien. kunnen we isOdd van
+              vroeger in de cursus nog is opnieuw gaan definieren. Herriner u
+              nog isOdd? [SPACE]
+            </p>
+            <p>
+              Op Lijnen 1 en 2 zien we curry versies van de functies modulo en
+              equal.
+            </p>
+            <p>
+              Dus als we de isOdd functie willen definieren point free style dan
+              nemen we nu een compose utility.
+            </p>
           </aside>
         </section>
 
         <section>
           <pre data-id="code-animation" style="font-size: 0.9rem">
-            <code class="language-js" class="small" data-trim data-line-numbers="*">
+            <code class="language-js" class="small" data-trim data-line-numbers="12-16|18|19|*">
               var mod2 = mod(2); 
               var eq1 = eq(1); 
 
@@ -966,7 +1079,7 @@
                 return eq1(mod2(x));
               }
 
-              function composeTwo (fn2, fn1) {
+              function composeTwo(fn2, fn1) {
                 return function composed(v) {
                   return fn2(fn1(v));
                 }
@@ -978,7 +1091,20 @@
           </pre>
 
           <aside class="notes">
-            <p>notes</p>
+            <p>genaamd composeTwo hier te zien van lijn 12 tot lijn 16</p>
+            <p>
+              We nemen een composeTwo utility en we geven hier de eq1 en mod2
+              unary functions aan mee op lijn 18[SPACE] en dan op lijn 19 kunnen
+              we hetzelfde doen met behulp van equasional reasoning. Lijn 18 en
+              19 zijn infeite hetzelfde.
+            </p>
+            <p>
+              Anders gezegd we hadden 2 binary functions die we wouden composen.
+              We kunnen geen binary functions composen dus we hebben ze
+              omgevormd met curry naar unary functions, we gaven ze telkens 1
+              input en dan hebben we dan die geproduceerde unary functions
+              gecombineerd met een composeTwo utility.
+            </p>
           </aside>
         </section>
 
@@ -992,8 +1118,15 @@
           </h3>
           <aside class="notes">
             <p>
-              De oefening is zeker minder uitdagend dan de vorige van closure,
-              spreek mij gerust aan als er vragen zijn.
+              Alright, dat was een hele boterham, en voor de mensen die nog
+              onzeker zijn over topics van de vorige talks, bekijk zeker nog is
+              die recordings. Ik weet nog in talk 3 hadden we op het einde een
+              curried function in een map functie als argument gegeven om als
+              voorbeeld aan te tonen dat curry heel handig kan zijn wanneer we
+              die combineren met de map utiity van het Array prototype.
+            </p>
+            <p>
+              Deze oefening is zeker minder uitdagend dan de vorige van closure.
             </p>
             <p>
               In deze oefening gaan we 2 generieke functies schrijven genaamd
@@ -1011,14 +1144,14 @@
               moet de tests stap voor stap doen slagen die onderaan staan.
             </p>
             <p>
-              Nog een laatste hint, als je de en van de twee functies hebt
+              Nog een laatste hint, als je een van de twee functies hebt
               gemaakt, dan kun je de andere functie maken op basis van de eerste
               functie die je gemaakt hebt.
             </p>
             <p>
               We hebben de closure oefening nog niet samen gedaan, we zullen
-              anders volgende keer dat we samen zitten. de twee oefeningen samen
-              oplossen.
+              anders volgende keer dat we samen zitten. de twee oefeningen
+              ineens oplossen.
             </p>
           </aside>
         </section>
