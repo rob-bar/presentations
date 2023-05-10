@@ -6,3 +6,9 @@
 - [Campfire](http://rob-bar.github.io/presentations/2019_09__campfire/index.html)
 - [React hooks](http://rob-bar.github.io/presentations/2019_12__react_hooks/index.html)
 - [A look at modern scrolling](https://hopeful-bhabha-c6ec6f.netlify.app/)
+
+### Inspired by Functional Light from Kyle Simpson
+
+- [FP pt.1](https://vocal-elf-1e665f.netlify.app/)
+- [FP pt.2](https://delicate-kleicha-1233bc.netlify.app/)
+- [FP pt.3](https://wonderful-jelly-68b33e.netlify.app/)
