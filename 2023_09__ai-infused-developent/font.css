@@ -1,0 +1,38 @@
+@font-face {
+  font-family: "redaction";
+  src: url("Redaction-Regular.woff2") format("woff2"),
+    url("Redaction-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "redaction-bold";
+  src: url("Redaction-Bold.woff2") format("woff2"),
+    url("Redaction-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "redaction-italic";
+  src: url("Redaction-Italic.woff2") format("woff2"),
+    url("Redaction-Italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+
+.reveal,
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  font-family: "redaction-bold" !important;
+  text-transform: capitalize;
+}
+
+.caps {
+  text-transform: uppercase !important;
+}
