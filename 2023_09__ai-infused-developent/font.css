@@ -30,6 +30,26 @@
 .reveal h5,
 .reveal h6 {
   font-family: "redaction-bold" !important;
+  text-transform: none;
+}
+
+.reveal::first-letter,
+.reveal h1::first-letter,
+.reveal h2::first-letter,
+.reveal h3::first-letter,
+.reveal h4::first-letter,
+.reveal h5::first-letter,
+.reveal h6::first-letter {
+  text-transform: uppercase;
+}
+
+.reveal.capitalize,
+.reveal h1.capitalize,
+.reveal h2.capitalize,
+.reveal h3.capitalize,
+.reveal h4.capitalize,
+.reveal h5.capitalize,
+.reveal h6.capitalize {
   text-transform: capitalize;
 }
 
