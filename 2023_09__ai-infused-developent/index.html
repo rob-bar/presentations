@@ -254,43 +254,212 @@
           <h2>Chat GPT-3 training data</h2>
           <div
             style="
-              width: 600px;
-              height: 300px;
-              background-color: #f00;
+              width: 100%;
+              height: 500px;
               position: relative;
+              display: grid;
+              gap: 0.5rem;
+              grid-template-columns: 10fr 5fr;
+              grid-template-rows: 1fr 5fr 8fr;
             "
           >
-            <div style="width: 60%; height: 100%; background-color: #ff0"></div>
             <div
               style="
-                position: absolute;
-                left: 60%;
-                bottom: 0;
-                width: 40%;
-                height: 44%;
-                background-color: #f0f;
+                background-color: var(--ai-primary-color);
+                grid-row-start: 1;
+                grid-row-end: span 3;
+                border-radius: 0.5rem;
+                display: grid;
+                place-items: center;
+                color: var(--ai-quinary-color);
               "
-            ></div>
+            >
+              <p>
+                <b>Common Crawl</b>
+                60%
+              </p>
+            </div>
             <div
               style="
-                position: absolute;
-                left: 60%;
-                bottom: 44%;
-                width: 40%;
-                height: 44%;
-                background-color: #fdf;
+                background-color: var(--ai-primary-color);
+                border-radius: 0.5rem;
+                display: grid;
+                place-items: center;
+                color: var(--ai-quinary-color);
               "
-            ></div>
+              class="fragment"
+              data-fragment-index="3"
+            >
+              <p style="margin: 0"><b>Wikipedia</b> 3%</p>
+            </div>
             <div
               style="
-                position: absolute;
-                left: 60%;
-                top: 0;
-                width: 40%;
-                height: 10%;
-                background-color: #0ff;
+                background-color: var(--ai-primary-color);
+                border-radius: 0.5rem;
+                display: grid;
+                place-items: center;
+                color: var(--ai-quinary-color);
               "
-            ></div>
+              class="fragment"
+              data-fragment-index="2"
+            >
+              <p>
+                <b>Books</b>
+                15%
+              </p>
+            </div>
+            <div
+              style="
+                background-color: var(--ai-primary-color);
+                border-radius: 0.5rem;
+                display: grid;
+                place-items: center;
+                color: var(--ai-quinary-color);
+              "
+              data-fragment-index="1"
+              class="fragment"
+            >
+              <p>
+                <b>WebText</b>
+                22%
+              </p>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3>Neural Network</h3>
+          <img
+            src="/img/Neural-network.png"
+            alt="Neural Network"
+            width="600px"
+          />
+        </section>
+        <section>
+          <div style="display: flex; gap: 1rem">
+            <h3 style="margin: 0.7rem 0">Basketballs are</h3>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+              "
+            >
+              <h3
+                style="
+                  padding: 0.5rem 1rem;
+                  position: relative;
+                  border: 1px solid var(--ai-primary-color);
+                  margin: 0.1rem 0;
+                  color: var(--ai-primary-color);
+                "
+                class="lower"
+              >
+                orange.
+                <span
+                  style="
+                    position: absolute;
+                    right: -10px;
+                    transform: translate(100%);
+                    bottom: 0;
+                    font-size: 1.75rem;
+                    font-weight: normal;
+                  "
+                  >60%</span
+                >
+              </h3>
+              <h3
+                style="
+                  padding: 0.5rem 1rem;
+                  position: relative;
+                  border: 1px solid var(--ai-primary-color);
+                  margin: 0.1rem 0;
+                  color: var(--ai-primary-color);
+                "
+                class="lower fragment"
+              >
+                round.
+                <span
+                  style="
+                    position: absolute;
+                    right: -10px;
+                    transform: translate(100%);
+                    bottom: 0;
+                    font-size: 1.75rem;
+                    font-weight: normal;
+                  "
+                  >55%</span
+                >
+              </h3>
+              <h3
+                style="
+                  padding: 0.5rem 1rem;
+                  position: relative;
+                  border: 1px solid var(--ai-primary-color);
+                  margin: 0.1rem 0;
+                  color: var(--ai-primary-color);
+                "
+                class="lower fragment"
+              >
+                used in sports.
+                <span
+                  style="
+                    position: absolute;
+                    right: -10px;
+                    transform: translate(100%);
+                    bottom: 0;
+                    font-size: 1.75rem;
+                    font-weight: normal;
+                  "
+                  >23%</span
+                >
+              </h3>
+              <h3
+                style="
+                  padding: 0.5rem 1rem;
+                  position: relative;
+                  border: 1px solid var(--ai-primary-color);
+                  margin: 0.1rem 0;
+                  color: var(--ai-primary-color);
+                "
+                class="lower fragment"
+              >
+                made of leather.
+                <span
+                  style="
+                    position: absolute;
+                    right: -10px;
+                    transform: translate(100%);
+                    bottom: 0;
+                    font-size: 1.75rem;
+                    font-weight: normal;
+                  "
+                  >13%</span
+                >
+              </h3>
+              <h3
+                style="
+                  padding: 0.5rem 1rem;
+                  position: relative;
+                  border: 1px solid var(--ai-primary-color);
+                  margin: 0.1rem 0;
+                  color: var(--ai-primary-color);
+                "
+                class="lower fragment"
+              >
+                objects that bounce.
+                <span
+                  style="
+                    position: absolute;
+                    right: -10px;
+                    transform: translate(100%);
+                    bottom: 0;
+                    font-size: 1.75rem;
+                    font-weight: normal;
+                  "
+                  >12%</span
+                >
+              </h3>
+            </div>
           </div>
         </section>
       </div>

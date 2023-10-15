@@ -56,3 +56,11 @@
 .caps {
   text-transform: uppercase !important;
 }
+
+.lower {
+  text-transform: lowercase !important;
+}
+
+.lower::first-letter {
+  text-transform: lowercase !important;
+}
