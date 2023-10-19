@@ -24,13 +24,12 @@
     <div class="reveal">
       <div class="slides">
         <section
-          data-background="/img/intro-bg.jpg"
+          data-background="/img/intro-bg-a.jpg"
           data-background-size="cover"
         >
-          <h1 class="caps">Welcome</h1>
-          <h2>
+          <h1 class="my-text-shadow">
             <em><small>Intriguing potential of generative AI</small></em>
-          </h2>
+          </h1>
           <aside class="notes">
             <ul>
               <li>
@@ -132,9 +131,7 @@
           data-background="/img/purpose-3.jpg"
           data-background-size="cover"
         >
-          <h2 style="text-shadow: 1px 1px 1.5rem rgba(0, 0, 0, 0.8)">
-            Tonights purpose
-          </h2>
+          <h2 class="my-text-shadow">Tonights purpose</h2>
           <aside class="notes">
             <ul>
               <li>
@@ -185,10 +182,122 @@
         </section>
         <section>
           <h2 class="capitalize">
-            <a href="">TODO SET AT A BETTER SPOT</a> Who uses ai in their
-            development workflow today?
+            Who uses ai in their development workflow today?
           </h2>
           <h1>🤚</h1>
+        </section>
+        <section>
+          <h2>AI Timeline</h2>
+        </section>
+        <section>
+          <div class="r-stack">
+            <img src="/img/timeline/timeline-1.png" alt="first" />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-2.png"
+              alt="second"
+            />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-3.png"
+              alt="third"
+            />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-4.png"
+              alt="fourth"
+            />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-5.png"
+              alt="fifth"
+            />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-7.png"
+              alt="seventh"
+            />
+          </div>
+        </section>
+        <section>
+          <div class="r-stack">
+            <img src="/img/timeline/timeline-8.png" alt="eighth" />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-9.png"
+              alt="ninth"
+            />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-10.png"
+              alt="tenth"
+            />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-11.png"
+              alt="eleventh"
+            />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-12.png"
+              alt="twelfth"
+            />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-13.png"
+              alt="thirteenth"
+            />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-14.png"
+              alt="fourteenth"
+            />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-15.png"
+              alt="fifteenth"
+            />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-16.png"
+              alt="sixteenth"
+            />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-17.png"
+              alt="seventeenth"
+            />
+          </div>
+        </section>
+        <section>
+          <div class="r-stack">
+            <img src="/img/timeline/timeline-18.png" alt="eighteenth" />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-19.png"
+              alt="eighteenth"
+            />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-20.png"
+              alt="twentieth"
+            />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-21.png"
+              alt="twenty-first"
+            />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-22.png"
+              alt="twenty-second"
+            />
+            <img
+              class="fragment"
+              src="/img/timeline/timeline-23.png"
+              alt="twenty-third"
+            />
+          </div>
         </section>
         <section>
           <p style="margin-bottom: -1rem"><em>It all starts with</em></p>
@@ -527,6 +636,14 @@
             >
           </h4>
         </section>
+        <section>
+          <h3>Recources</h3>
+          <ul>
+            <li>
+              https://en.wikipedia.org/wiki/Timeline_of_artificial_intelligence
+            </li>
+          </ul>
+        </section>
       </div>
     </div>
 
@@ -547,7 +664,19 @@
         progress: false,
         slideNumber: false,
         transition: "fade",
+        // The "normal" size of the presentation, aspect ratio will
+        // be preserved when the presentation is scaled to fit different
+        // resolutions. Can be specified using percentage units.
+        width: 1024,
+        height: 700,
 
+        // Factor of the display size that should remain empty around
+        // the content
+        margin: 0,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.2,
+        maxScale: 2.0,
         // Learn about plugins: https://revealjs.com/plugins/
         plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
       });
