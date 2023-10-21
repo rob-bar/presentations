@@ -1,3 +1,46 @@
+:root {
+  --ai-primary-color: #f5d418;
+  --ai-secondary-color: #13b5bb;
+  --ai-tertiary-color: #42affa;
+  --ai-quaternary-color: #df9b3d;
+  --ai-quinary-color: #191919;
+  --r-link-color: #f5d418;
+  --r-link-color-dark: #bba113;
+  --r-link-color-hover: #ffdd19;
+}
+
+.color-primary {
+  color: var(--ai-primary-color) !important;
+}
+
+.color-secondary {
+  color: var(--ai-secondary-color) !important;
+}
+
+.color-tertiary {
+  color: var(--ai-tertiary-color) !important;
+}
+
+.color-quaternary {
+  color: var(--ai-quaternary-color) !important;
+}
+
+.color-quinary {
+  color: var(--ai-quinary-color) !important;
+}
+
+.color-link {
+  color: var(--r-link-color) !important;
+}
+
+.color-link-dark {
+  color: var(--r-link-color-dark) !important;
+}
+
+.color-link-hover {
+  color: var(--r-link-color-hover) !important;
+}
+
 @font-face {
   font-family: "redaction";
   src: url("Redaction-Regular.woff2") format("woff2"),
