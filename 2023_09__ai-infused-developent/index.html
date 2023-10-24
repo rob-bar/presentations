@@ -18,7 +18,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Theme used for syntax highlighted code -->
     <link
       rel="stylesheet"
       href="plugin/highlight/atom-one-dark-reasonable.css"
@@ -26,14 +25,38 @@
   </head>
   <body>
     <div class="reveal">
+      <div class="footer">
+        <ul>
+          <li class="footer-part footer-part-1">
+            A brief look back in <a href="#">history</a>...
+          </li>
+          <li class="footer-part footer-part-2">
+            How does it <a href="#">work</a>?
+          </li>
+          <li class="footer-part footer-part-3">
+            What is <a href="#">prompt engeneering/chaining</a>?
+          </li>
+          <li class="footer-part footer-part-4">
+            <a href="#">Can it help</a> me & my team?
+          </li>
+
+          <li class="footer-part footer-part-5">
+            A glimpse of the <a href="#">future</a>...
+          </li>
+        </ul>
+      </div>
       <div class="slides">
         <section
           data-background="/img/intro-bg-a.jpg"
           data-background-size="cover"
         >
-          <h1 class="my-text-shadow">
+          <p>
+            <img src="/img/syt-logo.png" alt="Staff your tribe" width="225" />
+          </p>
+          <h1 class="my-text-shadow" style="margin-bottom: 12rem">
             <em><small>Intriguing potential of generative AI</small></em>
           </h1>
+
           <aside class="notes">
             <ul>
               <li>
@@ -168,14 +191,15 @@
               class="fragment"
               style="margin-bottom: 0.5rem; font-weight: bold"
             >
-              <a href="#">Can it help</a> me & my team?
+              What is <a href="#">prompt engeneering/chaining</a>?
             </li>
             <li
               class="fragment"
               style="margin-bottom: 0.5rem; font-weight: bold"
             >
-              What is <a href="#">prompt engeneering/chaining</a>?
+              <a href="#">Can it help</a> me & my team?
             </li>
+
             <li
               class="fragment"
               style="margin-bottom: 0.5rem; font-weight: bold"
@@ -711,7 +735,7 @@
 
         <section>
           <h3>Language models are a pain in the ass</h3>
-          <h2 class="fragment">"Chat GPT lies"</h2>
+          <h2 class="fragment">"Sometimes they lies"</h2>
         </section>
 
         <section>
@@ -770,20 +794,16 @@
         </section>
 
         <section>
-          <h1>Capabilities Gaslighting</h1>
-        </section>
-
-        <section>
-          <h3>how should we perceive LLM's?</h3>
+          <h3>How should we perceive LLM's?</h3>
           <p class="fragment">
             <i
               >More like a biological creature we've <br />grown, rather than a
-              tool we invented.</i
+              tool we've invented.</i
             >
           </p>
           <p class="fragment">
             <i
-              >A little evolutionary: learns by <br />
+              >evolutionary? learns by <br />
               trial and error</i
             >
           </p>
@@ -832,11 +852,14 @@
             systems
           </h2>
           <blockquote class="fragment">And we love them for that...</blockquote>
+          <blockquote class="fragment">
+            And we build them like that...
+          </blockquote>
         </section>
 
         <section>
           <h3>
-            So, how do we put that
+            So, how do we keep that
             <span style="color: var(--ai-primary-color)">Shoggoth</span> in a
             box?
           </h3>
@@ -906,10 +929,14 @@
           <ul>
             <li>👍 Decent code explenation</li>
             <li class="fragment">👍 Up-to-date with latest frameworks</li>
-            <li class="fragment">❌ Not Integrated in IDE</li>
+            <li class="fragment">❌ Not Integrated in IDE (yet)</li>
             <li class="fragment">❌ No Inline Chat Available</li>
             <li class="fragment">👍 Free</li>
           </ul>
+        </section>
+
+        <section>
+          <p>[Success stories here]</p>
         </section>
 
         <section data-background="/img/tools.jpg">
@@ -920,7 +947,14 @@
           <h3>A Glimpse of the Future?</h3>
         </section>
 
-        <section>[future poll comes here]</section>
+        <section>
+          <iframe
+            data-src="https://wall.sli.do/event/g6qbCeW6k5wnyfh5UcDgAh?section=129d4e9d-34b6-4a23-b6a3-e8c5fcddd33a"
+            data-preload
+            width="1024px"
+            height="600px"
+          ></iframe>
+        </section>
 
         <section>
           <ul style="font-size: 2rem">
@@ -1033,6 +1067,35 @@
         maxScale: 2.0,
         // Learn about plugins: https://revealjs.com/plugins/
         plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+
+      Reveal.on("slidechanged", (event) => {
+        const footerParts = document.querySelectorAll(".footer-part");
+
+        for (let i = 0; i < footerParts.length; i++) {
+          footerParts[i].classList.add("hidden");
+          footerParts[i].classList.remove("shown");
+        }
+
+        if (event.indexh >= 11 && event.indexh < 15) {
+          document.querySelector(".footer-part-1").classList.add("shown");
+        }
+
+        if (event.indexh >= 15 && event.indexh < 43) {
+          document.querySelector(".footer-part-2").classList.add("shown");
+        }
+
+        if (event.indexh >= 43 && event.indexh < 44) {
+          document.querySelector(".footer-part-3").classList.add("shown");
+        }
+
+        if (event.indexh >= 44 && event.indexh < 53) {
+          document.querySelector(".footer-part-4").classList.add("shown");
+        }
+
+        if (event.indexh >= 53 && event.indexh < 55) {
+          document.querySelector(".footer-part-5").classList.add("shown");
+        }
       });
     </script>
   </body>
