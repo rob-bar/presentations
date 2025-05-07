@@ -42,37 +42,46 @@
 }
 
 @font-face {
-  font-family: "redaction";
-  src: url("Redaction-Regular.woff2") format("woff2"),
-    url("Redaction-Regular.woff") format("woff");
+  font-family: "Mansfield";
+  src: url("/webfonts/Mansfield/Mansfield-Medium.woff2") format("woff2"),
+    url("/webfonts/Mansfield/Mansfield-Medium.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "redaction-bold";
-  src: url("Redaction-Bold.woff2") format("woff2"),
-    url("Redaction-Bold.woff") format("woff");
+  font-family: "Mansfield-bold";
+  src: url("/webfonts/Mansfield/Mansfield-Black.woff2") format("woff2"),
+    url("/webfonts/Mansfield/Mansfield-Black.woff") format("woff");
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "redaction-italic";
-  src: url("Redaction-Italic.woff2") format("woff2"),
-    url("Redaction-Italic.woff") format("woff");
+  font-family: "Mansfield-italic";
+  src: url("/webfonts/Mansfield/Mansfield-Medium-Italic.woff2") format("woff2"),
+    url("/webfonts/Mansfield/Mansfield-Medium-Italic.woff") format("woff");
   font-weight: normal;
   font-style: italic;
 }
 
-.reveal,
+.reveal {
+  font-family: "Mansfield" !important;
+  text-transform: none;
+}
+
 .reveal h1,
 .reveal h2,
 .reveal h3,
 .reveal h4,
 .reveal h5,
 .reveal h6 {
-  font-family: "redaction-bold" !important;
+  font-family: "Mansfield-bold" !important;
+  text-transform: none;
+}
+
+.reveal blockquote {
+  font-family: "Mansfield-italic" !important;
   text-transform: none;
 }
 
@@ -118,7 +127,7 @@
   left: 0;
   padding: 1rem;
   font-size: 1.5rem;
-  font-family: "redaction";
+  font-family: "Mansfield";
 }
 
 .footer ul {
@@ -139,4 +148,36 @@
 
 .shown {
   display: block;
+}
+
+.bullet-time {
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
+  display: inline-block;
+  margin-right: 0.625rem;
+  position: relative;
+  bottom: 0.25rem;
+  font-family: "Mansfield-bold";
+  font-size: 1.25rem;
+  font-weight: bold;
+  background-color: var(--ai-primary-color);
+  color: #191919;
+}
+
+.bullet-time-tertiary {
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
+  display: inline-block;
+  margin-right: 0.625rem;
+  position: relative;
+  bottom: 0.25rem;
+  font-family: "Mansfield-bold";
+  font-size: 1.25rem;
+  font-weight: bold;
+  background-color: var(--ai-tertiary-color);
+  color: #191919;
+}
+
+ol li::marker {
+  color: var(--ai-tertiary-color);
 }
