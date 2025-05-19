@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Vibe Coding</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
+    <link rel="stylesheet" href="font.css" />
+
+    <script
+      src="https://kit.fontawesome.com/f006f49a21.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/atom-one-dark-reasonable.css"
+    />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>🎶 Vibe Coding 🎶</h1>
+          <aside class="notes">
+            <p>
+              First of all Thank you <strong>Laure</strong> for having me here
+              at this Lunch & Learn Session, and Welcome everyone at our trendy
+              workshop vibe coding :)
+            </p>
+            <p>
+              My name is <strong>Robbie</strong> and I am a software engineer
+              here at TPS in <strong>team innovation</strong>. Together with
+              Heino I follow up on new trends and technologies to cook up some
+              interesting and sometimes also pretty challenging pocs.
+            </p>
+            <p>
+              And of course we sometimes vibe code, for example during maker
+              weeks. But a small sidenote, I am surely not yet an expert at this
+              since is pretty new. But I do want to share with you all, some of
+              the things I have learned.
+            </p>
+            <p>Our agenda for today will look something like this.</p>
+          </aside>
+        </section>
+        <section>
+          <h2>Agenda</h2>
+          <ul style="list-style-type: none">
+            <li>
+              <span class="bullet-time">25min</span>A good chunk of
+              <strong class="color-primary">Theory</strong>
+            </li>
+            <li class="fragment">
+              <span class="bullet-time">5min</span>Small
+              <strong class="color-primary">Q&amp;A</strong>
+            </li>
+            <li class="fragment">
+              <span class="bullet-time-tertiary">40min</span
+              ><strong class="color-tertiary">Hands on</strong> "Vibez" + Live
+              <strong class="color-tertiary">demo</strong>
+            </li>
+            <li class="fragment">
+              <span class="bullet-time-tertiary">10min</span>Wrap up & Key
+              <strong class="color-tertiary">takeaways</strong>
+            </li>
+          </ul>
+          <aside class="notes">
+            <ul>
+              <li>
+                First we'll have a block of about 25 minutes where we'll look at
+                the theory: <strong>What is</strong> vibe coding, How dit it
+                come to be? Where and how can I use this new methodology. Is
+                this going to be the <strong>future of coding?</strong> What
+                <strong>tools</strong> are now available to help me with
+                building my app. Where can I use it? What are
+                <strong>best practices</strong>? and why should I even care
+                about it?
+              </li>
+              <li>[SPACE] Then we'll have a small conversation in the Q&A</li>
+              <li>
+                [SPACE] To get us starting with the fun part, we'll have a
+                hands-on session where you guys and girls can get your hands
+                dirty. I've prepared some nice challenges for you to work on to
+                try out vibe coding yourself. It's gonna be a lot of fun, I
+                promise!
+              </li>
+              <li>
+                Once we are on a roll, I'll demonstrate some of the things here
+                on screen in a live demo. I did not really prepare that live
+                part, but I guess I want to try out claud.code with you guys and
+                maybe we'll build an example.
+              </li>
+              <li>
+                [SPACE] Finally, we'll wrap up this lunch with a short moment to
+                reflect upon some key takeaways to take with you on your
+                journey. Oh yeah, and of course if you want to share what you've
+                built or your experience, feel free to do so.
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          "Don't wait for inspiration. Code until it arrives."
+          <aside class="notes">
+            <p>
+              They say that the most daunting thing when
+              <strong>starting something new</strong>
+              is the blank canvas. But then you realize that the blank canvas is
+              just a canvas. And you just go with the flow and just start, just
+              start goddammit.
+            </p>
+            <p>
+              You might fail <strong>miserably</strong> and you start again. You
+              try again and again until you get it right. You try
+              <strong>different things</strong>, you experiment, you iterate,
+              you learn. You learn from your mistakes and you keep on learning.
+            </p>
+            <p>
+              The same goes for coding. You can sit there and wait for
+              inspiration to hit you, but it won't come.
+              <strong
+                >When you just start, that's when more ideas will come.</strong
+              >
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>What is vibe coding?</h2>
+          <aside class="notes">
+            Let's first define the topic of today. What is vibe coding?
+          </aside>
+        </section>
+        <section
+          data-background-image="/assets/guy.png"
+          data-background-size="cover"
+          data-background-position="center"
+        >
+          <div class="fragment">
+            <p style="margin: 0; line-height: 1" class="my-text-shadow">
+              <strong
+                ><small
+                  style="color: var(--ai-primary-color); font-size: 1.5rem"
+                  >No seriously,</small
+                ></strong
+              >
+            </p>
+            <h2 class="my-text-shadow">What is vibe coding?</h2>
+          </div>
+
+          <aside class="notes">
+            <p>
+              Vibe coding is a <strong>new way of coding</strong> where you just
+              put in <strong>one prompt</strong> and then you can rest a bit in
+              your chair and let AI do the work for you. Go grab a
+              <strong>coffee</strong>, go chat with one of your
+              <strong>beloved colleagues</strong> about your fabulous dreams of
+              quitting your job and opening a beach bar that vanish every time
+              payroll hits. [PAUSE]
+            </p>
+            <p>This Sounds great, right? Well, it is. But it's not. [SPACE]</p>
+            <p>So seriously what is it?</p>
+            <p>
+              Vibe coding is a <strong>programming paradigm</strong> dependent
+              on artificial intelligence where developers describe what they
+              want in natural language and let AI generate the code for them.
+            </p>
+            <p>
+              The term was introduced and coined by
+              <strong>Andrej Karpathy</strong> in February 2025 and was added to
+              the Merriam-Webster Dictionary the following month as a "slang &
+              trending" noun.
+            </p>
+            <p>
+              Some cool projects have already been made. And A good percentage
+              of global code is now for some percentage ai generated, weather
+              that is a good thing or not is what we'll discover along the way.
+            </p>
+          </aside>
+        </section>
+        <section
+          data-background-image="/assets/andrey.png"
+          data-background-size="contain"
+          data-background-position="center"
+        >
+          <aside class="notes">
+            <p>
+              Here is that tweet from Andrej, for those who don't know him yet.
+            </p>
+            <p>
+              Andrej Karpathy is a
+              <strong>prominent computer scientist</strong> and artificial
+              intelligence (AI) researcher, best known for his work in
+              <strong>deep learning and computer vision</strong>. He has been
+              influential in both academic and industry settings. Worked for
+              Tesla, worked at OpenAi and is now working on some personal
+              projects.
+            </p>
+            <p>I'll let you read that for a while.[PAUSE]</p>
+          </aside>
+        </section>
+        <section>
+          <blockquote>
+            The <span class="color-primary">hottest</span> new programming
+            language is <span class="color-primary">English</span>
+          </blockquote>
+          <aside class="notes">
+            <p>
+              So yeah, the hottest new programming language is English. Let that
+              statement also sink in for a while.
+            </p>
+            <p>
+              Now everyone can code :D or at least
+              <strong>ask ai to write code for them</strong>
+              and thats fine! It is even <strong>great</strong>, because the
+              barrier between coders and non-coders is hereby getting smaller
+              and smaller. Means better communication in general and means more
+              people can get involved into building software.
+            </p>
+          </aside>
+        </section>
+        <section data-background-image="/assets/perspective.png">
+          <h2 class="my-text-shadow">Perspective</h2>
+          <aside class="notes">
+            <p>But that needs a little bit more <strong>nuance</strong>.</p>
+            <p>
+              An experienced coder, will quickly spot potential quirks or might
+              stand very strongly against the whole idea of vibe coding.
+            </p>
+            <p>
+              What if a non technical user gets stuck? What if you have never
+              written a single line of code? How do you start? How do you fix
+              things?
+            </p>
+            <p>
+              You see the perspective really matters, and the way you should
+              handle it depends on your perspective.
+            </p>
+            <p>
+              Are you a coder? Are you a problem solver? Are you a good
+              communicator? Are you a creative mastermind? Are you just leaving
+              school and looking for a job? [PAUSE] Well good luck to you with
+              this kind of market.
+            </p>
+          </aside>
+        </section>
+        <section
+          data-background-image="/assets/perspective2.jpeg"
+          data-background-size="contain"
+        >
+          <aside class="notes">
+            <p>
+              This reaction on one of the tweets I came across, had me laughing
+              for a while.
+            </p>
+            <p>Maybe this is the stage we are in right now. I don't know</p>
+            <p>So a lot of non experienced coders who are excited</p>
+            <p>
+              A lot of coders who are skeptical and see ai potentially as a
+              threat or as not worthy enough.
+            </p>
+            <p>
+              And then a group of coders who are embracing their AI pair
+              programming Buddy and 10x their potential.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>
+            Isn't this going to create <br />
+            a whole bunch of
+            <span style="color: var(--ai-primary-color)">crappy apps?</span>
+          </h3>
+          <aside class="notes">
+            <p>
+              You could ask yourself, isn't this "vibe coding thing" going to
+              create a whole bunch of <strong> crappy apps</strong>?[SPACE]
+            </p>
+          </aside>
+        </section>
+        <section
+          data-background-image="/assets/crappy.jpg"
+          data-background-size="contain"
+        >
+          <aside class="notes">
+            <p>Well there are of course those out there</p>
+            <p>
+              And we as people who have our jobs in the industry are more likely
+              to spot those crappy apps better than others.
+            </p>
+          </aside>
+        </section>
+        <section data-background-image="/assets/slob.png">
+          <h2 class="my-text-shadow">AI (code) slop</h2>
+          <aside class="notes">
+            <p>Is it going to create even more ai slop?</p>
+            <p>
+              Ai slop is just another term for the overload of things that where
+              generated by ai on the internet. We'll be facing a whole lot of
+              slop if this continues in.
+            </p>
+            <p>What about all those juniors that are now leaving schools?</p>
+            <p>
+              What about all those people who are now learning to code? Are we
+              going to have a whole bunch of juniors who don't know how to code
+              in the future?
+            </p>
+          </aside>
+        </section>
+        <section
+          data-background-video="/assets/old.mp4"
+          data-background-video-loop="true"
+        >
+          <h2 class="my-text-shadow">Future Coding?</h2>
+          <aside class="notes">
+            <p>Is this what future coding will look like?</p>
+            <p>I surely hope not.</p>
+            <p>Well, nothing is as easy as just pushing a button</p>
+          </aside>
+        </section>
+        <section>
+          <h2>(How) Can I use this new methodology?</h2>
+          <aside class="notes">
+            <p>These are two questions that first need to be answered.</p>
+            <p>Can I use this new method?</p>
+            <p>And the answer is. Yes you can! But do it very Responsibly.</p>
+            <p>
+              And how can I use this new method, thats what this talk is for
+              [SPACE]
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h1>🤚🏼</h1>
+          <p><small>(or +1 in chat)</small></p>
+
+          <aside class="notes">
+            <p>Alright, let's do a quick show of hands or +1 in chat.</p>
+            <p>
+              <strong
+                >Who here has "vibe coded" a complete prototype or working app
+                or website in the past weeks or months?</strong
+              >
+            </p>
+            <p>[REACT TO THE CROWD]</p>
+            <p>
+              <strong
+                >Maybe Another question: Who here has done so on small features
+                or small auto completions?</strong
+              >
+            </p>
+            <p>[REACT TO THE CROWD][SPACE]</p>
+          </aside>
+        </section>
+        <section>
+          <h2>How can I use this new methodology?</h2>
+          <aside class="notes">
+            <p>
+              Back to that 2nd question. How can I use this new methodology?
+            </p>
+            <p>
+              Well there are a couple of things you need to know before you
+              begin.
+            </p>
+            <p>
+              The first thing you need to realize is that Coding and Programming
+              are not the same.[SPACE]
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>
+            <span style="color: var(--ai-secondary-color)">Coding</span> !=
+            <span style="color: var(--ai-tertiary-color)">Programming</span>
+          </h2>
+          <aside class="notes">
+            <p>
+              Coding is the skill of
+              <strong
+                >translating logic into instructions for a computer</strong
+              >
+              by writing code. An elite coder might be able to bang out a
+              hundred words per minute of perfect C code in VIM purely from
+              memorized syntax,
+              <strong
+                >but large language models are making this skill
+                obsolete</strong
+              >. An eight year old prompter can now write code faster than a
+              skilled professional with twenty years of experience.
+            </p>
+            <p>
+              <strong
+                >Programming on the other hand is a far broader skill</strong
+              >
+              that's kinda hard to describe. It's both an
+              <strong>art and a science</strong> that requires ingenuity,
+              creativity, and good instincts gained throughout years of
+              experience.
+            </p>
+          </aside>
+        </section>
+        <section
+          data-background-image="/assets/dev.png"
+          data-background-size="contain"
+        >
+          <aside class="notes">
+            <p>
+              The best programmers often spend more time removing code than
+              writing code. And if you don't understand the code you're vibing
+              out like a true programmer, you are in for a really wild ride.
+            </p>
+          </aside>
+        </section>
+        <section data-background-image="/assets/fix.png">
+          <aside class="notes">
+            I'm pretty sure that some of you who use ai for coding have already
+            experienced this kind of flow where you ask AI to fix your code and
+            it actually gets worse and worse. So how do we avoid this? How do we
+            set ourselves up for success.
+          </aside>
+        </section>
+        <section>
+          <h3>
+            Are there any
+            <span style="color: var(--ai-tertiary-color)">rules</span> I can
+            apply?
+          </h3>
+          <aside class="notes">
+            <p>
+              Are there any rules you can apply? <strong>Yes there are</strong>,
+              there are even some techniques like the CREATE
+              <strong>technique</strong> on how to write good prompts. Remember
+              that one?
+            </p>
+            <ul>
+              <li>C for Contextualise or set up a Character,</li>
+              <li>R for the Request,</li>
+              <li>E for Elaboration or showing Examples,</li>
+              <li>A for Include Authenticity or small Adjustments,</li>
+              <li>
+                T to Make some Transformation or change the Type of the output
+              </li>
+              <li>and E for some extras.</li>
+            </ul>
+            <p>
+              First lets define some rules, then we'll go a little bit deeper
+              with the techniques.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h1>Rules</h1>
+          <ol>
+            <li>
+              Choose the
+              <strong style="color: var(--ai-tertiary-color)"
+                >right stack</strong
+              >
+            </li>
+            <li class="fragment">
+              Get gud at
+              <strong style="color: var(--ai-tertiary-color)">Git</strong>
+            </li>
+            <li class="fragment">
+              Think like a
+              <strong style="color: var(--ai-tertiary-color)">PM</strong>
+            </li>
+          </ol>
+          <aside class="notes">
+            <p>
+              The <strong>first rule</strong> and this rule is the most flexible
+              one is to choose the right stack you are building in. And what is
+              considered to be the RIGHT stack? Well, for starters your new
+              fancy javascript framework is probably going to kill your vibez
+              because ai might not have had enough training data to get good at
+              it.
+            </p>
+            <p>
+              You wanna choose something popular that already exists for a while
+              like: React, Svelte or tailwind, express, node, fastApi you name
+              it.
+            </p>
+            <p>
+              In terms of languages choose one of the popular ones, and if you
+              are a coder and already know some languages it certainly at your
+              advantage to choose something you already know. (duh)
+            </p>
+            <p>
+              [SPACE] The second rule is...Get good at git. Some people in the
+              crowd know me as a git nerd because I know all the commands like a
+              bit of a freak, but hey I like the terminal.
+            </p>
+            <p>
+              Git is a version control system that allows you to keep track of
+              changes to your code and collaborate with others. It's essential
+              for any software development project.
+            </p>
+            <p>
+              When something goes wrong while vibe coding...you can always fall
+              back to your latest commit or latest stashed changes.[SPACE]
+            </p>
+            <p>
+              The third rule is to think like a PM. Maybe for the devs among us
+              a harder step. But again this depends on your personal skills.
+            </p>
+            <p>Ask not what can AI do for me? but what can I do for AI?</p>
+            <p>You are not a coder anymore...</p>
+          </aside>
+        </section>
+        <section
+          data-background-image="/assets/coder.png"
+          data-background-size="contain"
+        >
+          <aside class="notes">
+            <p>You are now a product manager.</p>
+            <p>
+              And if you wanna be a good one, you need to break down
+              <strong>complex requirements into small steps</strong>. They
+              should be <strong>highly specific</strong> and also provide the
+              <strong>proper context</strong> to solve the problem.
+            </p>
+            <p>
+              You want to explain your feature with recent documentation and
+              images for UI design. It might sound like a vibe killer, but you
+              don't want your LLM to get too creative. You want it to be as
+              <strong>deterministic</strong> as possible.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h1>V.I.B.E.S.</h1>
+          <ul style="list-style-type: none">
+            <li class="fragment" style="margin-bottom: 0.5rem">
+              <strong
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  background-color: var(--ai-primary-color);
+                  width: 30px;
+                  color: #191919;
+                  border-radius: 0.5rem;
+                  padding: 0.25rem 0.625rem;
+                  margin-right: 0.5rem;
+                  font-family: 'Mansfield-bold';
+                "
+                >V</strong
+              >erify continuously
+            </li>
+            <li class="fragment" style="margin-bottom: 0.5rem">
+              <strong
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  background-color: var(--ai-secondary-color);
+                  width: 30px;
+                  color: #191919;
+                  border-radius: 0.5rem;
+                  padding: 0.25rem 0.625rem;
+                  margin-right: 0.5rem;
+                  font-family: 'Mansfield-bold';
+                "
+                >I</strong
+              >terate in inches
+            </li>
+            <li class="fragment" style="margin-bottom: 0.5rem">
+              <strong
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  background-color: var(--ai-tertiary-color);
+                  width: 30px;
+                  color: #191919;
+                  border-radius: 0.5rem;
+                  padding: 0.25rem 0.625rem;
+                  margin-right: 0.5rem;
+                  font-family: 'Mansfield-bold';
+                "
+                >B</strong
+              >lueprint before you build
+            </li>
+            <li class="fragment" style="margin-bottom: 0.5rem">
+              <strong
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  background-color: var(--ai-quaternary-color);
+                  width: 30px;
+                  color: #191919;
+                  border-radius: 0.5rem;
+                  padding: 0.25rem 0.625rem;
+                  margin-right: 0.5rem;
+                  font-family: 'Mansfield-bold';
+                "
+                >E</strong
+              >xplain and understand
+            </li>
+            <li class="fragment" style="margin-bottom: 0.5rem">
+              <strong
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  background-color: var(--r-link-color-dark);
+                  width: 30px;
+                  color: #191919;
+                  border-radius: 0.5rem;
+                  padding: 0.25rem 0.625rem;
+                  margin-right: 0.5rem;
+                  font-family: 'Mansfield-bold';
+                "
+                >S</strong
+              >cope your prompts
+            </li>
+          </ul>
+          <aside class="notes">
+            <ul>
+              <li>Keep your vibe coding sessions on vibes.</li>
+              <li>
+                [SPACE] <strong>Verify continuously</strong> - Test & Review AI
+                output every step of the way. Never ship code that you haven't
+                run and inspected.
+              </li>
+              <li>
+                [SPACE] <strong>Iterate in inches</strong> - Prompt -> run ->
+                refine -> repeat To steer the model and catch mistakes early on.
+              </li>
+              <li>
+                [SPACE] <strong>Blueprint before you build</strong> - this is
+                the most important step of the workflow. This is the same in
+                regular coding. We often first go to the drawing board and
+                choose how we're going to build what we're about to build.
+              </li>
+              <li>
+                You really want to spend a lot of time on this step. You want a
+                detailed, thorough plan that you can pass to your agent so it
+                knows exactly what you want.
+              </li>
+              <li>
+                [SPACE] <strong>Explain and Understand</strong> - Ask the ai or
+                yourself to comment and clarify until the logic is crystal
+                clear.
+              </li>
+              <li>
+                [SPACE] <strong>Scope your prompts</strong> - Limit each request
+                to one file or feature to stop the model from 'fixing' things
+                you didn't ask for.
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <blockquote>
+            <small
+              >> Write a detailed plan/spec for a saas app I want to build where
+              I can drop links to articles/youtube/videos/research papers. Then
+              it uses AI to summarize each of them and can use relevance search
+              to help me search through all the stored articles.
+              <span class="fragment"
+                >Ask me questions to help fill out any gaps in what this app
+                should be.</span
+              ></small
+            >
+          </blockquote>
+          <aside class="notes">
+            <p>
+              This is an example of an initial plan prompt, here we ask one of
+              the models to come up with a plan and to ask questions [SPACE]
+              about the thing we are building.
+            </p>
+            <p>Once we have that. We can then ask it to create a PRD [SPACE]</p>
+          </aside>
+        </section>
+        <section>
+          <h2>PRD</h2>
+          <blockquote>
+            <small
+              >> Now write this in the form of a PRD using the .md file format
+            </small>
+          </blockquote>
+          <aside class="notes">
+            <p>
+              A PRD stands for <strong>product requirements document</strong>.
+              It is a document that outlines the requirements and specifications
+              for a product or project. It serves as a guide for development and
+              helps ensure that you are all on the same page regarding the
+              project.
+            </p>
+            <p>
+              Once you have that, you can also ask to create a TODO.md [SPACE]
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>TODO</h2>
+          <blockquote>
+            <small
+              >> Also come up with a step by step todo list to build this out in
+              .md format.
+            </small>
+          </blockquote>
+          <aside class="notes">
+            <p>
+              With those 2 files in your project you are already set up for a
+              great ride. You can use the PRD and TODO to keep track of your
+              progress and make sure you iterate responsibly.
+            </p>
+            <p>
+              In one of the videos in the recourses which I've linked in the
+              exercises part, there is a vibe coder who says it's nice to first
+              start working on your frontend, and then your backend.
+            </p>
+            <p>
+              First start with dummy data and then later hook up the backend.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Common problems <br /><small>& Simple solutions</small></h3>
+          <aside class="notes">
+            <p>
+              Now that we have a good understanding of the rules and how to vibe
+              code, let's take a look at some common problems and simple
+              solutions.
+            </p>
+            <p>
+              These are some of the things you can encounter while vibe coding
+              and how you can simply solved them.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h4>
+            Your Agent is
+            <strong style="color: var(--ai-tertiary-color)"
+              >not fully up to date</strong
+            >
+            with the
+            <strong style="color: var(--ai-primary-color)"
+              >documentation</strong
+            >
+          </h4>
+          <aside class="notes">
+            <p>
+              This is a common problem that you might encounter while vibe
+              coding. Your agent is not fully up to date with the documentation
+              and it doesn't know how to use the latest features.
+            </p>
+            <p>
+              You can simply solve this by providing your agent with the latest
+              documentation and asking it to read it.
+            </p>
+            <p>
+              You can also ask it to summarize the documentation for you and
+              provide you with the most important features. This is where MCP
+              comes in! [SPACE]
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h1>MCP</h1>
+          <aside class="notes">
+            <p>
+              MCP stands for
+              <strong style="color: var(--ai-primary-color)"
+                >Model Context Protocol</strong
+              >
+              . It is a protocol that allows you to provide your agent with
+              extra tools, memory or prompting capabilities.
+            </p>
+            <p>
+              Thats the tldr version of it. Anthropic has a great article on it.
+              They are also the one behind the standardization of the spec.
+            </p>
+            <p>
+              You can find tons of examples and servers out there, it's like an
+              app store but then for developers.
+            </p>
+            <p>
+              Surely check out the Context7 MCP, for to fetch the latest
+              documentation.
+            </p>
+            <p>
+              Oh yeah! I did forget to make a slide on which models to use when
+              Vibe coding. You can find the comparison list at
+              <strong>LMarena.ai</strong>
+            </p>
+            <p>
+              Generally: Gemini 2.5, 03, grok3 and 4o, feel also free to use the
+              Sonnet models.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h4>
+            I keep bumping into
+            <strong style="color: var(--ai-primary-color)"
+              >the same issues</strong
+            >
+            , and my agent keeps making
+            <strong style="color: var(--ai-secondary-color)"
+              >the same mistakes</strong
+            >.
+          </h4>
+          <h4 class="fragment">
+            I want to be able to tell my agent on <br />
+            <strong style="color: var(--ai-tertiary-color)"
+              >every prompt</strong
+            >
+            that it
+            <strong style="color: var(--ai-quaternary-color)"
+              >needs to keep in mind something</strong
+            >
+            specific.
+          </h4>
+          <aside class="notes">
+            <p>
+              I keep bumping into the same issues, and my agent keeps making the
+              same mistakes.
+            </p>
+            <p>
+              This is a common problem that you might encounter while vibe
+              coding. Your agent keeps making the same mistakes over and over
+              again.
+            </p>
+            <p>
+              I want to be able to tell my agent on every prompt that it needs
+              to keep in mind something specific.
+            </p>
+            <p>
+              You can simply solve this by providing your agent with a memory
+              and asking it to remember the specific thing you want it to keep
+              in mind. Or you can use something like Rules in cursor [SPACE]
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h1>Rules</h1>
+          <p>(Global or Workspace)</p>
+          <aside class="notes">
+            <p>
+              And there is a whole bunch of rules out there. Things you want AI
+              to respect and to take into account. Let's say for example some
+              coding styles. Or some specific things you want it to do or not
+              do.
+            </p>
+            <p>These rules you can specify globally or per workspace</p>
+            <p>
+              And usually its about one framework or one language you work with
+            </p>
+            <p>Some general examples are:</p>
+            <ul>
+              <li>Focus on readability over being performant.</li>
+              <li>Be concise. Minimize any other prose.</li>
+              <li>
+                Follow a consistent folder structure (e.g., components, hooks,
+                pages, services).
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>What about security?</h3>
+          <aside class="notes">
+            <p>
+              What about security? How will I know my codebase is secure?
+              Experienced coders know that. Or at least they should know this...
+            </p>
+            <p>But how do you know if your code is fully secure?</p>
+          </aside>
+        </section>
+        <section>
+          <h3>
+            Ask ai to do a
+            <strong style="color: var(--ai-tertiary-color)"
+              >security audit...</strong
+            >😄
+          </h3>
+          <h3>
+            Or again you can use
+            <strong style="color: var(--ai-tertiary-color)">rules</strong>
+          </h3>
+          <aside class="notes">
+            <p>
+              Well, you can ask AI to do a security audit. Or you can use rules
+              to make sure your code is secure.
+            </p>
+            <p>
+              There are some great security cursor rules out there which you can
+              use.
+            </p>
+            <p>These tools are great for avoiding vulnerabilities.</p>
+          </aside>
+        </section>
+        <section>
+          <h3>Should I write tests?</h3>
+          <aside class="notes">
+            <p>Should I write tests? Absolutely!</p>
+            <p>
+              Developers often write tests to test out their code before
+              actually using it. It's run in a whole other environment and it is
+              isolated from the rest so you should make sure that critical parts
+              of your app are tested. Preferably the core of your app.
+            </p>
+            <p>Ask AI to write tests for you.</p>
+          </aside>
+        </section>
+        <section data-background-image="/assets/tools.png">
+          <h2 class="fragment my-text-shadow">What are the tools I can use?</h2>
+          <aside class="notes">
+            <p>
+              Alright let's take a look at the landscape, What are the tools
+              that you can use?
+            </p>
+            <p>
+              And more specifically how do I find the ones that are best suited
+              for me or my app that I am building?
+            </p>
+            <p>
+              This is of course changing very rapidly, and the list is surely
+              not complete, but I'll categorize these tools for you and provide
+              you with the most used and known ones.
+            </p>
+            <p>The first one is the most developer friendly one.</p>
+          </aside>
+        </section>
+        <section>
+          <h2>Code Editors</h2>
+          <ul
+            style="
+              display: flex;
+              justify-content: center;
+              gap: 5rem;
+              margin: 3rem 0;
+              list-style-type: none;
+            "
+          >
+            <li class="fragment">
+              <img src="/assets/apps/cursor.svg" alt="Cursor" width="150" />
+            </li>
+            <li class="fragment">
+              <img src="/assets/apps/windsurf.svg" alt="windsurf" width="150" />
+            </li>
+            <li class="fragment">
+              <img
+                src="/assets/apps/visual-studio-code.png"
+                alt="Visual Studio Code"
+                width="150"
+              />
+            </li>
+            <li class="fragment">
+              <img src="/assets/apps/zed.png" alt="zed" width="150" />
+            </li>
+          </ul>
+          <aside class="notes">
+            <p>
+              Cursor $20/month is a great one, and one might say the
+              <strong>best</strong> one, it has a lot of features and is very
+              developer friendly. It also has a lot of integrations with other
+              tools.[SPACE]
+            </p>
+            <p>
+              Windsurf (formally known as codeium) 15$/month is another great
+              one, it has a lot of features and is very developer friendly.
+            </p>
+            <p>By the way those two are clones of the third one[SPACE]</p>
+            <p>
+              Visual Studio Code is a <strong>more robust</strong>,
+              <strong>more used</strong>
+              code editor. It has of course the github copilot plugin with a
+              nice update for about a month old where you can also use agents to
+              practically do the same thing you would do in cursor or windsurf.
+              And its free. At least the editor, github copilot is paying.
+            </p>
+            <p>
+              Zed as a fourth but not as well known as the other three.[SPACE]
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>Browser Based</h2>
+          <ul
+            style="
+              display: flex;
+              justify-content: center;
+              gap: 2rem;
+              flex-shrink: 0;
+              flex-grow: 0;
+              margin: 3rem 0;
+              list-style-type: none;
+            "
+          >
+            <li class="fragment">
+              <img
+                src="/assets/apps/firebase.png"
+                alt="Firebase"
+                width="80"
+                style="
+                  border-radius: 25px;
+                  overflow: hidden;
+                  padding: 10px;
+                  background-color: #fff;
+                "
+              />
+            </li>
+            <li class="fragment">
+              <img
+                src="/assets/apps/bolt-new.jpg"
+                alt="Bolt New"
+                width="105"
+                style="border-radius: 25px; overflow: hidden"
+              />
+            </li>
+            <li class="fragment">
+              <img
+                src="/assets/apps/lovable.svg"
+                alt="Lovable"
+                width="95"
+                style="border-radius: 5px; overflow: hidden"
+              />
+            </li>
+            <li class="fragment">
+              <img
+                src="/assets/apps/v0.svg"
+                alt="Lovable"
+                width="50"
+                height="100"
+                style="
+                  border-radius: 25px;
+                  overflow: hidden;
+                  padding: 0 25px;
+                  background-color: #000;
+                "
+              />
+            </li>
+            <li class="fragment">
+              <img
+                src="/assets/apps/replit.png"
+                alt="Replit"
+                style="
+                  border-radius: 25px;
+                  overflow: hidden;
+                  width: 70px;
+                  padding: 15px;
+                  background-color: #fff;
+                "
+              />
+            </li>
+          </ul>
+          <aside class="notes">
+            <p>Then you have the browser based tools</p>
+            <p>These work straight up in the browser and also work great!</p>
+            <p>
+              Usually they have a built in canvas or deployment system where you
+              can immediately see what you are building which is great if you
+              don't like build your own in the terminal.
+            </p>
+            <p>
+              I recommend non coders today to use these tools, of course
+              installing an IDE is also a good choice.
+            </p>
+            <p>
+              First we have <strong>Firebase.studio</strong> the one that came
+              out most recently. This tool is completely free and ready to use.
+              It's funny how the google giant just whiped away all the other
+              paying tools in one blow.
+            </p>
+            <p>
+              <strong>Bolt.new</strong> is one of the older ones and is really
+              great for ui's and frontends. It has a token base pricing.
+              Developed by the StackBlitz team. Who do all their coding in the
+              cloud.
+            </p>
+            <p>
+              <strong>Lovable</strong> just came out recently with a polished
+              2.0 version of their app and it works way better than before.
+              Check em out at lovable.dev
+            </p>
+            <p>
+              <strong>v0</strong> of vercel and their nextjs. It also came about
+              the same time bolt.new got introduces. I myself am not a big
+              nextjs fan so I haven't tried this one out yet.
+            </p>
+            <p>
+              And last but not least <strong>replit</strong> another browser
+              based ide with ai capabilities. They have diferent plans for
+              pricing.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>Plugins And Extensions</h2>
+          <ul
+            style="
+              display: flex;
+              justify-content: center;
+              gap: 2rem;
+              flex-shrink: 0;
+              flex-grow: 0;
+              margin: 3rem 0;
+              list-style-type: none;
+            "
+          >
+            <li class="fragment">
+              <img
+                src="/assets/apps/cline.svg"
+                alt="Cline"
+                width="80"
+                style="
+                  border-radius: 25px;
+                  overflow: hidden;
+                  padding: 10px;
+                  background-color: #fff;
+                "
+              />
+            </li>
+            <li class="fragment">
+              <img
+                src="/assets/apps/roo-code-logo-white-square.png"
+                alt="Roo Code"
+                width="85"
+                style="
+                  border-radius: 25px;
+                  overflow: hidden;
+                  background-color: #fff;
+                  padding: 10px;
+                "
+              />
+            </li>
+            <li class="fragment">
+              <img
+                src="/assets/apps/avante.png"
+                alt="avante"
+                width="60"
+                style="
+                  border-radius: 25px;
+                  overflow: hidden;
+                  background-color: #fff;
+                  padding: 20px;
+                "
+              />
+            </li>
+            <li class="fragment">
+              <img
+                src="/assets/apps/gh-copilot.svg"
+                alt="Copilot"
+                width="70"
+                style="
+                  border-radius: 25px;
+                  overflow: hidden;
+                  padding: 17px;
+                  background-color: #fff;
+                "
+              />
+            </li>
+          </ul>
+          <aside class="notes">
+            <p>Next up are the plugins and extensions on code editors.</p>
+            <p>
+              You have <strong>Cline</strong> an open source plugin for visual
+              studio code.
+            </p>
+            <p>
+              Then there is <strong>Roo code</strong> which is actually a fork
+              of of Cline. Roo code is a free visual code plugin, where you can
+              hook up something like openrouter.ai and then choos the models you
+              want. What I like about roo code is it's transparancy and all the
+              settings they provide. It's really a nice extension to use. While
+              vibe coding you know exatly how much money your calls to specifci
+              models cost.
+            </p>
+            <p>Then we have <strong>Avante</strong> for neo vim users.</p>
+            <p>
+              And last but not least, <strong>Github copilot</strong> which also
+              has strongly evolved over the years.
+            </p>
+            <p>
+              I bet that most of the developer remember their first Github
+              Copilot auto complete like I do.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>Command Line</h2>
+          <ul
+            style="
+              display: flex;
+              justify-content: center;
+              gap: 2rem;
+              flex-shrink: 0;
+              flex-grow: 0;
+              margin: 3rem 0;
+              list-style-type: none;
+            "
+          >
+            <li class="fragment">
+              <img
+                src="/assets/apps/claude.png"
+                alt="Cline"
+                width="100"
+                style="border-radius: 25px; overflow: hidden"
+              />
+            </li>
+            <li class="fragment">
+              <img
+                src="/assets/apps/openai.png"
+                alt="Roo Code"
+                width="75"
+                style="
+                  border-radius: 25px;
+                  overflow: hidden;
+                  background-color: #fff;
+                  padding: 10px;
+                "
+              />
+            </li>
+          </ul>
+          <aside class="notes">
+            <p>Last one are the Command Line tools</p>
+            <p>These are tools that work straight into your terminal.</p>
+            <p>
+              Like <strong>Claude Code</strong> from anthropic, I've heard some
+              really great things about claude code. And I'll be testing it out
+              soon. Maybe even during this session. We'll see.
+            </p>
+            <p>
+              Then Openai has also a cli called Codex Cli, it's rather
+              lightweight and I haven't tested that one yet.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3 class="caps">Thanks for listening!</h3>
+          <h1>🙏</h1>
+          <aside class="notes">
+            <p>
+              So now that you know all these tools, which ones will you use?
+            </p>
+            <p>
+              I hope you liked my talk and I thank you for listening. [APPLAUSE]
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3><span style="color: var(--ai-tertiary-color)">Q & A</span></h3>
+        </section>
+        <section>
+          <h2>Let's code!</h2>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+            "
+          >
+            <img
+              src="/assets/bit.ly_4k2R1ua.png"
+              alt="Bitly QR code"
+              width="400"
+            />
+            <strong
+              ><a href="https://bit.ly/4k2R1ua"
+                >https://bit.ly/4k2R1ua</a
+              ></strong
+            >
+          </div>
+          <aside class="notes">
+            <p>https://neon-custard-9a363e.netlify.app/</p>
+          </aside>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        controls: false,
+        progress: false,
+        slideNumber: false,
+        transition: "fade",
+
+        // The "normal" size of the presentation, aspect ratio will
+        // be preserved when the presentation is scaled to fit different
+        // resolutions. Can be specified using percentage units.
+        width: 1024,
+        height: 700,
+
+        // Factor of the display size that should remain empty around
+        // the content
+        margin: 0,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.2,
+        maxScale: 2.0,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+    <!-- <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const asideNotes = document.querySelectorAll("aside.notes");
+        const messages = Array.from(asideNotes).map((note) =>
+          note.textContent.trim()
+        );
+        console.log(messages.join(" "));
+      });
+    </script> -->
+  </body>
+</html>
