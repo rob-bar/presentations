@@ -1,40 +1,396 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>reveal.js</title>
+    <title>10 typescript power ups 🍄</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/serif.css" />
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/atom-one-dark-reasonable.css"
+    />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- Title Slide -->
+        <section>
+          <h3>10 typescript power ups 🍄</h3>
+          <p>you whish you knew before</p>
+        </section>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+        <!-- 1: satisfies operator -->
+        <section>
+          <section>
+            <h4>1: satisfies operator</h4>
+            <pre
+              data-id="code-animation"
+            ><code class="language-typescript" data-trim data-line-numbers>// ✅ Good (satisfies operator)
+const theme = {
+  primary: "#ff6600",
+  spacing: 8,
+} satisfies Record&lt;string, string | number&gt;;
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+// ❌ Bad (interface or type assertion)
+interface Theme {
+  primary: string;
+  spacing: number;
+}
+const theme: Theme = { 
+  primary: "#ff6600", 
+  spacing: 8 
+}; // literals widened</code></pre>
+          </section>
+          <section>
+            <blockquote>
+              Use <code>satisfies</code> when you want to enforce a shape while
+              preserving literal types—perfect for tokens, settings, or config.
+            </blockquote>
+          </section>
+        </section>
+
+        <!-- 2: string-literal union from array -->
+        <section>
+          <section>
+            <h4>2: String-literal union from array</h4>
+            <pre
+              data-id="code-animation"
+            ><code class="language-typescript" data-trim data-line-numbers>// ✅ Good (string-literal union from array)
+const routes = ["home", "blog", "about"] as const;
+type Route = typeof routes[number]; 
+// "home" | "blog" | "about"
+
+// ❌ Bad (enum or plain string)
+enum Route { 
+  Home = "home", 
+  Blog = "blog", 
+  About = "about" 
+}</code></pre>
+          </section>
+          <section>
+            <blockquote>
+              Use for dynamic route guards, tabs, CSS variants—any time enum is
+              too heavy but you want strong inference.
+            </blockquote>
+          </section>
+        </section>
+
+        <!-- 3: template literal types -->
+        <section>
+          <section>
+            <h4>3: Template literal types</h4>
+            <pre
+              data-id="code-animation"
+            ><code class="language-typescript" data-trim data-line-numbers>// ✅ Good (template literal types)
+type Version = "v1" | "v2";
+type Resource = "users" | "posts";
+type Endpoint = `/${Version}/${Resource}`;
+
+// ❌ Bad (string concat)
+const url = "/" + "v1" + "/" + "users";
+type Endpoint = string;</code></pre>
+          </section>
+          <section>
+            <blockquote>
+              Enforce patterns for REST routes, i18n keys, CSS naming, and more.
+            </blockquote>
+          </section>
+        </section>
+
+        <!-- 4: unknown instead of any -->
+        <section>
+          <section>
+            <h4>4: unknown instead of any</h4>
+            <pre
+              data-id="code-animation"
+            ><code class="language-typescript" data-trim data-line-numbers>// ✅ Good (unknown instead of any)
+function parseJson&lt;T&gt;(text: string): T {
+  return JSON.parse(text) as unknown as T;
+}
+// ❌ Bad (any)
+function parseJson(text: string): any {
+  return JSON.parse(text);
+}</code></pre>
+          </section>
+          <section>
+            <blockquote>
+              Use <code>unknown</code> to avoid unsafe property access on
+              dynamic/external data.
+            </blockquote>
+          </section>
+        </section>
+
+        <!-- 5: infer helper -->
+        <section>
+          <section>
+            <h4>5: infer helper</h4>
+            <pre
+              data-id="code-animation"
+            ><code class="language-typescript" data-trim data-line-numbers>// ✅ Good (infer helper)
+type ElementType&lt;T&gt; = T extends (infer U)[] ? U : never;
+type Values = ElementType&lt;[1, 2, 3]&gt;; 
+// 1 | 2 | 3
+
+// ❌ Bad (naive index type)
+type ElementType&lt;T&gt; = T[number]; // breaks for non-array</code></pre>
+          </section>
+          <section>
+            <blockquote>
+              Extract inner types from tuples, promises, responses—great for
+              generics.
+            </blockquote>
+          </section>
+        </section>
+
+        <!-- 6: asserts type guard -->
+        <section>
+          <section>
+            <h4>6: asserts type guard</h4>
+            <pre
+              data-id="code-animation"
+            ><code class="language-typescript" data-trim data-line-numbers>// ✅ Good (asserts type guard)
+function assertInput(el: HTMLElement | null): 
+  asserts el is HTMLInputElement {
+  if (!(el instanceof HTMLInputElement)) 
+    throw new Error("Not an input");
+}
+const node = document.querySelector("#email");
+assertInput(node);
+node.value = "hello@example.com";
+
+// ❌ Bad (as casting)
+const node = document.querySelector("#email") 
+  as HTMLInputElement;
+node.value = "hello@example.com";</code></pre>
+          </section>
+          <section>
+            <blockquote>
+              Write safer DOM or test utility code without fragile casting.
+            </blockquote>
+          </section>
+        </section>
+
+        <!-- 7: const type parameters -->
+        <section>
+          <section>
+            <h4>7: const type parameters</h4>
+            <pre
+              data-id="code-animation"
+            ><code class="language-typescript" data-trim data-line-numbers>// ✅ Good (TS 5.x const type parameters)
+function defineRoutes&lt;const R extends readonly string[]&gt;
+  (routes: R) {
+  return routes;
+}
+const routes = defineRoutes(["/users", "/posts"]);
+type Route = typeof routes[number];
+
+// ❌ Bad (manual as const)
+const routes = ["/users", "/posts"] as const;</code></pre>
+          </section>
+          <section>
+            <blockquote>
+              Factory APIs can preserve literal types automatically—no
+              <code>as const</code> needed.
+            </blockquote>
+          </section>
+        </section>
+
+        <!-- 8: import type -->
+        <section>
+          <section>
+            <h4>8: import type</h4>
+            <pre
+              data-id="code-animation"
+            ><code class="language-typescript" data-trim data-line-numbers>// ✅ Good (import type)
+import type { User } from "./models";
+
+//❌ Bad (standard import)
+import { User } from "./models";</code></pre>
+          </section>
+          <section>
+            <blockquote>
+              Reduces bundle size and speeds builds—tree-shake safely.
+            </blockquote>
+          </section>
+        </section>
+
+        <!-- 9: exhaustive switch with never -->
+        <section>
+          <section>
+            <h4>9: exhaustive switch with never</h4>
+            <pre
+              data-id="code-animation"
+            ><code class="language-typescript" data-trim data-line-numbers>// ✅ Good (exhaustive switch with never)
+type Shape = { kind: "circle"; r: number } | 
+             { kind: "square"; s: number };
+function area(shape: Shape): number {
+  switch (shape.kind) {
+    case "circle": return Math.PI * shape.r ** 2;
+    case "square": return shape.s ** 2;
+    default:
+      const _exhaustive: never = shape;
+      return _exhaustive;
+  }
+}
+
+// ❌ Bad (forget a case)
+function area(shape: Shape): number {
+  if (shape.kind === "circle") 
+    return Math.PI * shape.r ** 2;
+  return 0;
+}</code></pre>
+          </section>
+          <section>
+            <blockquote>
+              Ensure full coverage of union types—especially when adding new
+              variants.
+            </blockquote>
+          </section>
+        </section>
+
+        <!-- 10: project references + incremental build -->
+        <section>
+          <section>
+            <h4>10: project references + incremental build</h4>
+            <pre
+              data-id="code-animation"
+            ><code class="language-json" data-trim data-line-numbers>//✅ Good (project references + incremental build) 
+// packages/lib/tsconfig.json
+{
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "dist"
+  }
+}
+/* root tsconfig.json */
+{ "files": [], "references": [{ "path": "./packages/lib" }] }
+
+npx tsc -b          # initial build
+npx tsc -b --incremental  # incremental
+
+// ❌ Bad (monolithic rebuild)
+npx tsc --project .</code></pre>
+          </section>
+          <section>
+            <blockquote>
+              Optimize CI & local build speed in large repos or monorepos.
+            </blockquote>
+          </section>
+        </section>
+
+        <!-- 11: version ranges + lock files -->
+        <section>
+          
+            <h4>BONUS: version ranges + lock files</h4>
+            <pre
+              data-id="code-animation"
+            ><code class="language-json" data-trim data-line-numbers>
+// ✅ Good (version ranges + lock files)
+{
+  "dependencies": {
+    "express": "^4.18.2", // agile upgrades
+    "lodash": "~4.17.21", // safe patches
+		"react": "18.2.0" // exact pin
+  }
+}
+
+// ❌ Bad (loose ranges)
+{
+  "dependencies": {
+    "express": "*", // any version
+    "lodash": "&gt;=4.0.0" // will take major bumps
+  }
+}</code></pre>
+          </section>
+          <section>
+            <ul>
+              <li>Use <code>^</code> for devDependencies (agile upgrades)</li>
+              <li>Use <code>~</code> for prodDeps (safe patches)</li>
+              <li>Use exact pins or lock file in passive codebases</li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- Developer Actions by Project Stage -->
+        <section>
+          <section>
+            <h3>Experiment / POC</h3>
+            <ul>
+              <li>
+                Use <code>^</code> to get the latest fixes & features
+                automatically.
+              </li>
+              <li>
+                Skip locking during rapid prototyping—but snapshot a lock before
+                demos.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>Active, Long‑Running</h3>
+            <ul>
+              <li>
+                Rely on <code>~</code> for production deps to limit risk to
+                critical patches.
+              </li>
+              <li>
+                Dev‑only tools (linters, build) can use <code>^</code> for
+                faster upgrades.
+              </li>
+              <li>
+                Automate weekly or monthly npm update --depth 0 in CI to catch
+                minor bumps.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>Passive, Long‑Running</h3>
+            <ul>
+              <li>Pin exact versions to prevent any drift.</li>
+              <li>
+                Treat dependency updates as deliberate events—bundle them in
+                dedicated maintenance sprints.
+              </li>
+              <li>
+                Keep your lock file under version control; don’t let automated
+                bots merge dependency PRs without review.
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- Thank You Slide -->
+        <section>
+          <h3>Thanks!</h3>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        controls: false,
+        transition: "concave", // none/fade/slide/convex/concave/zoom
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
 </html>
