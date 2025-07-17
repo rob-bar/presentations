@@ -7,7 +7,8 @@
 - [React hooks 🪝](http://rob-bar.github.io/presentations/2019_12__react_hooks/index.html)
 - [A look at modern scrolling 📱](https://hopeful-bhabha-c6ec6f.netlify.app/)
 - [Intriguing potential of generative AI ✨](https://fascinating-dango-e818b8.netlify.app/)
-- [Vibe Coding 😎]()
+- [Vibe Coding 😎](https://thunderous-naiad-06c5ab.netlify.app/)
+- [10 Typescript power ups 🍄](https://bespoke-panda-af0618.netlify.app/)
 
 ### Inspired by Kyle Simpson and his Functional Light Course:
 
