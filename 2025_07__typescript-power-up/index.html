@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
 
-    <title>10 typescript power ups 🍄</title>
+    <title>10 Typescript power ups 🍄</title>
 
     <link rel="stylesheet" href="dist/reset.css" />
     <link rel="stylesheet" href="dist/reveal.css" />
@@ -24,7 +24,7 @@
       <div class="slides">
         <!-- Title Slide -->
         <section>
-          <h3>10 typescript power ups 🍄</h3>
+          <h3>10 Typescript power ups 🍄</h3>
           <p>you whish you knew before</p>
         </section>
 
@@ -55,6 +55,7 @@ const theme: Theme = {
               Use <code>satisfies</code> when you want to enforce a shape while
               preserving literal types—perfect for tokens, settings, or config.
             </blockquote>
+            <small><a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html#the-satisfies-operator">4.5 the-satisfies-operator</a></small>
           </section>
         </section>
 
@@ -81,6 +82,7 @@ enum Route {
               Use for dynamic route guards, tabs, CSS variants—any time enum is
               too heavy but you want strong inference.
             </blockquote>
+            <small><a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4.html#const-assertions">3.4 const-assertions</a></small>
           </section>
         </section>
 
@@ -103,6 +105,7 @@ type Endpoint = string;</code></pre>
             <blockquote>
               Enforce patterns for REST routes, i18n keys, CSS naming, and more.
             </blockquote>
+            <small><a href="https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html">4.1 template-literal-types</a></small>
           </section>
         </section>
 
@@ -126,6 +129,7 @@ function parseJson(text: string): any {
               Use <code>unknown</code> to avoid unsafe property access on
               dynamic/external data.
             </blockquote>
+            <small><a href="https://www.typescriptlang.org/docs/handbook/2/functions.html#unknown">3.0 unknown-type</a></small>
           </section>
         </section>
 
@@ -148,6 +152,7 @@ type ElementType&lt;T&gt; = T[number]; // breaks for non-array</code></pre>
               Extract inner types from tuples, promises, responses—great for
               generics.
             </blockquote>
+            <small><a href="https://www.typescriptlang.org/docs/handbook/2/conditional-types.html#inferring-within-conditional-types">2.8 conditional-types-infer</a></small>
           </section>
         </section>
 
@@ -176,6 +181,7 @@ node.value = "hello@example.com";</code></pre>
             <blockquote>
               Write safer DOM or test utility code without fragile casting.
             </blockquote>
+            <small><a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#assertion-functions">3.7 assertion-functions</a></small>
           </section>
         </section>
 
@@ -201,6 +207,7 @@ const routes = ["/users", "/posts"] as const;</code></pre>
               Factory APIs can preserve literal types automatically—no
               <code>as const</code> needed.
             </blockquote>
+            <small><a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#const-type-parameters">5.0 const-type-parameters</a></small>
           </section>
         </section>
 
@@ -220,6 +227,7 @@ import { User } from "./models";</code></pre>
             <blockquote>
               Reduces bundle size and speeds builds—tree-shake safely.
             </blockquote>
+            <small><a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export">3.8 type-only-imports-and-export</a></small>
           </section>
         </section>
 
@@ -254,6 +262,7 @@ function area(shape: Shape): number {
               Ensure full coverage of union types—especially when adding new
               variants.
             </blockquote>
+            <small><a href="https://www.typescriptlang.org/docs/handbook/2/narrowing.html#exhaustiveness-checking">2.0 exhaustiveness-checking</a></small>
           </section>
         </section>
 
@@ -284,6 +293,7 @@ npx tsc --project .</code></pre>
             <blockquote>
               Optimize CI & local build speed in large repos or monorepos.
             </blockquote>
+            <small><a href="https://www.typescriptlang.org/docs/handbook/project-references.html">3.0 project-references</a></small>
           </section>
         </section>
 
