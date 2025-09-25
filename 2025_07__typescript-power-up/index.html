@@ -9,9 +9,9 @@
 
     <title>10 Typescript power ups 🍄</title>
 
-    <link rel="stylesheet" href="dist/reset.css" />
-    <link rel="stylesheet" href="dist/reveal.css" />
-    <link rel="stylesheet" href="dist/theme/serif.css" />
+    <link rel="stylesheet" href="external/reset.css" />
+    <link rel="stylesheet" href="external/reveal.css" />
+    <link rel="stylesheet" href="external/theme/serif.css" />
 
     <!-- Theme used for syntax highlighted code -->
     <link
@@ -48,7 +48,15 @@ interface Theme {
 const theme: Theme = { 
   primary: "#ff6600", 
   spacing: 8 
-}; // literals widened</code></pre>
+}; // literals widened
+
+
+// 💡 Tip (maximal literal preservation & read-only)
+const theme = {
+  primary: "#ff6600",
+  spacing: 8,
+} as const satisfies Record&lt;string, string | number&gt;;
+</code></pre>
           </section>
           <section>
             <blockquote>
@@ -324,14 +332,14 @@ npx tsc --project .</code></pre>
           <section>
             <ul>
               <li>Use <code>^</code> for devDependencies (agile upgrades)</li>
-              <li>Use <code>~</code> for prodDeps (safe patches)</li>
-              <li>Use exact pins or lock file in passive codebases</li>
+              <li>Use <code>~</code> for prodDeps (safe patches) in combo with lock files</li>
+              <li>Use exact pins in combo with lock files in passive codebases</li>
             </ul>
           </section>
         </section>
 
         <!-- Developer Actions by Project Stage -->
-        <section>
+        
           <section>
             <h3>Experiment / POC</h3>
             <ul>
@@ -341,8 +349,10 @@ npx tsc --project .</code></pre>
               </li>
               <li>
                 Skip locking during rapid prototyping—but snapshot a lock before
-                demos.
+                demos. 
               </li>
+              <li><code>npm install --no-package-lock</code> </li>
+              <li>or <code>pnpm install --no-lockfile</code></li>
             </ul>
           </section>
           <section>
@@ -350,7 +360,10 @@ npx tsc --project .</code></pre>
             <ul>
               <li>
                 Rely on <code>~</code> for production deps to limit risk to
-                critical patches.
+                critical patches. 
+              </li>
+              <li>
+                Please commit your lock file to version control. AND also use it in your pipelines
               </li>
               <li>
                 Dev‑only tools (linters, build) can use <code>^</code> for
@@ -367,16 +380,15 @@ npx tsc --project .</code></pre>
             <ul>
               <li>Pin exact versions to prevent any drift.</li>
               <li>
-                Treat dependency updates as deliberate events—bundle them in
+                Treat dependency updates as deliberate events, bundle them in
                 dedicated maintenance sprints.
               </li>
               <li>
-                Keep your lock file under version control; don’t let automated
-                bots merge dependency PRs without review.
+                Don’t let automated version bots merge dependency PRs without review.
               </li>
             </ul>
           </section>
-        </section>
+        
 
         <!-- Thank You Slide -->
         <section>
@@ -385,7 +397,7 @@ npx tsc --project .</code></pre>
       </div>
     </div>
 
-    <script src="dist/reveal.js"></script>
+    <script src="external/reveal.js"></script>
     <script src="plugin/notes/notes.js"></script>
     <script src="plugin/markdown/markdown.js"></script>
     <script src="plugin/highlight/highlight.js"></script>

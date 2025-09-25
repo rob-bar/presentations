@@ -4,8 +4,8 @@
   "description": "The HTML Presentation Framework",
   "homepage": "https://revealjs.com",
   "subdomain": "revealjs",
-  "main": "dist/reveal.js",
-  "module": "dist/reveal.esm.js",
+  "main": "external/reveal.js",
+  "module": "external/reveal.esm.js",
   "license": "MIT",
   "scripts": {
     "test": "gulp test",
